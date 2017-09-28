@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./process-circle/process-circle.css">
+    <style type="text/css">
+        /*显示大小 width 3.917, 边框宽度 border 0.125*/
+
+        html {
+            font-size: 24px;
+        }
+
+        @-webkit-keyframes circle_right {
+            0% {
+                transform: rotate(-135deg);
+            }
+
+            50%, 100% {
+                transform: rotate(45deg);
+            }
+        }
+
+        @-webkit-keyframes circle_left {
+            0%, 50% {
+                transform: rotate(-135deg);
+            }
+
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+    </style>
+    <!-- <script type="text/javascript">
+      var setPercent = function (num) {
+        var rightcircle = document.getElementById('circleRight');
+        var leftcircle = document.getElementById('circleLeft');
+        var percent = document.getElementById('percentProcess');
+
+        num = parseFloat(num);
+        if (num > 100) {
+          num = 100;
+        }
+
+        percent.innerHTML = num + '%';
+
+        if (num <= 50) {
+            rightcircle.style.cssText = "transform: rotate(" + (-135 + 3.6 * num) + "deg)";
+            leftcircle.style.cssText = "transform: rotate(-135deg)";
+            console.log(rightcircle.style)
+        } else {
+            rightcircle.style.cssText = "transform: rotate(45deg)";
+            leftcircle.style.cssText = "transform: rotate(" + (-135 + 3.6 * (num - 50)) + "deg)";
+        }
+      }
+
+      var i = 0;
+      setInterval(function () {
+        setPercent(i);
+        i++;
+      }, 1000);
+    </script> -->
+</head>
+<body>
+    <!-- <div class="circle-process" id="processCircle">
+      <div class="wrapper circle-right">
+        <div class="circle" id="circleRight"></div>
+      </div>
+      <div class="wrapper circle-left">
+        <div class="circle" id="circleLeft"></div>
+      </div>
+      <div class="percent" id="percentProcess">0%</div>
+    </div> -->
+
+    <div id="processCircle"></div>
+
+    <div class="bdsharebuttonbox">
+        <a href="#" class="bds_more" data-cmd="more"></a>
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">123</a>
+    </div>
+    <script>
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {},
+                "bdText": "欢迎使用交金服",
+                "bdMini": "1",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "0",
+                "bdSize": "24"
+            },
+            "share": {}
+        };
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+
+    <script type="text/javascript" src="./process-circle/process-circle.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            processCircle({
+                debug: true,
+                num: 99.2,
+                size: 94,
+                num: 68.9,
+                speed: 10,
+                textColor: '#123',
+                borderType: 'double'
+            }).init()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+.circle-process {
+    position: relative;
+}
+
+.circle-process > .wrapper {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+
+.circle-process > .wrapper.circle-right {
+    right: 0;
+}
+
+.circle-process > .wrapper.circle-left {
+    left: 0;
+}
+
+.circle-process .circle {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+.circle-process > .wrapper.circle-right > .circle {
+    right: 0;
+}
+
+.circle-process > .wrapper.circle-left > .circle {
+    left: 0;
+}
+
+.circle-process .percent {
+    text-align: center;
+}

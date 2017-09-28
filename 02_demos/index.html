@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Demo</title>
+	<link rel="stylesheet" type="text/css" href="./mobile_calendar/css/clndr.css" />
+	<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="./mobile_calendar/js/moment.min.js"></script>
+	<script type="text/javascript" src="./mobile_calendar/js/underscore-min.js"></script>
+	<style type="text/css">
+		html {
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="calendar"></div>
+	
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style_32x32">
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_weixin"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+
+	<script type="text/template" id="clndr-multimonth-template">
+        <div class="multi-month-controls">
+            <div class="clndr-previous-year-button quarter-button">&laquo;</div>
+            <div class="clndr-previous-button quarter-button">&lsaquo;</div>
+            <div class="clndr-next-button quarter-button right-align">&rsaquo;</div>
+            <div class="clndr-next-year-button quarter-button right-align">&raquo;</div>
+        </div>
+        <% _.each(months, function (oneMonth) { %>
+        <div class="clndr-controls">
+            <div class="month"><%= oneMonth.month.format('YYYY' + '年' + 'MM' + '月') %></div>
+        </div>
+        <div class="clndr-grid">
+            <div class="days-of-the-week">
+        		<div class="container">
+        			<% _.each(daysOfTheWeek, function (day) { %>
+		                <div class="header-day"><%= day %></div>
+		            <% }); %>
+        		</div>
+            </div>
+            <div class="days">
+            	<div class="container">
+            	<% _.each(oneMonth.days, function (day) { %>
+	                <div class="day-box">
+	                	<span class="<%= day.classes %>"><%= day.day %></span>
+	                	<div class="event-box">
+	                	<% _.each(day.events, function (event) { %>
+                			<span class="<%= event.type %>"></span>
+	                	<% }); %>
+	                	</div>
+	                </div>
+	            <% }); %>
+            	</div>
+            </div>
+        </div>
+        <!-- <div class="clndr-today-button">Today</div> -->
+        <div class="mark-description">
+        	<div class="desc desc-a"><span></span>待收款</div>
+        	<div class="desc desc-b"><span></span>已收款</div>
+        </div>
+        <% }); %>
+    </script>
+
+	<script type="text/javascript" src="./mobile_calendar/clndr.min.js"></script>
+	<script type="text/javascript" src="./mobile_calendar/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			var myCalendar = $('#calendar').clndr({
+				// 模板
+				template: $('#clndr-multimonth-template').html(),
+				// 起始星期
+				weekOffset: 1,
+				// 星期文本
+				daysOfTheWeek: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+				// CLNDR可以在任何时间间隔内呈现！
+			    //您可以指定是否要呈现一个或多个月，还是一个或多个
+			    //日历中的日期，以及向前或向后的寻呼间隔
+			    //返回被触发。 如果两个月和几天都为空，CLNDR将默认
+			    //到标准的每月视图。
+				lengthOfTime: {
+					//如果要渲染一个或多个月，则设置为整数，否则
+	         		//保留此空值
+		            months: 1,
+		            //这是当前或向后移动的月数或天数
+	         		//传播日历 在days = 14和interval = 7的时候，你会有一个
+	         		// 2周的日历，页面向前和向后一个星期一次。
+		            interval: 1,
+		            //如果要渲染一天或多天，请设置为整数，否则
+	         		//保留此空值。 将其设置为14将显示一个为期2周的日历。
+		            days: 1
+		        },
+		        clickEvents: {
+		        	// 日期点击触发事件
+		        	click: function (target) {
+		        		if (target.events.length > 0) {
+		        			// 有事件可以点击
+		        			console.log(target);
+		        			console.log(target.date._i);
+		        			console.log(target.events);
+
+		        			$(target.element).parent('.day-box').siblings('.day-box').children('.day').removeClass('active');
+		        			$(target.element).addClass('active');
+
+		        		} else {
+		        			// 没有事件不可点击
+		        			
+		        		}
+    				}
+		        },
+		        //显示与当月相邻的月份的天数（并填充他们的事件）。 默认为true。
+		        showAdjacentMonths: true,
+		        //当点击相邻月份的天数时，切换当前月份。 //触发下个月/上个月/月更改单击回调。 默认为false。
+		        adjacentDaysChangeMonth: true,
+		        // 日历渲染完毕回调函数
+		        doneRendering: function() {
+				    console.log('日历渲染完毕');
+				    console.log(this.options.events)
+				},
+				events: [],
+				
+			});
+
+			// 手势操作
+			$("#calendar").swipe({
+			    //Generic swipe handler for all directions
+			    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+			        switch (direction) {
+			        	case 'left':
+			        	    myCalendar.forward();
+			        	    break;
+			        	case 'right':
+			        	    myCalendar.back();
+			        	    break;
+			        	case 'up':
+			        	    // console.log('You swiped up');
+			        	    break;
+			        	case 'down':
+			        	    // console.log('You swiped down');
+			        	    break;
+			        	default:
+			        		console.warn('Cannot get the swipe direction');
+			        	    break;
+		        	}
+			    }
+		    });
+
+		    // 设置事件(待收款 / 已收款)
+			// 执行该方法后日历会重新渲染
+			var events = [
+			    { date: '2017-09-18', type: '_0', desc: '待收款' },
+			    { date: '2017-09-18', type: '_3', desc: '收款' },
+			    { date: '2017-09-19', type: '_1', desc: '已收款' },
+			    { date: '2017-08-05', type: '_0', desc: '已收款' },
+			    { date: '2017-10-23', type: '_3', desc: '收款' },
+			    { date: '2017-11-06', type: '_1', desc: '已收款' }
+		    ]
+		    myCalendar.setEvents(events);
+		}
+			
+	</script>
+</body>
+</html>

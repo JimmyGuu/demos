@@ -1,0 +1,207 @@
+/*variable*/
+@clndr-border-color: #ebebeb;
+@clndr-active-color: #1f77db;
+@clndr-background-color: #fff;
+@clndr-font-color: #013047;
+@clndr-font-color-disabled: #b6bfc4;
+@clndr-color-red: #f4546d;
+@clndr-color-blue: #1f77db;
+@clndr-control-bg-color: #f7fbff;
+
+@clndr-container-padding: 1rem;
+
+/*日历容器*/
+.clndr
+{
+    font-size: 1rem;
+
+    width: 100%;
+}
+
+/*日历控制器 - 切换年份月份*/
+.multi-month-controls
+{
+    font-size: 2rem;
+    font-weight: bold;
+
+    display: flex;
+
+    color: @clndr-font-color-disabled;
+    border-bottom: 1px solid @clndr-border-color;
+    background-color: @clndr-control-bg-color;
+
+    justify-content: space-around;
+    /*All btns*/
+    .quarter-button,
+    .right-align
+    {
+        padding: 1.167rem 2rem;
+
+        cursor: pointer;
+    }
+}
+
+/*年月显示*/
+.clndr-controls
+{
+    font-size: 1.083rem;
+
+    text-align: center;
+
+    color: @clndr-font-color;
+    border-bottom: 1px solid @clndr-border-color;
+    background-color: @clndr-control-bg-color;
+    .month
+    {
+        padding: 1.167rem @clndr-container-padding;
+    }
+}
+
+/*日历面板*/
+.clndr-grid
+{
+    /*星期*/
+    .days-of-the-week
+    {
+        font-size: .917rem;
+
+        width: 100%;
+
+        text-align: center;
+
+        color: @clndr-color-blue;
+        border-bottom: 1px solid @clndr-border-color;
+        .container
+        {
+            display: flex;
+
+            padding: 1.167rem @clndr-container-padding;
+
+            justify-content: space-around;
+            .header-day
+            {
+                width: 100% / 7;
+            }
+        }
+    }
+    /*日期面板*/
+    .days
+    {
+        font-size: .917rem;
+
+        width: 100%;
+
+        text-align: center;
+
+        color: @clndr-font-color;
+        .container
+        {
+            display: flex;
+
+            padding: 1.167rem @clndr-container-padding;
+
+            justify-content: space-around;
+            flex-wrap: wrap;
+            .day-box
+            {
+                position: relative;
+
+                width: 100% / 7;
+                padding: .5rem 0;
+                .day
+                {
+                    display: inline-block;
+
+                    padding: .5rem;
+
+                    border-radius: 50%;
+                    &.event + .event-box
+                    {
+                        position: absolute;
+                        bottom: .1rem;
+                        left: 50%;
+
+                        display: inline-block;
+
+                        transform: translateX(-50%);
+                        > span
+                        {
+                            display: inline-block;
+
+                            width: .5rem;
+                            height: .5rem;
+
+                            border-radius: 50%;
+                            background-color: #ddd;
+                            &._0
+                            {
+                                background-color: @clndr-color-blue;
+                            }
+                            &._1
+                            {
+                                background-color: @clndr-color-red;
+                            }
+                        }
+                    }
+                }
+                .last-month,
+                .next-month
+                {
+                    color: @clndr-font-color-disabled;
+                }
+                .today
+                {
+                    color: #fff;
+                    background-color: @clndr-active-color;
+                }
+                .active
+                {
+                    color: #fff;
+                    background-color: fadeout(@clndr-active-color, 30%);
+                }
+            }
+        }
+    }
+}
+
+/*待收款已收款*/
+.mark-description
+{
+    font-size: 1rem;
+
+    display: flex;
+
+    justify-content: center;
+    .desc
+    {
+        > span
+        {
+            display: inline-block;
+
+            width: .5rem;
+            height: .5rem;
+            margin-right: .667rem;
+
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+        &.desc-a
+        {
+            color: @clndr-color-blue;
+            > span
+            {
+                background-color: @clndr-color-blue;
+            }
+        }
+        &.desc-b
+        {
+            margin-left: 5.25rem;
+
+            color: @clndr-color-red;
+            > span
+            {
+                background-color: @clndr-color-red;
+            }
+        }
+    }
+}

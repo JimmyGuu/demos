@@ -1,0 +1,158 @@
+.share-dialog h5,
+.share-dialog p
+{
+    margin: 0;
+    padding: 0;
+}
+.share-dialog
+{
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    transition: all .3s ease-out;
+
+    background-color: rgba(0, 0, 0, .5);
+}
+.share-dialog > .share-wrapper
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 30%;
+    min-height: 300px;
+
+    transition: all .2s linear;
+
+    background-color: #e9eff2;
+}
+.share-dialog > .share-wrapper > .share-header
+{
+    padding: 30px 15px;
+
+    text-align: center;
+}
+.share-dialog > .share-wrapper > .share-header > h5
+{
+    font-size: 1.35rem;
+    font-weight: normal;
+}
+.share-dialog > .share-wrapper > .share-body
+{
+    margin-bottom: 4.25rem;
+    padding: 0 15px;
+}
+.share-dialog .sharebuttonbox,
+.share-dialog .sharetextbox
+{
+    display: flex;
+
+    justify-content: center;
+}
+.share-dialog .sharetextbox {
+    justify-content: space-around;
+}
+.share-dialog .sharebuttonbox > a
+{
+    display: inline-block;
+
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1.667rem;
+
+    background: inherit;
+    background-image: url('./society_icons.png');
+    background-repeat: no-repeat;
+    background-size: 1000%;
+    background-position-x: -5rem;
+}
+.share-dialog .sharetextbox > span
+{
+    display: inline-block;
+    font-size: 1rem;
+
+    width: 5rem;
+    margin-right: 1.667rem;
+
+    text-align: center;
+}
+.share-dialog .sharetextbox > span:first-child
+{
+    padding-left: 1.4rem;
+}
+.share-dialog .sharebuttonbox > a > span {
+	background: none;
+}
+.share-dialog .sharebuttonbox > a.weixin
+{
+    background-position-y: -57.583rem;
+}
+.share-dialog .sharebuttonbox > a.tsina
+{
+    background-position-y: -39.583rem;
+}
+.share-dialog .sharebuttonbox > a.sqq
+{
+    background-position-y: -147.833rem;
+}
+.share-dialog .sharebuttonbox > a.qzone
+{
+    background-position-y: -51.583rem;
+}
+.share-dialog .sharebuttonbox > a:last-child
+{
+    margin-right: 0;
+}
+.share-dialog > .share-wrapper > .share-footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+}
+.share-dialog > .share-wrapper > .share-footer > .share-cancel
+{
+    color: #000;
+    font-size: 1.25rem;
+    line-height: 4.25rem;
+
+    display: block;
+
+    width: 100%;
+    height: 4.25rem;
+
+    cursor: pointer;
+    text-align: center;
+
+    background-color: #fff;
+}
+.share-dialog > .share-wrapper > .share-footer > .share-cancel:focus
+{
+    border: 0;
+    outline: none;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+/*JiaThis 微信分享二维码样式*/
+#jiathis_weixin_share {
+    top: 20%;
+}
+.jiathis_weixin_modal {
+    width: 99.5%!important;
+    top: auto!important;
+    left: auto!important;
+    height: 30rem!important;
+    margin: auto!important;
+}
