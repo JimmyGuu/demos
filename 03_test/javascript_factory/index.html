@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="../img/googleg_lodp.ico">
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../js/moment.js"></script>
+
+	<script type="text/javascript" src="./validate-number.js"></script>
+	<script type="text/javascript" src="./factory_model.js"></script>
+	<script type="text/javascript" src="../multiple-loading-methods.js"></script>
+</head>
+<body>
+	<a href="javascript: void(0);" style="display: block;text-align: center;">
+		<img src="../img/googlelogo_color_272x92dp.png">
+	</a>
+
+	<button id="btn">btn</button>
+	<div id="div"></div>
+
+	<script type="text/javascript">
+
+		window.onload = function () {
+
+		}
+
+		$(document).ready(function () {
+			$('#btn').click(function () {
+				$('#div').validateMoney({
+					hehe: 1
+				})
+			})
+		})
+
+		window.onload = function () {
+			var o = page.dom.factory('Link');
+			o.url = 'http://www.google.com';
+			o.insert(document.body);
+
+			var btn = document.querySelector('#btn');
+			var btnClick = function () {
+				var validate = new validateNumber({
+					type: 1,
+					number: 200,
+					divisible: { multiple: 10 }
+				});
+
+				var val = validate.success;
+
+				validate.list();
+			}
+
+			btn.addEventListener('click', function () {
+				btnClick();
+			})
+		}
+	</script>
+</body>
+</html>
