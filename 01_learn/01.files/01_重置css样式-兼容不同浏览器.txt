@@ -1,0 +1,33 @@
+/*重置浏览器样式*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+/*重置表格样式*/
+table{border-collapse:collapse;border-spacing:0;}
+/*清除图片等边框样式*/
+fieldset,img,abbr,acronym{ border:0;}
+/*重置斜体加粗样式*/
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+/*清除列表样式*/
+ol,ul{list-style:none;}
+/*重置文字对齐样式*/
+caption,th {text-align:left;}
+/*重置h标题样式*/
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+/*重置伪类样式*/
+q:before,q:after{content:'';}
+/*设置伪类清除浮动*/
+.clearfix:before{clear: both;display: table;visibility: hidden;height: 0;content: "";}
+.clearfix:after{clear: both;display: table;visibility: hidden;height: 0;content: "";}
+/*设置根字号*/
+html{font-size:62.5%;}
+/*设置版心大小*/
+.heartdiv{width: 1226px;margin-left: auto;margin-right: auto;}
+
+/*header start*/
+
+/*header end*/
+/*body start*/
+
+/*body end*/
+/*footer start*/
+
+/*footer end*/

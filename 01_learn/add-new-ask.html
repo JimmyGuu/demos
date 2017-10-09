@@ -1,0 +1,347 @@
+﻿<!DOCTYPE=html>  
+
+<html>  
+<head>  
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="./jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="./pace/themes/blue/pace-theme-mac-osx.css">
+<link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="./jquery-ui.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+
+<style>
+	
+	/**Left Opration*/
+	/*btns box style*/
+	.databody .panelLeftOperation .operationBtns {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
+	@media screen and (min-width: 767px)
+	{
+		.databody .panelLeftOperation .operationBtns:nth-child(odd){ 
+			padding-right: 5px;
+		}
+		.databody .panelLeftOperation .operationBtns:nth-child(even){ 
+			padding-left: 5px;
+		}
+	}
+		
+	/*btns style*/
+	.databody .panelLeftOperation .operationBtns .btn {
+		border-radius: 2px;
+		font-size: 14px;
+	}
+	.databody .panelLeftOperation .operationBtns .btn:hover, .databody .panelLeftOperation .operationSaveBtn .btn:hover {
+		background-color: #fff;
+		color: #009BFF;
+		border-color: #009BFF;
+		transition: all 0.2s linear;
+		-webkit-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+	}
+	
+
+	/**Right Opration*/
+	/*panelOptionHead*/
+	.databody .panelRightOperation .panelOptionHead .form-group {
+		margin-bottom: 10px;
+	}
+	.databody .panelRightOperation .panelOptionHead .form-group label {
+		font-weight: 500;
+		font-size: 16px;
+	}
+
+	/*panelOptionBody*/
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle {
+		list-style: none;
+		padding: 0;
+		padding-top: 10px;
+	}
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .title {
+		font-size: 16px;
+	}
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content {
+		font-size: 14px;
+	}
+	/*content ul*/
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content .childOption {
+		list-style: none;
+		margin-top: 10px;
+	}
+	/*input style*/
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content .childOption .is-show-box {
+		display: inline-block;
+	}
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content .childOption .is-show-box label {
+		font-weight: 500;
+	}
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content .childOption .show-text {
+		width: 50%;
+	}
+	.databody .panelRightOperation .panelOptionBody .optionContainer .ulptionTitle .content .childOption .delete-btn {
+		display: inline-block;
+		cursor: pointer;
+		border: 1px solid #ddd;
+		border-radius: 2px;
+		color: #6d6d6d;
+	}
+
+</style>
+   
+</head>  
+<body> 
+	<div class="container">
+
+		<div class="dataarea mainwidth databody row"  id="app" >
+	        <div class="panelLeftOperation col-sm-4 col-md-3">
+	        	<div class="row">
+					<div class="col-sm-6 operationBtns">
+						<button type="button" class="btn btn-default btn-block" id="btnAddSingleOption" v-on:click="addSingleOption">
+							<i class="fa fa-dot-circle-o"></i>
+							新增单选项
+						</button>
+
+						<!-- <input type="button" class="btn btn-default btn-block" id="btnAddSingleOption" value="新增单选项" v-on:click="addSingleOption"/> -->
+					</div>
+					<div class="col-sm-6 operationBtns">
+						<button type="button" class="btn btn-default btn-block" id="btnAddMutilOtpin" v-on:click="addMutilOption">
+							<i class="fa fa-check-square"></i>
+							新增多选项
+						</button>
+
+						<!-- <input type="button" class="btn btn-default btn-block" id="btnAddMutilOtpin" value="新增多选项" v-on:click="addMutilOption"/> -->
+					</div>
+	        	</div>
+	            <div class="row">
+					<div class="col-xs-12 operationSaveBtn">
+						<button type="button" class="btn btn-default btn-block" id="btnSave" v-on:click="saveOptions">
+							<i class="fa fa-save"></i>
+							保存
+						</button>
+
+						<!-- <input type="button" class="btn btn-default btn-block" id="btnSave" value="保存" v-on:click="saveOptions"/> -->
+					</div>
+	            </div>
+	            
+	            
+	        </div> <!-- /.panelLeftOperation -->
+
+	        <div class="panelRightOperation col-sm-8 col-md-9">
+	            <div class="panelOptionHead">
+					<div class="form-group">
+					    <label for="txtTitle">问卷标题:</label>
+					    <input name="txtTitle" type="text" id="txtTitle" class="form-control form_datetime" />
+				    </div> <!-- /.问卷标题 -->
+
+				    <div class="form-group">
+					    <label for="startData">开始日期:</label>
+					    <input name="startData" type="text" id="startData" class="form-control form_datetime" />
+				    </div> <!-- /.开始日期 -->
+
+				    <div class="form-group">
+					    <label for="endData">结束日期:</label>
+					    <input name="endData" type="text" id="endData" class="forminput form-control" />
+				    </div> <!-- /.结束日期 -->
+
+	                <!-- 问卷标题:<input name="txtTitle"  type="text"  id="txtTitle"   class="form-control form_datetime" />
+	                开始日期:<input name="startData" type="text" id="startData"  class="form-control form_datetime" style="float:left;" />
+	                结束日期:<input name="endData"   type="text"   id="endData"    class="forminput form-control"  style="float:left;" /> -->
+	            </div> <!-- /.panelOptionHead -->
+
+	            <div class="panelOptionBody" v-for="(item,index) in options" >
+	                <div class="optionContainer">
+	                    <ul class="ulptionTitle">
+	                        <li class="title">
+	                            <span  v-text="index+1"></span>、<span v-text="item.title"></span>
+	                            <span class="btn btn-default btn-sm" v-on:click="addItemOption(item)">新增选项</span>
+	                        </li>
+	                        <li class="content"> 
+		                        <ul class="childOption">
+		                            <div v-if="item.type === 'single'">
+	                                    <li v-for="(childItem,childindex) in item.contents">
+	                                        <span class="child-title" v-text="childindex+1"></span>、
+
+	                                        <!-- radio -->
+	                                        <div class="radio is-show-box" v-if="userType == 'buyer' || userType == 'system'">
+	                                        	<label>
+	                                        		<input type="radio" name="item.id" id="childItem.id" />
+		                                        	<span v-text="childItem.text"></span>
+	                                        	</label>
+	                                        </div>
+		                                        
+											<!-- input textbox -->
+											<div class="form-group is-show-box show-text" v-if="userType == 'seller' || userType == 'system'">
+												<label>图片地址</label>
+												<input type="text" class="form-control" v-text="childItem.text"/>
+												
+												<label>图片描述</label>
+												<textarea class="form-control" rows="3"></textarea>
+											</div>
+	                                        	
+	                                        <!-- delete btn -->
+	                                        <span v-on:click="removeChildOption(item,childItem)" class="btn btn-default delete-btn" v-if="userType == 'seller' || userType == 'system'">点击移除</span>
+	                                    </li>
+		                            </div>
+		                            <div v-else-if="item.type === 'mutil'">
+	                                    <li v-for="(childItem,childindex) in item.contents">
+		                                    <span class="child-title" v-text="childindex+1"></span>、
+
+		                                    <!-- radio -->
+		                                    <div class="checkbox is-show-box " v-if="userType == 'buyer' || userType == 'system'">
+		                                    	<label>
+				                                    <input type="checkbox" name="item.id" id="childItem.id" />
+				                                    <span v-text="childItem.text"></span>
+			                                    </label>
+		                                    </div>
+
+											<!-- input textbox -->
+											<div class="form-group is-show-box show-text" v-if="userType == 'seller' || userType == 'system'">
+												<label>图片地址</label>
+		                                    	<input type="text" class="form-control" v-text="childItem.text"/>
+
+		                                    	<label>图片描述</label>
+												<textarea class="form-control" rows="3"></textarea>
+		                                    </div>
+
+		                                    <!-- delete btn -->
+		                                    <span  v-on:click="removeChildOption(item,childItem)" class="btn btn-default delete-btn" v-if="userType == 'seller' || userType == 'system'">点击移除</span>
+		                                </li>
+		                            </div>   
+		                        </ul>
+	                        </li>
+	                    </ul>
+	                </div> <!-- /.optionContainer -->
+	            </div> <!-- /.panelOptionBody -->
+
+	        </div> <!-- /.panelRightOperation -->
+		</div> <!-- /.#app -->
+
+	</div>
+
+		
+
+</body> 
+
+<script>
+	
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+};
+
+//业务服务
+var optionContent = {};
+var optionContent2 = {};
+
+var optionContentChild = {};
+optionContentChild.id = "demo1";
+optionContentChild.text = "demo1";
+optionContentChild.show = false
+
+var optionContentChild2 = {};
+optionContentChild2.id = "demo2";
+optionContentChild2.text = "demo2";
+optionContentChild2.show = false
+
+optionContent.title = "单选";
+optionContent.type = "single";
+optionContent.show = false;
+optionContent.contents = [optionContentChild, optionContentChild2];
+
+
+optionContent2.title = "多选";
+optionContent2.type = "mutil";
+optionContent2.show = false;
+optionContent2.contents = [optionContentChild, optionContentChild2];
+
+var getSingleTemp = function () {
+    var singleTempValue = {};
+    singleTempValue.id = generateUUID();
+    singleTempValue.title = "单选";
+    singleTempValue.type = "single";
+    singleTempValue.contents = [];
+    return singleTempValue;
+}
+
+var getMutilTemp = function () {
+    var mutilTempValue = {};
+    mutilTempValue.id = generateUUID();
+    mutilTempValue.title = "多选";
+    mutilTempValue.type = "mutil";
+    mutilTempValue.contents = [];
+    return mutilTempValue;
+}
+
+var options = [optionContent, optionContent2];
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!',
+        options: options,
+
+        //test for diff user ['buyer', 'seller', 'system']
+        userType: 'seller'
+    },
+    methods: {
+        addSingleOption: function () {
+            this.options.push(getSingleTemp());
+        },
+        addMutilOption: function () {
+            this.options.push(getMutilTemp());
+        },
+        removeChildOption: function (item, childItem) {
+            console.log("移除选项内容", item, childItem);
+            for (var i = 0; i < item.Contents.length; i++) {
+                if (childItem.id === item.Contents[i].id) {
+                    item.Contents.splice(i, 1);
+                }
+            }
+        },
+        addItemOption: function (item) {
+            item.contents.push(optionContentChild);
+        },
+
+        removeItemOption: function (item) {
+            var currentOptions = this.options;
+            for (var i = 0; i < currentOptions.length; i++) {
+
+            }
+        },
+        saveOptions: function () {
+            console.log("saveOptions");
+        },
+        showOptionAddAndRemove: function () {
+
+        }
+    }
+});
+
+
+
+
+$(function () {
+    $('#startData,#endData').datepicker({
+        language: 'zh-CN', autoclose: true
+    });
+});
+
+
+	
+</script>
+
+</html>  

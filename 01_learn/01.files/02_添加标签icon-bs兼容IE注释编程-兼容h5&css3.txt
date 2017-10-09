@@ -1,0 +1,38 @@
+<!--引入标签icon-->
+
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico" />
+
+
+
+
+<!--兼容ie浏览器-->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!--兼容IE低版本-->
+<!-[if It IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]->
+
+<!-[if IE]>  
+	<script src="js/html5shiv.min.js"></script>   
+<![endif]->
+
+
+
+
+<!--网页宽度等于设备宽度 缩放比例等于1-->
+
+<meta name="viewport" content="width=device-width,initial-scale=1">  <!--网页宽度等于设备宽度 缩放比例等于1-->
+
+
+
+<!--css3兼容ie浏览器，放在对应标签中-->
+ behavior:url(js/ie-css3.htc)
+
+
+
+
+
+
+
+

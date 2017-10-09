@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>touch</title>
+	<link rel="stylesheet" type="text/css" href="../node_modules/swiper/dist/css/swiper.css">
+	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="my-touch.js"></script>
+	<script type="text/javascript" src="../node_modules/swiper/dist/js/swiper.js"></script>
+	<script type="text/javascript" src="../js/qrcodejs/qrcode.js"></script>
+	<style type="text/css">
+		.div-box { border: 2px dashed #ff5f00;position: relative;width: 100%;height: 400px; }
+		.div { width: 100%;height: 100%;background-color: #efefef;position: absolute;left: 0;top: 0;transition: all .3s ease; }
+		.btn { background-color: #fff;color: #ff5f00;border: 1px solid #ff5f00;font-size: 24px;padding: 12px 36px;margin: 15px 0; }
+
+		.swiper-slide img {
+		    width: 100%;
+		    height: auto;
+		}
+
+		.img-box { text-align: center;line-height: 400px; }
+		.img-box > img { cursor: pointer;transition: all 0.2s ease-out; }
+		/*css3 scale*/
+		.img-box.img-box-a > img:hover { transform: scale(3, 3);transition: all 0.3s ease-in; }
+
+		ul { list-style: none;margin: 0;padding: 0; }
+		.img-box.img-box-b > img { width: 50%;transition: all 0.2s ease-in; }
+	</style>
+</head>
+<body>
+<h5>swipe test</h5>
+<div id="diva-box" class="div-box">
+	<div id="diva" class="div">
+		<a href="javascript: void(0);">blank-link</a>
+	</div>
+</div>
+
+
+<h5>Plugin of Swiper</h5>
+<!-- Slider main container -->
+<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <a href="http://idangero.us/swiper/demos/#.WdsDJtOCyUk" class="swiper-slide" data-swiper-autoplay="3000">
+        	<img src="../../img/wallpaper/121751-106.jpg" alt="slide-0">
+        </a>
+        <a href="javascript: void(0);" class="swiper-slide" data-swiper-autoplay="3000">
+        	<img src="../../img/wallpaper/20741-106.jpg" alt="slide-1">
+        </a>
+        <a href="javascript: void(0);" class="swiper-slide" data-swiper-autoplay="3000">
+        	<img src="../../img/wallpaper/337584-106.jpg" alt="slide-2">
+        </a>
+        <a href="javascript: void(0);" class="swiper-slide" data-swiper-autoplay="3000">
+        	<img src="../../img/wallpaper/291909-106.jpg" alt="slide-3">
+        </a>
+        <a href="javascript: void(0);" class="swiper-slide" data-swiper-autoplay="3000">
+        	<img src="../../img/wallpaper/337766-106.jpg" alt="slide-4">
+        </a>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+
+
+<h5>bShare</h5>
+<div class="div-box">
+	<div class="div">
+		<div id="qrcode"></div> 
+		<button id="send" class="btn">点击更换验证码</button>
+	</div>
+</div>
+
+
+<h5>img enlarge - css3 scale</h5>
+<div class="div-box">
+	<div class="box">
+		<div class="img-box img-box-a" id="img-box-a">
+			<img src="../img/googlelogo_color_272x92dp.png" alt="google">
+		</div>
+	</div>
+</div>
+
+
+<h5>img enlarge - javascript & css position</h5>
+<div class="div-box">
+	<div class="box">
+		<ul class="img-list">
+			<li class="img-item">
+				<img src="../../img/wallpaper/291909-106.jpg" alt="291909">
+			</li>
+		</ul>
+
+		<div>
+			<input type="file" id="fileId" name="fileId" value="上传图片"
+       hidefocus="true" onchange="getUrl(this.files, this.id, 75);"/>
+			<canvas id="myCanvas"     style="display: none" ></canvas>
+
+			<img src="" alt="" id="ago" style="width: 500px;"/>
+			<input type="button" value="压缩" onclick="pressss()" />
+
+			<img src="" alt="" id="press"/>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	/**
+     * 图片压缩
+     * @param fil
+     * @param id
+     */
+    function getUrl(fil, id, height) {
+        var Cnv = document.getElementById('myCanvas');
+        var Cntx = Cnv.getContext('2d');//获取2d编辑容器
+        var imgss = new Image();
+        var agoimg = document.getElementById("ago");
+        for (var intI = 0; intI < fil.length; intI++) {
+            var tmpFile = fil[intI];
+            var reader = new FileReader();
+            reader.readAsDataURL(tmpFile);
+            reader.onload = function (e) {
+                url = e.target.result;
+                imgss.src = url;
+                agoimg.src=url;
+                agoimg.onload = function () {
+                    // 等比缩放
+                    var m = imgss.width / imgss.height;
+                    // 该值影响缩放后图片的大小
+                 	Cnv.height = height;
+                 	Cnv.width= height * m;
+                    // img放入画布中
+                    // 设置起始坐标，结束坐标
+                    Cntx.drawImage(agoimg, 0, 0, height * m, height);
+                }
+            }
+        }
+    }
+
+
+    function  pressss(){//
+        // 获取canvas压缩后的图片数据
+        var Pic = document.getElementById("myCanvas").toDataURL("image/png", 0.1);
+        var imgs =document.getElementById("press");
+        imgs.src =Pic ;
+        // 上传
+        // 去除多余，得到base64编码的图片字节流
+        Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "");
+        // 可以用ajax提交到后台，提交后可以直接存数据库，也可以保存成图片，此处略。
+
+        console.log(Pic);
+
+    }
+
+	window.onload = function () {
+		/**
+		 * 01
+		 */
+		console.warn('This is a test of javascript-touch.');
+
+		let dom = document.querySelector('#diva');
+		touch.on('#diva', 'swipeleft', function (e) {
+			console.log('swipeleft', e);
+			dom.style.left = e.x + 'px';
+			setTimeout(() => {
+				dom.style.left = 0;
+			}, 400);
+		});
+
+		// let dom = document.querySelector('#diva');
+		// dom.addEventListener('touchstart', e => {
+		// 	console.log(e.type);
+		// 	console.log(e);
+
+		// 	myTouch.getPositon(e)
+		// });
+
+		// dom.addEventListener('touchmove', e => {
+		// 	console.log(e.type);
+		// 	console.log(e);
+		// });
+
+		// dom.addEventListener('touchend', e => {
+		// 	console.log(e.type);
+		// 	console.log(e);
+		// });
+
+		// dom.addEventListener('touchcancel', e => {
+		// 	console.log(e.type);
+		// 	console.log(e);
+		// });
+
+
+		/**
+		 * 02
+		 */
+		// Plugin of Swiper
+		const mySwiper = new Swiper('.swiper-container', {
+			// 可选参数
+			// direction: horizontal / vertical
+			direction: 'horizontal',
+			// effect: slide / effect / cube / coverflow / flip
+			effect: 'coverflow',
+			speed: 300,
+			loop: true,
+			autoplay: true,
+			// 启用此功能可计算每个幻灯片的进度
+			watchSlidesProgress: true,
+
+
+			// 分页
+			pagination: '.swiper-pagination',
+
+			// 导航箭头
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+
+			// 滚动条
+			scrollbar: '.swiper-scrollbar'
+		});
+
+
+		/**
+		 * 03
+		 */
+		// 生成m到n(包括m和n)的随机整数
+		// interval: [m, n]  m <= num <= n
+		let random = function (interval, length, isBreak) {
+			const isArr = typeof interval === 'object' && !isNaN(interval.length);
+			let text    = new String(),
+				reg     = /,$/gi;
+			length      = parseInt(length);
+			isBreak     = typeof isBreak === 'boolean' ? isBreak : false;
+			if (isArr) {
+				// Array
+				for (let i = 0; i < length; i++) {
+					let n = Math.random() * (parseInt(interval[1]) + 1 - parseInt(interval[0])) + parseInt(interval[0]);
+					n = parseInt(n);
+					text += n.toString();
+					isBreak ? text += ',' : text;
+				}
+			}
+			isBreak ? text = text.replace(reg, '') : text;
+			return text;
+		}
+		let qrcode = new QRCode('qrcode', {
+		  	text: random([0, 9], 10, false),
+		  	width: 256,
+		  	height: 256,
+		  	colorDark : '#000000',
+		  	colorLight : '#ffffff',
+		  	correctLevel : QRCode.CorrectLevel.H
+		});
+		let getQRCodeBtn = document.querySelector('#send');
+		getQRCodeBtn.onclick = function (e) {
+			// 生成 [0, 9] 随机整数
+			let text = random([0, 9], 10, false);
+
+			qrcode.makeCode(text);
+
+			console.log(text)
+		}
+
+
+
+		/**
+		 * 04
+		 */
+		
+
+
+
+		
+
+
+	}
+
+</script>
+</body>
+</html>
