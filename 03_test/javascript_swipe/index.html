@@ -23,7 +23,10 @@
 		/*css3 scale*/
 		.img-box.img-box-a > img:hover { transform: scale(3, 3);transition: all 0.3s ease-in; }
 
-		ul { list-style: none;margin: 0;padding: 0; }
+		.img-list { clear: both;overflow: hidden; }
+		.img-list .img-item { width: 250px;max-height: 150px;float: left; }
+		.img-list .img-item > img { width: 100%; }
+		
 		.img-box.img-box-b > img { width: 50%;transition: all 0.2s ease-in; }
 	</style>
 </head>
@@ -83,7 +86,7 @@
 <div class="div-box">
 	<div class="box">
 		<div class="img-box img-box-a" id="img-box-a">
-			<img src="../img/googlelogo_color_272x92dp.png" alt="google">
+			<img src="../img/googlelogo_color_272x92dp.png" alt="google">hehe
 		</div>
 	</div>
 </div>
@@ -92,11 +95,20 @@
 <h5>img enlarge - javascript & css position</h5>
 <div class="div-box">
 	<div class="box">
-		<ul class="img-list">
-			<li class="img-item">
+		<div class="img-list">
+			<span class="img-item">
 				<img src="../../img/wallpaper/291909-106.jpg" alt="291909">
-			</li>
-		</ul>
+			</span>
+			<span class="img-item">
+				<img src="../../img/wallpaper/291909-106.jpg" alt="291909">
+			</span>
+			<span class="img-item">
+				<img src="../../img/wallpaper/291909-106.jpg" alt="291909">
+			</span>
+			<span class="img-item">
+				<img src="../../img/wallpaper/291909-106.jpg" alt="291909">
+			</span>
+		</div>
 
 		<div>
 			<input type="file" id="fileId" name="fileId" value="上传图片"
@@ -116,16 +128,32 @@
 
 
 <script type="text/javascript">
+	// 字节转换
+	function bytesToSize(bytes) {
+	   	if (bytes === 0) return '0 B';
+
+    	var k = 1024;
+
+	    sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+	    i = Math.floor(Math.log(bytes) / Math.log(k));
+
+		return (bytes / Math.pow(k, i)) + ' ' + sizes[i];
+	   //toPrecision(3) 后面保留一位小数，如1.0GB
+	   //return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+	}
+
 	/**
      * 图片压缩
      * @param fil
      * @param id
      */
     function getUrl(fil, id, height) {
-        var Cnv = document.getElementById('myCanvas');
-        var Cntx = Cnv.getContext('2d');//获取2d编辑容器
-        var imgss = new Image();
+        var Cnv    = document.createElement('canvas');
+        var Cntx   = Cnv.getContext('2d');
+        var imgss  = new Image();
         var agoimg = document.getElementById("ago");
+        console.log(fil.length)
         for (var intI = 0; intI < fil.length; intI++) {
             var tmpFile = fil[intI];
             var reader = new FileReader();
@@ -149,18 +177,19 @@
     }
 
 
-    function  pressss(){//
+    function  pressss () {
         // 获取canvas压缩后的图片数据
-        var Pic = document.getElementById("myCanvas").toDataURL("image/png", 0.1);
-        var imgs =document.getElementById("press");
-        imgs.src =Pic ;
+        var Pic  = document.getElementById("myCanvas").toDataURL("image/png", 0.4);
+        var imgs = document.getElementById("press");
+        imgs.src = Pic ;
         // 上传
         // 去除多余，得到base64编码的图片字节流
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "");
         // 可以用ajax提交到后台，提交后可以直接存数据库，也可以保存成图片，此处略。
 
-        console.log(Pic);
-
+        console.log('Size: ' + bytesToSize(Pic.length));
+        console.log(bytesToSize(100000000000000000))
+        
     }
 
 	window.onload = function () {

@@ -4,6 +4,7 @@
   "description": "tests",
   "main": "multiple-loading-methods.js",
   "dependencies": {
+    "jquery": "^3.2.1",
     "swipe": "^1.7.7"
   },
   "devDependencies": {

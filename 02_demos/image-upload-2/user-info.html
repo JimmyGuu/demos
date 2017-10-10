@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>User</title>
+	<style type="text/css">
+		body { background-color: #efefef;color: #000;font-size: 24px; }
+		.user-info { background-color: #fff;clear: both;overflow: hidden;padding: 15px 30px; }
+		.user-info .img, .user-info .info { float: left;line-height: 170px;font-size: 2em; }
+		.user-info .img { background-color: #ddd;background-image: url(../../img/user-img.jpg);background-repeat: no-repeat;background-size: cover;width: 170px;height: 170px;border-radius: 50%;overflow: hidden; }
+		.user-info .info { padding-left: 40px; }
+		.btn { background-color: #fff;border: 1px solid #ddd;color: #666;border-radius: 4px;padding: 15px 45px;font-size: 2em;margin: 15px; }
+	</style>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="user-info">
+		<div class="img" id="userImg"></div>
+		<div class="info" id="userInfo">
+			Name: Jehorn
+		</div>
+	</div>
+	<div>
+		<button class="btn" id="btna">解绑 offCount2</button>
+		<button class="btn" id="btnb">清除注册事件</button>
+	</div>
+
+	<script type="text/javascript" src="js/edge-dialog.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// 绑定事件
+			var dialog = new EdgeDialog();
+			var offCount1 = dialog.on('userInfo', 'bottom', function (obj, count) {
+				console.log('callback: ', obj, count);
+			}, { width: '100%', height: '350px' });
+
+			// 添加事件
+			var addEvent = function () { this.name = '呵呵'; };
+			dialog.add('hehe', addEvent, function (obj) { console.log(obj) });
+			var offCount2 = dialog.on('userImg', 'hehe', function (obj, count) { console.log(obj, count) });
+
+			var btn = document.querySelector('#btna');
+			var btnb = document.querySelector('#btnb');
+
+			// 解绑事件
+			btn.addEventListener('click', function () {
+				dialog.off('userImg', offCount2)
+			});
+
+			// 删除事件
+			btnb.addEventListener('click', function () {
+				dialog.del('hehe', function (obj) { console.log(obj) })
+			});
+		});
+	</script>
+</body>
+</html>
