@@ -43,10 +43,8 @@
 	</div>
 
 	<button id="fileSelectBtn" class="btn">选择头像</button>
-	<button id="clipBtn" class="btn">预览</button>
+	<button id="clipBtn" class="btn">预览提交</button>
 	<div id="view"></div>
-
-	<button class="btn submit" id="confirmSubmitBtn">确认修改</button>
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/hammer.min.js"></script>
@@ -72,8 +70,6 @@
 			var mask        = $('.pic-mask');
 			// 预览按钮
 			var viewBtn     = $('#clipBtn');
-			// 提交按钮
-			var submitBnt   = $('#confirmSubmitBtn');
 			// 选择图片按钮
 			var selectBtn   = $('#fileSelectBtn');
 
@@ -114,15 +110,16 @@
 		    }
 
 			// 图片上传
-			var saveImageInfo = function (url, name, img) {
-				if (img == '') {
+			var saveImageInfo = function (url, img) {
+				if (!img) {
 					console.error('Get null of img.');
 					return;
 				}
 
+				console.log('Submit info: { image: ' + img + ' }');
+
 				$.post(url, {
-					image: img,
-					filename: name
+					image: img
 				}, function (data) {
 					if (data != '') {
 						//console.info(data);
@@ -173,9 +170,7 @@
 				},
 				done: function(dataURL) {
 					// console.log(dataURL);
-					var filename = view.attr('fileName');
-					var img_data = view.attr('src');
-					saveImageInfo(uploadApi, filename, img_data);
+					saveImageInfo(uploadApi, dataURL);
 
 					// base64 转 blob
 					var blob = dataURLtoBlob(dataURL);
