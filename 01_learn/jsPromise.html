@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js Promise</title>
+    <style>
+        body{font-family: 微软雅黑;}
+        p{background: #ff5f00;color: #ffffff;display:inline-block;}
+        span{color: #ff5f00;}
+        code{font-family: Consolas!important;}
+        pre{background: #fdf6e3;border: 1px solid rgba(0,0,0,0.15);display: block;padding: 9.5px;}
+    </style>
+</head>
+<body>
+
+    所谓 Promise，就是一个对象，用来传递异步操作的消息。<br />
+    <p>Promise 对象有以下两个特点:</p><br />
+    对象的状态不受外界影响。<br />
+    一旦状态改变，就不会再变，任何时候都可以得到这个结果。
+    这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。<br /><br />
+    <div id="show-img"></div>
+
+    <script>
+
+        console.dir(Promise);
+
+        function runAsync() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    console.log('执行完成');
+                    resolve('随便');
+
+                }, 2000);
+
+            });
+
+            return p;
+
+        }
+
+        //链式操作的用法
+        console.log('%c 链式操作的用法', 'color: #ff5f00;');
+        runAsync1()
+
+        .then(function (data) {
+
+            console.log(data);
+            return runAsync2();
+
+        })
+
+        .then(function (data) {
+
+            console.log(data);
+            return runAsync3();
+
+        })
+
+        .then(function (data) {
+
+            console.log(data);
+
+        })
+
+        //runAsync三个函数的定义
+        function runAsync1() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    console.log('异步任务1执行完成');
+                    resolve('异步1数据');
+
+                }, 2000);
+
+            });
+
+            return p;
+
+        }
+
+        function runAsync2() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    console.log('异步任务2执行完成');
+                    resolve('异步2数据');
+
+                }, 1000);
+
+            });
+
+            return p;
+
+        }
+
+        function runAsync3() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    console.log('异步任务3执行完成');
+                    resolve('异步3数据');
+
+                }, 1000);
+
+            });
+
+            return p;
+
+        }
+
+
+        //reject的用法
+        setTimeout(function () { console.log('%c reject的用法', 'color: #ff5f00;') }, 4000);
+
+        function getNumber() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    var num = Math.ceil(Math.random() * 10);    //生成1-10随机数
+
+                    if (num < 5) {
+
+                        resolve(num);
+
+                    } else {
+
+                        reject('随机数大于等于5');
+
+                    }
+
+                }, 4000);
+
+            });
+
+            return p;
+
+        }
+
+        getNumber()
+
+        .then(
+
+            function (data) {
+
+                console.log('成功');
+                console.log(data);  //成功的信息(resolve信息)
+
+            },
+
+            function (data) {
+
+                console.log('失败');
+                console.log(data);  //失败的信息(reject信息)
+
+            }
+
+        );
+
+        //catch的用法  指定reject的回调
+        setTimeout(function () { console.log('%c catch的用法-指定reject的回调', 'color: #ff5f00;') }, 5000);
+
+        getNumber()
+        .then(function (data) {
+
+            console.log('成功');
+            console.log(data);
+
+        })
+
+        .catch(function (data) {
+
+            console.log('失败');
+            console.log(data);
+
+        })
+
+        //效果和写在then的第二个参数里面一样。
+        //不过它还有另外一个作用：在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中。
+
+        getNumber()
+        .then(function (data) {
+
+            console.log('成功');
+            console.log(data);
+            console.log(erro);  //此处的error未定义
+
+        })
+
+        .catch(function (data) {
+
+            console.log('失败');
+            console.log(data);
+
+        })
+        
+        //all的用法-并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。
+        setTimeout(function () { console.log('%c all的用法', 'color: #ff5f00;') }, 6000);
+
+        setTimeout(function () {
+
+            Promise
+
+            .all([runAsync1(), runAsync2(), runAsync3()])
+
+            .then(function (results) {
+
+                console.log(results);
+
+            });
+
+        }, 6000);
+
+        //race的用法-竞速，完成一个即可-获取最先执行完的异步的resolve数据到results中
+        setTimeout(function () { console.log('%c race的用法-获取最先执行完的异步的resolve数据到results中', 'color: #ff5f00;') }, 9000);
+
+        setTimeout(function () {
+
+            Promise
+
+            .race([runAsync1(), runAsync2(), runAsync3()])
+
+            .then(function (results) {
+
+                console.log(results);
+
+            })
+
+        },9000);
+
+        //用法：比如用race给某个异步请求设置超时时间，并且在超时后执行相应的操作
+        setTimeout(function () { console.log('%c 用race给某个异步请求设置超时时间', 'color: #ff5f00;') }, 11500);
+
+        //请求某个图片资源
+        function requestImg() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                var img = new Image();
+
+                img.onload = function () {
+
+                    resolve(img);
+
+                }
+
+                img.src = '原型.png';
+
+            });
+
+            return p;
+
+        }
+
+        //延时函数，用于给请求计时
+        function timeout() {
+
+            var p = new Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+
+                    reject('图片请求超时');
+
+                }, 3000);
+
+            });
+
+            return p;
+
+        }
+
+        //race
+        setTimeout(function () {
+
+            Promise
+
+            .race([requestImg(), timeout()])
+
+            .then(function (results) {
+
+                console.log('then:' + results);
+
+                results.setAttribute("width", "250");
+
+                document.getElementById('show-img').append(results);
+
+            })
+
+            .catch(function (reason) {
+
+                console.log('catch:'+reason);
+
+            })
+
+        }, 12000);
+
+    </script>
+
+</body>
+</html>

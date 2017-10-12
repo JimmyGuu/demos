@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js闭包</title>
+    <style>
+        body{font-family: 微软雅黑;}
+        p{background: #ff5f00;color: #ffffff;display:inline-block;}
+        span{color: #ff5f00;}
+        code{font-family: Consolas!important;}
+        pre{background: #fdf6e3;border: 1px solid rgba(0,0,0,0.15);display: block;padding: 9.5px;}
+    </style>
+</head>
+<body>
+
+    <p>闭包：函数作为返回值，函数作为参数传递。</p><br />
+    <p>第一，函数作为返回值</p><br />
+    <pre><code>
+        function fn () {
+            var max = 10;
+
+            return function bar (x) {
+                if(x > max) {
+                    alert(x);
+                }
+            }
+        }
+        
+        var f1 = fn();
+        f1(15);
+    </code></pre><br />
+    <button onclick="fa(15);">点击运行以上代码</button><br /><br />
+    <script>
+        function fn() {
+            var max = 10;
+
+            return function bar(x) {
+                if (x > max) {
+                    alert(x);
+                }
+            }
+        }
+
+        var fa = fn();
+    </script>
+
+    <p>第二，函数作为参数被传递</p><br />
+    <pre>
+        <code>
+            var max = 10,
+                fn = function (x) {
+                    if (x > max) {
+                        alert(x);
+                    }
+                }
+            (function (f) {
+                var max = 100;
+                f(15);
+            })(fn);
+    </code>
+    </pre><br />
+    <button onclick="(function (f) { var max = 100; f(15); })(fn);">点击运行以上代码</button><br /><br />
+    <script>
+        var max = 10,
+            fn = function (x) {
+                if (x > max) {
+                    alert(x);
+                }
+            }
+    </script>
+    
+
+
+
+
+<script type="text/javascript">
+
+	function f1(){
+　　　　var n=999;
+　　　　nAdd=function(){n+=1}
+　　　　function f2(){
+            console.log(n);
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+	
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+　　　　}
+　　};
+　　console.log(object.getNameFunc()());
+
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name;
+　　　　　　};
+　　　　}
+　　};
+    console.log(object.getNameFunc()());
+
+</script>
+
+
+
+</body>
+</html>

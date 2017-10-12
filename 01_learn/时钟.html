@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://s.codepen.io/boomerang/7dd017abd23efb10dcaddd5061bd20cd1467358740280/index.html -->
+<html class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="console_runner-d0a557e5cb67f9cd9bbb9673355c7e8e.js"></script>
+<script src="events_runner-21174b4c7273cfddc124acb0876792e0.js"></script>
+<script src="css_live_reload_init-7618a0de08795409d8f6c9ef6805f7b2.js"></script>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="SVG Clock.html">
+
+
+<style class="cp-pen-styles">
+body {
+  background: #eee;
+}
+
+svg {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.filler {
+  background: #20B7AF;
+  position: absolute;
+  bottom: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+</style>
+</head>
+<body>
+<div class="filler"></div>
+<svg width="200" height="200">
+
+    <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <fegaussianblur in="SourceGraphic" stdDeviation="3" result="blur"></fegaussianblur>
+        <feoffset in="blur" dx="2.5" dy="2.5"></feoffset>
+    </filter>
+
+    <g>
+        <circle id="shadow" style="fill:rgba(0,0,0,0.1)" cx="97" cy="100" r="87" filter="url(#innerShadow)"></circle>
+        <circle id="circle" style="stroke: #FFF; stroke-width: 12px; fill:#20B7AF" cx="100" cy="100" r="80"></circle>
+    </g>
+    <g>
+        <line x1="100" y1="100" x2="100" y2="55" transform="rotate(469.563 100 100)" style="stroke-width: 3px; stroke: #fffbf9;" id="hourhand">
+            <animatetransform attributeName="transform" attributeType="XML" type="rotate" dur="43200s" repeatCount="indefinite" from="469.5 100 100" to="829.5 100 100"></animatetransform>
+        </line>
+        <line x1="100" y1="100" x2="100" y2="40" style="stroke-width: 4px; stroke: #fdfdfd;" id="minutehand" transform="rotate(234.755 100 100)">
+            <animatetransform attributeName="transform" attributeType="XML" type="rotate" dur="3600s" repeatCount="indefinite" from="234 100 100" to="594 100 100"></animatetransform>
+        </line>
+        <line x1="100" y1="100" x2="100" y2="30" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" transform="rotate(51.2996 100 100)">
+            <animatetransform attributeName="transform" attributeType="XML" type="rotate" dur="60s" repeatCount="indefinite" from="6 100 100" to="366 100 100"></animatetransform>
+        </line>
+    </g>
+    <circle id="center" style="fill:#128A86; stroke: #C1EFED; stroke-width: 2px;" cx="100" cy="100" r="3"></circle>
+<line x1="100" y1="30" x2="100" y2="40" transform="rotate(30 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(60 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(90 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(120 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(150 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(180 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(210 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(240 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(270 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(300 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(330 100 100)" style="stroke: #ffffff;"></line><line x1="100" y1="30" x2="100" y2="40" transform="rotate(360 100 100)" style="stroke: #ffffff;"></line></svg>
+<script src="stopExecutionOnTimeout.js"></script>
+<script>
+var hands = [];
+hands.push(document.querySelector('#secondhand > *'));
+hands.push(document.querySelector('#minutehand > *'));
+hands.push(document.querySelector('#hourhand > *'));
+var cx = 100;
+var cy = 100;
+function shifter(val) {
+    return [
+        val,
+        cx,
+        cy
+    ].join(' ');
+}
+var date = new Date();
+var hoursAngle = 360 * date.getHours() / 12 + date.getMinutes() / 2;
+var minuteAngle = 360 * date.getMinutes() / 60;
+var secAngle = 360 * date.getSeconds() / 60;
+hands[0].setAttribute('from', shifter(secAngle));
+hands[0].setAttribute('to', shifter(secAngle + 360));
+hands[1].setAttribute('from', shifter(minuteAngle));
+hands[1].setAttribute('to', shifter(minuteAngle + 360));
+hands[2].setAttribute('from', shifter(hoursAngle));
+hands[2].setAttribute('to', shifter(hoursAngle + 360));
+for (var i = 1; i <= 12; i++) {
+    if (window.CP.shouldStopExecution(1)) {
+        break;
+    }
+    var el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    el.setAttribute('x1', '100');
+    el.setAttribute('y1', '30');
+    el.setAttribute('x2', '100');
+    el.setAttribute('y2', '40');
+    el.setAttribute('transform', 'rotate(' + i * 360 / 12 + ' 100 100)');
+    el.setAttribute('style', 'stroke: #ffffff;');
+    document.querySelector('svg').appendChild(el);
+}
+window.CP.exitedLoop(1);
+//# sourceURL=pen.js
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js 面向对象</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+    //文本标记
+    var my = {
+
+        name: "Jehorn",
+
+        sex: function (a) {
+            console.log(a);
+        }
+
+    }
+
+    console.log(my.name);
+
+    my.sex('MAN');
+
+    my.sayname = function () {  /*增加属性*/
+        console.log(this.name);
+    }
+
+    my.sayname();   /*调用新增属性*/
+
+    console.log(my.sayname);
+
+    var sex = my.sex;
+
+    sex('h');
+
+    var you = my;
+
+    console.log(you.name);
+
+    you.name = 'Fuck';
+
+    console.log(you.name);
+
+    console.log(my.name);
+
+    my.name = 'Niub';
+
+    my.sayname();
+
+    var sayName = my.sayname;   /*创建为全局变量*/
+
+    sayName();  /*sayname()中的this.name作用域在全局，而全局没有定义name，所以显示空*/
+
+    var name = 'All';   /*定义name全局变量*/
+
+    sayName();  /*显示name*/
+    
+
+    //构造函数
+    function Game(title) {
+
+        this.title = typeof title !== 'undefined' ? title : '';
+
+    };
+
+    var zelda = new Game("Legend");
+
+    var smb = new Game("Super");
+
+    console.log(zelda.title);   /*Legend*/
+
+    console.log(smb.title);   /*Super*/
+
+    var blank = new Game();
+
+    console.log(blank.title);   /*空*/
+
+    Game.prototype.sound = function (e) {
+
+        this.e = typeof e == 'string' ? console.log('定义公用方法') : console.log('输入了' + typeof e);
+
+    }
+
+    smb.sound();
+
+    smb.sound('aa');
+
+    smb.sound(1);
+
+    
+    
+	
+</script>
+
+</body>
+</html>

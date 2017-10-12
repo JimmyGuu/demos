@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>123</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var car = {
+		name: 'Jehorn',
+		sex: function (v) {
+			return v
+		},
+		methods: {
+			add: function (a, b) {
+				console.log(a + b) 
+			},
+			sub: function (a, b) {
+				console.log(a - b) 
+			}
+		}
+	}
+
+	console.log(car.name);
+
+	console.log(car.sex('man'));
+
+	console.log(car.__proto__);
+
+	//add 来替换 sub
+	car.methods.add.call(car.methods.sub, 3, 1);	// => 4
+
+	var animal = {
+		name: 'Animal',
+		methods: {
+			showName: function () {
+				console.log(this.name)
+			}
+		}
+	}
+
+	var cat = {
+		name: 'Cat'
+	}
+
+	//call 的意思是把 animal 的方法放到cat上执行
+	animal.methods.showName.call(cat, '', '');	// => Cat
+
+	//call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments
+	animal.methods.showName.apply(cat, []);		// => Cat
+
+	//实现继承
+	function Book (name) {
+		this.name = name;
+		this.showName = function () {
+			console.log(this.name);
+		}
+	}
+
+	function Pen (name) {
+		//Book.call(this) 的意思就是使用 Book 对象代替 this 对象
+		Book.call(this, name);
+	}
+
+	var pen = new Pen('Apple-pen');
+
+	//必须是 this.属性， 用 prototype添加的属性无法获取
+	pen.showName();	// => Apple-pen
+
+	//多重继承
+	function Class1 () {
+		this.showSub = function (a, b) {
+			console.log(a - b);
+		}
+	}
+
+	function Class2 () {
+		this.showAdd = function (a, b) {
+			console.log(a + b);
+		}
+	}
+
+	function Class3 () {
+		Class1.call(this);
+		Class2.call(this);
+	}
+
+	var class3 = new Class3();
+
+	class3.showSub(3, 1);	// => 2
+
+	class3.showAdd(3, 1);	// => 4
+
+	
+</script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
  * EdgeDialog
  * Description A dialog box pops up from the edge
  * Author      Jehorn
- * Version     0.0.1
+ * Version     0.0.2
  * @param  {Object} window     The object of window
  * @param  {Object} document   The object of document
  * @return {Object} EdgeDialog The EdgeDialog bind to window
@@ -53,8 +53,7 @@
 	}
 
 	// Internal types.
-	// From bottom
-	var BottomDialog     = function (create, opts) {
+	var InternalDialog = function (create, opts) {
 		var self         = this;
 		var isClose      = opts.isClose || true;
 		this.doms        = create();
@@ -63,22 +62,31 @@
 		this.isContainer = document.getElementById(this.id) || false;
 		this.delay       = opts.delay || 30;
 		this.content     = opts.content || '';
+		this.fadeInType  = 'fadeInUp';
+		this.fadeOutType = 'fadeOutDown';
+
+		// Dialog position
+		this.position = function () {
+			this.doms.container.style.width   = opts.width || 'auto';
+			this.doms.container.style.height  = opts.height || 'auto';
+			this.doms.container.style.top  = opts.top || 'auto';
+			this.doms.container.style.bottom  = opts.bottom || 'auto';
+			this.doms.container.style.left    = opts.left || 'auto';
+			this.doms.container.style.right  = opts.right || 'auto';
+		}
 
 		// Create DOM
 		this.create = function (callback) {
 			this.isContainer ? console.error('Container id: ' + this.id + ' had been used!') : this.doms.mask.appendChild(this.doms.container);
 
 			this.doms.container.id            = this.id;
-			this.doms.container.style.width   = opts.width || '100%';
-			this.doms.container.style.height  = opts.height || 'auto';
-			this.doms.container.style.bottom  = opts.bottom || '-100%';
-			this.doms.container.style.left    = opts.left || '0';
+			this.position();
 
 			this.doms.mask.style.display = 'block';
 
 			window.setTimeout(function () {
 				self.doms.container.style.display = 'block';
-				self.doms.container.className = 'dialog-animate fadeInUp';
+				self.doms.container.className = 'dialog-animate ' + self.fadeInType;
 
 				self.insert(self.doms.container);
 
@@ -96,7 +104,7 @@
 		// Destroy/Delete the box.
 		this.close = function () {
 			var container = document.getElementById(self.id);
-			self.doms.container.className = 'dialog-animate fadeOutDown';
+			self.doms.container.className = 'dialog-animate ' + self.fadeOutType;
 			window.setTimeout(function () {
 				if (container) self.doms.mask.removeChild(container);
 				window.setTimeout(function () {
@@ -107,20 +115,83 @@
 
 		// Click blank erea close the dialog.
 		isClose ? bindEvent(this, this.doms.mask, 'click', this.close, true) : '';
+	}
+	// From bottom
+	var BottomDialog = function (create, opts) {
+		InternalDialog.call(this, create, opts);
+
+		this.fadeInType  = 'fadeInUp';
+		this.fadeOutType = 'fadeOutDown';
+
+		// Dialog position
+		this.position = function () {
+			this.doms.container.style.width   = opts.width || '100%';
+			this.doms.container.style.height  = opts.height || 'auto';
+			this.doms.container.style.top  = opts.top || 'auto';
+			this.doms.container.style.bottom  = opts.bottom || '-100%';
+			this.doms.container.style.left    = opts.left || '0';
+			this.doms.container.style.right  = opts.right || 'auto';
+		}
+
+		this.prototype = new InternalDialog(create, opts);
 
 	}
 
+	var TopDialog = function (create, opts) {
+		InternalDialog.call(this, create, opts);
 
-	var TopDialog = function () {
+		this.fadeInType  = 'fadeInDown';
+		this.fadeOutType = 'fadeOutUp';
 
+		// Dialog position
+		this.position = function () {
+			this.doms.container.style.width   = opts.width || '100%';
+			this.doms.container.style.height  = opts.height || 'auto';
+			this.doms.container.style.top  = opts.top || '-100%';
+			this.doms.container.style.bottom  = opts.bottom || 'auto';
+			this.doms.container.style.left    = opts.left || '0';
+			this.doms.container.style.right  = opts.right || 'auto';
+		}
+
+		this.prototype = new InternalDialog(create, opts);
 	}
 
-	var RightDialog = function () {
+	var RightDialog = function (create, opts) {
+		InternalDialog.call(this, create, opts);
 
+		this.fadeInType  = 'fadeInRight';
+		this.fadeOutType = 'fadeOutLeft';
+
+		// Dialog position
+		this.position = function () {
+			this.doms.container.style.width   = opts.width || '256px';
+			this.doms.container.style.height  = opts.height || '100%';
+			this.doms.container.style.top  = opts.top || '0';
+			this.doms.container.style.bottom  = opts.bottom || 'auto';
+			this.doms.container.style.left  = opts.left || 'auto';
+			this.doms.container.style.right    = opts.right || '-100%';
+		}
+
+		this.prototype = new InternalDialog(create, opts);
 	}
 
-	var LeftDialog = function () {
+	var LeftDialog = function (create, opts) {
+		InternalDialog.call(this, create, opts);
 
+		this.fadeInType  = 'fadeInLeft';
+		this.fadeOutType = 'fadeOutRight';
+
+		// Dialog position
+		this.position = function () {
+			this.doms.container.style.width   = opts.width || '256px';
+			this.doms.container.style.height  = opts.height || '100%';
+			this.doms.container.style.top  = opts.top || '0';
+			this.doms.container.style.bottom  = opts.bottom || 'auto';
+			this.doms.container.style.left  = opts.left || '-100%';
+			this.doms.container.style.right    = opts.right || 'auto';
+		}
+
+		this.prototype = new InternalDialog(create, opts);
 	}
 
 	// Constructor.

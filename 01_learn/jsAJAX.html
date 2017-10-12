@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js AJAX</title>
+    <script>
+
+        var xmlhttp;
+
+        function loadXMLDoc(url, fun) {
+
+            if (window.XMLHttpRequest) {
+
+                xmlhttp = new XMLHttpRequest();
+
+            } else {
+
+                xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+
+            }
+
+            xmlhttp.onreadystatechange = fun;
+
+            xmlhttp.open('GET', url, true);
+
+            xmlhttp.send();
+
+        }
+
+        function myFunction() {
+
+            loadXMLDoc('/data/imgs.xml', function () {
+
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    xmlDoc = xmlhttp.responseXML;
+
+                    var x = xmlDoc.getElementsByName('img');
+
+                    var num;    //获取1-5随机数
+
+                    do {
+
+                        num = Math.ceil(Math.random() * 10);
+
+                    } while (num > 5);
+
+                    if (num == 5) { num = 0 };
+
+                    console.log(num);
+
+                    var src = x[num].innerHTML;
+
+                    document.getElementById('myDiv').innerHTML = '<img src="'+ src +'" width="300" />';
+
+                }
+
+            })
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="myDiv">
+        <img src="img/3.jpg" width="300" />
+    </div>
+    <button type="button" onclick="myFunction();">点击随机修改图片</button>
+</body>
+</html>

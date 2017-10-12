@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js原型</title>
+</head>
+<body>
+<style>
+    body{font-family: 微软雅黑;}
+    p{background: #ff5f00;color: #ffffff;display:inline-block;}
+    span{color: #ff5f00;}
+    code{font-family: Consolas!important;}
+    pre{background: #fdf6e3;border: 1px solid rgba(0,0,0,0.15);display: block;padding: 9.5px;}
+</style>
+<div>
+	constructor(构造函数)	<br><br>
+	prototype(原型)			<br><br>
+	instanceof(双目运算符)		<br><br>
+	hasOwnProperty()			<br><br>
+	<!-- hasOwnProperty() 判断某一个属性到底是本地属性，还是继承自prototype对象的属性。 -->
+	访问一个对象的属性时，先在基本属性中查找，如果没有，再沿着__proto__这条链向上找，这就是原型链。	<br><br>
+    <p>我们总结一下，在“准备工作”中完成了哪些工作： </p><br>
+
+    变量、函数表达式——变量声明，默认赋值为undefined；<br>
+    this——赋值；<br>
+    函数声明——赋值；<br>
+    这三种数据的准备情况我们称之为“<span>执行上下文</span>”或者“<span>执行上下文环境</span>”。<br><br>
+    <p>JavaScript arguments对象</p><br />
+    在JavaScript中是当前函数的一个内置属性.arguments非常类似Array，但实际上又不是一个Array实例.<br />
+    arguments对象的长度是由实参个数而不是形参个数决定的。<br />
+    形参是函数内部重新开辟内存空间存储的变量，但是其与arguments对象内存空间并不重叠。对于arguments和值都存在的情况下，两者值是同步的，但是针对其中一个无值的情况下，对于此无值的情形值不会得以同步。如下代码:<br />
+    <br /><pre><code>
+        function f(a, b, c){
+            alert(arguments.length);   // result: "2"
+            a = 100;
+            alert(arguments[0]);       // result: "100"
+            arguments[0] = "qqyumidi";
+            alert(a);                  // result: "qqyumidi"
+            alert(c);                  // result: "undefined"
+            c = 2012;
+            alert(arguments[2]);       // result: "undefined"
+        }
+              
+        f(1, 2);
+    </code></pre><br />
+    <button onclick="f(1, 2);">点击运行以上代码</button><br /><br />
+    由JavaScript中函数的声明和调用特性，可以看出<span>JavaScript中函数是不能重载的</span>。<br />
+
+    根据其他语言中重载的依据："函数返回值不同或形参个数不同"，我们可以得出上述结论：<br />
+
+    第一：<span>Javascript函数的声明是没有返回值类型这一说法的</span>；<br />
+
+    第二：<span>JavaScript中形参的个数严格意义上来讲只是为了方便在函数中的变量操作，实际上实参已经存储在arguments对象中了</span>。<br />
+
+    另外，从JavaScript函数本身深入理解为什么JavaScript中函数是不能重载的：在JavaScript中，函数其实也是对象，函数名是关于函数的引用，或者说函数名本身就是变量。对于如下所示的函数声明与函数表达式，其实含以上是一样的（在不考虑函数声明与函数表达式区别的前提下），非常有利于我们理解JavaScript中函数是不能重载的这一特性。<br /><br />
+
+    arguments对象中有一个非常有用的属性：<span> callee </span>。arguments.callee返回此arguments对象所在的当前函数引用。<span>在使用函数递归调用时推荐使用arguments.callee代替函数名本身</span>。<br />
+
+    如下：<br />
+    <pre>
+        <code>
+            function count(a){
+                console.log(a);
+                if(a==1){
+                     return 1;
+                } 
+                return a + arguments.callee(--a);
+            }
+                     
+            var mm = count(10);
+            alert(mm);
+    </code>
+    </pre><br />
+    <button onclick="var mm = count(10); alert(mm);">点击运行以上代码</button> 控制台输出：<span id="csshow"></span><br /><br />
+
+    <p>在函数中this到底取何值，是在函数真正被调用执行的时候确定的，函数定义的时候确定不了。</p><br /><br />
+
+    <p>作用域最大的用处就是隔离变量，不同作用域下同名变量不会有冲突。</p><br />
+
+    <p>作用域中变量的值是在执行过程中产生的确定的，而作用域却是在函数创建时就确定了。</p><br />
+
+    <p>如果要查找一个作用域下某个变量的值，就需要找到这个作用域对应的执行上下文环境，再在其中寻找变量的值。</p><br />
+
+    <p>总结一下取自由变量时的这个“作用域链”过程：（假设a是自由量）</p><br />
+
+    第一步，现在当前作用域查找a，如果有则获取并结束。如果没有则继续；<br />
+
+    第二步，如果当前作用域是全局作用域，则证明a未定义，结束；否则继续；<br />
+
+    第三步，（不是全局作用域，那就是函数作用域）将创建该函数的作用域作为当前作用域；<br />
+
+    第四步，跳转到第一步。<br /><br />
+
+
+
+</div>
+
+<script type="text/javascript">
+	
+var obj = {};
+
+console.log(obj.__proto__);
+
+console.log(Object.prototype);
+
+//自定义函数的prototype本质上就是和 var obj = {} 是一样的，都是被Object创建，所以它的__proto__指向的就是Object.prototype。但是Object.prototype确实一个特例——它的__proto__指向的是null，切记切记！
+
+console.log(Object.prototype.__proto__);	//null
+
+//对象是 Object
+//函数是 Function
+
+var fn = new Function('x', 'y', 'return x + y');
+
+console.log(fn(1, 2));
+
+//Instanceof运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。
+//Instanceof的判断队则是：沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。
+
+console.log(Object instanceof Function);	//true
+
+console.log(Function instanceof Function);	//true
+
+console.log(Object.prototype);	//Object {}
+
+console.log(Function.prototype);	//function () {}
+
+console.log(function () {}.prototype);	//Object {constructor:function () {arguments:null,caller:null,length:0,name:""},__proto__:Object{}}
+
+//hasOwnProperty()
+function Foo () {};
+
+var f1 = new Foo ();
+
+f1.a = 10;
+
+Foo.prototype.a = 100;
+Foo.prototype.b = 200;
+
+for (var item in f1) {
+
+	console.log(item + ' hasOwnProperty: ' + f1.hasOwnProperty(item));
+
+}
+
+//判断该方法是否内置 比如：判断toStr方法
+function Fts() { };
+var f1 = new Fts();
+
+if (typeof Date.prototype.toStr !== 'function') {
+
+    Fts.prototype.toStr = function (val) {
+        return val + ',fuck u!';
+    };
+
+}
+
+console.log(f1.toStr('Bob'));
+
+//执行上下文
+console.log(this);
+
+function fn1 (x) {
+
+    console.log(arguments);
+    console.log(x);
+
+}
+
+fn1(10);
+
+//arguments对象
+function f(a, b, c) {
+    alert(arguments.length);   // result: "2"
+    a = 100;
+    alert(arguments[0]);       // result: "100"
+    arguments[0] = "qqyumidi";
+    alert(a);                  // result: "qqyumidi"
+    alert(c);                  // result: "undefined"
+    c = 2012;
+    alert(arguments[2]);       // result: "undefined"
+}
+function count(a) {
+    document.getElementById('csshow').append(a + ',');
+    if (a == 1) {
+        return 1;
+    }
+    return a + arguments.callee(--a);
+}
+
+//this
+//情况1：构造函数
+//所谓构造函数就是用来new对象的函数。其实严格来说，所有的函数都可以new一个对象，但是有些函数的定义是为了new一个对象，而有些函数则不是。另外注意，构造函数的函数名第一个字母大写（规则约定）。例如：Object、Array、Function等。
+console.log('%c this的取值：', 'background: #ff5f00;color: #ffffff;');
+
+function Foo2() {
+
+    this.name = '二蛋';
+
+    this.year = 1983;
+
+    console.log(this);
+
+}
+
+var f1 = new Foo2();
+
+console.log(f1.name);
+console.log(f1.year);
+
+//情况2：函数作为对象的一个属性
+//如果函数作为对象的一个属性时，并且作为对象的一个属性被调用时，函数中的this指向该对象。
+var obj = {
+
+    x: 10,
+
+    fn: function () {
+
+        console.log(this);      //Object { x: 10, fn: function }
+        console.log(this.x);    //10
+
+    }
+
+}
+
+obj.fn();
+
+//如果fn函数不作为obj的一个属性被调用,如果fn函数被赋值到了另一个变量中，并没有作为obj的一个属性被调用，那么this的值就是window，this.x为undefined。
+var fn1 = obj.fn;
+
+fn1();
+
+//情况3：函数用call或者apply调用
+//当一个函数被call和apply调用时，this的值就取传入的对象的值。
+var obj = {
+
+    x: 10
+
+}
+
+var fn = function () {
+
+    console.log(this);  //Object { x: 10 }
+    console.log(this.x);    //10
+
+}
+
+fn.call(obj);
+
+//情况4：全局 & 调用普通函数
+//在全局环境下，this永远是window
+
+//静态作用域-要到创建这个函数的那个作用域中取值
+console.log('%c 静态作用域', 'background: #ff5f00;color: #ffffff;');
+var x = 10;
+
+function fn3() {
+
+    console.log(x);
+
+}
+
+function show(f) {
+
+    var x = 20;
+
+    (function () {
+
+        f();
+
+    })();
+
+}
+
+show(fn3);
+
+
+
+</script>
+
+</body>
+</html>

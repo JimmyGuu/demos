@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>   
+<head>   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+<title>工作日计算</title>   
+<script language="javascript">   
+//根据起始结束日期计算工作日 
+function getWorkDays () {  
+    var startDate = new Date(document.getElementById("startDate").value.replace(/-/g, "/"));    
+    //结束日期  
+    var endDate = new Date(document.getElementById("endDate").value.replace(/-/g, "/"));    
+    var diffDays = (endDate - startDate)/(1000*60*60*24) + 1;    //获取日期之间相差的天数  
+    var remainDay = diffDays % 7;    //得到日期之间的余数（0-6之间）  
+    var weeks = Math.floor(diffDays / 7);    //获取日期之间有多少周  
+    var weekends = 2 * weeks;    //计算每周*2 得到取整的的周六日天数  
+    var weekDay = startDate.getDay();    //获取开始日期为星期几（0，1，2，3，4，5，6）0对应星期日  
+    for(var i = 0;i < remainDay;i++){    //循环处理余下的天数有多少个周六或者周日（最多出现一个周六或者一个周日）  
+		if(((weekDay + i)==6)||((weekDay + i)==0)||((weekDay + i)==7)){  
+			weekends = weekends + 1;  
+		}  
+	}  
+   document.getElementById('SQTS').value = ((diffDays-weekends));  //工作日=相差天数减去周六日天数  
+}  
+
+//输入天数计算天数工作日后日期
+function getAfterDate () {
+    var startDate = new Date(document.getElementById("startDate").value.replace(/-/g, "/"));	//起始日期
+    var inputday = document.getElementById('SQTS').value;
+	var inputdays = parseInt(inputday - 1);
+	alert("输入天数为：" + inputday + " 天,从申请日期算起应该减去一天：" + inputdays + " ,数据类型：" + typeof(inputdays));
+  	
+	var startWeek = startDate.getDay();	//获取起始日期的星期
+	//循环计算出有多少休息日
+	var count = 0;
+	for(var i=0;i<inputdays;i++) {
+		startWeek = startWeek + 1;
+		if(startWeek == 6) {
+			count = count + 1;
+			inputdays = inputdays + 1;	
+		}else if(startWeek == 7) {
+			count = count + 1;
+			inputdays = inputdays + 1;
+			startWeek = 0;	
+		}else{
+			count = count;	
+		}
+	}
+	alert("所填写天数当中，有 "+count+" 个休息日。");
+	
+	var endDate = new Date(startDate);
+	endDate.setDate(startDate.getDate() + inputdays);
+	var endMonth = (endDate.getMonth()+1)<10?"0"+(endDate.getMonth()+1):(endDate.getMonth()+1);     //月份小于 10 前面加 0
+	var endDay = endDate.getDate()<10?"0"+endDate.getDate():endDate.getDate();
+	var endTimes = endDate.getFullYear()+"/"+endMonth+"/"+endDay;
+	document.getElementById('endDate').value =  endTimes;
+	
+}
+  
+</script>   
+</head>   
+<body>   
+<form>   
+起始日期：<input type="text" id="startDate" name="startDate" value="2016/09/08">   截至日期<input type="text" id="endDate" name="endDate" value="2016/09/17">  <input type="text" id="SQTS">
+<input type="button" name="BT" value="根据起始结束日期计算工作日" onclick="getWorkDays();">   
+<input type="button" value="输入天数计算天数工作日后日期" onClick="getAfterDate ();">
+</form>   
+</body>   
+</html>  

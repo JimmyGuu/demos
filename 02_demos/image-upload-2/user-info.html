@@ -15,6 +15,7 @@
 		.content { padding: 15px; }
 		.btn.btn-lg { width: 100%;margin: 0;border: 0;outline: none; }
 		.user-img-file { display: none; }
+		#test2 { padding: 30px 60px;font-size: 28px;color: #ff5f00;border: 3px dashed #ff5f00; }
 	</style>
 
 	<link rel="stylesheet" type="text/css" href="css/edge-dialog.css">
@@ -28,10 +29,12 @@
 			Name: Jehorn
 		</div>
 	</div>
+	<div id="test2">同一实例绑定的另一个弹出框</div>
 	<div>
-		<button class="btn" id="btna">解绑 offCount2</button>
+		<button class="btn" id="btna">解绑 dialog2</button>
 		<button class="btn" id="btnb">清除注册事件</button>
 		<button class="btn btn-close" id="outCloseBtn">关闭窗口</button>
+		<button class="btn" id="btnc">同一实例绑定多弹出框</button>
 	</div>
 
 	<script type="text/javascript" src="js/edge-dialog.js"></script>
@@ -45,7 +48,7 @@
 			// @param {Function} callback: 弹出框创建完毕后执行的方法, 该方法接收一个参数, 其为当前弹出框实例
 			// @param {Object} options: 附加参数, 比如弹出框的高度/内容等
 			// @return {Object}: 该方法返回一个对象，包括当前弹出框实例(obj)/当前弹出框事件id(uid)/当前弹出框关闭方法(close())
-			var dialog1 = dialog.on('userImg', 'bottom', function (obj) {
+			var dialog1 = dialog.on('userImg', 'right', function (obj) {
 				console.log('callback: ', obj);
 
 				// 插入内容中需要绑定事件的，在这里进行
@@ -65,8 +68,6 @@
 					window.setTimeout(function () { window.location.href = './change-img.html' }, 0);
 				});
 			}, {
-				width: '100%',
-				height: 'auto',
 				content: '<div class="content">\
 					<button class="btn btn-lg" id="selectImg">更改头像</button>\
 					<input type="file" name="user-img-file" class="user-img-file" accept="image/*">\
@@ -83,6 +84,7 @@
 			var btn = document.querySelector('#btna');
 			var btnb = document.querySelector('#btnb');
 			var outCloseBtn = document.querySelector('#outCloseBtn');
+			var btnc = document.querySelector('#btnc');
 
 			// 解绑事件
 			btn.addEventListener('click', function () {
@@ -98,6 +100,18 @@
 			// 外部关闭弹出框方法
 			outCloseBtn.addEventListener('click', function () {
 				dialog1.close();
+			});
+
+			// 同一实例绑定多个弹出框
+			btnc.addEventListener('click', () => {
+				var dialog3 = dialog.on('test2', 'bottom', function (obj) {
+					console.log('callback: ', obj);
+				}, {
+					content: '<div class="content">\
+						<button class="btn btn-lg" id="selectImg">更改头像2</button>\
+						<input type="file" name="user-img-file" class="user-img-file" accept="image/*">\
+					</div>'
+				});
 			});
 		});
 	</script>

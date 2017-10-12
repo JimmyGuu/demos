@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js封装</title>
+</head>
+<body>
+
+<script type="text/javascript">
+/*构造函数方法*/
+
+//封装原型对象	
+function Cat (name,color) {
+
+	this.name = name;
+	
+	this.color = color;
+
+}
+
+//实例化对象
+var cat1 = new Cat ('咪咪' ,'白色');
+
+var cat2 = new Cat ('喵喵' ,'黄色');
+
+console.log('%c 实例化对象:', 'background: #FF5F00;color: #FFFFFF;' );
+
+console.log(cat1.name);
+
+console.log(cat1.color);
+
+//这时cat1和cat2回自动含有一个 constructor(构造函数) 属性,指向它们的构造函数。
+console.log('%c constructor(构造函数) 属性:', 'background: #FF5F00;color: #FFFFFF;' );
+
+console.log(cat1.constructor == Cat);	//true
+
+console.log(cat2.constructor == Cat);	//true
+
+//JavaScript还提供了一个 instanceof(实例) 运算符，验证原型对象与实例对象之间的关系。
+console.log('%c instanceof(实例) 运算符:', 'background: #FF5F00;color: #FFFFFF;' );
+
+console.log(cat1 instanceof Cat);	//true
+
+console.log(cat2 instanceof Cat);	//true
+
+//构造函数方法很好用，但是存在一个 浪费内存 的问题。
+//比如现在为 Pig 对象添加一个不变的属性和一个方法
+
+function Pig (name,color) {
+
+	this.name = name;
+
+	this.color = color;
+
+	this.type = '家畜';
+
+	this.eat = function () { '吃猪食' };
+
+}
+
+/*表面上好像没什么问题，但是实际上这样做，有一个很大的弊端。那就是对于每一个实例对象，type属性和eat()方法都是一模一样的内容，每一次生成一个实例，都必须为重复的内容，多占用一些内存。这样既不环保，也缺乏效率。*/
+
+/*Prototype模式*/
+
+//JavaScript规定，每一个构造函数都有一个 prototype(原型) 属性，指向一个对象。
+//这个对象的所有属性和方法，都会被构造函数的实例继承。我们可以把不变的属性和方法定义在prototype对象上。
+
+function Dog (name,color) {
+
+	this.name = name;
+
+	this.color = color;
+
+}
+
+Dog.prototype.type = '犬科动物';
+
+Dog.prototype.eat = function () { console.log( '吃骨头' ) };
+
+//生成实例。这时实例的不变的属性和方法都是同一个内存地址，提高了运行效率
+
+console.log('%c 生成实例:', 'background: #FF5F00;color: #FFFFFF;' );
+
+var dog1 = new Dog('撒手没' ,'黑白');
+
+var dog2 = new Dog('柯基' ,'白色');
+
+console.log( dog1.type );	//犬科动物
+
+dog2.eat();	//吃骨头
+
+console.log( dog1.eat == dog2.eat );	//true
+
+//练习：封装console.log
+
+function Csprt (o) {
+
+	this.o = o;
+	
+}
+
+Csprt.prototype.csprto = function () { console.log(this.o) };
+
+Csprt.prototype.csprtt = function () { console.log('%c' + this.o, 'background: #FF5F00;color: #FFFFFF;') };
+
+//实例化console.log的封装
+
+function co (o) { new Csprt(o).csprto() };
+
+function ct (o) { new Csprt(o).csprtt() };
+
+//isPrototypeOf()
+//这个方法用来判断某个prototype(原型)对象和某个实例之间的关系。
+
+ct( 'isPrototypeOf()方法判断某个prototype对象和某个实例之间的关系：' );
+
+co( Dog.prototype.isPrototypeOf( dog1 ) );	//true
+
+co( Dog.prototype.isPrototypeOf( dog2 ) );	//true
+
+//hasOwnProperty() 判断某一个属性到底是本地属性，还是继承自prototype对象的属性。
+
+ct('hasOwnProperty() 判断某一个属性到底是本地属性，还是继承自prototype对象的属性:');
+
+co(dog1.hasOwnProperty('name'));	//true
+
+co(dog1.hasOwnProperty('type'));	//false
+
+//in 运算符,判断某个实例是否含有某个属性，不管是不是本地属性。
+
+ct('in 运算符,判断某个实例是否含有某个属性，不管是不是本地属性:');
+
+co('name' in dog1);	//true
+
+co('type' in dog1);	//true
+
+//in运算符还可以用来遍历某个对象的所有属性。
+
+ct('in运算符还可以用来遍历某个实例的所有属性:');
+
+for(var prop in dog1) { co('dog1[' + prop + '] = ' + dog1[prop]) };
+
+</script>
+
+</body>
+</html>
