@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>change img</title>
+
+	<style type="text/css">
+		.btn { background-color: #fff;border: 1px solid #ddd;color: #666;border-radius: 4px;padding: 15px 45px;font-size: 2em;margin: 15px; }
+		body {
+			margin: 0;
+			text-align: center;
+		}
+		#clipArea {
+			height: 300px;
+		}
+		#file,
+		#clipBtn {
+			margin: 20px;
+		}
+		#view {
+			margin: 0 auto;
+			width: 200px;
+			height: 200px;
+			background-color: #666;
+		}
+		.file-select {
+			display: none;
+		}
+
+		/*遮罩*/
+		.pic-edit { position: relative;overflow: hidden; }
+		.pic-edit .pic-mask { position: absolute;z-index: 2000;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, .5);display: none;transition: all 0.2s ease;color: #fff;text-align: center; }
+		.pic-edit .pic-mask > span { display: block;font-size: 30px;margin-top: 10%; }
+	</style>
+</head>
+<body>
+	<input type="hidden" name="select-img" id="selectedImg">
+
+	<div class="pic-edit">
+		<div class="pic-mask"><span>加载中...</span></div>
+		<div id="clipArea"></div>
+		<input type="file" id="fileSelect" class="file-select" accept="image/*">
+	</div>
+
+	<button id="fileSelectBtn" class="btn">选择头像</button>
+	<button id="clipBtn" class="btn">预览</button>
+	<div id="view"></div>
+
+	<button class="btn submit" id="confirmSubmitBtn">确认修改</button>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hammer.min.js"></script>
+	<script type="text/javascript" src="js/iscroll-zoom-min.js"></script>
+	<script type="text/javascript" src="js/lrz.all.bundle.js"></script>
+	<script src="js/PhotoClip.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// 图片上传 api
+			var uploadApi   = 'http://192.168.10.22:8081/api/Test/UserImg';
+			// 图片裁切框大小
+			var imgClipSize = 260;
+			// 图片缩放尺寸 px
+			var imgSize     = 256;
+			// 图片压缩质量 [0, 1] default: 0.8
+			var imgQuality  = 0.6;
+			// 选择图片限制存储大小 kb
+			var imgFileSize = 2000;
+			// 预览容器
+			var view        = $('#view');
+			// 遮罩层
+			var mask        = $('.pic-mask');
+			// 预览按钮
+			var viewBtn     = $('#clipBtn');
+			// 提交按钮
+			var submitBnt   = $('#confirmSubmitBtn');
+			// 选择图片按钮
+			var selectBtn   = $('#fileSelectBtn');
+
+			// 选择图片按钮绑定file事件
+			$('#fileSelectBtn').on('click', function () {
+				$('#fileSelect').click();
+			});
+
+			// 获取文件拓展名
+			var getFileExt = function (file) {
+				var str = file.files[0].name;
+				var d = /\.[^\.]+$/.exec(str);
+				return d;
+			}
+
+			// 获取文件存储大小 KB
+			var getFileSize = function (file) {
+				var size = file.files[0].size;
+				size /= 1024;
+				return size;
+			}
+
+			//**dataURL to blob**
+		    function dataURLtoBlob(dataurl) {
+		        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+		            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+		        while (n--) {
+		            u8arr[n] = bstr.charCodeAt(n);
+		        }
+		        return new Blob([u8arr], { type: mime });
+		    }
+
+		    //**blob to dataURL**
+		    function blobToDataURL(blob, callback) {
+		        var a = new FileReader();
+		        a.onload = function (e) { callback(e.target.result); }
+		        a.readAsDataURL(blob);
+		    }
+
+			// 图片上传
+			var saveImageInfo = function (url, name, img) {
+				if (img == '') {
+					console.error('Get null of img.');
+					return;
+				}
+
+				$.post(url, {
+					image: img,
+					filename: name
+				}, function (data) {
+					if (data != '') {
+						//console.info(data);
+						//data 为返回文件名；
+						alert('提交成功');
+					}
+				});
+			}
+
+			var pc = new PhotoClip('#clipArea', {
+				size: imgClipSize,
+				// 当值为数字时，表示输出宽度
+				// 直接影响输出图片大小
+				outputSize: imgSize,
+				// 输出图片质量 [0, 1] default: 0.8
+				outputQuality: imgQuality,
+				file: '#fileSelect',
+				// 显示截取后图像的容器
+				view: '#view',
+				ok: '#clipBtn',
+				style: {
+					maskColor: 'rgba(0,0,0,.5)',
+					maskBorder: '2px dashed #ddd',
+					jpgFillColor: '#000'
+				},
+				errorMsg: {
+					imgError: '图片格式错误!',
+					noImg: '图片未能加载完成!'
+				},
+				loadStart: function() {
+					mask.show();
+				},
+				loadComplete: function() {
+					mask.hide();
+
+					var file = $('#fileSelect')[0];
+					var size = getFileSize(file);
+					// 约大于2M
+					// 不符合条件禁用预览和提交按钮
+					if (size > imgFileSize) {
+						alert('请选择小于' + imgFileSize + 'kb的图片!');
+						return;
+					}
+				},
+				loadError: function(msg) {
+					alert(msg)
+					mask.hide();
+				},
+				done: function(dataURL) {
+					// console.log(dataURL);
+					var filename = view.attr('fileName');
+					var img_data = view.attr('src');
+					saveImageInfo(uploadApi, filename, img_data);
+
+					// base64 转 blob
+					var blob = dataURLtoBlob(dataURL);
+					console.log(blob)
+
+					// blob 转 base64
+					setTimeout(() => {
+						var cb = function (base64) { console.warn(base64) }
+
+						blobToDataURL(blob, cb);
+					}, 2000);
+				},
+				fail: function(msg) {
+					alert(msg);
+				}
+			});
+
+
+		});
+	</script>
+</body>
+</html>

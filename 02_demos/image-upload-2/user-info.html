@@ -10,7 +10,14 @@
 		.user-info .img { background-color: #ddd;background-image: url(../../img/user-img.jpg);background-repeat: no-repeat;background-size: cover;width: 170px;height: 170px;border-radius: 50%;overflow: hidden; }
 		.user-info .info { padding-left: 40px; }
 		.btn { background-color: #fff;border: 1px solid #ddd;color: #666;border-radius: 4px;padding: 15px 45px;font-size: 2em;margin: 15px; }
+		.btn-close { position: absolute;top: 50px;left: 550px;z-index: 2001;background-color: #ff5f00;color: #fff; }
+
+		.content { padding: 15px; }
+		.btn.btn-lg { width: 100%;margin: 0;border: 0;outline: none; }
+		.user-img-file { display: none; }
 	</style>
+
+	<link rel="stylesheet" type="text/css" href="css/edge-dialog.css">
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
@@ -24,6 +31,7 @@
 	<div>
 		<button class="btn" id="btna">解绑 offCount2</button>
 		<button class="btn" id="btnb">清除注册事件</button>
+		<button class="btn btn-close" id="outCloseBtn">关闭窗口</button>
 	</div>
 
 	<script type="text/javascript" src="js/edge-dialog.js"></script>
@@ -32,26 +40,64 @@
 		$(document).ready(function () {
 			// 绑定事件
 			var dialog = new EdgeDialog();
-			var offCount1 = dialog.on('userInfo', 'bottom', function (obj, count) {
-				console.log('callback: ', obj, count);
-			}, { width: '100%', height: '350px' });
+			// @param {String} target: 触发目标
+			// @param {String} type: 弹出框类型
+			// @param {Function} callback: 弹出框创建完毕后执行的方法, 该方法接收一个参数, 其为当前弹出框实例
+			// @param {Object} options: 附加参数, 比如弹出框的高度/内容等
+			// @return {Object}: 该方法返回一个对象，包括当前弹出框实例(obj)/当前弹出框事件id(uid)/当前弹出框关闭方法(close())
+			var dialog1 = dialog.on('userImg', 'bottom', function (obj) {
+				console.log('callback: ', obj);
+
+				// 插入内容中需要绑定事件的，在这里进行
+				// 此处会在内容创建完毕准执行
+				var delBoxa = document.querySelector('#selectImg');
+				var file = document.querySelector('.user-img-file');
+
+				delBoxa.addEventListener('click', function () {
+					// obj.close();
+					// file.click();
+					window.location.href = './change-img.html';
+				});
+
+				file.addEventListener('change', function () {
+					var selectImg = window.sessionStorage.setItem('selectImg', 'change');
+
+					window.setTimeout(function () { window.location.href = './change-img.html' }, 0);
+				});
+			}, {
+				width: '100%',
+				height: 'auto',
+				content: '<div class="content">\
+					<button class="btn btn-lg" id="selectImg">更改头像</button>\
+					<input type="file" name="user-img-file" class="user-img-file" accept="image/*">\
+				</div>'
+			});
 
 			// 添加事件
 			var addEvent = function () { this.name = '呵呵'; };
 			dialog.add('hehe', addEvent, function (obj) { console.log(obj) });
-			var offCount2 = dialog.on('userImg', 'hehe', function (obj, count) { console.log(obj, count) });
+			var dialog2 = dialog.on('userInfo', 'hehe', function (obj) {
+				console.log(obj);
+			});
 
 			var btn = document.querySelector('#btna');
 			var btnb = document.querySelector('#btnb');
+			var outCloseBtn = document.querySelector('#outCloseBtn');
 
 			// 解绑事件
 			btn.addEventListener('click', function () {
-				dialog.off('userImg', offCount2)
+				console.log(dialog2Id)
+				dialog.off('userInfo', dialog2.uid);
 			});
 
 			// 删除事件
 			btnb.addEventListener('click', function () {
 				dialog.del('hehe', function (obj) { console.log(obj) })
+			});
+
+			// 外部关闭弹出框方法
+			outCloseBtn.addEventListener('click', function () {
+				dialog1.close();
 			});
 		});
 	</script>

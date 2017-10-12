@@ -1,0 +1,94 @@
+/*统一设置*/
+.dialog-animate {
+	animation-duration: .3s;
+
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInUp
+{
+    from
+    {
+        bottom: -100%;
+
+        opacity: 0;
+    }
+
+    to
+    {
+        bottom: 0;
+
+        opacity: 1;
+    }
+}
+
+/*向上淡入*/
+.fadeInUp
+{
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeOutUp
+{
+    from
+    {
+        opacity: 1;
+    }
+
+    to
+    {
+        top: -100%;
+
+        opacity: 0;
+    }
+}
+
+/*向上淡出*/
+.fadeOutUp
+{
+    animation-name: fadeOutUp;
+}
+
+@keyframes fadeInDown
+{
+    from
+    {
+        top: -100%;
+
+        opacity: 0;
+    }
+
+    to
+    {
+        top: 0;
+
+        opacity: 1;
+    }
+}
+
+/*向下淡入*/
+.fadeInDown
+{
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeOutDown
+{
+    from
+    {
+        opacity: 1;
+    }
+
+    to
+    {
+        bottom: -100%;
+
+        opacity: 0;
+    }
+}
+
+/*向下淡出*/
+.fadeOutDown
+{
+    animation-name: fadeOutDown;
+}
