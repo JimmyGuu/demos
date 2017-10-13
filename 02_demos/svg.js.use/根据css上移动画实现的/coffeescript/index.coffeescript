@@ -1,0 +1,10 @@
+load_chart = () ->
+  $("body").removeClass("loaded")
+  setTimeout( () ->
+    $("body").addClass("loaded")
+  , 500)
+
+$(".js-do-it-again").on "click", () ->
+  load_chart()
+  
+load_chart()

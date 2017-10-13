@@ -1,0 +1,17 @@
+{
+  "name": "02_demos",
+  "version": "1.0.0",
+  "description": "demos",
+  "main": "index.js",
+  "dependencies": {
+    "TouchSwipe-Jquery-Plugin": "^1.6.17",
+    "moment": "^2.18.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

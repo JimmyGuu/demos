@@ -1,0 +1,152 @@
+@import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
+body {
+  background: #384051;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Montserrat", sans-serif;
+}
+
+.credit {
+  width: 560px;
+  margin: 9em auto 3em auto;
+  text-align: center;
+  font-size: 0.75em;
+}
+
+a {
+  text-decoration: none;
+  color: #21A6EE;
+}
+
+.ion-social-dribbble {
+  color: #EC4989;
+}
+
+.chart {
+  position: relative;
+  width: 560px;
+  height: 260px;
+  margin: 3em auto;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 100%);
+  background-size: 29px 29px;
+  background-position: -11px 11px;
+}
+
+.chart::before,
+.chart::after {
+  display: inline-block;
+  font-size: 0.875em;
+}
+
+.chart::before {
+  display: inline-block;
+  position: absolute;
+  left: -3.5em;
+  top: -5px;
+  content: "$4k \a$3k \a$2k \a$1k \a 0";
+  white-space: pre;
+  height: 100%;
+  line-height: 4.2;
+  text-align: right;
+}
+
+.chart::after {
+  content: "07:00h 21:00h";
+  width: 110%;
+  margin-left: -5%;
+  word-spacing: 36.5em;
+  padding-top: 0.5em;
+}
+
+.dataset {
+  fill-opacity: 0.8;
+  -webkit-filter: url(#dropshadow);
+          filter: url(#dropshadow);
+}
+
+#dataset-1 {
+  fill: #50E3C2;
+}
+
+#dataset-2 {
+  fill: #21A6EE;
+}
+
+#dataset-3 {
+  fill: #807CCC;
+}
+
+.chart button {
+  position: relative;
+  top: -0.75em;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  color: #384051;
+  border-radius: 5px;
+  padding: 0.25em 1em;
+  font-size: 1em;
+  float: right;
+  cursor: pointer;
+}
+.chart button:focus {
+  outline: none;
+}
+
+@-webkit-keyframes raise {
+  0% {
+    -webkit-transform: scaleY(0.01);
+            transform: scaleY(0.01);
+  }
+  75% {
+    -webkit-transform: scaleY(1.1);
+            transform: scaleY(1.1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes raise {
+  0% {
+    -webkit-transform: scaleY(0.01);
+            transform: scaleY(0.01);
+  }
+  75% {
+    -webkit-transform: scaleY(1.1);
+            transform: scaleY(1.1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+.dataset {
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: scaleY(0.01);
+          transform: scaleY(0.01);
+  opacity: 0.5;
+}
+
+.loaded .dataset {
+  opacity: 1;
+  -webkit-animation: raise 0.5s ease 0.2s forwards;
+          animation: raise 0.5s ease 0.2s forwards;
+}
+
+.loaded #dataset-1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loaded #dataset-2 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.loaded #dataset-3 {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
