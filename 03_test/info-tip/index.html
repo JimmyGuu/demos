@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Info - Tip</title>
+	<style type="text/css">
+		p, span { margin: 0;padding: 0; }
+		.info-tip-container { width: auto;height: auto;background-color: #fff;color: #000;font-size: 14px;border: 1px solid #efefef;box-shadow: 1px 4px 4px 0px #ddd;width: 200px;padding: 0;position: fixed;right: 1%;top: 1%; }
+		.info-tip-container > .info-tip-header { clear: both;overflow: hidden;background-color: #efefef;padding: 10px 15px 5px 15px; }
+		.info-tip-container > .info-tip-body { padding: 5px 15px 5px 15px; }
+		.info-tip-container > .info-tip-footer { text-align: right;color: #999;font-size: 0.8em;padding: 5px 15px 10px 15px; }
+		.info-tip-container > .info-tip-header > .info-tip-title { font-size: 1.2em;float: left;max-width: 80%;white-space: nowrap;text-overflow:ellipsis;overflow:hidden; }
+		.info-tip-container > .info-tip-header > .info-tip-close { color: #999;float: right;cursor: pointer;padding: 2px 5px; }
+
+	</style>
+
+	<script type="text/javascript" src="dist/info-tip.js"></script>
+</head>
+<body>
+	<div class="info-tip-container">
+		<div class="info-tip-header">
+			<p class="info-tip-title">TipTipTipTipTipTipTipTipTipTipTipTipTip</p>
+			<span class="info-tip-close">&times;</span>
+		</div>
+		<div class="info-tip-body">
+			提示.
+		</div>
+		<div class="info-tip-footer">
+			<p>Tip From window.</p>
+		</div>
+	</div>
+</body>
+</html>

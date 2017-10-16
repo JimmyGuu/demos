@@ -5,12 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 // Observable class extensions
-import 'rxjs/add/observable.of';
+import 'rxjs/add/observable/of';
 
 // Observable operators
-import 'rxjs/add/oprator/catch';
-import 'rxjs/add/oprator/debounceTime';
-import 'rxjs/add/oprator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 import { HeroSearchService } from '../service/hero-search.service';
 import { Hero } from '../model/hero';
@@ -33,13 +33,14 @@ export class HeroSearchComponent implements OnInit {
 
 	// Push a search term into the observable stream.
 	search(term: string): void {
+		console.log(term)
 		this.searchTerms.next(term);
 	}
 
 	ngOnInit(): void {
 		this.heroes = this.searchTerms
 			.debounceTime(300)
-			.distinctUntilChange()
+			.distinctUntilChanged()
 			.switchMap(term => term
 				// return the http search observable
 				? this.heroSearchService.search(term)
@@ -54,7 +55,8 @@ export class HeroSearchComponent implements OnInit {
 	}
 
 	gotoDetail(hero: Hero): void {
+		console.log(hero)
 		let link = ['/detail', hero.id];
-		this.router.navigate
+		this.router.navigate(link);
 	}
 }
