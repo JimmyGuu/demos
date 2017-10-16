@@ -5,6 +5,29 @@
 	<title>svg.js</title>
 	<style type="text/css">
 		.svg-test { border: 3px dashed #ff5f00; }
+
+		@-webkit-keyframes raise {
+		  	0% {
+	            transform: scaleY(0.01);
+		  	}
+		  	75% {
+	            transform: scaleY(1.1);
+		  	}
+		  	100% {
+	            transform: scaleY(1);
+	  		}
+		}
+		.dataset {
+		    transform-origin: bottom;
+		    transform: scaleY(0.01);
+		    opacity: 0.5;
+		}
+
+		.dataset.loaded {
+		    opacity: 1;
+		    /*name duration timing-function delay iteration-count direction*/
+		    animation: raise 1.5s ease-in 0s forwards;
+		}
 	</style>
 </head>
 <body>
@@ -158,32 +181,131 @@
 	</div>
 
 
-	<div id="drawing"></div>
+	<div id="drawingShow">
+		<div id="drawing"></div>
+	</div>
+
 	<button id="btna">CHANGE</button>
+	<button id="btnr" onclick="window.location.reload();">RELOAD</button>
 
 	<script type="text/javascript" src="../node_modules/svg.js/dist/svg.js"></script>
 	<script type="text/javascript">
+		let getData = function () {
+			let path;
+			return new Promise((resolve, reject) => {
+				window.setTimeout(() => {
+					path = 'M 0 160 \
+						Q 10 140 20 120\
+						Q 40 60 60 120\
+						T 100 120\
+						Q 120 60 140 120\
+						T 180 120\
+						Q 200 60 220 120\
+						T 260 120\
+						Q 280 60 300 120\
+						T 340 120\
+				    	L 340 160 L 0 160 Z';
+				    resolve(path);
+				}, 600);
+			});
+		}
+
 		window.onload = function () {
+			var draw = SVG('drawing').size('100%', 200);
 			var box = document.querySelector('#drawing');
-			box.style.background = 'green';
+			var show = document.querySelector('#drawingShow');
+			box.style.cssText = 'width: 100%;';
+			show.style.cssText = 'width: 50%;height: 200px;position: relative;overflow: hidden;background: #efefef url(./img/bg.png) no-repeat 100%;';
 
-			var draw = SVG('drawing').size('100%', 400);
-			// 画 路径
-			var path = draw.path('M 10 80 \
-			    	C 40 80, 65 80, 95 80 \
-			    	S 150 80, 180 80 \
-			    	L 180 0 L 10 0 Z').fill('#ff9957');
+			// 线性过渡色
+			var gradient = draw.gradient('linear', function(stop) {
+			  	stop.at(0, '#ff9957', 0);
+			  	stop.at(1, '#ff9957', 1);
+			});
+			gradient.from('0%', '0%').to('0%', '100%');
 
-			draw.circle(3).move(0, 300).fill('blue');
-			draw.circle(3).move(120, 300).fill('blue');
-			draw.circle(3).move(240, 300).fill('blue');
-			draw.circle(3).move(320, 300).fill('blue');
+			// 初始化 路径
+			var path = draw.path('M 0 160 \
+						Q 10 160 20 160\
+						Q 40 160 60 160\
+						T 100 160\
+						Q 120 160 140 160\
+						T 180 160\
+						Q 200 160 220 160\
+						T 260 160\
+						Q 280 160 300 160\
+						T 340 160\
+				    	L 340 161 L 0 161 Z');
 
-			draw.circle(3).move(40, 300).fill('red');
-			draw.circle(3).move(80, 300).fill('red');
-			draw.circle(3).move(160, 300).fill('red');
-			draw.circle(3).move(200, 300).fill('red');
-			draw.circle(3).move(280, 300).fill('red');
+			path.attr({ fill: gradient });
+			path.addClass('dataset');
+
+			getData().then(data => {
+				// 重置路径
+				path.plot(data);
+				// 初始化动画效果
+				path.addClass('loaded');
+
+				setTimeout(() => {
+					draw.line(-10, 160, 500, 160).stroke({ width: 1,  color: 'red' });
+		    		draw.line(0, 180, 0, 10).stroke({ width: 1,  color: 'red' });
+		    		draw.circle(2).move(0, 160).fill('red');
+		    		draw.circle(2).move(0, 140).fill('red');
+		    		draw.circle(2).move(0, 120).fill('red');
+		    		draw.circle(2).move(0, 100).fill('red');
+		    		draw.circle(2).move(0, 80).fill('red');
+		    		draw.circle(2).move(0, 60).fill('red');
+		    		draw.circle(2).move(0, 40).fill('red');
+		    		draw.circle(2).move(0, 20).fill('red');
+		    		draw.circle(2).move(0, 0).fill('red');
+		    		draw.circle(2).move(30, 160).fill('red');
+		    		draw.circle(2).move(50, 160).fill('red');
+		    		draw.circle(2).move(70, 160).fill('red');
+		    		draw.circle(2).move(90, 160).fill('red');
+		    		draw.circle(2).move(110, 160).fill('red');
+		    		draw.circle(2).move(130, 160).fill('red');
+		    		draw.circle(2).move(150, 160).fill('red');
+		    		draw.circle(2).move(170, 160).fill('red');
+		    		draw.circle(2).move(190, 160).fill('red');
+
+
+		    		draw.line(0, 90, 400, 90).stroke({ width: 1,  color: 'blue', opacity: 0.3 });
+				}, 1200);
+
+			});
+
+			var btna = document.querySelector('#btna');
+    		btna.onclick = function () {
+    			path.animate(1000)
+				    .plot('M 0 160 \
+						Q 10 140 20 120\
+						Q 40 90 60 126\
+						T 100 126\
+						Q 120 70 140 122\
+						T 180 122\
+						Q 200 30 220 110\
+						T 260 110\
+						Q 280 100 300 128\
+						T 340 128\
+				    	L 340 160 L 0 160 Z')
+	    			.loop(3, true);
+
+	    		draw.text('银行利息').move(40 , 75).font({ fill: 'purple', size: 12, anchor: 'middle' });
+	    		draw.text('货币基金').move(120, 65).font({ fill: 'purple', size: 12, anchor: 'middle' });
+	    		draw.text('金优选计划').move(200, 40).font({ fill: 'purple', size: 12, anchor: 'middle' });
+	    		draw.text('本金').move(280, 75).font({ fill: 'purple', size: 12, anchor: 'middle' });
+
+	    		draw.circle(12).move(35 , 90).stroke({ width: 3,  color: 'purple', opacity: 0.5 }).fill('transparent');
+	    		draw.circle(12).move(115, 80).stroke({ width: 3,  color: 'purple', opacity: 0.5 }).fill('transparent');
+	    		draw.circle(12).move(195, 55).stroke({ width: 3,  color: 'purple', opacity: 0.5 }).fill('transparent');
+	    		draw.circle(12).move(275, 90).stroke({ width: 3,  color: 'purple', opacity: 0.5 }).fill('transparent');
+    		}
+
+
+
+
+
+
 
 			// draw.line(0, 300, 40, 180).stroke({ width: 1,  color: 'orange' });
 			// draw.line(100, 250, 80, 320).stroke({ width: 1,  color: 'orange' });
@@ -203,21 +325,14 @@
 			// path.plot('');
 			//使用动画,对于path的动画，只有相邻的两个状态的点数相同
 			//也就是只有路径具有相同的命令（M、C、S等，才会有效果
-			path.animate(1000)
-			    .plot('M 10 80 \
-			    	C 40 10, 65 10, 95 90 \
-			    	S 150 150, 180 80 \
-			    	L 180 160 L 10 160 Z')
-    			.loop(1, true);
+			// path.animate(1000)
+			//     .plot('M 10 80 \
+			//     	C 40 10, 65 10, 95 90 \
+			//     	S 150 150, 180 80 \
+			//     	L 180 160 L 10 160 Z')
+   //  			.loop(1, true);
 
-    		console.log(document.querySelector('#drawing svg'))
-
-    		var btna = document.querySelector('#btna');
-    		btna.onclick = function () {
-    			path.animate(1000)
-				    .plot('M 0 300 C 40 180, 65 230, 95 280 S 150 120, 180 280 C 220 330, 230 150, 290 300')
-	    			.loop(1, true);
-    		}
+    		console.log(document.querySelector('#drawing svg'));
 		}
 	</script>
 </body>
