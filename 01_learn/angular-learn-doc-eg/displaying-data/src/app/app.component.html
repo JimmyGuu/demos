@@ -1,9 +1,14 @@
 <h1>{{ title }}</h1>
-<h2>My Favorite hero is: {{ myHero }}</h2>
+<h2>My Favorite hero is: {{ myHero.id + ' - ' + myHero.name }}</h2>
 <p>Heroes: </p>
 <ul>
-  <li *ngFor="let hero of Heroes">
-    {{ hero }}
+  <p>如果要引用的变量名存在于一个以上的命名空间中，那么，模板变量是最优先的，其次是指令的上下文变量，最后是组件的成员。</p>
+  <p>ngFor指令中的hero:</p>
+  <li *ngFor="let hero of heroes">
+    {{ hero.name }}
   </li>
+  <p>组件中声明的hero:</p>
+  <li *ngIf="hero">{{ hero.name }}</li>
 </ul>
+<p *ngIf="heroes.length > 3">There are many heroes!</p>
 

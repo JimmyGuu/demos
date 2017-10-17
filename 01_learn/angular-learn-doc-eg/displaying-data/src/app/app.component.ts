@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Hero } from './hero';
 
 @Component({
 	// 自定义标签的名称
@@ -13,12 +14,21 @@ export class AppComponent {
 	// title = 'Tour of Heroes';
 	// myHero = 'Vencent';
 	title: string;
-	myHero: string;
-	Heroes = ['Windstorm', 'Vencent', 'Bombasto', 'Magneta', 'Tornado',]
+	myHero: Hero;
+	// heroes = ['Windstorm', 'Vencent', 'Bombasto', 'Magneta', 'Tornado',]
+	heroes = [
+		new Hero(1, 'Windstorm'),
+		new Hero(2, 'Vencent'),
+		new Hero(3, 'Bombasto'),
+		new Hero(4, 'Magneta'),
+		new Hero(5, 'Tornado')
+	];
+	// 上下文命名冲突测试
+	hero = this.heroes[0];
 
 	// 构造函数来声明和初始化属性
 	constructor() {
 		this.title = 'Tour of Heroes';
-		this.myHero = this.Heroes[1];
+		this.myHero = this.heroes[1];
 	}
 }
