@@ -8,6 +8,7 @@
     "swipe": "^1.7.7"
   },
   "devDependencies": {
+    "chart.js": "^2.7.0",
     "swipejs": "^2.2.10"
   },
   "scripts": {
