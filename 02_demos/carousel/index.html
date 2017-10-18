@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<style type="text/css">
+		.container { width: 50%;padding: 15px 30px;overflow: hidden; }
+
+		.carousel-ctrl { margin-top: 15px; }
+		.carousel-ctrl > .ctrl { display: inline-block;padding: 10px 15px;border: 1px solid #ddd;background-color: #efefef;color: #333;font-size: 14px;border-radius: 4px;cursor: pointer; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 轮播容器 -->
+		<ul class="carousel" id="carousel">
+			<li class="item"></li>
+		</ul>
+		<!-- 轮播分页 -->
+		<div class="carousel-pager"></div>
+		<!-- 按钮 -->
+		<div class="carousel-ctrl">
+			<span class="ctrl ctrl-prev">prev(inside)</span>
+			<span class="ctrl ctrl-next">next(inside)</span>
+			<span class="ctrl ctrl-stop">stop</span>
+			<span class="ctrl ctrl-play">play</span>
+			<span class="ctrl ctrl-prev-o">prev(outside)</span>
+			<span class="ctrl ctrl-next-o">next(outside)</span>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/**
+		 * Carousel
+		 * IE9/IE9+
+		 */
+		;(function (window, document) {
+			// current
+			var currentIndexObj = { _current: 0 };
+
+			// 私有 内部计数器
+			var count = 0;
+			// 私有 当前显示下标
+			// var currentIndexObj.current = 0;
+			// 私有 所有图片数组
+			var arr = [];
+			// 私有 错误集合
+			var errorArr = [];
+			// 私有 轮播容器, 轮播元素, 自动播放计时器对象, 是否自动播放, 播放速度, 渲染显示图片数组, 是否分页, 轮播方向
+			var box, items, play, isAutoPlay, speed, renderArr, isPager, direction;
+			// 错误处理
+			var error = function (state, msg) {
+				state = state || 'error';
+				msg   = msg || '错误!';
+				return { state: state, msg: msg };
+			}
+			// 清除轮播容器内的元素
+			var clear = function () {
+				for (var i = items.length - 1; i >= 0; i--) {
+					box.removeChild(items[i]);
+				}
+			}
+			// 创建轮播元素
+			var createItem = function (src) {
+				var num   = renderArr.length;
+				var item  = document.createElement('li');
+				var img   = document.createElement('img');
+				var width = 100 / num;
+
+				item.className = 'item';
+				item.style.cssText = 'width: ' + width + '%;display: block;float: left;height: 100%;background-color: #efefef;';
+				img.src = src;
+				img.alt = src.split('/')[src.split('/').length - 1];
+				img.style.cssText = 'width: 100%;';
+				item.appendChild(img);
+				count++;
+
+				return item;
+			}
+			// 渲染轮播
+			var render = function (arr) {
+				clear();
+				for (var i = arr.length - 1; i >= 0; i--) {
+					var node = createItem(arr[i]);
+					box.appendChild(node);
+				}
+			}
+			// 获取显示顺序
+			var getIndex = function () {
+				var index    = [];
+				var indexNum = [];
+				var length   = arr.length;
+				// 向上取整作为current
+				var show     = Math.ceil(arr.length / 2);
+				var leftLen  = show - 1;
+				var rightLen = length - show;
+
+				// current 允许范围 0 - max
+				var range = function (index) {
+					var i = index;
+					if (index > length - 1) i = 0;
+					if (index < 0) i = length - 1;
+					return i;
+				}
+
+				currentIndexObj.current = range(currentIndexObj.current);
+				index.push(currentIndexObj.current);
+				var prev = currentIndexObj.current;
+				var next = currentIndexObj.current;
+
+				// 默认向右为next
+				for (var i = leftLen; i > 0; i--) {
+					prev++;
+					if (prev > length - 1) {
+						prev = 0;
+					}
+					index.unshift(prev);
+				}
+
+				for (var i = rightLen; i > 0; i--) {
+					next--;
+					if (next < 0) {
+						next = length - 1;
+					}
+					index.push(next);
+				}
+
+				// 轮播数量小于 3
+				if (index.length === 2) {
+					// 只有2张图片时左边为空
+					// 如果 current 为 0，则左边需要补为 1
+					// 如果 current 为 1，则左边需要补为 0
+					currentIndexObj.current === 0 ? index.unshift(index[currentIndexObj.current + 1]) : index.unshift(index[currentIndexObj.current]);
+					leftLen += 1;
+				}
+				if (index.length === 1) {
+					// 只有1张图片时左右都为空
+					// 左右都补 current 即可
+					index.unshift(index[currentIndexObj.current]);
+					index.push(index[currentIndexObj.current]);
+					leftLen += 1;
+					rightLen += 1;
+				}
+
+				for (var i = index.length - 1; i >= 0; i--) {
+					indexNum.push(index[i]);
+				}
+
+				for (var i = index.length - 1; i >= 0; i--) {
+					index[i] = arr[index[i]];
+				}
+
+				// 赋值给私有变量
+				renderArr = index;
+
+				return { index: index, indexNum: indexNum, left: leftLen };
+			}
+			// 前一个 由于此处的计算是相对于下标
+			// 所以向后是减
+			var prev = function () {
+				if (direction === 'right') currentIndexObj.current--;
+				if (direction === 'left') currentIndexObj.current++;
+			}
+			var next = function () {
+				if (direction === 'right') currentIndexObj.current++;
+				if (direction === 'left') currentIndexObj.current--;
+			}
+			// 创建轮播分页
+			var createPager = function (index) {
+				var pagerbox  = isPager;
+				var container = document.getElementById(pagerbox) || document.getElementsByClassName(pagerbox)[0];
+
+				if (!container) {
+					errorArr.push(error('error', 'pager参数错误!未能选择到分页的容器。'));
+					return;
+				}
+
+				for (var i = 0; i < arr.length; i++) {
+					var span = document.createElement('span');
+
+					// TODO 参数可配置
+					span.style.display = 'inline-block';
+					span.style.backgroundColor = '#efefef';
+					span.style.width = '30px';
+					span.style.height = '30px';
+					span.style.borderRadius = '50%';
+					span.style.margin = '10px 4px';
+					span.style.cursor = 'pointer';
+					span.className = 'item-pager';
+					span.dataset.id = i;
+
+					currentIndexObj.current === i ? span.style.backgroundColor = '#ff5f00' : '';
+
+					var change = function (e) {
+						var index = parseInt(e.target.dataset.id);
+						currentIndexObj.current = index;
+					}
+
+					span.addEventListener('click', change);
+
+					container.appendChild(span);
+				}
+			}
+			// 设置分页状态
+			var setPager = function () {
+				var itemsPager = document.getElementsByClassName('item-pager');
+				for (var i = 0;i < itemsPager.length; i++) {
+					itemsPager[i].style.backgroundColor = '#efefef';
+					if (currentIndexObj.current === i) {
+						itemsPager[i].style.backgroundColor = '#ff5f00';
+					}
+				}
+			}
+			// 监听 current index (currentIndexObj) 的变化
+			Object.defineProperty(currentIndexObj, "current", {
+			    get: function() {
+			        return this._current;
+			    },
+			    set: function(value) {
+			        if (value !== this._current) {
+			            this._current = value;
+			            // 重新渲染
+			            var index = getIndex();
+			            render(index.index);
+			            // 改变分页样式
+			            setPager();
+			        }
+			    }
+			});
+			// 公共对象
+			var carousel = {
+				// 获取current
+				current: function () {
+					return currentIndexObj.current;
+				},
+				// 获取错误集合
+				error: errorArr,
+				// 初始化轮播
+				on: function (target, dataArr, options) {
+					if (!target) return false;
+
+					dataArr  = dataArr || [];
+					options  = options || {};
+					box      = document.getElementById(target) || document.getElementsByClassName(target)[0];
+					items    = box.getElementsByClassName('item');
+
+					currentIndexObj.current = options.index || 0;
+					arr          = dataArr || [];
+					isPager      = options.pager;
+					speed        = options.speed || 1200;
+					direction    = options.direction || 'right';
+					var height   = options.height || 300;
+					var length   = dataArr.length || 0;
+					var prev     = options.prev;
+					var next     = options.next;
+					var autoPlay = options.auto === undefined ? true : options.auto;
+
+					box.style.height = typeof height === 'number' ? height + 'px' : height;
+					box.style.clear = 'both';
+					box.style.overflow = 'hidden';
+					box.style.listStyle = 'none';
+					box.style.margin = '0';
+					box.style.padding = '0';
+
+					if (!length) return false;
+
+					// init
+					var index = getIndex();
+					var width = index.index.length * 100;
+					box.style.width = width + '%';
+					render(index.index);
+
+					var left = 100 * index.left;
+					box.style.marginLeft = '-' + left + '%';
+
+					// 创建分页
+					if (isPager) {
+						createPager(index.indexNum);
+					}
+
+					// 绑定上下按钮
+					this.prev(prev);
+					this.next(next);
+
+					// 自动播放
+					if (autoPlay) {
+						this.play();
+					}
+
+					return this;
+				},
+				// 上一个
+				// 如果在options里面添加了按钮的id或者classname
+				// 会自动添加事件
+				prev: function (p) {
+					var btn;
+					if (p) btn = document.getElementById(p) || document.getElementsByClassName(p)[0];
+					btn ?
+					btn.addEventListener('click', prev) :
+					prev();
+
+					return currentIndexObj.current;
+				},
+				// 下一个
+				next: function (n) {
+					var btn;
+					if (n) btn = document.getElementById(n) || document.getElementsByClassName(n)[0];
+					btn ?
+					btn.addEventListener('click', next) :
+					next();
+
+					return currentIndexObj.current;
+				},
+				// 播放
+				play: function () {
+					if (!isAutoPlay) {
+						var p = setInterval(next, speed);
+						play = p;
+					}
+					isAutoPlay = true;
+				},
+				// 停止
+				stop: function () {
+					clearInterval(play);
+					isAutoPlay = false;
+				}
+			}
+
+			window.carousel = carousel;
+		})(window, document);
+	</script>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var arr = ['./图像/01.jpg', './图像/02.jpg', './图像/03.jpg', './图像/04.jpg', './图像/05.jpg'];
+			// on()方法为初始化方法
+			var c = carousel.on('carousel', arr, {
+				// 默认初始显示图片 数组下标 number
+				index: 0,
+				// 是否自动播放 bool
+				auto: false,
+				// 播放速度 ms
+				speed: 2000,
+				// 下一个按钮 [id/classname] string
+				prev: 'ctrl-prev',
+				// 上一个按钮 string
+				next: 'ctrl-next',
+				// 轮播分页容器 string
+				pager: 'carousel-pager',
+				// 轮播方向 left|right
+				direction: 'right'
+			});
+
+			console.log(c);
+
+			var stop = document.querySelector('.ctrl-stop');
+			var play = document.querySelector('.ctrl-play');
+			// 外部调用上下事件
+			var prev = document.querySelector('.ctrl-prev-o');
+			var next = document.querySelector('.ctrl-next-o');
+			stop.onclick = function () {
+				c.stop();
+			}
+			play.onclick = function () {
+				c.play();
+			}
+			prev.onclick = function () {
+				c.prev();
+			}
+			next.onclick = function () {
+				c.next();
+			}
+
+
+			//* ES5 的监听对象属性变化
+			// var obj = {
+			//     _current: 0
+			// };
+			// Object.defineProperty(obj, "current", {
+			//     get: function() {
+			//         return this._current;
+			//     },
+			//     set: function(value) {
+			//         if (value !== this._current) {
+			//             this._current = value;
+			//         }
+			//     }
+			// });
+			// obj.current = 1;
+			// console.log(obj.current); //1
+		}
+	</script>
+</body>
+</html>
