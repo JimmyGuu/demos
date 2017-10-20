@@ -5,7 +5,7 @@
 	<title>demo</title>
 	<style type="text/css">
 		.container { width: 50%;padding: 15px 330px;overflow: hidden;margin-bottom: 15px; }
-		.container_2 { width: 50%;padding: 0px 0px;overflow: hidden;margin-bottom: 15px; }
+		.container_2 { width: 50%;padding: 0px 100px;overflow: hidden;margin-bottom: 15px; }
 
 		.carousel-ctrl { margin-top: 15px; }
 		.carousel-ctrl > .ctrl { display: inline-block;padding: 10px 15px;border: 1px solid #ddd;background-color: #efefef;color: #333;font-size: 14px;border-radius: 4px;cursor: pointer; }
@@ -70,7 +70,7 @@
 			<span class="item"></span>
 		</ul>
 		<!-- 轮播分页 -->
-		<div class="carousel-pager"></div>
+		<div class="carousel-pager-2"></div>
 	</div>
 
 	<script type="text/javascript">
@@ -544,53 +544,37 @@
 
 	<script type="text/javascript">
 		window.onload = function () {
-			var arr = ['./图像/01.jpg', './图像/02.jpg', './图像/03.jpg', './图像/04.jpg', './图像/05.jpg'];
+			var arr = ['./图像/01.jpg', './图像/02.jpg', './图像/03.jpg', './图像/04.jpg', './图像/05.jpg', { src: './图像/03.jpg', href: 'www.baidu.com' }];
 			// on()方法为初始化方法
 			// 第一个参数必须为id
-			var c = carousel.on('carousel', arr, {
-				// 默认初始显示图片 数组下标 number
-				index: 0,
-				// 是否自动播放 bool
-				auto: true,
-				// 播放速度 ms
-				speed: 3000,
-				// 过度效果时间
-				animate: '1000',
-				// 过度效果类型 slide|fade
-				animateType: 'fade',
-				// 轮播方向 left|right
-				direction: 'right',
-				// 下一个按钮 [id/classname] string
-				prev: 'ctrl-prev',
-				// 上一个按钮 string
-				next: 'ctrl-next',
-				// 轮播分页容器 string
-				pager: 'carousel-pager',
-				// pager是否具有控制力 bool
-				pagerCtrl: true,
-				// 悬浮停止播放
-				hoverStop: true
-			});
+			// var c = carousel.on('carousel', arr, {
+			// 	// 默认初始显示图片 数组下标 number
+			// 	index: 0,
+			// 	// 是否自动播放 bool
+			// 	auto: true,
+			// 	// 播放速度 ms
+			// 	speed: 3000,
+			// 	// 过度效果时间
+			// 	animate: '1000',
+			// 	// 过度效果类型 slide|fade
+			// 	animateType: 'slide',
+			// 	// 轮播方向 left|right
+			// 	direction: 'right',
+			// 	// 下一个按钮 [id/classname] string
+			// 	prev: '',
+			// 	// 上一个按钮 string
+			// 	next: '',
+			// 	// 轮播分页容器 string
+			// 	pager: 'carousel-pager',
+			// 	// pager是否具有控制力 bool
+			// 	pagerCtrl: true,
+			// 	// 悬浮停止播放
+			// 	hoverStop: true
+			// });
 
-			console.log(c);
+			// console.log(c);
 
-			var stop = document.querySelector('.ctrl-stop');
-			var play = document.querySelector('.ctrl-play');
-			// 外部调用上下事件
-			var prev = document.querySelector('.ctrl-prev-o');
-			var next = document.querySelector('.ctrl-next-o');
-			stop.onclick = function () {
-				c.stop();
-			}
-			play.onclick = function () {
-				c.play();
-			}
-			prev.onclick = function () {
-				c.prev();
-			}
-			next.onclick = function () {
-				c.next();
-			}
+			
 
 
 
@@ -604,16 +588,48 @@
 				// 是否自动播放 bool
 				auto: true,
 				// 播放速度 ms
-				speed: 2000,
+				speed: 4000,
+				// 过度效果时间
+				animate: '1200',
+				// 过度效果类型 slide|fade
+				animateType: 'slide',
 				// 下一个按钮 [id/classname] string
-				prev: '',
+				prev: 'ctrl-prev',
 				// 上一个按钮 string
-				next: '',
+				next: 'ctrl-next',
 				// 轮播方向 left|right
-				direction: 'right'
+				direction: 'right',
+				// 轮播分页容器 string
+				pager: 'carousel-pager-2',
+				// pager是否具有控制力 bool
+				pagerCtrl: true,
+				// 悬浮停止播放
+				hoverStop: true,
+				pagerCon: {
+					active: 'red'
+				}
+
 			});
 
 			console.log(c_2)
+
+			var stop = document.querySelector('.ctrl-stop');
+			var play = document.querySelector('.ctrl-play');
+			// 外部调用上下事件
+			var prev = document.querySelector('.ctrl-prev-o');
+			var next = document.querySelector('.ctrl-next-o');
+			stop.onclick = function () {
+				c_2.stop();
+			}
+			play.onclick = function () {
+				c_2.play();
+			}
+			prev.onclick = function () {
+				c_2.prev();
+			}
+			next.onclick = function () {
+				c_2.next();
+			}
 
 			//* ES5 的监听对象属性变化
 			// var obj = {
