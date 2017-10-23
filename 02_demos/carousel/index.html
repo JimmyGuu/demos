@@ -6,13 +6,17 @@
 	<style type="text/css">
 		.container { width: 50%;padding: 15px 330px;overflow: hidden;margin-bottom: 15px; }
 		.container_2 { width: 50%;padding: 0px 100px;overflow: hidden;margin-bottom: 15px; }
+		.container_3 { width: 50%;padding: 0px 0px;overflow: hidden;margin-bottom: 15px; }
+		.container_4 { width: 50%;padding: 0px 0px;overflow: hidden;margin-bottom: 15px; }
+		.container_5 { width: 100%;padding: 0px 0px;overflow: hidden;margin-bottom: 15px;clear: both; }
+		.container_5 > .carousel { float: left;width: 33%;overflow: hidden;border: 1px solid #ff5f00; }
 
 		.carousel-ctrl { margin-top: 15px; }
-		.carousel-ctrl > .ctrl { display: inline-block;padding: 10px 15px;border: 1px solid #ddd;background-color: #efefef;color: #333;font-size: 14px;border-radius: 4px;cursor: pointer; }
+		.ctrl { display: inline-block;padding: 10px 15px;border: 1px solid #ddd;background-color: #efefef;color: #333;font-size: 14px;border-radius: 4px;cursor: pointer; }
 
 		/*内置样式*/
 		.animated {
-		  	animation-duration: .8s;
+		  	animation-duration: .6s;
 		  	animation-fill-mode: both;
 		}
 
@@ -48,9 +52,9 @@
 <body>
 	<div class="container">
 		<!-- 轮播容器 -->
-		<ul id="carousel">
+		<div id="carousel">
 			<li class="item"></li>
-		</ul>
+		</div>
 		<!-- 轮播分页 -->
 		<div class="carousel-pager"></div>
 		<!-- 按钮 -->
@@ -59,8 +63,6 @@
 			<span class="ctrl ctrl-next">next(inside)</span>
 			<span class="ctrl ctrl-stop">stop</span>
 			<span class="ctrl ctrl-play">play</span>
-			<span class="ctrl ctrl-prev-o">prev(outside)</span>
-			<span class="ctrl ctrl-next-o">next(outside)</span>
 		</div>
 	</div>
 
@@ -71,11 +73,49 @@
 		</ul>
 		<!-- 轮播分页 -->
 		<div class="carousel-pager-2"></div>
+		<!-- 按钮 -->
+		<div class="carousel-ctrl">
+			<span class="ctrl ctrl-prev-2">prev(inside)</span>
+			<span class="ctrl ctrl-next-2">next(inside)</span>
+			<span class="ctrl ctrl-stop-2">stop</span>
+			<span class="ctrl ctrl-play-2">play</span>
+			<span class="ctrl ctrl-prev-o-2">prev(outside)</span>
+			<span class="ctrl ctrl-next-o-2">next(outside)</span>
+		</div>
+	</div>
+
+	<div class="container_3">
+		<div id="container_3"></div>
+		<div class="carousel-pager-3"></div>
+
+		<span class="ctrl ctrl-stop-3">stop</span>
+		<span class="ctrl ctrl-play-3">play</span>
+	</div>
+
+	<div class="container_4">
+		<div id="container_4"></div>
+		<div class="carousel-pager-4"></div>
+		<span class="ctrl ctrl-stop-4">stop</span>
+		<span class="ctrl ctrl-play-4">play</span>
+		<span class="ctrl ctrl-prev-4">prev</span>
+		<span class="ctrl ctrl-next-4">next</span>
+	</div>
+
+	<div class="container_5">
+		<div class="carousel carousel-1">
+			<div id="carousel5"></div>
+		</div>
+		<div class="carousel carousel-2">
+			<div id="carousel6"></div>
+		</div>
+		<div class="carousel carousel-3">
+			<div id="carousel7"></div>
+		</div>
 	</div>
 
 	<script type="text/javascript">
 		/**
-		 * Carousel
+		 * Carousel 原型 完整封装参见文件 carousel.js
 		 * IE9/IE9+
 		 */
 		;(function (window, document) {
@@ -544,45 +584,96 @@
 
 	<script type="text/javascript">
 		window.onload = function () {
-			var arr = ['./图像/01.jpg', './图像/02.jpg', './图像/03.jpg', './图像/04.jpg', './图像/05.jpg', { src: './图像/03.jpg', href: 'www.baidu.com' }];
-			// on()方法为初始化方法
-			// 第一个参数必须为id
-			// var c = carousel.on('carousel', arr, {
-			// 	// 默认初始显示图片 数组下标 number
-			// 	index: 0,
-			// 	// 是否自动播放 bool
-			// 	auto: true,
-			// 	// 播放速度 ms
-			// 	speed: 3000,
-			// 	// 过度效果时间
-			// 	animate: '1000',
-			// 	// 过度效果类型 slide|fade
-			// 	animateType: 'slide',
-			// 	// 轮播方向 left|right
-			// 	direction: 'right',
-			// 	// 下一个按钮 [id/classname] string
-			// 	prev: '',
-			// 	// 上一个按钮 string
-			// 	next: '',
-			// 	// 轮播分页容器 string
-			// 	pager: 'carousel-pager',
-			// 	// pager是否具有控制力 bool
-			// 	pagerCtrl: true,
-			// 	// 悬浮停止播放
-			// 	hoverStop: true
-			// });
+			var arr = [
+				{ src: './图像/01.jpg', bg: 'green' },
+				'./图像/02.jpg',
+				'./图像/03.jpg',
+				'./图像/04.jpg',
+				'./图像/05.jpg',
+				{ src: './图像/06.jpg', href: 'http://www.baidu.com' }
+			];
+			var arr2 = ['./图像/07.jpg'];
+			var arr3 = ['./图像/07.jpg', './图像/03.jpg'];
 
-			// console.log(c);
-
-			
+			var arr4 = [
+				{ src: 'carousel-a-1', background: 'green', href: 'http://www.sina.com' }
+			];
+			var arr5 = [
+				{ src: 'carousel-a-2', background: '#ddd url(./图像/01.jpg) no-repeat fixed left top/100% 100%', href: 'http://www.baidu.com' },
+				{ src: 'carousel-a-2', background: 'red', href: 'http://www.qq.com' }
+			];
+			var arr6 = [
+				{ src: 'carousel-a-3', background: '#ddd url(./图像/03.jpg) no-repeat center/cover', href: 'http://www.google.com' },
+				{ src: 'carousel-a-3', background: 'yellow', href: 'http://www.bing.com' },
+				{ src: 'carousel-a-3', background: '#ddd url(./图像/06.jpg) no-repeat center/cover' }
+			];
 
 
+			var c_1 = Carousel.on('carousel', 'horizontal', {
+				datas: arr,
+				speed: 2000,
+				index: 0,
+				prev: 'ctrl-prev',
+				next: 'ctrl-next',
+				pager: 'carousel-pager'
+			});
+			var stop_1 = document.querySelector('.ctrl-stop');
+			var play_1 = document.querySelector('.ctrl-play');
+			stop_1.onclick = () => {
+				c_1.stop();
+			}
+			play_1.onclick = () => {
+				c_1.play();
+			}
 
+
+			var c_3 = Carousel.on('container_3', 'horizontal', {
+				datas: arr2,
+				speed: 5000,
+				index: 0,
+				pager: 'carousel-pager-3'
+			});
+			var stop_3 = document.querySelector('.ctrl-stop-3');
+			var play_3 = document.querySelector('.ctrl-play-3');
+			stop_3.onclick = () => {
+				c_3.stop();
+			}
+			play_3.onclick = () => {
+				c_3.play();
+			}
+
+			var c_4 = Carousel.on('container_4', 'horizontal', {
+				datas: arr3,
+				speed: 5000,
+				index: 0,
+				pager: 'carousel-pager-4',
+				direction: 'right',
+				imgHeight: '100%'
+			});
+			var stop_4 = document.querySelector('.ctrl-stop-4');
+			var play_4 = document.querySelector('.ctrl-play-4');
+			stop_4.onclick = () => {
+				c_4.stop();
+			}
+			play_4.onclick = () => {
+				c_4.play();
+			}
+			c_4.next('ctrl-next-4');
+			c_4.prev('ctrl-prev-4');
 
 
 			var c_2 = Carousel.on('carousel_2', 'horizontal', {
 				// 图片数组
 				datas: arr,
+				// 如果输对象数组 请指定图片路径属性名称 default: src
+				imgName: 'src',
+				// 如果输对象数组 请指定图片链接属性名称 default: href
+				hrefName: 'href',
+				// 如果输对象数组 且需要不同背景 请指定背景属性名称 default: background
+				backgroundName: 'bg',
+				// 是否显示文字轮播
+				// 统一处理 不支持图片文字相间 想要实现可以通过不同的背景
+				isText: false,
 				// 默认初始显示图片 数组下标 number
 				index: 0,
 				// 是否自动播放 bool
@@ -592,61 +683,78 @@
 				// 过度效果时间
 				animate: '1200',
 				// 过度效果类型 slide|fade
-				animateType: 'slide',
+				animateType: 'fade',
+				// 轮播元素背景 {String}
+				// 所有轮播元素为一种背景
+				// 如果想要不同背景 请在 datas 属性添加 background
+				background: '#efefef',
 				// 下一个按钮 [id/classname] string
-				prev: 'ctrl-prev',
+				// 注意: 只有一个轮播时 不支持上下翻页和分页控制
+				prev: 'ctrl-prev-2',
 				// 上一个按钮 string
-				next: 'ctrl-next',
+				next: 'ctrl-next-2',
 				// 轮播方向 left|right
 				direction: 'right',
+				// 悬浮停止播放
+				hoverStop: true,
 				// 轮播分页容器 string
 				pager: 'carousel-pager-2',
 				// pager是否具有控制力 bool
 				pagerCtrl: true,
-				// 悬浮停止播放
-				hoverStop: true,
+				// 分页配置属性
 				pagerCon: {
-					active: 'red'
+					active: 'red',
+					// 触发事件类型 addEventListener 支持
+					event: 'mouseover',
+					// 触发事件类型为 mouseover 或 mouseenter 时延迟触发时间
+					delay: 300
+				},
+				// 分页样式
+				pagerStyle: {
+
 				}
 
 			});
 
 			console.log(c_2)
 
-			var stop = document.querySelector('.ctrl-stop');
-			var play = document.querySelector('.ctrl-play');
-			// 外部调用上下事件
-			var prev = document.querySelector('.ctrl-prev-o');
-			var next = document.querySelector('.ctrl-next-o');
+			var stop = document.querySelector('.ctrl-stop-2');
+			var play = document.querySelector('.ctrl-play-2');
 			stop.onclick = function () {
 				c_2.stop();
 			}
 			play.onclick = function () {
 				c_2.play();
 			}
-			prev.onclick = function () {
-				c_2.prev();
-			}
-			next.onclick = function () {
-				c_2.next();
-			}
+			// 外部调用上下事件
+			c_2.prev('ctrl-prev-o-2');
+			c_2.next('ctrl-next-o-2');
 
-			//* ES5 的监听对象属性变化
-			// var obj = {
-			//     _current: 0
-			// };
-			// Object.defineProperty(obj, "current", {
-			//     get: function() {
-			//         return this._current;
-			//     },
-			//     set: function(value) {
-			//         if (value !== this._current) {
-			//             this._current = value;
-			//         }
-			//     }
-			// });
-			// obj.current = 1;
-			// console.log(obj.current); //1
+
+			var c_5 = Carousel.on('carousel5', 'horizontal', {
+				datas: arr4,
+				isText: true,
+				hoverStop: false,
+				height: '200px',
+				animateType: 'slide'
+			});
+			var c_6 = Carousel.on('carousel6', 'horizontal', {
+				datas: arr5,
+				isText: true,
+				hoverStop: false,
+				height: '200px',
+				direction: 'left'
+			});
+			var c_7 = Carousel.on('carousel7', 'horizontal', {
+				datas: arr6,
+				isText: true,
+				hoverStop: false,
+				height: '200px',
+				animateType: 'slide'
+			});
+
+			// 清除轮播
+			// Carousel.off([c_1, c_2, c_4, c_5, c_6, c_7 ]);
 		}
 	</script>
 </body>

@@ -6,14 +6,33 @@
 
 		// 原始图片路径数组
 		obj.dataArr     = options.datas;
-		// 创建没有图片的轮播 将会创建指定宽高背景色内容的轮播
+		// 创建文字轮播 将会创建指定宽高背景色内容的轮播
 		// 设置此项将会使轮播以字符串显示 datas 数组中的内容
 		// 必须设置为布尔值 ture 起效
 		obj.isText      = options.isText === true ? true : false;
+		// 如果显示文字轮播
+		// 指定文字轮播样式 {Object}
+		obj.textStyle   = options.textStyle ? options.textStyle = {
+			color: options.textStyle.color || '#000',
+			fontSize: options.textStyle.fontSize || '14px',
+			textAlign: options.textStyle.textAlign || 'center',
+			lineHeight: options.textStyle.lineHeight || '30px',
+			textDecoration: options.textStyle.textDecoration || 'none'
+		} : {
+			color: '#000',
+			fontSize: '14px',
+			textAlign: 'center',
+			lineHeight: '30px',
+			textDecoration: 'none'
+		}
 		obj.text        = options.text || 'carousel';
+		// 轮播元素背景 {String}
+		// string 时所有轮播元素为一种背景
+		// 如果想要不同背景 请在 datas 属性添加 background
 		obj.background  = options.background || '#efefef';
+
 		// 初始化显示图片
-		obj.current     = options.index || 0;
+		obj.current     = options.index === undefined ? 0 : parseInt(options.index);
 		// 分页容器id
 		obj.isPager     = options.pager;
 		// 分页是否具有控制功能
@@ -21,10 +40,30 @@
 		// 分页配置属性
 		obj.pagerCon    = options.pagerCon ? options.pagerCon = {
 			active: options.pagerCon.active || '#ff5f00',
-			normal: options.pagerCon.normal || '#efefef'
+			event: options.pagerCon.event || 'click',
+			delay: options.pagerCon.delay || 600
 		} : {
 			active: '#ff5f00',
-			normal: '#efefef'
+			event: 'click',
+			delay: 600
+		}
+		// 分页样式
+		obj.pagerStyle  = options.pagerStyle ? options.pagerStyle = {
+			display: options.pagerStyle.display || 'inline-block',
+			background: options.pagerStyle.background || '#efefef',
+			width: options.pagerStyle.width || '30px',
+			height: options.pagerStyle.height || '30px',
+			borderRadius: options.pagerStyle.borderRadius || '50%',
+			margin: options.pagerStyle.margin || '10px 4px',
+			cursor: options.pagerStyle.cursor || 'pointer'
+		} : {
+			display: 'inline-block',
+			background: '#efefef',
+			width: '30px',
+			height: '30px',
+			borderRadius: '50%',
+			margin: '10px 4px',
+			cursor: 'pointer'
 		}
 		// 是否自动播放
 		obj.isAuto      = options.auto === undefined ? true : options.auto;
@@ -43,7 +82,7 @@
 		// 图片高度 请自行指定单位
 		obj.imgHeight   = options.imgHeight || 'auto';
 		// 图片宽度 请自行指定单位
-		obj.imgWidth   = options.imgWidth || '100%';
+		obj.imgWidth    = options.imgWidth || '100%';
 		// 轮播容器外边距
 		obj.margin      = options.margin || 0;
 		// 轮播容器内边距
@@ -61,23 +100,67 @@
 		// 如果输对象数组 请指定图片路径属性名称 default: src
 		obj.imgName     = options.imgName || 'src';
 		// 如果输对象数组 请指定图片链接属性名称 default: href
-		obj.hrefName     = options.hrefName || 'href';
+		obj.hrefName    = options.hrefName || 'href';
+		// 如果输对象数组 且需要不同背景 请指定背景属性名称 default: background
+		obj.backgroundName = options.backgroundName || 'background';
 
 
 		return obj;
 	}
 
 	// 验证current是否超出了显示
-	var currentRange = function (current, length) {
-		var i = current;
+	// @param {object} self
+	// @param {number} change 改变量
+	var currentRange = function (self, change) {
+		var crt   = 0,
+			afterCrt = self.defineObj.current + change,
+			len = self.renderArr.length;
+		var range = function (_crt, _len, isLess) {
+			var i = _crt;
 
-		if (current > length - 1) i = 0;
-		if (current < 0) i = length - 1;
+			if (isLess === 'one') {
+				if (_crt > _len - 3) i = 0;
+				if (_crt < 0) i = _len - 3;
+			} else if (isLess === 'two') {
+				if (_crt > _len - 2) i = 0;
+				if (_crt < 0) i = _len - 2;
+			} else {
+				if (_crt > _len - 1) i = 0;
+				if (_crt < 0) i = _len - 1;
+			}
 
-		return i;
+			return i;
+		}
+
+		if (self.length === 1) {
+			crt = range(afterCrt, len, 'one');
+		} else if (self.length === 2) {
+			crt = range(afterCrt, len, 'two');
+		} else {
+			crt = range(afterCrt, len);
+		}
+
+		return crt;
 	}
 
-	// 左右滑动过渡效果 TODO
+	// 验证浏览器对 transition 的兼容
+	var transitionEvent = function () {
+       	var el = document.createElement('surface'),
+       	transitions = {
+         	'transition':'transitionend',
+         	'OTransition':'oTransitionEnd',
+         	'MozTransition':'transitionend',
+         	'WebkitTransition':'webkitTransitionEnd'
+       	}
+
+       	for(var t in transitions){
+          	if( el.style[t] !== undefined ){
+               	return transitions[t];
+           	}
+       	}
+   	}
+
+	// 左右滑动过渡效果 TODO: top2bot
 	// @param {string} direction 切换方向 [plus|reduce]
 	// @param {object} self 调用者实例 this
 	// @param {object} opt {
@@ -88,7 +171,7 @@
 	//  	animate: [number | 过度效果时间(ms)]
 	//  }
 	var SlideLRAnimate = function (direction, self, opt) {
-		self.rendering = true;
+		self.rendering  = true;
 
 		var leftLen       = opt.left;
 		var type          = direction || 'plus';
@@ -102,18 +185,23 @@
 
 		box.style.transition = 'margin-left ' + (parseFloat(speed) / 1000) + 's ease';
 		box.style.marginLeft = leftLen + '%';
-		setTimeout(function () {
-			box.style.transition = 'none';
+
+		// 通过监听动画事件完成
+		var transition = transitionEvent();
+		transition && box.addEventListener(transition, function() {
+			// 销毁事件
+			box.removeEventListener(transition, arguments.callee, false);
+	    	box.style.transition = 'none';
 			box.style.marginLeft = opt.left + '%';
 			if (type === 'plus') {
-				var _c = currentRange(self.defineObj.current + currentChange, self.renderArr.length);
-				self.defineObj.current = _c;
+				var crt = currentRange(self, currentChange);
+				self.defineObj.current = crt;
 			}
 			if (type === 'reduce') {
-				var _c = currentRange(self.defineObj.current - currentChange, self.renderArr.length);
-				self.defineObj.current = _c;
+				var crt = currentRange(self, -currentChange);
+				self.defineObj.current = crt;
 			}
-		}, speed);
+	   	});
 	}
 
 	// 淡入淡出过度效果
@@ -127,7 +215,7 @@
 	//  	animate: [number | 过度效果时间(ms)]
 	//  }
 	var FadeAnimate = function (direction, self, opt) {
-		self.rendering = true;
+		self.rendering  = true;
 
 		var type          = direction || 'plus';
 		var currentChange = parseInt(opt.currentChange) || 1;
@@ -141,7 +229,10 @@
 			box.className = 'carousel animated fadeOut';
 		}
 
-		setTimeout(function () {
+		box.addEventListener('animationend', function() {
+        	// 销毁事件
+			box.removeEventListener('animationend', arguments.callee, false);
+
 			if (box.classList) {
 				box.classList.remove('fadeOut');
 				box.classList.add('fadeIn');
@@ -150,14 +241,14 @@
 			}
 
 			if (type === 'plus') {
-				var _c = currentRange(self.defineObj.current + currentChange, self.renderArr.length);
-				self.defineObj.current = _c;
+				var crt = currentRange(self, currentChange);
+				self.defineObj.current = crt;
 			}
 			if (type === 'reduce') {
-				var _c = currentRange(self.defineObj.current - currentChange, self.renderArr.length);
-				self.defineObj.current = _c;
+				var crt = currentRange(self, -currentChange);
+				self.defineObj.current = crt;
 			}
-		}, (parseFloat(speed) / 2));
+		});
 	}
 
 	// 错误处理
@@ -330,29 +421,66 @@
 			return;
 		}
 
-		var current        = self.defineObj.current;
-		var animate        = self.opts.animate;
-		var animateType    = self.opts.animateType;
-		var container      = self.container;
-		var arr            = self.opts.dataArr;
-		var pagerCtrl      = self.opts.pagerCtrl
-		var left           = self.left;
-		var active         = self.opts.pagerCon.active;
-		var normal         = self.opts.pagerCon.normal;
+		var left        = self.left;
+		var container   = self.container;
+		var current     = self.defineObj.current;
+		var animate     = self.opts.animate;
+		var animateType = self.opts.animateType;
+		var arr         = self.dataArr;
+		var pagerCtrl   = self.opts.pagerCtrl;
+		var active      = self.opts.pagerCon.active;
+		var pagerEvent  = self.opts.pagerCon.event;
+		var pagerDelay  = self.opts.pagerCon.delay;
+		var pagerStyle  = self.opts.pagerStyle;
+
+		// 分页点击事件
+		var change = function (current, e) {
+			if (self.rendering) return;
+			var id, toIndex = null, fromIndex = null;
+			if (!span.dataset) id = e.target.title;
+			else id = e.target.dataset.id;
+			var index = parseInt(id);
+			current   = self.defineObj.current;
+
+			for (var i = 0; i < self.renderIndex.length; i++) {
+				if (self.renderIndex[i] === index) toIndex = i;
+				if (self.renderIndex[i] === current) fromIndex = i;
+			}
+
+			if (toIndex === null) {
+				console.error(error('error', '未能获取到选择分页所对应的下标!分页操作终止!', self.errorArr));
+				return;
+			}
+
+			var multiple, change;
+			if (index > current) {
+				// 选择分页在当前图片后面(相对于原数组)
+				multiple = toIndex - fromIndex;
+				change   = index - current;
+
+				if (animateType === 'slide') SlideLRAnimate('plus', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
+				if (animateType === 'fade') FadeAnimate('plus', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
+			}
+			if (index < current) {
+				// 选择分页在当前图片前面(相对于原数组)
+				multiple = fromIndex - toIndex;
+				change   = current - index;
+				if (animateType === 'slide') SlideLRAnimate('reduce', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
+				if (animateType === 'fade') FadeAnimate('reduce', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
+			}
+		}
 
 		// 循环原始数组 一图对应一分页
 		for (var i = 0; i < arr.length; i++) {
 			var span = document.createElement('span');
 
-			// TODO 参数可配置
-			span.style.display         = 'inline-block';
-			span.style.backgroundColor = normal;
-			span.style.width           = '30px';
-			span.style.height          = '30px';
-			span.style.borderRadius    = '50%';
-			span.style.margin          = '10px 4px';
-			span.style.cursor          = 'pointer';
+			// 分页样式
+			// pagerStyle
+			for (var style in pagerStyle) {
+				span.style[style] = pagerStyle[style];
+			}
 			span.className             = 'item-pager';
+
 			// data- 兼容性
 			if (!span.dataset) span.title = i;
 			else span.dataset.id = i;
@@ -360,47 +488,23 @@
 			// 初始化样式
 			current === i ? span.style.backgroundColor = active : '';
 
-			// 分页点击事件
-			var change = function (e) {
-				var id, toIndex = null, fromIndex = null;
-				if (!span.dataset) id = e.target.title;
-				else id = e.target.dataset.id;
-				var index = parseInt(id);
-				current   = self.defineObj.current;
-
+			// 绑定分页控制事件
+			var timer;
+			if (pagerCtrl) span.addEventListener(pagerEvent, function (e) {
 				// 重置计时器
 				changeResetPlay(self);
-
-				for (var i = 0; i < self.renderIndex.length; i++) {
-					if (self.renderIndex[i] === index) toIndex = i;
-					if (self.renderIndex[i] === current) fromIndex = i;
+				// 如果是鼠标悬浮触发 设置鼠标事件延时
+				if (pagerEvent === 'mouseover' || pagerEvent === 'mouseenter') {
+					timer = setTimeout(function () {
+						change(current, e);
+					}, pagerDelay);
+				} else {
+					change(current, e);
 				}
-
-				if (toIndex === null) {
-					console.error(error('error', '未能获取到选择分页所对应的下标!分页操作终止!', self.errorArr));
-					return;
-				}
-
-				var multiple, change;
-				if (index > current) {
-					// 选择分页在当前图片后面(相对于原数组)
-					multiple = toIndex - fromIndex;
-					change   = index - current;
-
-					if (animateType === 'slide') SlideLRAnimate('plus', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
-					if (animateType === 'fade') FadeAnimate('plus', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
-				}
-				if (index < current) {
-					// 选择分页在当前图片前面(相对于原数组)
-					multiple = fromIndex - toIndex;
-					change   = current - index;
-					if (animateType === 'slide') SlideLRAnimate('reduce', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
-					if (animateType === 'fade') FadeAnimate('reduce', self, { container: container, left: left, multiple: multiple, currentChange: change, animate: animate });
-				}
-			}
-
-			// 绑定分页控制事件
-			if (pagerCtrl) span.addEventListener('click', change);
+			});
+			span.addEventListener('mouseout', function () {
+				clearTimeout(timer);
+			});
 
 			// 将分页元素添加到分页容器
 			pagerContainer.appendChild(span);
@@ -415,7 +519,7 @@
 		}
 
 		var active     = self.opts.pagerCon.active;
-		var normal     = self.opts.pagerCon.normal;
+		var normal     = self.opts.pagerStyle.background;
 		var itemsPager = pagerContainer.childNodes;
 
 		for (var i = 0;i < itemsPager.length; i++) {
@@ -485,9 +589,11 @@
 	var Horizontal = function (options) {
 		this.opts      = Init(options);
 		this.container = this.opts.container;
-		this.length    = this.opts.dataArr.length;
+		this.dataArr   = this.opts.dataArr;
+		this.length    = this.dataArr.length;
 		this.errorArr  = [];
 		this.defineObj = { _current: 0 }
+		this.isPostBack= false;
 
 		var self       = this;
 		var boxOpt     = {};
@@ -503,7 +609,7 @@
 		setContainer(this.container, boxOpt);
 
 		// 获取图片显示顺序
-		var indexObj     = getIndex(this.opts.dataArr, this.defineObj.current, this);
+		var indexObj     = getIndex(this.dataArr, this.defineObj.current, this);
 		// 容器偏移量
 		this.left        = -100 * indexObj.left;
 
@@ -566,34 +672,47 @@
 
 					// 重新渲染
 					// 获取图片显示顺序
-					var indexo = getIndex(self.opts.dataArr, value, self);
-					self.render(indexo);
+					if (self.isPostBack) {
+						var indexo = getIndex(self.dataArr, value, self);
+						self.render(indexo);
+					}
 		        }
 		    }
 		});
 
 	}
-	Horizontal.prototype.createItem = function (src, href) {
-		var isText = this.opts.isText;
-		var item   = document.createElement('a');
-		var img    = document.createElement('img');
-		var width  = 100 / this.renderIndex.length;
-		href       = href || 'javascript: void(0);';
+	Horizontal.prototype.createItem = function (src, href, bg) {
+		var isText    = this.opts.isText;
+		var textStyle = this.opts.textStyle;
+		var item      = document.createElement('a');
+		var img       = document.createElement('img');
+		var width     = 100 / this.renderIndex.length;
+		href          = href || 'javascript: void(0);';
+
+		item.className        = 'item';
+		item.style.cssText    = 'width: ' + width + '%;display: block;float: left;height: 100%;border: 0;';
+		bg ? item.style.background = bg : item.style.background = this.opts.background;
+		item.href             = href;
 
 		if (isText === true) {
+			// 如果是显示文字 此时src即为文字内容
 			img = document.createElement('div');
+			img.innerHTML = src;
+			for(var style in textStyle) {
+				item.style[style] = textStyle[style];
+			}
+		} else {
+			// 显示图片
+			img.src            = src;
+			try {
+				img.alt        = src.split('/')[src.split('/').length - 1];
+			} catch (e) {
+				console.warn(e);
+			}
 		}
 
-		item.className     = 'item';
-		item.style.cssText = 'width: ' + width + '%;display: block;float: left;height: 100%;border: 0;background: ' + this.opts.background +';';
-		item.href          = href;
-		img.src            = src;
-		try {
-			img.alt        = src.split('/')[src.split('/').length - 1];
-		} catch (e) {
-			console.warn(e)
-		}
-		img.style.cssText  = 'width: ' + this.opts.imgWidth + ';height: ' + this.opts.imgHeight + ';';
+		img.style.width = this.opts.imgWidth;
+		img.style.height = this.opts.imgHeight;
 		item.appendChild(img);
 
 		return item;
@@ -605,33 +724,45 @@
 			if (typeof indexObj.renderArr[i] === 'string') {
 				node = this.createItem(indexObj.renderArr[i]);
 			} else if (typeof indexObj.renderArr[i] === 'object' && !indexObj.renderArr[i].length) {
-				node = this.createItem(indexObj.renderArr[i][this.opts.imgName], indexObj.renderArr[i][this.opts.hrefName]);
+				var src  = indexObj.renderArr[i][this.opts.imgName] || '';
+				var href = indexObj.renderArr[i][this.opts.hrefName] || '';
+				var bg   = indexObj.renderArr[i][this.opts.backgroundName];
+				node = this.createItem(src, href, bg);
 			}
 
 			this.container.appendChild(node);
 		}
 
-		this.rendering = false;
+		this.rendering  = false;
+		this.isPostBack = true;
 	}
 	Horizontal.prototype.next = function (n) {
-		if (this.rendering) return;
+		if (!n) return;
 		var btn, self = this;
-		// 重置计数器
-		changeResetPlay(this);
-		if (n) btn = document.getElementById(n) || document.getElementsByClassName(n)[0];
+
+		btn = document.getElementById(n) || document.getElementsByClassName(n)[0];
 		btn ?
-		btn.addEventListener('click', function () { self.next(self) }) :
-		next(this);
+		btn.addEventListener('click', function () {
+			if (self.rendering) return;
+			// 重置计数器
+			changeResetPlay(self);
+			next(self);
+		}) :
+		console.warn('获取按钮失败!请正确指定按钮的id或者classname!');
 	}
 	Horizontal.prototype.prev = function (p) {
-		if (this.rendering) return;
+		if (!p) return;
 		var btn, self = this;
-		// 重置计数器
-		changeResetPlay(this);
-		if (p) btn = document.getElementById(p) || document.getElementsByClassName(p)[0];
+
+		btn = document.getElementById(p) || document.getElementsByClassName(p)[0];
 		btn ?
-		btn.addEventListener('click', function () { self.prev(self) }) :
-		prev(this);
+		btn.addEventListener('click', function () {
+			if (self.rendering) return;
+			// 重置计数器
+			changeResetPlay(self);
+			prev(self);
+		}) :
+		console.warn('获取按钮失败!请正确指定按钮的id或者classname!');
 	}
 	Horizontal.prototype.play = function () {
 		autoPlay(this);
@@ -641,12 +772,12 @@
 	}
 
 
-	// 垂直方向轮播
+	// TODO: 垂直方向轮播
 	var Vertical = function (options) {
 		var opts = Init(options);
 
 		console.log(opts);
-		consloe,warn('Waiting...')
+		console.warn('%c Sorry, Vertical is Under development...', 'font-size: 20px;color: #ff5f00;');
 	}
 
 	// 工厂函数
@@ -671,6 +802,10 @@
 	 * @param {object} options 轮播配置属性
 	 */
 	var Carousel = {
+		// 初始化一个轮播
+		// @param {string} target 轮播容器的id
+		// @param {string} type 轮播类型 [horizontal|vertical]
+		// @param {object} options 轮播参数
 		on: function (target, type, options) {
 			this.errorArr = [];
 			options       = options || {};
@@ -709,6 +844,29 @@
 			var carousel = Factory(type, options);
 			carousel ? carousel : carousel = typeInvalid(this);
 			return carousel;
+		},
+		// 清除轮播显示 TODO： 事件未清除!
+		// @param {object|array} carousel 轮播实例化后的对象或者实例数组
+		off: function (carousel) {
+			if (!carousel) return;
+			if (carousel instanceof Horizontal || carousel instanceof Vertical) {
+				var container = carousel.container;
+				var childs = container.parentNode.childNodes;
+			    for (var j = childs.length - 1; j >= 0; j--) {
+			        container.parentNode ? container.parentNode.removeChild(childs.item(j)) : console.warn(container);
+			    }
+			} else if (typeof carousel === 'object' && carousel.length) {
+				for (var i = 0; i < carousel.length; i++) {
+					var container = carousel[i].container;
+					container ? container.parentNode : console.warn('数组 carousel 第' + i + ' 个元素[' + carousel[i] +']无效!');
+					var childs = container.parentNode.childNodes;
+				    for (var j = childs.length - 1; j >= 0; j--) {
+				        container.parentNode ? container.parentNode.removeChild(childs.item(j)) : console.warn(container);
+				    }
+				}
+			} else {
+				console.warn('参数 carousel 必须是一个实例或者实例数组!');
+			}
 		}
 	}
 
