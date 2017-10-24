@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Carousel - 2</title>
+	<style type="text/css">
+		.carousel-container-1 { width: 500px;padding: 0 100px;overflow: hidden; }
+	</style>
+</head>
+<body>
+	<div class="carousel-container-1">
+		<div id="carousel-1"></div>
+	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+			var container = document.getElementById('carousel-1');
+			var datas = [
+				{ src: './图像/01.jpg', alt: '01', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/02.jpg', alt: '02', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/03.jpg', alt: '03', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/04.jpg', alt: '04', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/05.jpg', alt: '05', background: '#efefef', href: 'http://www.google.com' }
+			];
+			var renderDatas = datas;
+
+			var create = function (imgOpt, itemOpt) {
+				var item = document.createElement('a');
+				var img = document.createElement('img');
+				var width = 100 / renderDatas.length + '%';
+
+				item.background = itemOpt.background;
+				item.href = itemOpt.href;
+				item.style.cssText = 'border: 0;float: left;height: 300px;width: ' + width + ';';
+
+				img.src = imgOpt.src;
+				img.alt = imgOpt.alt;
+				img.style.cssText = 'border: 0;width: 100%;height: 100%;'
+
+				item.appendChild(img);
+
+				return item;
+			}
+
+
+
+			var init = function () {
+				renderDatas.unshift(datas[datas.length - 1]);
+				renderDatas.push(datas[0]);
+
+				container.style.cssText = 'clear: both;overflow: hidden;'
+				container.style.width = renderDatas.length * 100 + '%';
+
+				for (var i = 0; i < renderDatas.length; i++) {
+					var imgOpt = { src: renderDatas[i].src, alt: renderDatas[i].alt };
+					var itemOpt = { background: renderDatas[i].background, href: renderDatas[i].background };
+					var item = create(imgOpt, itemOpt);
+					container.appendChild(item);
+				}
+
+				container.style.marginLeft = '-100%';
+			}
+
+			init();
+		}
+	</script>
+</body>
+</html>
