@@ -9,6 +9,13 @@
 <body>
 	<div class="carousel-container-1">
 		<div id="carousel-1"></div>
+		<div id="pager-container-1"></div>
+		<button id="prev-1">PREV - IN</button>
+		<button id="next-1">NEXT - IN</button>
+		<button id="play-1">PLAY</button>
+		<button id="stop-1">STOP</button>
+		<button id="prev-out-1">PREV - OUT</button>
+		<button id="next-out-1">NEXT - OUT</button>
 	</div>
 	<script type="text/javascript" src="carousel-pro.js"></script>
 	<script type="text/javascript">
@@ -21,9 +28,40 @@
 				{ src: './图像/05.jpg', alt: '05', background: '#efefef', href: 'http://www.google.com' }
 			];
 			var c_1 = Carousel.on('carousel-1', 'h', {
+				// 数据
 				datas: datas,
-				hehe: '11'
+				// 是否自动播放
+				isAuto: true,
+				// 初始显示图片下标
+				index: 0,
+				// 分页容器
+				pager: 'pager-container-1',
+				// 分页配置属性
+				pagerCon: {
+					active: 'green',
+					event: 'mouseover'
+				},
+				// 首尾补充图片个数 [1, datas.length]
+				overCount: 2,
+				// 图片停留时间 最小值为 1
+				// 注意 自动播放间隔设置为 speed+animate
+				speed: 2200,
+				// 图片过度时间
+				animate: 1200,
+				// 过渡类型 [fade|slide]
+				animateType: 'fade',
+				// 起始淡入效果
+				delay: 300,
+				// 内部绑定按钮 - 上一个
+				prev: 'prev-1',
+				// 内部绑定按钮 - 下一个
+				next: 'next-1'
 			});
+
+			c_1.prev('prev-out-1');
+			c_1.next('next-out-1');
+			c_1.stop('stop-1');
+			c_1.play('play-1');
 		}
 	</script>
 </body>
