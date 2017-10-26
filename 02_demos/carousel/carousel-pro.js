@@ -22,6 +22,7 @@
 		for(var c = 0; c < obj.overCount; c++) {
 			var prev        = obj.datas[obj.datas.length - (1 + c)];
 			var next        = obj.datas[0 + c];
+
 			obj.renderDatas.unshift(prev);
 			obj.renderDatas.push(next);
 		}
@@ -119,16 +120,18 @@
 		obj.delay       = options.delay || 300;
 		// 轮播容器DOM
 		obj.container   = options.container;
-		// 轮播元素(用于清空)
-		obj.items       = options.items;
 		// 如果输对象数组 请指定图片路径属性名称 default: src
 		obj.imgName     = options.imgName || 'src';
 		// 如果输对象数组 请指定图片链接属性名称 default: href
 		obj.hrefName    = options.hrefName || 'href';
 		// 如果输对象数组 且需要不同背景 请指定背景属性名称 default: background
-		obj.backgroundName = options.backgroundName || 'background';
+		obj.backgroundName      = options.backgroundName || 'background';
 		// 滑动效果动画曲线
 		obj.slideTimingFunction = options.slideTimingFunction || 'ease';
+		// 轮播元素类名称
+		obj.itemClassName       = options.itemClassName || 'carousel-item';
+		// 轮播元素(用于清空)
+		obj.items               = obj.container.getElementsByClassName(obj.itemClassName);
 
 
 		return obj;
@@ -167,7 +170,7 @@
 
 	// 清除轮播容器内多余的元素
 	// @param {object} container 轮播容器
-	// @param {array}  items     多余轮播元素 .carousel-item
+	// @param {array}  items     多余轮播元素 .itemClassName
 	// @return 					 void
 	var clear = function (container, items) {
 		for (var i = items.length - 1; i >= 0; i--) {
@@ -179,19 +182,35 @@
 	var Animation = function (self, index) {
 		var crt          = self.watchObj.current;
 		var datas        = self.datas;
+		var direction    = self.opts.direction;
 		this.box         = self.container;
 		this.speed       = self.opts.animate;
 		this.realLeftLen = self._initLeft - self._multiple * (index);
 		this.leftLen     = this.realLeftLen;
+		this.items       = self.container.childNodes;
 		index            = parseInt(index);
 
-		if (crt === 0 && index === datas.length - 1) {
-			// 当前为第一个 将要切换的为最后一个
-			// 即为从第一个向最后一个切换
-			this.leftLen = self.left + self._multiple;
-		} else if (crt === datas.length - 1 && index === 0) {
-			// 即为从最后一个向第一个切换
-			this.leftLen = self.left - self._multiple;
+		if (datas.length >= 3) {
+			if (crt === 0 && index === datas.length - 1) {
+				// 当前为第一个 将要切换的为最后一个
+				// 即为从第一个向最后一个切换
+				this.leftLen = self.left + self._multiple;
+			} else if (crt === datas.length - 1 && index === 0) {
+				// 即为从最后一个向第一个切换
+				this.leftLen = self.left - self._multiple;
+			}
+		} else if (datas.length === 2) {
+			if (direction === 'right' && crt === 1 && index === 0) {
+				this.leftLen = self.left - self._multiple;
+			} else if (direction === 'left' && crt === 0 && index === 1) {
+				this.leftLen = self.left + self._multiple;
+			}
+		} else if (datas.length === 1) {
+			if (direction === 'right') {
+				this.leftLen = self.left - self._multiple;
+			} else if (direction === 'left') {
+				this.leftLen = self.left + self._multiple;
+			}
 		}
 	}
 
@@ -217,6 +236,10 @@
 			_this.box.style.transform          = 'translate3d(' + _this.realLeftLen + '%, 0, 0)';
 			self.left                          = _this.realLeftLen;
 			self.watchObj.current              = index;
+			for (var i = 0; i < _this.items.length; i++) {
+				_this.items[i].className = self.opts.itemClassName;
+			}
+			_this.items[self.opts.overCount + index].className = self.opts.itemClassName + ' ' + self.opts.itemClassName + '-active';
 	   	});
 	}
 
@@ -245,6 +268,10 @@
 
 			self.left             = _this.realLeftLen;
 			self.watchObj.current = index;
+			for (var i = 0; i < _this.items.length; i++) {
+				_this.items[i].className = self.opts.itemClassName;
+			}
+			_this.items[self.opts.overCount + index].className = self.opts.itemClassName + ' ' + self.opts.itemClassName + '-active';
 		});
 	}
 
@@ -275,19 +302,24 @@
 	}
 
 	// 创建轮播元素
-	// @param  {object} self 调用方的this
-	// @param  {object} opt  轮播元素参数
-	// @return {object} item 轮播元素
-	var createItem = function (self, opt) {
+	// @param  {object} self  调用方的this
+	// @param  {object} opt   轮播元素参数
+	// @param  {Number} index 循环下标 下标+overCount为当前位置
+	// @return {object} item  轮播元素
+	var createItem = function (self, opt, index) {
 		var isText    = self.opts.isText;
 		var textStyle = self.opts.textStyle;
+		var classname = self.opts.itemClassName;
+		var current   = self.watchObj.current;
+		var overCount = self.opts.overCount;
 		var href      = opt.href || 'javascript: void(0);';
 		var bg        = opt.background || self.opts.background;
 		var item      = document.createElement('a');
 		var img       = document.createElement('img');
 		var width     = 100 / self.renderDatas.length + '%';
 
-		item.className        = 'carousel-item';
+		item.className        = classname;
+		current === (index - overCount) ? item.className = classname + ' ' + classname + '-active' : '';
 		item.style.width      = width;
 		item.style.background = bg;
 		item.href             = href;
@@ -331,12 +363,12 @@
 			var node, opt = {};
 			if (typeof renderDatas[i] === 'string') {
 				opt.src = renderDatas[i];
-				node    = createItem(self, opt);
+				node    = createItem(self, opt, i);
 			} else if (typeof renderDatas[i] === 'object' && !renderDatas[i].length) {
 				opt.src        = renderDatas[i][self.opts.imgName];
 				opt.href       = renderDatas[i][self.opts.hrefName];
 				opt.background = renderDatas[i][self.opts.backgroundName];
-				node = createItem(self, opt);
+				node = createItem(self, opt, i);
 			}
 
 			self.container.appendChild(node);
@@ -347,15 +379,20 @@
 	var currentRange = function (crt, len) {
 		var current = parseInt(crt);
 		var length = parseInt(len);
+
 		current < 0 ? current = length - 1 : current;
 		current > length - 1 ? current = 0 : current;
+
 		return current;
 	}
 
 	// 上一个
 	var prev = function (self) {
-		var index = self.watchObj.current - 1;
-		index = currentRange(index, self.datas.length);
+		var index     = self.watchObj.current - 1;
+		var direction = self.opts.direction;
+
+		if (direction === 'left') index = self.watchObj.current + 1;
+		index         = currentRange(index, self.datas.length);
 
 		if (self.opts.animateType === 'slide') SlideAnimate(self, index);
 		if (self.opts.animateType === 'fade') FadeAnimate(self, index);
@@ -363,8 +400,11 @@
 
 	// 下一个
 	var next = function (self) {
-		var index = self.watchObj.current + 1;
-		index = currentRange(index, self.datas.length);
+		var index     = self.watchObj.current + 1;
+		var direction = self.opts.direction;
+
+		if (direction === 'left') index = self.watchObj.current - 1;
+		index         = currentRange(index, self.datas.length);
 
 		if (self.opts.animateType === 'slide') SlideAnimate(self, index);
 		if (self.opts.animateType === 'fade') FadeAnimate(self, index);
@@ -717,9 +757,6 @@
 				return this;
 			}
 
-			// 获取多余元素
-			var items = container.getElementsByClassName('carousel-item');
-
 			// 验证数组是否合法
 			var dataArr = options.datas || [];
 			if (typeof dataArr !== 'object' || !dataArr.length || dataArr.length <= 0) {
@@ -737,7 +774,6 @@
 
 			// 将值赋到参数对象中
 			options.container = container;
-			options.items = items;
 
 			// 进入工厂模式请求指定的轮播
 			var carousel = Factory(type, options);

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="carousel-container-1">
-		<div id="carousel-1"></div>
+		<div id="carousel-1">会自动清空容器内多余元素</div>
 		<div id="pager-container-1"></div>
 		<button id="prev-1">PREV - IN</button>
 		<button id="next-1">NEXT - IN</button>
@@ -20,16 +20,25 @@
 	<script type="text/javascript" src="carousel-pro.js"></script>
 	<script type="text/javascript">
 		window.onload = function () {
-			var datas = [
+			var datas_1 = [
 				{ src: './图像/01.jpg', alt: '01', background: '#efefef', href: 'http://www.google.com' },
 				{ src: './图像/02.jpg', alt: '02', background: '#efefef', href: 'http://www.google.com' },
 				{ src: './图像/03.jpg', alt: '03', background: '#efefef', href: 'http://www.google.com' },
 				{ src: './图像/04.jpg', alt: '04', background: '#efefef', href: 'http://www.google.com' },
 				{ src: './图像/05.jpg', alt: '05', background: '#efefef', href: 'http://www.google.com' }
 			];
+			var datas_2 = [
+				{ src: './图像/06.jpg', alt: '06', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/07.jpg', alt: '07', background: '#efefef', href: 'http://www.google.com' }
+			];
+			var datas_3 = [
+				{ src: './图像/08.jpg', alt: '08', background: '#efefef', href: 'http://www.google.com' }
+			];
 			var c_1 = Carousel.on('carousel-1', 'h', {
 				// 数据
-				datas: datas,
+				datas: datas_2,
+				// 是否是文本轮播
+				isText: false,
 				// 是否自动播放
 				isAuto: true,
 				// 初始显示图片下标
@@ -49,13 +58,15 @@
 				// 图片过度时间
 				animate: 1200,
 				// 过渡类型 [fade|slide]
-				animateType: 'fade',
+				animateType: 'slide',
 				// 起始淡入效果
 				delay: 300,
 				// 内部绑定按钮 - 上一个
 				prev: 'prev-1',
 				// 内部绑定按钮 - 下一个
-				next: 'next-1'
+				next: 'next-1',
+				// 轮播方向
+				direction: 'right'
 			});
 
 			c_1.prev('prev-out-1');
