@@ -28,15 +28,20 @@
 				{ src: './图像/05.jpg', alt: '05', background: '#efefef', href: 'http://www.google.com' }
 			];
 			var datas_2 = [
+				{ src: './图像/03.jpg', alt: '03', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/04.jpg', alt: '04', background: '#efefef', href: 'http://www.google.com' },
+				{ src: './图像/05.jpg', alt: '05', background: '#efefef', href: 'http://www.google.com' }
+			];
+			var datas_3 = [
 				{ src: './图像/06.jpg', alt: '06', background: '#efefef', href: 'http://www.google.com' },
 				{ src: './图像/07.jpg', alt: '07', background: '#efefef', href: 'http://www.google.com' }
 			];
-			var datas_3 = [
-				{ src: './图像/08.jpg', alt: '08', background: '#efefef', href: 'http://www.google.com' }
+			var datas_4 = [
+				{ src: './图像/07.jpg', alt: '08', background: '#efefef', href: 'http://www.google.com' }
 			];
 			var c_1 = Carousel.on('carousel-1', 'h', {
 				// 数据
-				datas: datas_2,
+				datas: datas_3,
 				// 是否是文本轮播
 				isText: false,
 				// 是否自动播放
@@ -47,8 +52,24 @@
 				pager: 'pager-container-1',
 				// 分页配置属性
 				pagerCon: {
-					active: 'green',
-					event: 'mouseover'
+					active: 'url(./图像/01.jpg)',
+					// mouseover|mouseenter事件时 如果想要避免出现闪烁
+					// 请缩短animate时间
+					event: 'mouseenter',
+					// 分页是否具有控制力
+					ctrl: true,
+					// 分页事件触发延时 ms
+					delay: 30
+				},
+				// 分页样式
+				pagerStyle: {
+					display: 'inline-block',
+					background: '#ddd',
+					width: '30px',
+					height: '30px',
+					borderRadius: '50%',
+					margin: '10px 4px',
+					cursor: 'pointer'
 				},
 				// 首尾补充图片个数 [1, datas.length]
 				overCount: 2,
@@ -66,7 +87,9 @@
 				// 内部绑定按钮 - 下一个
 				next: 'next-1',
 				// 轮播方向
-				direction: 'right'
+				direction: 'right',
+				// 自定义内容
+				custom: ['<h1>Hello world 1</h1>', '<h2>Hello world 2</h2>', '<h3>Hello world 3</h3>', '<h4>Hello world 4</h4>', '<h5>Hello world 5</h5>', '<input type="text" value="123">', '<input type="password" value="456">']
 			});
 
 			c_1.prev('prev-out-1');

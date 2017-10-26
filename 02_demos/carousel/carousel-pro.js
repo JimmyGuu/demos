@@ -58,17 +58,21 @@
 		obj.current > obj.datas.length - 1 ? obj.current = obj.datas.length - 1 : '';
 		// 分页容器id
 		obj.isPager     = options.pager;
-		// 分页是否具有控制功能
-		obj.pagerCtrl   = options.pagerCtrl === undefined ? true : options.pagerCtrl;
 		// 分页配置属性
 		obj.pagerCon    = options.pagerCon ? options.pagerCon = {
+			// 分页当前页背景
 			active: options.pagerCon.active || '#ff5f00',
+			// 分页事件类型
 			event: options.pagerCon.event || 'click',
-			delay: options.pagerCon.delay || 600
+			// 分页事件延时
+			delay: options.pagerCon.delay || 30,
+			// 分页是否具有控制功能
+			ctrl: options.pagerCon.ctrl === undefined ? true : options.pagerCon.ctrl
 		} : {
 			active: '#ff5f00',
 			event: 'click',
-			delay: 600
+			delay: 600,
+			ctrl: true
 		}
 		// 分页样式
 		obj.pagerStyle  = options.pagerStyle ? options.pagerStyle = {
@@ -132,6 +136,10 @@
 		obj.itemClassName       = options.itemClassName || 'carousel-item';
 		// 轮播元素(用于清空)
 		obj.items               = obj.container.getElementsByClassName(obj.itemClassName);
+		// 自定义内容放在图片上
+		obj.custom              = options.custom ||  '';
+		// 遮罩层样式
+		obj.maskBackground      = options.maskBackground || 'rgba(0, 0, 0, .5)';
 
 
 		return obj;
@@ -168,6 +176,15 @@
        	}
    	}
 
+   	// 类的继承通用方法
+   	var extend = function (Child, Parent) {
+　　　　var F = function () {};
+　　　　F.prototype = Parent.prototype;
+　　　　Child.prototype = new F();
+　　　　Child.prototype.constructor = Child;
+　　　　Child.uber = Parent.prototype;
+　　}
+
 	// 清除轮播容器内多余的元素
 	// @param {object} container 轮播容器
 	// @param {array}  items     多余轮播元素 .itemClassName
@@ -179,37 +196,56 @@
 	}
 
 	// 动画效果 基类
-	var Animation = function (self, index) {
+	var Animation = function (self) {
+		var _this        = this;
 		var crt          = self.watchObj.current;
 		var datas        = self.datas;
 		var direction    = self.opts.direction;
 		this.box         = self.container;
 		this.speed       = self.opts.animate;
-		this.realLeftLen = self._initLeft - self._multiple * (index);
+		this.realLeftLen = self._initLeft - self._multiple * (this.index);
 		this.leftLen     = this.realLeftLen;
 		this.items       = self.container.childNodes;
-		index            = parseInt(index);
+		this.masks       = self.container.getElementsByClassName(self.opts.itemClassName + '-mask');
+		this.overCount   = self.opts.overCount;
+		this.datasLen    = self.datas.length;
+		index            = parseInt(this.index);
 
-		if (datas.length >= 3) {
-			if (crt === 0 && index === datas.length - 1) {
-				// 当前为第一个 将要切换的为最后一个
-				// 即为从第一个向最后一个切换
-				this.leftLen = self.left + self._multiple;
-			} else if (crt === datas.length - 1 && index === 0) {
-				// 即为从最后一个向第一个切换
-				this.leftLen = self.left - self._multiple;
+		var compotedLeftLen = function () {
+			if (datas.length < 3) {
+				// 轮播长度为 [1,2]时
+				if (direction === 'right') {
+					_this.isPrev === true ? _this.leftLen = self.left + self._multiple : _this.leftLen = self.left - self._multiple;
+				} else if (direction === 'left') {
+					_this.isPrev === true ? _this.leftLen = self.left - self._multiple : _this.leftLen = self.left + self._multiple;
+				}
 			}
-		} else if (datas.length === 2) {
-			if (direction === 'right' && crt === 1 && index === 0) {
-				this.leftLen = self.left - self._multiple;
-			} else if (direction === 'left' && crt === 0 && index === 1) {
-				this.leftLen = self.left + self._multiple;
-			}
-		} else if (datas.length === 1) {
-			if (direction === 'right') {
-				this.leftLen = self.left - self._multiple;
-			} else if (direction === 'left') {
-				this.leftLen = self.left + self._multiple;
+		}
+
+		if (crt === 0 && index === datas.length - 1) {
+			// 当前为第一个 将要切换的为最后一个
+			// 即为从第一个向最后一个切换
+			this.leftLen = self.left + self._multiple;
+			compotedLeftLen();
+		} else if (crt === datas.length - 1 && index === 0) {
+			// 即为从最后一个向第一个切换
+			this.leftLen = self.left - self._multiple;
+			compotedLeftLen();
+		}
+
+	}
+	Animation.prototype = {
+		setMask: function (self) {
+			for(var i = 0; i < this.masks.length; i++) {
+				this.masks[i].style.transitionDuration = this.speed + 'ms';
+				this.masks[i].style.background         = self.opts.maskBackground;
+				if (self.datas.length > 3) {
+					if ((this.index === i + this.overCount + 1 && i < this.overCount) || this.index === i - this.overCount - this.datasLen || (this.index === i - this.overCount && i < this.overCount + this.datasLen)) {
+						this.masks[i].style.background = 'rgba(0, 0, 0, 0)';
+					}
+				} else {
+
+				}
 			}
 		}
 	}
@@ -217,15 +253,22 @@
 	// 滑动效果
 	// @param  {Object} self  轮播类 this 指针
 	// @param  {Number} index 将要改变到的下标(相对于原始数组而言)
+	// @param  {Bool}   isPrev 是否是向前 必须为 true 时为确定条件
 	// @return {void}
-	var SlideAnimate = function (self, index) {
-		Animation.call(this, self, index);
+	var SlideAnimate = function (self, index, isPrev) {
+		this.index  = index;
+		this.isPrev = isPrev;
+
+		Animation.call(this, self);
+		SlideAnimate.prototype = new Animation(self, index, isPrev);
 
 		var _this = this;
 
 		this.box.style.transitionDuration       = this.speed + 'ms';
 		this.box.style.transitionTimingFunction = self.opts.slideTimingFunction;
 		this.box.style.transform                = 'translate3d(' + this.leftLen + '%, 0, 0)';
+
+		this.setMask(self);
 
 		// 监听动画事件完成
 		var transition = transitionEvent();
@@ -241,20 +284,27 @@
 			}
 			_this.items[self.opts.overCount + index].className = self.opts.itemClassName + ' ' + self.opts.itemClassName + '-active';
 	   	});
+
 	}
+
+	extend(SlideAnimate, Animation);
 
 	// 淡入淡出效果
 	// @param  {Object} self  轮播类 this 指针
 	// @param  {Number} index 将要改变到的下标(相对于原始数组而言)
 	// @return {void}
 	var FadeAnimate = function (self, index) {
-		Animation.call(this, self, index);
+		this.index = index;
+
+		Animation.call(this, self);
 
 		var _this = this;
 		var speed = this.speed / 3;
 
 		this.box.style.transition = 'opacity ' + (speed * 1 + 'ms ') + 'ease-out';
 		this.box.style.opacity = 0.1;
+
+		this.setMask(self);
 
 		// 监听动画事件完成
 		var transition = transitionEvent();
@@ -274,6 +324,8 @@
 			_this.items[self.opts.overCount + index].className = self.opts.itemClassName + ' ' + self.opts.itemClassName + '-active';
 		});
 	}
+
+	extend(FadeAnimate, Animation);
 
 	// 轮播容器处理
 	// @param {object} container 轮播容器
@@ -312,10 +364,12 @@
 		var classname = self.opts.itemClassName;
 		var current   = self.watchObj.current;
 		var overCount = self.opts.overCount;
+		var datasLen  = self.datas.length;
 		var href      = opt.href || 'javascript: void(0);';
 		var bg        = opt.background || self.opts.background;
 		var item      = document.createElement('a');
 		var img       = document.createElement('img');
+		var mask      = document.createElement('div');
 		var width     = 100 / self.renderDatas.length + '%';
 
 		item.className        = classname;
@@ -327,6 +381,8 @@
 		item.style.float      = 'left';
 		item.style.height     = '100%';
 		item.style.border     = '0';
+		item.style.position   = 'relative';
+		item.style.color      = '#000';
 
 		img.style.width  = self.opts.imgWidth;
 		img.style.height = self.opts.imgHeight;
@@ -347,7 +403,32 @@
 			}
 		}
 
+		// 遮罩层样式
+		mask.style.background = self.opts.maskBackground;
+		mask.className = classname + '-mask';
+		mask.style.position = 'absolute';
+		mask.style.width = '100%';
+		mask.style.height = '100%';
+		mask.style.left = '0';
+		mask.style.top = '0';
+		mask.style.zIndex = '1';
+
+		// 添加自定义内容
+		if (typeof self.opts.custom === 'string') {
+			// 如果自定义内容为一个字符串 则将所有元素都设置为一样
+			mask.innerHTML = self.opts.custom;
+		} else if (typeof self.opts.custom === 'object' && self.opts.custom.length) {
+			// 如果自定义内容为一个数组 则按照数组顺序为元素设置不同内容
+			for (var i = 0; i < self.opts.custom.length; i++) {
+				if ((i === index + overCount + 1 && index < overCount) || i === index - overCount - datasLen || (i === index - overCount && index < overCount + datasLen)) {
+					mask.innerHTML = self.opts.custom[i];
+				}
+			}
+		}
+		current === (index - overCount) ? mask.style.background = 'rgba(0, 0, 0, 0)' : '';
+
 		item.appendChild(img);
+		item.appendChild(mask);
 
 		return item;
 	}
@@ -394,8 +475,8 @@
 		if (direction === 'left') index = self.watchObj.current + 1;
 		index         = currentRange(index, self.datas.length);
 
-		if (self.opts.animateType === 'slide') SlideAnimate(self, index);
-		if (self.opts.animateType === 'fade') FadeAnimate(self, index);
+		if (self.opts.animateType === 'slide') new SlideAnimate(self, index, true);
+		if (self.opts.animateType === 'fade') new FadeAnimate(self, index);
 	}
 
 	// 下一个
@@ -406,8 +487,8 @@
 		if (direction === 'left') index = self.watchObj.current - 1;
 		index         = currentRange(index, self.datas.length);
 
-		if (self.opts.animateType === 'slide') SlideAnimate(self, index);
-		if (self.opts.animateType === 'fade') FadeAnimate(self, index);
+		if (self.opts.animateType === 'slide') new SlideAnimate(self, index);
+		if (self.opts.animateType === 'fade') new FadeAnimate(self, index);
 	}
 
 	// 自动播放
@@ -457,7 +538,7 @@
 		var animate     = self.opts.animate;
 		var animateType = self.opts.animateType;
 		var arr         = self.datas;
-		var pagerCtrl   = self.opts.pagerCtrl;
+		var pagerCtrl   = self.opts.pagerCon.ctrl;
 		var active      = self.opts.pagerCon.active;
 		var pagerEvent  = self.opts.pagerCon.event;
 		var pagerDelay  = self.opts.pagerCon.delay;
@@ -470,17 +551,14 @@
 			else id = e.target.dataset.id;
 			var index = parseInt(id);
 
-			// 重置计数器
-			changeResetPlay(self);
-
 			var pagerSiblings = e.target.parentNode.childNodes;
 			for (var i = 0; i < pagerSiblings.length; i++) {
 				pagerSiblings[i].style.background = pagerStyle.background;
 			}
 			e.target.style.background = self.opts.pagerCon.active;
 
-			if (animateType === 'slide') SlideAnimate(self, index);
-			if (animateType === 'fade') FadeAnimate(self, index);
+			if (animateType === 'slide') new SlideAnimate(self, index);
+			if (animateType === 'fade') new FadeAnimate(self, index);
 		}
 
 		// 循环原始数组 一图对应一分页
@@ -499,13 +577,23 @@
 			else span.dataset.id          = i;
 
 			// 初始化样式
-			current === i ? span.style.backgroundColor = active : '';
+			current === i ? span.style.background = active : '';
 
 			// 绑定分页控制事件
 			var timer;
-			if (pagerCtrl) span.addEventListener(pagerEvent, function (e) {
-				change(current, e);
-			});
+			if (pagerCtrl) {
+				span.addEventListener(pagerEvent, function (e) {
+					timer = setTimeout(function () {
+						// 重置计数器
+						changeResetPlay(self);
+						change(current, e);
+					}, pagerDelay);
+				});
+
+				span.addEventListener('mouseout', function () {
+					clearTimeout(timer);
+				});
+			}
 
 			// 将分页元素添加到分页容器
 			pagerContainer.appendChild(span);
@@ -524,9 +612,9 @@
 		var itemsPager = pagerContainer.childNodes;
 
 		for (var i = 0;i < itemsPager.length; i++) {
-			itemsPager[i].style.backgroundColor = normal;
+			itemsPager[i].style.background = normal;
 			if (self.watchObj.current === i) {
-				itemsPager[i].style.backgroundColor = active;
+				itemsPager[i].style.background = active;
 			}
 		}
 	}
