@@ -138,8 +138,16 @@
 		obj.items               = obj.container.getElementsByClassName(obj.itemClassName);
 		// 自定义内容放在图片上
 		obj.custom              = options.custom ||  '';
-		// 遮罩层样式
-		obj.maskBackground      = options.maskBackground || 'rgba(0, 0, 0, .5)';
+		// 遮罩层配置属性
+		obj.maskCon             = options.maskCon ? options.maskCon = {
+			background: obj.maskCon.background || 'rgba(0, 0, 0, .5)',
+			ctrl: obj.maskCon.ctrl === undefined ? true : obj.maskCon.ctrl
+		} : {
+			// 遮罩层背景
+			background: 'rgba(0, 0, 0, .5)',
+			// 是否具有切换功能
+			ctrl: true
+		}
 
 
 		return obj;
@@ -185,6 +193,21 @@
 　　　　Child.uber = Parent.prototype;
 　　}
 
+	// 绑定事件
+	var bindEvent = function (self, opt) {
+		opt = opt || {};
+		opt.node.addEventListener(opt.event, function (e) {
+			if (opt.stop) {
+				// 阻止子元素触发父元素的事件
+				if (e.target === this) {
+					opt.fn(self);
+				}
+			} else {
+				opt.fn(self);
+			}
+		});
+	}
+
 	// 清除轮播容器内多余的元素
 	// @param {object} container 轮播容器
 	// @param {array}  items     多余轮播元素 .itemClassName
@@ -207,6 +230,7 @@
 		this.leftLen     = this.realLeftLen;
 		this.items       = self.container.childNodes;
 		this.masks       = self.container.getElementsByClassName(self.opts.itemClassName + '-mask');
+		this.links       = self.container.getElementsByClassName(self.opts.itemClassName + '-link');
 		this.overCount   = self.opts.overCount;
 		this.datasLen    = self.datas.length;
 		index            = parseInt(this.index);
@@ -235,17 +259,37 @@
 
 	}
 	Animation.prototype = {
-		setMask: function (self) {
+		setShow: function (self) {
+			if (!self.opts.maskCon.ctrl) return;
 			for(var i = 0; i < this.masks.length; i++) {
 				this.masks[i].style.transitionDuration = this.speed + 'ms';
-				this.masks[i].style.background         = self.opts.maskBackground;
-				if (self.datas.length > 3) {
-					if ((this.index === i + this.overCount + 1 && i < this.overCount) || this.index === i - this.overCount - this.datasLen || (this.index === i - this.overCount && i < this.overCount + this.datasLen)) {
+				this.masks[i].style.background         = self.opts.maskCon.background;
+				this.links[i].style.display            = 'none';
+				if (self.datas.length > 1) {
+					if ((this.index === this.datasLen - this.overCount + i && i < this.overCount) || this.index === i - this.overCount - this.datasLen || (this.index === i - this.overCount && i < this.overCount + this.datasLen)) {
 						this.masks[i].style.background = 'rgba(0, 0, 0, 0)';
+						this.links[i].style.display    = 'block';
 					}
 				} else {
-
+					this.masks[2].style.background = 'rgba(0, 0, 0, 0)';
+					this.masks[0].style.background = 'rgba(0, 0, 0, 0)';
+					this.links[2].style.display    = 'block';
+					this.links[0].style.display    = 'block';
 				}
+			}
+		},
+		setSingleItemShow: function (self) {
+			if (!self.opts.maskCon.ctrl) return;
+			if (self.datas.length === 1) {
+				this.masks[0].style.transitionDuration = 0 + 'ms';
+				this.masks[1].style.transitionDuration = 0 + 'ms';
+				this.masks[2].style.transitionDuration = 0 + 'ms';
+				this.masks[0].style.background = self.opts.maskCon.background;
+				this.masks[1].style.background = 'rgba(0, 0, 0, 0)';
+				this.masks[2].style.background = self.opts.maskCon.background;
+				this.links[0].style.display    = 'none';
+				this.links[1].style.display    = 'block';
+				this.links[2].style.display    = 'none';
 			}
 		}
 	}
@@ -268,7 +312,7 @@
 		this.box.style.transitionTimingFunction = self.opts.slideTimingFunction;
 		this.box.style.transform                = 'translate3d(' + this.leftLen + '%, 0, 0)';
 
-		this.setMask(self);
+		this.setShow(self);
 
 		// 监听动画事件完成
 		var transition = transitionEvent();
@@ -277,6 +321,7 @@
 			_this.box.removeEventListener(transition, arguments.callee, false);
 			_this.box.style.transitionDuration = '0ms';
 			_this.box.style.transform          = 'translate3d(' + _this.realLeftLen + '%, 0, 0)';
+			_this.setSingleItemShow(self);
 			self.left                          = _this.realLeftLen;
 			self.watchObj.current              = index;
 			for (var i = 0; i < _this.items.length; i++) {
@@ -304,7 +349,7 @@
 		this.box.style.transition = 'opacity ' + (speed * 1 + 'ms ') + 'ease-out';
 		this.box.style.opacity = 0.1;
 
-		this.setMask(self);
+		this.setShow(self);
 
 		// 监听动画事件完成
 		var transition = transitionEvent();
@@ -315,6 +360,7 @@
 			_this.box.style.transform = 'translate3d(' + _this.realLeftLen + '%, 0, 0)';
 
 			_this.box.style.opacity = 1;
+			_this.setSingleItemShow(self);
 
 			self.left             = _this.realLeftLen;
 			self.watchObj.current = index;
@@ -367,22 +413,23 @@
 		var datasLen  = self.datas.length;
 		var href      = opt.href || 'javascript: void(0);';
 		var bg        = opt.background || self.opts.background;
-		var item      = document.createElement('a');
+		var item      = document.createElement('div');
 		var img       = document.createElement('img');
 		var mask      = document.createElement('div');
+		var link      = document.createElement('a');
 		var width     = 100 / self.renderDatas.length + '%';
 
 		item.className        = classname;
 		current === (index - overCount) ? item.className = classname + ' ' + classname + '-active' : '';
 		item.style.width      = width;
 		item.style.background = bg;
-		item.href             = href;
 		item.style.display    = 'block';
 		item.style.float      = 'left';
 		item.style.height     = '100%';
 		item.style.border     = '0';
 		item.style.position   = 'relative';
 		item.style.color      = '#000';
+		item.style.cursor     = 'pointer';
 
 		img.style.width  = self.opts.imgWidth;
 		img.style.height = self.opts.imgHeight;
@@ -404,14 +451,14 @@
 		}
 
 		// 遮罩层样式
-		mask.style.background = self.opts.maskBackground;
-		mask.className = classname + '-mask';
-		mask.style.position = 'absolute';
-		mask.style.width = '100%';
-		mask.style.height = '100%';
-		mask.style.left = '0';
-		mask.style.top = '0';
-		mask.style.zIndex = '1';
+		mask.style.background = self.opts.maskCon.background;
+		mask.className        = classname + '-mask';
+		mask.style.position   = 'absolute';
+		mask.style.width      = '100%';
+		mask.style.height     = '100%';
+		mask.style.left       = '0';
+		mask.style.top        = '0';
+		mask.style.zIndex     = '1';
 
 		// 添加自定义内容
 		if (typeof self.opts.custom === 'string') {
@@ -420,15 +467,23 @@
 		} else if (typeof self.opts.custom === 'object' && self.opts.custom.length) {
 			// 如果自定义内容为一个数组 则按照数组顺序为元素设置不同内容
 			for (var i = 0; i < self.opts.custom.length; i++) {
-				if ((i === index + overCount + 1 && index < overCount) || i === index - overCount - datasLen || (i === index - overCount && index < overCount + datasLen)) {
+				if ((i === datasLen - overCount + index && index < overCount) || i === index - overCount - datasLen || (i === index - overCount && index < overCount + datasLen)) {
 					mask.innerHTML = self.opts.custom[i];
 				}
 			}
 		}
 		current === (index - overCount) ? mask.style.background = 'rgba(0, 0, 0, 0)' : '';
 
+		// 添加链接
+		link.className     = classname + '-link';
+		link.style.cssText = 'display: none;position: absolute;width: 100%;height: 100%;left: 0; top: 0;z-index: 2;opacity: 0;background: rgba(0, 0, 0, 0);';
+		if (!self.opts.maskCon.ctrl) link.style.display = 'block';
+		link.href          = href;
+		current === (index - overCount) ? link.style.display = 'block' : '';
+
 		item.appendChild(img);
 		item.appendChild(mask);
+		item.appendChild(link);
 
 		return item;
 	}
@@ -438,6 +493,8 @@
 	// @return {void}
 	var render = function (self) {
 		var renderDatas = self.renderDatas;
+		var masks       = self.container.getElementsByClassName(self.opts.itemClassName + '-mask');
+		var crt         = self.watchObj.current;
 
 		clear(self.container, self.container.childNodes);
 		for (var i = 0; i < renderDatas.length; i++) {
@@ -453,6 +510,11 @@
 			}
 
 			self.container.appendChild(node);
+		}
+
+		// TODO 遮罩层添加控制功能
+		for (var i = 0; i < masks.length; i++) {
+			console.log()
 		}
 	}
 
