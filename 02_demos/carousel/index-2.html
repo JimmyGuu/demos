@@ -4,6 +4,14 @@
 	<title>Carousel - 2</title>
 	<style type="text/css">
 		.carousel-container-1 { width: 500px;padding: 0 100px;overflow: hidden; }
+		.carousel-container-2 { width: 500px;padding: 0 0px;overflow: hidden; }
+		.carousel-container-3 { width: 100%;padding: 0 0;overflow: hidden; }
+		.carousel-container-3 .wrapper { width: auto;padding: 0 33.3%;overflow: hidden; }
+		.carousel-container-4 { width: 100%;clear: both;overflow: hidden; }
+		.carousel-container-4 .carousel-box { float: left;width: 33.33%;overflow: hidden; }
+		.carousel-container-5 { width: 100%;clear: both;overflow: hidden; }
+		.carousel-container-5 .carousel-box { float: left;width: 33.33%;overflow: hidden; }
+		.carousel-item-mask { text-align: center;padding-top: 20%; }
 	</style>
 </head>
 <body>
@@ -16,6 +24,37 @@
 		<button id="stop-1">STOP</button>
 		<button id="prev-out-1">PREV - OUT</button>
 		<button id="next-out-1">NEXT - OUT</button>
+	</div>
+	<div class="carousel-container-2">
+		<div id="carousel-2"></div>
+		<button id="stop-2">STOP</button>
+		<button id="play-2">PLAY</button>
+	</div>
+	<div class="carousel-container-3">
+		<div class="wrapper">
+			<div id="carousel-3"></div>
+		</div>
+		<button id="prev-3">PREV</button>
+		<button id="next-3">NEXT</button>
+	</div>
+	<div class="carousel-container-4">
+		<div class="carousel-box">
+			<div id="carousel-4"></div>
+		</div>
+		<div class="carousel-box">
+			<div id="carousel-5"></div>
+		</div>
+		<div class="carousel-box">
+			<div id="carousel-8"></div>
+		</div>
+	</div>
+	<div class="carousel-container-4">
+		<div class="carousel-box">
+			<div id="carousel-6"></div>
+		</div>
+		<div class="carousel-box">
+			<div id="carousel-7"></div>
+		</div>
 	</div>
 	<script type="text/javascript" src="carousel-pro.js"></script>
 	<script type="text/javascript">
@@ -39,13 +78,33 @@
 			var datas_4 = [
 				{ src: './图像/07.jpg', alt: '08', background: '#efefef', href: 'http://www.google.com' }
 			];
+			var datas_5 = [
+				{ background: 'url(./图像/01.jpg) no-repeat center/cover', alt: '01', src: '你好', href: 'http://www.google.com' },
+				{ background: 'url(./图像/02.jpg) no-repeat center/cover', alt: '02', src: 'Hello World', href: 'http://www.sina.com' },
+				{ background: 'url(./图像/03.jpg) no-repeat center/cover', alt: '03', src: 'Olá Mundo', href: 'http://www.qq.com' },
+				{ background: 'url(./图像/04.jpg) no-repeat center/cover', alt: '04', src: 'Привет  мир ', href: 'http://www.baidu.com' },
+				{ background: 'url(./图像/05.jpg) no-repeat center/cover', alt: '05', src: '안녕하세요, 세계', href: 'http://www.taobao.com' }
+			];
+			var datas_6 = [
+				{ background: 'green no-repeat fixed', alt: '01', src: '你好', href: 'http://www.google.com' },
+				{ background: 'pink url(./图像/06.jpg) no-repeat center/cover', alt: '02', src: 'Hello World', href: 'http://www.sina.com' },
+				{ background: 'yellow no-repeat fixed', alt: '03', src: 'Olá Mundo', href: 'http://www.qq.com' },
+				{ background: 'orange url(./图像/07.jpg) no-repeat center/cover', alt: '04', src: 'Привет  мир ', href: 'http://www.baidu.com' },
+				{ background: 'purple no-repeat fixed', alt: '05', src: '안녕하세요, 세계', href: 'http://www.taobao.com' }
+			];
+			var datas_7 = [
+				'./图像/01.jpg', './图像/02.jpg', './图像/03.jpg'
+			];
+
+
+
 			var c_1 = Carousel.on('carousel-1', 'h', {
 				// 数据
 				datas: datas_1,
 				// 是否是文本轮播
 				isText: false,
 				// 是否自动播放
-				isAuto: true,
+				auto: false,
 				// 初始显示图片下标
 				index: 0,
 				// 分页容器
@@ -89,13 +148,101 @@
 				// 轮播方向
 				direction: 'right',
 				// 自定义内容
-				custom: ['<h1>Hello world 1</h1>', '<h2>Hello world 2</h2>', '<h3>Hello world 3</h3>', '<h4>Hello world 4</h4>', '<h5>Hello world 5</h5>', '<input type="text" value="123">', '<input type="password" value="456">']
+				custom: ['<h1>Hello world 1</h1>', '<h2>Hello world 2</h2>', '<h3>Hello world 3</h3>', '<h4>Hello world 4</h4>', '<h5>Hello world 5</h5>', '<input type="text" value="123">', '<input type="password" value="456">'],
+				//遮罩层配置属性
+				maskCon: {
+					// 遮罩层背景
+					background: 'rgba(0, 0, 0, .5)',
+					// 是否具有切换功能
+					ctrl: true,
+					// 遮罩部分(非当前显示轮播)链接功能是否激活
+					// true 为激活 即每一个轮播都可以直接点击跳转链接
+					link: false
+				}
 			});
 
 			c_1.prev('prev-out-1');
 			c_1.next('next-out-1');
 			c_1.stop('stop-1');
 			c_1.play('play-1');
+
+			var c_2 = Carousel.on('carousel-2', 'h', {
+				datas: datas_2,
+				animateType: 'fade',
+				delay: 600
+			});
+			c_2.stop('stop-2');
+			c_2.play('play-2');
+
+			var c_3 = Carousel.on('carousel-3', {
+				datas: datas_1,
+				overCount: 2,
+				height: 200,
+				delay: 900,
+				maskCon: {
+					background: 'rgba(0, 0, 0, .9)'
+				},
+			});
+			c_3.prev('prev-3');
+			c_3.next('next-3');
+
+			var c_4 = Carousel.on('carousel-4', {
+				datas: datas_3,
+				height: 200,
+				speed: 2000,
+				maskCon: {
+					background: 'rgba(0, 0, 0, 0)',
+					ctrl: false
+				},
+				hoverStop: false,
+				delay: 1200
+			});
+			var c_5 = Carousel.on('carousel-5', {
+				datas: datas_4,
+				height: 200,
+				direction: 'left',
+				maskCon: {
+					background: 'rgba(0, 0, 0, 0)',
+					ctrl: false
+				},
+				hoverStop: false,
+				delay: 1200
+			});
+
+			var c_8 = Carousel.on('carousel-8', {
+				datas: datas_7,
+				height: 200,
+				delay: 1200
+			});
+
+			var c_6 = Carousel.on('carousel-6', {
+				datas: datas_5,
+				isText: true,
+				overCount: 2,
+				height: 200,
+				maskCon: {
+					background: 'rgba(0, 0, 0, 0)',
+					ctrl: false
+				},
+				delay: 1500
+			});
+
+			var c_7 = Carousel.on('carousel-7', {
+				datas: datas_6,
+				isText: true,
+				textStyle: {
+					fontSize: '30px',
+					color: 'pink',
+					marginTop: '100px'
+				},
+				overCount: 2,
+				height: 200,
+				maskCon: {
+					background: 'rgba(0, 0, 0, 0)',
+					ctrl: false
+				},
+				delay: 1500
+			});
 		}
 	</script>
 </body>

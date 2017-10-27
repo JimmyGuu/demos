@@ -130,6 +130,8 @@
 		obj.hrefName    = options.hrefName || 'href';
 		// 如果输对象数组 且需要不同背景 请指定背景属性名称 default: background
 		obj.backgroundName      = options.backgroundName || 'background';
+		// 如果输对象数组 且需要不同文字样式 请指定文字样式属性名称 default: textStyle
+		obj.textStyleName       = options.textStyleName || 'textStyle';
 		// 滑动效果动画曲线
 		obj.slideTimingFunction = options.slideTimingFunction || 'ease';
 		// 轮播元素类名称
@@ -140,13 +142,17 @@
 		obj.custom              = options.custom ||  '';
 		// 遮罩层配置属性
 		obj.maskCon             = options.maskCon ? options.maskCon = {
-			background: obj.maskCon.background || 'rgba(0, 0, 0, .5)',
-			ctrl: obj.maskCon.ctrl === undefined ? true : obj.maskCon.ctrl
+			background: options.maskCon.background || 'rgba(0, 0, 0, .5)',
+			ctrl: options.maskCon.ctrl === undefined ? true : options.maskCon.ctrl,
+			link: options.maskCon.link === undefined ? false : options.maskCon.link
 		} : {
 			// 遮罩层背景
 			background: 'rgba(0, 0, 0, .5)',
 			// 是否具有切换功能
-			ctrl: true
+			ctrl: true,
+			// 遮罩部分(非当前显示轮播)链接功能是否激活
+			// true 为激活 即每一个轮播都可以直接点击跳转链接
+			link: false
 		}
 
 
@@ -190,8 +196,17 @@
 　　　　F.prototype = Parent.prototype;
 　　　　Child.prototype = new F();
 　　　　Child.prototype.constructor = Child;
-　　　　Child.uber = Parent.prototype;
+　　　　Child.uber = Parent.prototype; // uber 是某些人在模拟 class 时用来表示 super 的(因为super是关键字所以不能直接用)
 　　}
+
+	// 判断对象是否是DOM节点
+	var isDOM = ( typeof HTMLElement === 'object' ) ?
+                function (obj) {
+                    return obj instanceof HTMLElement;
+                } :
+                function (obj) {
+                    return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
+                }
 
 	// 绑定事件
 	var bindEvent = function (self, opt) {
@@ -218,6 +233,35 @@
 		}
 	}
 
+	// 遮罩层控制事件 仅支持上一个/下一个
+	var maskCtrl = function (self) {
+		var masks = self.container.getElementsByClassName(self.opts.itemClassName + '-mask');
+		var activeMaskIndex, eventType = 'click';
+		var ctrl = function (e) {
+			var _self = e.target;
+			if (_self.className.indexOf('active') > -1) return;
+			var activeMask = self.container.getElementsByClassName(self.opts.itemClassName + '-mask-active');
+			var click, active;
+			for (var i = 0; i < masks.length; i++) {
+				if (_self === masks[i]) click = i;
+				for (var j = 0; j < activeMask.length; j ++) {
+					// FIXME 可能会有BUG
+					if (activeMask[j] === masks[i] && i < self.opts.overCount + self.datas.length)
+					{
+						active = i
+					}
+				}
+			}
+
+			if (click > active) next(self);
+			if (click < active) prev(self);
+		}
+
+		for (var i = 0; i < masks.length; i++) {
+			masks[i].addEventListener(eventType, ctrl);
+		}
+	}
+
 	// 动画效果 基类
 	var Animation = function (self) {
 		var _this        = this;
@@ -233,6 +277,7 @@
 		this.links       = self.container.getElementsByClassName(self.opts.itemClassName + '-link');
 		this.overCount   = self.opts.overCount;
 		this.datasLen    = self.datas.length;
+		this.maskClass   = self.opts.itemClassName + '-mask';
 		index            = parseInt(this.index);
 
 		var compotedLeftLen = function () {
@@ -264,15 +309,19 @@
 			for(var i = 0; i < this.masks.length; i++) {
 				this.masks[i].style.transitionDuration = this.speed + 'ms';
 				this.masks[i].style.background         = self.opts.maskCon.background;
+				this.masks[i].className                = this.maskClass;
 				this.links[i].style.display            = 'none';
 				if (self.datas.length > 1) {
 					if ((this.index === this.datasLen - this.overCount + i && i < this.overCount) || this.index === i - this.overCount - this.datasLen || (this.index === i - this.overCount && i < this.overCount + this.datasLen)) {
 						this.masks[i].style.background = 'rgba(0, 0, 0, 0)';
+						this.masks[i].className        = this.maskClass + ' ' + this.maskClass + '-active';
 						this.links[i].style.display    = 'block';
 					}
 				} else {
 					this.masks[2].style.background = 'rgba(0, 0, 0, 0)';
 					this.masks[0].style.background = 'rgba(0, 0, 0, 0)';
+					this.masks[2].className        = this.maskClass + ' ' + this.maskClass + '-active';
+					this.masks[0].className        = this.maskClass + ' ' + this.maskClass + '-active';
 					this.links[2].style.display    = 'block';
 					this.links[0].style.display    = 'block';
 				}
@@ -287,6 +336,9 @@
 				this.masks[0].style.background = self.opts.maskCon.background;
 				this.masks[1].style.background = 'rgba(0, 0, 0, 0)';
 				this.masks[2].style.background = self.opts.maskCon.background;
+				this.masks[0].className        = this.maskClass;
+				this.masks[1].className        = this.maskClass + ' ' + this.maskClass + '-active';
+				this.masks[2].className        = this.maskClass;
 				this.links[0].style.display    = 'none';
 				this.links[1].style.display    = 'block';
 				this.links[2].style.display    = 'none';
@@ -406,7 +458,7 @@
 	// @return {object} item  轮播元素
 	var createItem = function (self, opt, index) {
 		var isText    = self.opts.isText;
-		var textStyle = self.opts.textStyle;
+		var textStyle = opt.textStyle || self.opts.textStyle;
 		var classname = self.opts.itemClassName;
 		var current   = self.watchObj.current;
 		var overCount = self.opts.overCount;
@@ -436,9 +488,10 @@
 		if (isText === true) {
 			// 如果是显示文字 此时src即为文字内容
 			img           = document.createElement('div');
+			img.className = 'carousel-content';
 			img.innerHTML = opt.src;
 			for(var style in textStyle) {
-				item.style[style] = textStyle[style];
+				img.style[style] = textStyle[style];
 			}
 		} else {
 			// 显示图片
@@ -450,7 +503,7 @@
 			}
 		}
 
-		// 遮罩层样式
+		// 遮罩层样式 TODO 样式可配置 参数同 参数统一化处理
 		mask.style.background = self.opts.maskCon.background;
 		mask.className        = classname + '-mask';
 		mask.style.position   = 'absolute';
@@ -473,11 +526,12 @@
 			}
 		}
 		current === (index - overCount) ? mask.style.background = 'rgba(0, 0, 0, 0)' : '';
+		current === (index - overCount) ? mask.className = classname + '-mask ' + classname + '-mask-active' : '';
 
 		// 添加链接
 		link.className     = classname + '-link';
 		link.style.cssText = 'display: none;position: absolute;width: 100%;height: 100%;left: 0; top: 0;z-index: 2;opacity: 0;background: rgba(0, 0, 0, 0);';
-		if (!self.opts.maskCon.ctrl) link.style.display = 'block';
+		if (self.opts.maskCon.link) link.style.display = 'block';
 		link.href          = href;
 		current === (index - overCount) ? link.style.display = 'block' : '';
 
@@ -493,7 +547,6 @@
 	// @return {void}
 	var render = function (self) {
 		var renderDatas = self.renderDatas;
-		var masks       = self.container.getElementsByClassName(self.opts.itemClassName + '-mask');
 		var crt         = self.watchObj.current;
 
 		clear(self.container, self.container.childNodes);
@@ -506,16 +559,15 @@
 				opt.src        = renderDatas[i][self.opts.imgName];
 				opt.href       = renderDatas[i][self.opts.hrefName];
 				opt.background = renderDatas[i][self.opts.backgroundName];
+				opt.textStyle  = renderDatas[i][self.opts.textStyleName];
 				node = createItem(self, opt, i);
 			}
 
 			self.container.appendChild(node);
 		}
 
-		// TODO 遮罩层添加控制功能
-		for (var i = 0; i < masks.length; i++) {
-			console.log()
-		}
+		// 遮罩层添加控制功能
+		if (self.opts.maskCon.ctrl) maskCtrl(self);
 	}
 
 	// 判断下标是否超出范围
@@ -707,9 +759,11 @@
 			console.warn(msg);
 			return;
 		}
+		var isdom = isDOM(b);
 
-
-		btn = document.getElementById(b) || document.getElementsByClassName(b)[0];
+		isdom ?
+		btn = b
+		: btn = document.getElementById(b) || document.getElementsByClassName(b)[0];
 		btn ?
 		btn.addEventListener('click', function () {
 			fn();
@@ -772,13 +826,21 @@
 		render(this);
 
 		// 初始化延时显示所有轮播
+		self.container.style.transition = 'opacity ' + 300 + 'ms ease-in';
 		var timer = setTimeout(function () {
-			self.container.style.transition = 'opacity ' + self.opts.delay + 'ms ease-in';
 			self.container.style.visibility = 'visible';
 			self.container.style.opacity    = '1';
 			clearTimeout(timer);
-		}, 0);
-		var clearTimer = setTimeout(function () { self.container.style.transition = '';clearTimeout(clearTimer); }, this.opts.delay);
+			var clearTimer = setTimeout(function () {
+				self.container.style.transition = '';
+				clearTimeout(clearTimer);
+			}, 300);
+			// 自动播放
+			if (self.opts.isAuto) {
+				autoPlay(self);
+			}
+		}, self.opts.delay);
+		// var clearTimer = setTimeout(function () {  }, this.opts.delay);
 
 		// 创建分页
 		var pagerContainer;
@@ -790,11 +852,6 @@
 		// 绑定上下按钮
 		this.prev(this.opts.prev);
 		this.next(this.opts.next);
-
-		// 自动播放
-		if (this.opts.isAuto) {
-			autoPlay(this);
-		}
 
 		// 鼠标悬浮停止
 		if (this.opts.hoverStop) {
@@ -892,6 +949,11 @@
 		on: function (target, type, options) {
 			this.errors = [];
 			options       = options || {};
+
+			if (arguments.length < 3) {
+				options  = type || {};
+				var type = 'h';
+			}
 
 			if (!target) {
 				var err = error('error', '请输入有效的容器id!', this.errors);
