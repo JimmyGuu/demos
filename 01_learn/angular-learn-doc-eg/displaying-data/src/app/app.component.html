@@ -12,3 +12,60 @@
 </ul>
 <p *ngIf="heroes.length > 3">There are many heroes!</p>
 
+<h3>HTML attribute 与 DOM property 的对比</h3>
+<p><strong>HTML attribute value指定了初始值；DOM value property 是当前值。</strong></p>
+<button (click)="getInputAttr()">获取 input 的 attribute 值 (<code>&lt;input type="text" value="Bob"&gt;</code>)</button>
+<input type="text" value="Bob" name="test-input" [(ngModel)]="inputVal">
+<span><code>input.getAttribute('value'): </code>{{ inputAttr }}</span> &nbsp;
+<span><code>input.property: </code>{{ inputVal }}</span>
+
+<h3>属性绑定还是插值表达式？</h3>
+<p><span>"{{ titles }}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="titles"></span>" is the <i>property bound</i> title.</p>
+
+<h3>内容安全</h3>
+<p [innerHTML]="scripts"></p>
+
+<h3>attribute 绑定</h3>
+<table border="1">
+  <!-- 设置 colspan=2 -->
+  <tr><td [attr.colspan]="1 + 1">1-2</td></tr>
+
+  <tr><td>5</td><td>6</td></tr>
+</table>
+
+<h3>CSS 类绑定</h3>
+<div class="bad curly special" [class]="badCurly">Bad curly</div>
+<!-- 用属性打开/关闭“special”类 -->
+<div [class.special]="isSpecial">The class binding is special</div>
+<!-- 绑定`class.special`优先级高于class属性 -->
+<div class="special" [class.special]="!isSpecial">This one is not so special</div>
+
+<h3>样式绑定</h3>
+<button [style.color]="isSpecial ? 'red': 'green'">Red</button>
+<button [style.font-size.em]="isSpecial ? 3 : 1" >Big</button>
+<button [style.font-size.%]="!isSpecial ? 150 : 50" >Small</button>
+
+
+<h3>$event 和事件处理语句</h3>
+<input [value]="currentHero.name"
+       (input)="currentHero.name=$event.target.value" >
+<span><code>currentHero.name</code> 的值: {{ currentHero.name }}</span>
+
+
+
+<h3>双向数据绑定 ( [(...)] )</h3>
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+<!-- 等价于下面的写法 -->
+<!-- <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer> -->
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+
+
+
+
+
+
+
+
+<br *ngFor="let item of range(30)">
+
