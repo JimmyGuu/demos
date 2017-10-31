@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Hero } from './hero';
 
 @Component({
@@ -57,11 +58,88 @@ export class AppComponent implements OnInit {
 	getCurrentHero() {
 		this.currentHero = this.heroes[0]; // 假设 this.heroes = [new Hero(1, 'Windstorm')]
 	}
-
-
 	fontSizePx: number = 12;
+
+	// NgClass
+	canSave: boolean = true;
+	isUnchanged: boolean = false;
+	currentClasses: {};
+	setCurrentClasses() {
+		this.currentClasses = {
+			'saveable': this.canSave,
+			'modified': !this.isUnchanged,
+			'special': this.isSpecial
+		}
+	}
+
+	// ngStyle
+	currentStyles: {};
+	setCurrentStyles() {
+		this.currentStyles = {
+			'font-style': this.canSave ? 'italic' : 'normal',
+			'font-weight': !this.isUnchanged ? 'bold' : 'normal',
+			'font-size': this.isSpecial ? '24px' : '12px'
+		}
+	}
+
+	// ngModel
+	setUppercaseName(name) {
+		this.currentHero.name = name.toUpperCase();
+	}
+
+	// ngFor
+	withTrackedCount: number = 0;
+	withoutTrackedCount: number = 0;
+	counts: number = 0;
+	newHeroes: Array<Hero> = [];
+
+	trackByHeroes(index: number, hero: Hero): number {
+		return hero.id;
+	}
+
+	resetHeroes(): void {
+		let oldHeores: Array<Hero> = [];
+		this.newHeroes.forEach(hero => {
+			oldHeores.push(hero);
+		});
+		this.newHeroes.length = 0;
+		oldHeores.forEach((hero, index) => {
+			this.counts++;
+			let newHero: Hero = new Hero(hero.id, hero.name);
+			this.newHeroes.push(newHero);
+		});
+	}
+	changeIds(): void {
+		this.newHeroes.length = 0;
+		this.heroes.forEach((hero, index) => {
+			this.counts++;
+			let newHero: Hero = new Hero(+(this.counts + '' + (index + 1)), hero.name);
+			this.newHeroes.push(newHero);
+		});
+	}
+	clearCounts(): void {
+		this.counts = 0;
+		this.newHeroes.forEach((hero, index) => {
+			let newHero: Hero = new Hero(+(this.counts + '' + index), hero.name);
+			hero.id = newHero.id;
+		});
+
+		this.withTrackedCount = 0;
+		this.withoutTrackedCount = 0;
+	}
 
 	ngOnInit(): void {
 		this.getCurrentHero();
+
+		// 初始化 currentClasses
+		this.setCurrentClasses();
+
+		// 初始化 CurrentStyles
+		this.setCurrentStyles();
+
+		// 初始化newHeroes
+		this.heroes.forEach(hero => {
+			this.newHeroes.push(hero);
+		});
 	}
 }

@@ -1,3 +1,7 @@
 strong { color: red; }
 code, .code { font-family: Consolas;color: #666; }
 button, .btn { background-color: #efefef;border: 1px solid #ddd;border-radius: 4px;padding: 4px 12px;cursor: pointer; }
+.special { font-family: 楷体; color: #ff5f00; }
+
+.ng-for-tranck { padding: 5px 10px;border: 1px solid #333;border-radius: 4px;margin-bottom: 10px; }
+.ng-for-h { margin: 0 5px; }

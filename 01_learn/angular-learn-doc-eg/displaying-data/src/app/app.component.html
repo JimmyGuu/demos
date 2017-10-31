@@ -62,6 +62,68 @@
 
 
 
+<h2>属性型指令</h2>
+<h3>NgClass 指令</h3>
+CSS类绑定是添加或删除<i>单个类</i>的最佳途径：
+<div [class.special]="isSpecial">CSS类绑定</div>
+NgClass 指令：
+<div [ngClass]="currentClasses">This div is initially saveable, unchanged, and special</div>
+
+
+<h3>NgStyle 指令</h3>
+样式绑定是设置单一样式值得简单方式：
+<div [style.font-size]="isSpecial ? 'x-large' : 'smaller'">
+  This div is x-large or smaller.
+</div>
+NgStyle指令是同时设置多个内联样式的更好选择：
+<div [ngStyle]="currentStyles">
+  This div is initially by ngStyle.
+</div>
+
+
+
+<h3>NgModel 指令</h3>
+<p><code>ngModel</code>可以通过之前的属性绑定和事件绑定实现：</p>
+<input [value]="currentHero.name"
+       (input)="currentHero.name=$event.target.value">
+<span>INPUTS: {{ currentHero.name }}</span>
+<p><code>ngModel</code>的展开实现(自己的输入(<code>ngModel</code>)属性和输出(<code>ngModelChange</code>)属性)：</p>
+<input [ngModel]="currentHero.name"
+       (ngModelChange)="currentHero.name=$event">
+<span>INPUTS: {{ currentHero.name }}</span>
+<p><code>ngModel</code>的合并实现方法是 <code>[(ngModel)]</code>：</p>
+<input [(ngModel)]="currentHero.name">
+<span>INPUTS: {{ currentHero.name }}</span>
+<p><code>[(ngModel)]</code>只能设置数据绑定属性，如果有特别需求也可以展开形式：</p>
+<input [ngModel]="currentHero.name"
+       (ngModelChange)="setUppercaseName($event)">
+<span>INPUTS: {{ currentHero.name }}</span>
+
+
+<h2>结构型指令</h2>
+<h3>NgIf 指令</h3>
+<div *ngIf="currentHero">Hello, {{ currentHero.name }}</div>
+<div *ngIf="nullHero">Hello, {{ nullHero.name }}</div>
+
+
+<h3>NgFor 指令</h3>
+<div *ngFor="let hero of heroes;let i = index">{{ i }} - {{hero.id + ': ' + hero.name }}</div>
+<code>trackBy</code>
+<div>
+  <button (click)="resetHeroes()">Reset heroes</button>
+  <button (click)="changeIds()">Change ids</button>
+  <button (click)="clearCounts()">Clear counts</button>
+</div>
+<h5 class="ng-for-h">without trackBy</h5>
+<div class="ng-for-tranck">
+  <div *ngFor="let hero of newHeroes; let i = index">({{ hero.id }}) {{ hero.name }}</div>
+  <div>Hero DOM elements change #{{ withoutTrackedCount }} without trackBy.</div>
+</div>
+<h5 class="ng-for-h">with trackBy</h5>
+<div class="ng-for-tranck">
+  <div *ngFor="let hero of newHeroes; trackBy: trackByHeroes">({{ hero.id }}) {{ hero.name }}</div>
+  <div>Hero DOM elements change #{{ withTrackedCount }} with trackBy.</div>
+</div>
 
 
 
