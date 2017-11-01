@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SizerComponent } from './sizer.component';
+import { NgForTrack } from './ng-for-track.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		SizerComponent
+		SizerComponent,
+		NgForTrack
 	],
 	imports: [
 		BrowserModule,

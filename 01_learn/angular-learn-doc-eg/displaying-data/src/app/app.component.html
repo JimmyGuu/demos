@@ -110,20 +110,23 @@ NgStyle指令是同时设置多个内联样式的更好选择：
 <div *ngFor="let hero of heroes;let i = index">{{ i }} - {{hero.id + ': ' + hero.name }}</div>
 <code>trackBy</code>
 <div>
-  <button (click)="resetHeroes()">Reset heroes</button>
-  <button (click)="changeIds()">Change ids</button>
-  <button (click)="clearCounts()">Clear counts</button>
+  <button (click)="child.resetHeroes()">Reset heroes</button>
+  <button (click)="child.changeIds()">Change ids</button>
+  <button (click)="child.clearCounts()">Clear counts</button>
 </div>
-<h5 class="ng-for-h">without trackBy</h5>
+<!-- <h5 class="ng-for-h">without trackBy</h5>
 <div class="ng-for-tranck">
   <div *ngFor="let hero of newHeroes; let i = index">({{ hero.id }}) {{ hero.name }}</div>
-  <div>Hero DOM elements change #{{ withoutTrackedCount }} without trackBy.</div>
+  <div *ngIf="withoutTrackedCount">Hero DOM elements change #{{ withoutTrackedCount }} without trackBy.</div>
 </div>
 <h5 class="ng-for-h">with trackBy</h5>
 <div class="ng-for-tranck">
   <div *ngFor="let hero of newHeroes; trackBy: trackByHeroes">({{ hero.id }}) {{ hero.name }}</div>
-  <div>Hero DOM elements change #{{ withTrackedCount }} with trackBy.</div>
-</div>
+  <div *ngIf="withTrackedCount">Hero DOM elements change #{{ withTrackedCount }} with trackBy.</div>
+</div> -->
+
+<ng-for-track [isTrackBy]="false" [heroes]="heroes"></ng-for-track>
+<ng-for-track [isTrackBy]="true" [heroes]="heroes"></ng-for-track>
 
 
 

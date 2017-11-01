@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Hero } from './hero';
+import { NgForTrack } from './ng-for-track.component';
 
 @Component({
 	// 自定义标签的名称
@@ -98,34 +99,19 @@ export class AppComponent implements OnInit {
 	}
 
 	resetHeroes(): void {
-		let oldHeores: Array<Hero> = [];
-		this.newHeroes.forEach(hero => {
-			oldHeores.push(hero);
-		});
-		this.newHeroes.length = 0;
-		oldHeores.forEach((hero, index) => {
-			this.counts++;
-			let newHero: Hero = new Hero(hero.id, hero.name);
-			this.newHeroes.push(newHero);
-		});
+
 	}
 	changeIds(): void {
-		this.newHeroes.length = 0;
-		this.heroes.forEach((hero, index) => {
-			this.counts++;
-			let newHero: Hero = new Hero(+(this.counts + '' + (index + 1)), hero.name);
-			this.newHeroes.push(newHero);
-		});
+
 	}
 	clearCounts(): void {
-		this.counts = 0;
-		this.newHeroes.forEach((hero, index) => {
-			let newHero: Hero = new Hero(+(this.counts + '' + index), hero.name);
-			hero.id = newHero.id;
-		});
 
-		this.withTrackedCount = 0;
-		this.withoutTrackedCount = 0;
+	}
+
+	@ViewChild(NgForTrack) child: NgForTrack;
+
+	ngAfterViewInit() {
+		// this.child.resetHeroes();
 	}
 
 	ngOnInit(): void {

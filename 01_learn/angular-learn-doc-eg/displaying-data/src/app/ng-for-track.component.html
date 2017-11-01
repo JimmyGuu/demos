@@ -1,0 +1,11 @@
+<h5 class="ng-for-h">{{ isTrackBy }} trackBy</h5>
+<div class="ng-for-tranck">
+	<div *ngIf="isTrackBy">
+		<div *ngFor="let hero of newHeroes; trackBy: trackByHeroes">({{ hero.id }}) {{ hero.name }}</div>
+	</div>
+	<div *ngIf="!isTrackBy">
+		<div *ngFor="let hero of newHeroes">({{ hero.id }}) {{ hero.name }}</div>
+	</div>
+
+  	<div *ngIf="counts">Hero DOM elements change #{{ counts }} {{ isTrackBy }} trackBy.</div>
+</div>
