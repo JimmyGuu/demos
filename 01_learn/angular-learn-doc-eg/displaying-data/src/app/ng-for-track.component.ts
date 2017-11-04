@@ -29,7 +29,6 @@ export class NgForTrack implements OnInit {
 		});
 		this.newHeroes.length = 0;
 		oldHeores.forEach((hero, index) => {
-			this.counts++;
 			let newHero: Hero = new Hero(hero.id, hero.name);
 			this.newHeroes.push(newHero);
 		});

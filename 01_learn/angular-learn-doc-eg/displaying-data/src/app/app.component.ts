@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 
 import { Hero } from './hero';
 import { NgForTrack } from './ng-for-track.component';
@@ -108,10 +108,40 @@ export class AppComponent implements OnInit {
 
 	}
 
-	@ViewChild(NgForTrack) child: NgForTrack;
+	@ViewChildren(NgForTrack)
+  	private children: QueryList<NgForTrack>;
+	//@ViewChildren(NgForTrack) child: NgForTrack;
 
+	public child_1: NgForTrack;
+	public child_2: NgForTrack;
 	ngAfterViewInit() {
-		// this.child.resetHeroes();
+		this.children.forEach((child, index) => {
+			if (index === 0) this.child_1 = child;
+			if (index === 1) this.child_2 = child;
+		});
+	}
+
+
+
+	// ngSwitch
+	selectedHero: Hero;
+	selectHero(hero: Hero): void {
+		this.selectedHero = hero;
+	}
+
+
+
+	// #var
+	phoneNum: string = '15342018244';
+	callPhone(phone: string): void {
+		console.log(phone);
+	}
+
+	submitHero: Hero = new Hero(null, '');
+	submitMessage: string;
+	onSubmit(hero): void {
+		console.log(hero.form.value);
+		this.submitMessage = 'success!';
 	}
 
 	ngOnInit(): void {

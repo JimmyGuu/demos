@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TESTS</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	window.onload = function () {
+		var myObj = new Obj();
+		try {
+			console.log(myObj.public());
+			
+			myObj.setTimer();
+			
+		} catch(e) {
+			console.warn(e);
+		}
+		
+		myObj.b = 1;
+		console.log(myObj) 
+		// {count: 0, public: ƒ, setTimer: ƒ}
+		// 打印后发现并没有添加上 b 属性	
+	
+	}
+	
+	var Obj = (function() {
+		return function() {
+			var private = 'sb';
+			var timer,
+				self = this;
+			this.count  = 0;
+			this.public = function() {
+				return private;
+			}
+			this.setTimer  = function() {
+				var box = document.createElement('div');
+				document.body.appendChild(box);
+
+				window.clearInterval(timer);
+				timer = window.setInterval(function() {
+					box.innerHTML = self.count;
+					self.count++;
+				}, 1000);
+			}
+			
+			Object.preventExtensions(this); // 让一个对象变的不可扩展，也就是永远不能再添加新的属性。
+		}
+	}());
+</script>
+</body>
+</html>

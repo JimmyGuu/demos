@@ -110,9 +110,9 @@ NgStyle指令是同时设置多个内联样式的更好选择：
 <div *ngFor="let hero of heroes;let i = index">{{ i }} - {{hero.id + ': ' + hero.name }}</div>
 <code>trackBy</code>
 <div>
-  <button (click)="child.resetHeroes()">Reset heroes</button>
-  <button (click)="child.changeIds()">Change ids</button>
-  <button (click)="child.clearCounts()">Clear counts</button>
+  <button (click)="child_1.resetHeroes();child_2.resetHeroes();">Reset heroes</button>
+  <button (click)="child_1.changeIds();child_2.changeIds();">Change ids</button>
+  <button (click)="child_1.clearCounts();child_2.clearCounts();">Clear counts</button>
 </div>
 <!-- <h5 class="ng-for-h">without trackBy</h5>
 <div class="ng-for-tranck">
@@ -130,7 +130,61 @@ NgStyle指令是同时设置多个内联样式的更好选择：
 
 
 
+<h3>NgSwitch 指令</h3>
+Pick ur favorite hero:
+<div class="favorite-hero">
+    <label *ngFor="let hero of heroes">
+        <input type="radio" name="hero" value="{{hero}}" (change)="selectHero(hero)"> {{hero.name}}
+    </label>
+
+    <div class="hero-desc" *ngIf="selectedHero" [ngSwitch]="selectedHero.id">
+        <p *ngSwitchCase="1">Wow. U like {{ selectedHero.name }}, let's play!</p>
+        <p *ngSwitchCase="2">Hey man, this is {{ selectedHero.name }}, fk u!</p>
+        <p *ngSwitchCase="3">U like {{ selectedHero.name }}? R u sure?</p>
+        <p *ngSwitchCase="4">Let's fk {{ selectedHero.name }}, go go go!</p>
+        <p *ngSwitchDefault>Little {{ selectedHero.name }} is a cat.</p>
+    </div>
+</div>
+
+
+
+<h3>模板引用变量（#var）</h3>
+<input type="text" #phone placeholder="phone number" [(ngModel)]="phoneNum">
+
+<button type="button" name="button" (click)="callPhone(phone.value)">console.log phone</button>
+
+<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+    <div class="form-group">
+        <label for="name">Name
+            <input type="text" name="name" required [(ngModel)]="submitHero.name">
+        </label>
+    </div>
+    <button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
+</form>
+<div [hidden]="!heroForm.form.valid">
+    {{submitMessage}}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <br *ngFor="let item of range(30)">
-
