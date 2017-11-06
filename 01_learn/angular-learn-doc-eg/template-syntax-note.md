@@ -3,7 +3,7 @@
 
 标签（空格分隔）： Angular
 
-[Note on github.com](http://www.cnblogs.com/jehorn/p/7744265.html)
+[Note on cnblogs.com](http://www.cnblogs.com/jehorn/p/7744265.html)
 
 ---
 
