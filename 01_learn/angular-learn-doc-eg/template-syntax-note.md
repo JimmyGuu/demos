@@ -1,6 +1,9 @@
-# Angular 5.x Learn Note
+# Angular 5.x Template Syntax Learn Note
+## Angular 5.x 模板语法学习笔记
 
 标签（空格分隔）： Angular
+
+[Note on cnblogs.com](http://www.cnblogs.com/jehorn/p/7744265.html)
 
 ---
 
