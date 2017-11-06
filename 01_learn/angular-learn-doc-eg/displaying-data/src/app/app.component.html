@@ -166,10 +166,44 @@ Pick ur favorite hero:
 </div>
 
 
+<h3>模板表达式操作符 - 管道操作符</h3>
+<div>
+    Title through uppercase pipe: <br> {{ title | uppercase }}
+</div>
+
+<strong>串联：</strong>
+<div>
+    Title through a pupe chain: <br> {{ title | uppercase | lowercase }}
+</div>
+
+<strong>参数：</strong>
+<div class="">
+    Birthday: {{ currentHero?.birthdate | date: 'longDate' }}
+</div>
+
+<strong>json管道对调试绑定特别有用：</strong>
+<div class="">
+    {{ currentHero | json }}
+</div>
+
+
+<h3>模板表达式操作符 - 安全导航操作符（?.）和空属性路径</h3>
+假如<code>fuck</code>属性不存在，<code>currentHero</code>是存在的。
+<p><code>fuck.name: </code><span>{{ fuck?.name }}</span></p>
+<p><code>currentHero.name: </code><span>{{ currentHero.name }}</span></p>
+
+<code>*ngIf 解决方案</code>
+<p><code>fuck.name: </code><span *ngIf="fuck">{{ fuck.name }}</span></p>
+
+<code>&& 解决方案</code>
+<p><code>fuck.name: </code><span>{{ fuck && fuck.name }}</span></p>
 
 
 
-
+<h3>非空断言操作符（!）</h3>
+<div *ngIf="hero">
+    The hero's name is {{ hero!.name }}.
+</div>
 
 
 

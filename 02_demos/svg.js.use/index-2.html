@@ -58,15 +58,15 @@
 
 					path = 'M 0 360 \
 						Q 0 340 45 230\
-						Q 90 120 90 240\
-						T 180 230\
-						Q 200 260 270 320\
-						T 360 120\
-						Q 200 60 450 120\
-						T 540 120\
-						Q 280 60 630 120\
-						T 720 120\
-				    	L 720 360 L 0 360 Z';
+						Q 90 120 135 140\
+						T 225 230\
+						Q 200 260 315 320\
+						T 405 120\
+						Q 200 60 495 120\
+						T 585 120\
+						Q 280 60 675 120\
+						T 750 120\
+				    	L 750 360 L 0 360 Z';
 				    resolve(path);
 				}, 600);
 			});
@@ -77,7 +77,7 @@
 			var box = document.querySelector('#drawing');
 			var show = document.querySelector('#drawingShow');
 			box.style.cssText = 'width: 100%;';
-			show.style.cssText = 'width: 50%;height: 400px;position: relative;overflow: hidden;background: #efefef url(./img/bg.png) no-repeat 100%;';
+			show.style.cssText = 'width: 750px;height: 400px;position: relative;overflow: hidden;background: #efefef url(./img/bg.png) no-repeat 100%;';
 
 			// 线性过渡色
 			var gradient = draw.gradient('linear', function(stop) {

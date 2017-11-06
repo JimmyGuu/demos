@@ -19,11 +19,11 @@ export class AppComponent implements OnInit {
 	myHero: Hero;
 	// heroes = ['Windstorm', 'Vencent', 'Bombasto', 'Magneta', 'Tornado',]
 	heroes = [
-		new Hero(1, 'Windstorm'),
-		new Hero(2, 'Vencent'),
-		new Hero(3, 'Bombasto'),
-		new Hero(4, 'Magneta'),
-		new Hero(5, 'Tornado')
+		new Hero(1, 'Windstorm', '2001-01-01'),
+		new Hero(2, 'Vencent', '2001-01-02'),
+		new Hero(3, 'Bombasto', '2001-01-03'),
+		new Hero(4, 'Magneta', '2001-01-04'),
+		new Hero(5, 'Tornado', '2001-01-05')
 	];
 	// 上下文命名冲突测试
 	hero = this.heroes[0];
@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
 		console.log(phone);
 	}
 
-	submitHero: Hero = new Hero(null, '');
+	submitHero: Hero = new Hero(null, '', '');
 	submitMessage: string;
 	onSubmit(hero): void {
 		console.log(hero.form.value);
