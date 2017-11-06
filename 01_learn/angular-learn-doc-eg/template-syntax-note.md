@@ -3,7 +3,7 @@
 
 标签（空格分隔）： Angular
 
-[Note on cnblogs.com](http://www.cnblogs.com/jehorn/p/7744265.html)
+[Note on github.com](http://www.cnblogs.com/jehorn/p/7744265.html)
 
 ---
 
@@ -748,7 +748,7 @@
 
 
 > 到这里[模板语法的概述](https://angular.cn/guide/template-syntax#模板语法)就算是完成了。
-> 以上贴图源码在[GitHub](https://github.com/JehornGu/demos/tree/master/01_learn/angular-learn-doc-eg/displaying-data)。
+> 以上贴图源码在[GitHub](https://github.com/JehornGu/demos/tree/master/01_learn/angular-learn-doc-eg/template-syntax)。
 > 以上最后更新：<small>2017年11月6日16:48:28</small>
 
 ---
