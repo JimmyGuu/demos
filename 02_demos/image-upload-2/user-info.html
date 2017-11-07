@@ -29,18 +29,58 @@
 			Name: Jehorn
 		</div>
 	</div>
-	<div id="test2">同一实例绑定的另一个弹出框</div>
+	<div id="test2">0</div>
 	<div>
 		<button class="btn" id="btna">解绑 dialog2</button>
 		<button class="btn" id="btnb">清除注册事件</button>
 		<button class="btn btn-close" id="outCloseBtn">关闭窗口</button>
-		<button class="btn" id="btnc">同一实例绑定多弹出框</button>
+		<button class="btn" id="btnc">0</button>
 	</div>
 
 	<script type="text/javascript" src="js/edge-dialog.js"></script>
+	<script type="text/javascript" src="js/edge-dialog-pro.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function () {
+			var dialog2;
+			var dialog = EdgeDialogPro.on('userImg', 'bottom', {
+				content: '<div style="border: 2px solid #ddd;padding: 24px;" id="dialog2">\
+					Open another dialog\
+				</div>',
+				styles: {
+					padding: '24px'
+				},
+				mask: {
+					color: [255, 95, 0],
+					opacity: 0.8
+				},
+				callback: function (_this) {
+					dialog2 = EdgeDialogPro.on('dialog2', 'left', {
+						content: '<h2>Hello</h2>',
+						styles: {
+							padding: '24px'
+						},
+						id: 'haha',
+						mask: {
+							id: 'hehe',
+							zIndex: 2
+						}
+					});
+				}
+			});
+
+			document.querySelector('#outCloseBtn').onclick = function() {
+				var fn = function () {
+					dialog2 ? dialog2.close() : '';
+				}
+				dialog.close(fn);
+			}
+
+
+
+
+
+			/*
 			// 绑定事件
 			var dialog = new EdgeDialog();
 			// @param {String} target: 触发目标
@@ -48,7 +88,7 @@
 			// @param {Function} callback: 弹出框创建完毕后执行的方法, 该方法接收一个参数, 其为当前弹出框实例
 			// @param {Object} options: 附加参数, 比如弹出框的高度/内容等
 			// @return {Object}: 该方法返回一个对象，包括当前弹出框实例(obj)/当前弹出框事件id(uid)/当前弹出框关闭方法(close())
-			var dialog1 = dialog.on('userImg', 'right', function (obj) {
+			var dialog1 = dialog.on('userImg', 'bottom', function (obj) {
 				console.log('callback: ', obj);
 
 				// 插入内容中需要绑定事件的，在这里进行
@@ -113,6 +153,10 @@
 					</div>'
 				});
 			});
+
+
+
+			*/
 		});
 	</script>
 </body>
