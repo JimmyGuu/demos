@@ -3,16 +3,39 @@
 <head>
 	<meta charset="utf-8">
 	<title>demo</title>
+
+	<link rel="stylesheet" href="./fonts/iconfont.css">
+	<link rel="stylesheet" href="./css/edge-dialog.css">
+
 	<style type="text/css">
 		html {
 			font-size: 24px;
 		}
+		body { padding: 0;margin: 0; }
+		.btn { display: inline-block;padding: 20px 30px;font-size: 34px;border: 1px solid #ddd;background: #efefef;border-radius: 4px; }
+
+		.iShare { display: flex;justify-content: space-around;align-items: flex-end;padding: 24px 24px 100px 24px;}
+		.iShare > a { display: block;color: #ff5f00;text-decoration: none;height: 100px;text-align: center;position: relative; }
+		.iShare > a > .iconfont { font-size: 90px;display: block; }
+		.iShare > a:first-child > .iconfont { padding-top: 9px; }
+		.iShare > a > span { display: inline-block;color: #666;margin-top: 24px;font-size: 30px; }
+		.iShare > a:first-child > span { margin-top: 15px; }
+
+		.iShare > a.iShare_wechat { color: #53DD71; }
+		.iShare > a.iShare_weibo { color: #E94A49; }
+		.iShare > a.iShare_qq { color: #2BB7E5; }
+		.iShare > a.iShare_qzone { color: #FBC935; }
+
+		.btn-cancel { width: 100%; }
 	</style>
 	<!-- <link rel="stylesheet" type="text/css" href="./share-dialog/share-dialog.css"> -->
+
 </head>
 <body>
 	<div id="niHao"></div>
-	<button id="btn1">click</button>
+	<button id="btn1" class="btn">click - 1</button>
+	<button id="btn2" class="btn">click - new</button>
+
 
 	<!-- <div class="share-dialog" id="shareDialog">
 		<div class="share-wrapper">
@@ -62,6 +85,11 @@
         with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
     </script> -->
     <script type="text/javascript" src="./share-dialog/share-dialog.js"></script>
+
+    <script type="text/javascript" src="./js/iShare.js"></script>
+    <script type="text/javascript" src="./js/qrcode.min.js"></script>
+    <script type="text/javascript" src="./js/edge-dialog.js"></script>
+
     <script type="text/javascript">
     	window.onload = function () {
     		var btn1 = document.getElementById('btn1');
@@ -70,6 +98,67 @@
 	    			url: 'http://www.jiaojinfu.com?phone=13883848844'
 	    		});
     		});
+
+
+			var share;
+			var dialog = EdgeDialog.on('btn2', 'bottom', {
+				content: '<div class="iShare">\
+					<a href="#" class="iShare_wechat">\
+						<i class="iconfont wechat">&#xe613;</i>\
+						<span>微信</span>\
+					</a>\
+					<a href="#" class="iShare_weibo">\
+						<i class="iconfont weibo">&#xe609;</i>\
+						<span>新浪微博</span>\
+					</a>\
+					<a href="#" class="iShare_qq">\
+						<i class="iconfont qq">&#xe60f;</i>\
+						<span>QQ好友</span>\
+					</a>\
+					<a href="#" class="iShare_qzone">\
+						<i class="iconfont qzone">&#xe610;</i>\
+						<span>QQ空间</span>\
+					</a>\
+				</div>\
+				<button class="btn btn-cancel" id="cancelShare">取消分享</button>',
+				styles: {
+					padding: '48px 0 0 0'
+				},
+				afterCreate: function () {
+					document.querySelector('#cancelShare').onclick = function () {
+						dialog.close();
+					}
+
+					// 生成分享信息
+					share = new iShare({container:'.iShare',config:{
+						title: '交金服',
+						description: '交金服 - 值得信赖的平台',
+						url: 'http://www.jiaojinfu.com?phone=13883848844',
+						initialized: false,
+						path: './js/',
+						WXoptions:{
+							evenType: 'click',
+							isTitleVisibility: true,
+							title: '交金服',
+							isTipVisibility: true,
+							tip: '长按识别二维码',
+							qrcodeW: '750px',
+							qrcodeH: '400px',
+							qrcodeBgc: '#fff',
+							qrcodeFgc: '#000',
+							bgcolor: '#efefef'
+						}
+					}});
+				},
+				beforeClose: function () {
+					// 关闭二维码
+					share.wx.hideQRCode();
+				},
+				callback: function () {
+
+				}
+			})
+
     	}
     </script>
 </body>
