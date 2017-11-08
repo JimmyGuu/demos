@@ -4,10 +4,12 @@
  * @author  Jehorn(gerardgu@outlook.com)
  * @version 2.0.0
  * warnings:
- * 1. 如果要在对话框中再次添加对话框，请在父类对话框的回调方法(callback)中声明
- * 而且子对话框必须指定遮罩层id和对话框id，否则会出现累次叠加的问题.
+ * 1. 如果要在对话框中再次添加对话框，请在父类对话框的单次执行方法(afterCreate)中声明
+ * 而且子对话框必须指定遮罩层id(mask.id)和对话框id(id)，否则会出现累次叠加的问题.
  * 同时，如果想在在直接关闭父对话框时关闭子对话框，需要在外部关闭方法中传参：
  * 比如父：dialogSup，子：dialogSub，在外部调用关闭方法：dialogSup.close(fn() { dialogSub ? dialogSub.close() : ''; });
+ * 2. del 方法调用后，不会自动解绑已经绑定被删除类的事件
+ * 3. add 方法的 fn 参数是必须的，而且该类必须要有 create() 和 close() 方法
  */
 ;
 (function(factory) {
@@ -29,7 +31,7 @@
     var count = 0;
 
     /**
-     * Internal the Options
+     * Options Internal
      * @param  {Object} opts    所有自定义参数
      * @return {Object} options Options after Internal
      */
@@ -37,26 +39,27 @@
         var options = opts || {};
 
         // @param {Object} styles 自定义对话框样式
-        options.styles = opts.styles || {};
+        options.styles = options.styles || {};
         // @param {string} content 对话框内容
-        options.content = opts.content || '&nbsp;';
+        options.content = options.content || '&nbsp;';
         // @param {Object} mask     遮罩层自定义样式
         // @param {Array} mask      只接受rgb,用数组表示
         // @param {string | number} mask 透明度 [0, 1]
-        options.mask = opts.mask ? opts.mask = {
-            color: opts.mask.color || [0, 0, 0],
-            opacity: opts.mask.opacity || 0.5,
-            zIndex: opts.mask.zIndex || count + 1,
-            id: opts.mask.id || 'edgeDialogMask' + count,
+        options.mask = options.mask ? options.mask = {
+            color: options.mask.color || [0, 0, 0],
+            opacity: options.mask.opacity || 0.5,
+            zIndex: options.mask.zIndex || count + 1,
+            id: options.mask.id || 'edgeDialogMask' + count,
         } : {
             color: [0, 0, 0],
             opacity: 0.5,
             zIndex: count + 1,
             id: 'edgeDialogMask' + count
         };
-        options.id = opts.id || 'edgeDialogContainer' + count;
-        options.delay = opts.delay || 30;
-        options.callback = opts.callback || function() {};
+        options.id = options.id || 'edgeDialogContainer' + count;
+        options.delay = options.delay || 30;
+        options.callback = options.callback || function() {};
+        options.afterCreate = options.afterCreate || function() {};
 
         return options;
     }
@@ -166,37 +169,34 @@
     var InternalDialog = function(opts) {
         var self = this;
         var isClose = opts.isClose === false ? false : true;
+        var counter = 0;
+
         this.doms = create(opts);
         this.id = this.doms.id;
         this.delay = opts.delay;
         this.content = opts.content;
         this.fadeInType = 'fadeInUp';
         this.fadeOutType = 'fadeOutDown';
-        this.isContainer = document.getElementById(this.id) ||
-            false;
+        this.isContainer = document.getElementById(this.id) || false;
 
         // Dialog position
         this.position = function() {
-            this.doms.container.style.width = opts.width ||
-                'auto';
-            this.doms.container.style.height = opts.height ||
-                'auto';
+            this.doms.container.style.width = opts.width || 'auto';
+            this.doms.container.style.height = opts.height || 'auto';
             this.doms.container.style.top = opts.top || 'auto';
-            this.doms.container.style.bottom = opts.bottom ||
-                'auto';
-            this.doms.container.style.left = opts.left ||
-                'auto';
-            this.doms.container.style.right = opts.right ||
-                'auto';
+            this.doms.container.style.bottom = opts.bottom || 'auto';
+            this.doms.container.style.left = opts.left || 'auto';
+            this.doms.container.style.right = opts.right || 'auto';
         }
 
         // Create DOM
         this.create = function(callback) {
             var timer;
 
-            this.isContainer ? console.error('Container id: ' +
-                    this.id + ' had been used!') : this.doms.mask
-                .appendChild(this.doms.container);
+            this.isContainer ? console.error('Container id: ' + this.id + ' had been used!') : this.doms.mask.appendChild(this.doms.container);
+
+            // 此处DOM创建完毕 执行 afterCreate 方法
+            counter === 0 ? opts.afterCreate() : '';
 
             // 定位
             this.position();
@@ -214,6 +214,9 @@
 
                 // 自定义回调方法执行
                 typeof callback === 'function' ? callback(self) : '';
+
+                // 内部计数器
+                counter++;
             }, this.delay);
         }
 
@@ -223,24 +226,25 @@
             var container = document.getElementById(self.id);
             var mask = document.getElementById(self.doms.maskId);
 
-            container.className = 'dialog-animate ' +
-                self.fadeOutType;
+            if (container) {
+                container.className = 'dialog-animate ' + self.fadeOutType;
 
-            typeof callback === 'function' ? callback() : '';
+                typeof callback === 'function' ? callback() : '';
 
-            window.clearTimeout(timer);
-            timer = window.setTimeout(function() {
-                var _timer;
+                window.clearTimeout(timer);
+                timer = window.setTimeout(function() {
+                    var _timer;
 
-                if (container) mask.removeChild(
-                    container);
+                    if (container) mask.removeChild(
+                        container);
 
-                window.clearTimeout(_timer);
-                _timer = window.setTimeout(function() {
-                    mask.style.display =
-                        'none';
-                }, self.delay);
-            }, 200);
+                    window.clearTimeout(_timer);
+                    _timer = window.setTimeout(function() {
+                        mask.style.display =
+                            'none';
+                    }, self.delay);
+                }, 200);
+            }
         }
 
         // Click blank erea close the dialog.
@@ -409,6 +413,8 @@
     /**
      * public methods
      */
+    var bindDialog = [];
+    var counter = 0;
     var EdgeDialog = {
         /**
          * Create
@@ -428,33 +434,113 @@
 
             var dialog = factory(type, options);
 
-            box.addEventListener('click', function() {
-                dialog.create(callback);
-            });
+            if (dialog && dialog.create) {
+                var bindObj = {
+                    uid: counter,
+                    fn: function() {
+                        dialog.create(callback)
+                    }
+                };
 
-            count++;
+                bindDialog.push(bindObj);
 
-            return {
-                close: dialog.close,
-                obj: dialog
-            };
+                box.addEventListener('click', bindDialog[counter].fn);
+
+                count++;
+                counter++;
+
+                return {
+                    state: 'success',
+                    close: dialog.close,
+                    obj: dialog,
+                    uid: bindObj.uid,
+                    bindDialog: bindDialog
+                };
+            } else {
+                var msg = 'Get none create dialog or dialog.create()!';
+                console.warn(msg);
+                return {
+                    state: 'error',
+                    msg: msg
+                }
+            }
+
         },
         /**
-         * Close
+         * Remove Event Listener
          */
-        off: function() {
-
+        off: function(target, uid) {
+            var box = document.getElementById(target) ||
+                document.getElementsByClassName(target)[0];
+            box.removeEventListener('click', bindDialog[uid].fn);
         },
         /**
-         * Set
+         * Active Event Listener
          */
-        add: function() {
+        active: function(target, uid) {
+            var box = document.getElementById(target) ||
+                document.getElementsByClassName(target)[0];
+            box.addEventListener('click', bindDialog[uid].fn);
+        },
+        /**
+         * Add a Dialog Object
+         */
+        add: function(fn, name) {
+            var isHad = false;
 
+            name = name || Math.random().toString(36).substr(2);
+
+            for (var len = myDialogs.length, i = len - 1; i >= 0; i--) {
+                if (name === myDialogs[i].name) {
+                    console.warn(name + ' had been subscribed!');
+                    isHad = true;
+                    return;
+                }
+            }
+
+            if (!isHad) {
+                var obj = {
+                    name: name,
+                    fn: fn
+                }
+                myDialogs.push(obj);
+
+                var result = {
+                    state: 'success',
+                    obj: myDialogs
+                }
+
+                return result;
+            } else {
+                return 'Had been subscribed name.';
+            }
         },
         /**
          * Delete
          */
-        del: function() {
+        del: function(name) {
+            if (name) {
+                myDialogs = myDialogs.filter(
+                    function(el) {
+                        if (el.name !== name) {
+                            return el;
+                        }
+                    }
+                );
+                var result = {
+                    state: 'success',
+                    obj: myDialogs
+                }
+
+                console.log(bindDialog)
+
+                return result;
+            } else {
+                return {
+                    state: 'error',
+                    msg: 'name is null.'
+                }
+            }
 
         }
     }

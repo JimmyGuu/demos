@@ -11,6 +11,7 @@
 		.user-info .info { padding-left: 40px; }
 		.btn { background-color: #fff;border: 1px solid #ddd;color: #666;border-radius: 4px;padding: 15px 45px;font-size: 2em;margin: 15px; }
 		.btn-close { position: absolute;top: 50px;left: 550px;z-index: 2001;background-color: #ff5f00;color: #fff; }
+		input { border: 1px solid #efefef;border-radius: 4px;padding: 20px 30px;font-size: 34px;}
 
 		.content { padding: 15px; }
 		.btn.btn-lg { width: 100%;margin: 0;border: 0;outline: none; }
@@ -29,12 +30,16 @@
 			Name: Jehorn
 		</div>
 	</div>
-	<div id="test2">0</div>
+	<div id="test2">打开自定义的 dialog</div>
 	<div>
-		<button class="btn" id="btna">解绑 dialog2</button>
-		<button class="btn" id="btnb">清除注册事件</button>
+		<button class="btn" id="btna">解绑 dialog</button>
+		<button class="btn" id="btnb">激活 dialog</button>
 		<button class="btn btn-close" id="outCloseBtn">关闭窗口</button>
-		<button class="btn" id="btnc">0</button>
+		<button class="btn" id="btnc">添加自定义 dialog</button>
+		<button class="btn" id="btnd">调用自定义 dialog</button><small>先添加后调用</small> <br>
+		<input type="text" name="del-name" value="center">
+		<button class="btn" id="btne">删除内部 dialog 类</button>
+
 	</div>
 
 	<script type="text/javascript" src="js/edge-dialog.js"></script>
@@ -42,10 +47,14 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-			var dialog2;
+			var dialog2, counter = 0;
 			var dialog = EdgeDialogPro.on('userImg', 'bottom', {
 				content: '<div style="border: 2px solid #ddd;padding: 24px;" id="dialog2">\
 					Open another dialog\
+				</div>\
+				<div class="close">\
+					<button class="btn" id="off-d2">解绑 dialog2</button>\
+					<button class="btn" id="active-d2">激活 dialog2</button>\
 				</div>',
 				styles: {
 					padding: '24px'
@@ -54,7 +63,8 @@
 					color: [255, 95, 0],
 					opacity: 0.8
 				},
-				callback: function (_this) {
+				// 创建DOM完成后执行一次
+				afterCreate: function () {
 					dialog2 = EdgeDialogPro.on('dialog2', 'left', {
 						content: '<h2>Hello</h2>',
 						styles: {
@@ -66,15 +76,132 @@
 							zIndex: 2
 						}
 					});
+
+					// 解绑 dialog2
+					document.querySelector('#off-d2').onclick = function () {
+						if (dialog2)
+							EdgeDialogPro.off('dialog2', dialog2.uid);
+					}
+
+					// 激活 dialog2
+					document.querySelector('#active-d2').onclick = function () {
+						if (dialog2)
+							EdgeDialogPro.active('dialog2', dialog2.uid);
+					}
+				},
+				callback: function (_this) {
+					// 注意：回调方法在每次打开都会执行一次
+
 				}
 			});
 
+			// 外部关闭
 			document.querySelector('#outCloseBtn').onclick = function() {
 				var fn = function () {
 					dialog2 ? dialog2.close() : '';
 				}
 				dialog.close(fn);
 			}
+
+			// 解绑 dialog
+			document.querySelector('#btna').onclick = function() {
+				EdgeDialogPro.off('userImg', dialog.uid);
+			}
+			// 激活 dialog
+			document.querySelector('#btnb').onclick = function() {
+				EdgeDialogPro.active('userImg', dialog.uid);
+			}
+
+
+			// 自定义扩展 add
+			const maskId = 'custom-mask-a';
+			const boxId = 'custom-box-a';
+
+			// custom method
+			// @class
+			// HAVE TO INCLUDE:
+			// this.create() this.close()
+			var addDialog = function (opts) {
+				var box = document.createElement('div');
+				var mask = document.createElement('div');
+
+				box.style.cssText = 'transition: all .3s ease;display: none;width: 50%;background: #fff;padding: 24px;position: absolute;left: 50%;transform: translateX(-50%);top: 40%;';
+				mask.style.cssText = 'transition: all .3s ease;display: none;width: 100%;height: 100%;position: fixed;background: rgba(0, 0, 0, .5);left:0;top: 0;'
+				box.id = boxId;
+				mask.id = maskId;
+				document.querySelector('#' + maskId) ? '' : document.body.appendChild(mask);
+
+				this.doms = {
+					body: document.body,
+		            container: box,
+		            mask: mask,
+		            id: box.id,
+		            maskId: mask.id
+				}
+
+				box.innerHTML = opts.content;
+
+				this.create = function (callback) {
+					var timer;
+
+					mask.appendChild(box);
+					mask.style.display = 'block';
+					box.style.display = 'block';
+
+					clearTimeout(timer);
+					timer = setTimeout(() => {
+						callback();
+					}, 0);
+				}
+
+				this.close = function (callback) {
+					var timer;
+					var mk = document.querySelector('#' + maskId),
+						bx = document.querySelector('#' + boxId);
+
+					if (mk && bx) {
+						mk.removeChild(bx);
+
+						clearTimeout(timer);
+						timer = setTimeout(() => {
+							mk.style.display = 'none';
+						}, 300);
+					}
+				}
+			}
+
+			document.querySelector('#btnc').onclick = function () {
+				var dName = 'center';
+				var d = EdgeDialogPro.add(addDialog, dName);
+				console.log(d);
+			}
+
+
+			// 调用自定义 dialog
+			document.querySelector('#btnd').onclick = function () {
+				var dialog3 = EdgeDialogPro.on('test2', 'center', {
+					content: '<h3>HeheheheheheheheDa</h3><button class="btn" id="close-d3">&times;</button>',
+					callback: function () {
+						var btn = document.querySelector('#close-d3');
+						btn ? btn.onclick = function () {
+							dialog3.close();
+						} : '';
+					}
+				});
+				console.log(dialog3);
+				dialog3.state === 'success' ? alert('Now, click the \'打开自定义的 dialog\'') : alert('先添加再调用');
+			}
+
+
+			// 删除一个 dialog 类
+			document.querySelector('#btne').onclick = function () {
+				var name = document.querySelector('input[name="del-name"]').value;
+				var d = EdgeDialogPro.del(name);
+				console.log(d);
+			}
+
+
+
 
 
 
