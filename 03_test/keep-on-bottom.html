@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <style media="screen">
+        html, body, p { padding: 0;margin: 0; }
+        .btn { display: inline-block;padding: 20px 30px;font-size: 34px;border: 1px solid #ddd;background: #efefef;border-radius: 4px;color: #666;}
+        .btn.btn-primary { background: #5167eb;color: #fff; }
+        .input { background: #fff;color: #666;border: 1px solid #ddd;border-radius: 4px;padding: 10px 16px;font-size: 24px; }
+        .clearfix::before, .clearfix::after { display: table;content: '' }
+        .clearfix::after { clear: both; }
+
+        .btn-box { display: flex;justify-content: space-around;width: 100%; }
+        .btn-box > .btn { width: 50%; }
+        .btn-box { position: absolute;bottom: 0;left: 0; }
+
+        p { font-size: 24px; }
+        .ctrl-btn { position: fixed;right: 5%;top: 2%;width: 60%;}
+        .ctrl-btn .btn:first-child { float: right; }
+        .ctrl-btn .btn:last-child { float: left; }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="content">
+
+            </div>
+
+            <div class="ctrl-btn clearfix">
+                <button type="button" name="button0" class="btn">+</button>
+                <span id="counterShow"></span>
+                <input type="text" name="counterInput" value="0" class="input" placeholder="输入 100000000000 会有惊喜!">
+                <button type="button" name="button10" class="btn">-</button>
+            </div>
+
+            <div class="btn-box">
+                <button type="button" name="button1" class="btn">cancel</button>
+                <button type="button" name="button2" class="btn btn-primary">confirm</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                let render = function (length) {
+                    let ct = document.querySelector('.content');
+
+                    ct.innerHTML = '';
+                    for (let i = length - 1; i >= 0; i--) {
+                        let item = document.createElement('p');
+                        item.style.cssText = 'padding: 24px;color: #ff5f00;';
+                        item.innerHTML = i + ': Hehe';
+                        item.dataset.id = i;
+                        ct.appendChild(item);
+                    }
+
+                    let box = document.querySelector('.box');
+                    let c_h = ct.offsetHeight,
+                        offset = 50;
+
+                    // Ctrl the btn on bottom
+                    (c_h > window.innerHeight - offset) ?
+                    box.style.position = 'relative' :
+                    box.style.position = 'inherit';
+                }
+
+                // Counter
+                let countObj = { _counter: 10 };
+                Object.defineProperty(countObj, 'counter', {
+                    get: function() {
+                        return this._counter;
+                    },
+                    set: function(c) {
+                        this._counter = c;
+                        document.querySelector('#counterShow').innerHTML = c;
+                        document.querySelector('input[name="counterInput"]').value = c;
+                        render(c);
+                    }
+                });
+
+                // Init
+                countObj.counter = 10;
+                // Ctrl
+                document.querySelector('button[name="button0"]').onclick = function () {
+                    countObj.counter += 2;
+                }
+                document.querySelector('button[name="button10"]').onclick = function () {
+                    countObj.counter > 0 ? countObj.counter -= 2 : countObj.counter;
+                }
+                let timer;
+                document.querySelector('input[name="counterInput"]').oninput = function (e) {
+                    let val = e.target.value;
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        countObj.counter = +val;
+                    }, 800);
+                }
+
+            }
+        </script>
+    </body>
+</html>
