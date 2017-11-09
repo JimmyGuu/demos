@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TAB</title>
+
+        <style media="screen" type="text/css">
+            .tab-tag, .tab-content { display: none; }
+            .tab-tag.current, .tab-content.current { display: block; }
+        </style>
+    </head>
+    <body>
+        <ul class="tab-tag-wrapper">
+            <li class="tab-tag sign-up">
+                <a href="javascript: void(0);"></a>
+                <span class="active"></span>
+            </li>
+            <li class="tab-tag sign-in current">
+                <a href="javascript: void(0);"></a>
+                <span class="active"></span>
+            </li>
+        </ul>
+        <ul class="tab-content-wrapper">
+            <li id="signUp" class="tab-content">
+                <div class="account-inputs">
+                    <div class="input-group">
+                        <input type="text" name="phone-su" placeholder="请输入你的手机号" />
+                        <span class="addon-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="请输入你的密码" />
+                        <span class="addon-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password-confirm" placeholder="请再次确认密码" />
+                        <span class="addon-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="phone-su" placeholder="请输入推荐人手机号（非必填）" />
+                        <span class="addon-icon"></span>
+                    </div>
+                </div>
+
+                <div class="account-protocol">
+                    <p>注册账户表示你同意<a href="javascript: void(0);">《交金服注册协议》</a></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">下一步</button>
+
+                <div class="sign-footer">
+                    <p>已有账户？ <a href="javascript: void(0);">去登录</a></p>
+                </div>
+            </li>
+            <li id="signIn" class="tab-content current">
+                <div class="account-inputs">
+                    <div class="input-group">
+                        <input type="text" name="phone-si" placeholder="请输入你的手机号" />
+                        <span class="addon-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password-hide" placeholder="请输入你的密码" />
+                        <input type="text" name="password-show" style="display: none;" placeholder="请输入你的密码" />
+                        <span class="addon-icon"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">登录</button>
+
+                <div class="account-links">
+                    <a href="javascript: void(0);" class="reset">忘记密码</a>
+                    <a href="javascript: void(0);" class="register">注册账户</a>
+                </div>
+
+                <div class="sign-footer">
+                    <p>多维度安全保障做您安心的理财顾问。</p>
+                </div>
+            </li>
+        </ul>
+    </body>
+</html>
