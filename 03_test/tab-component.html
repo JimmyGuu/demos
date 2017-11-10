@@ -5,18 +5,49 @@
         <title>TAB</title>
 
         <style media="screen" type="text/css">
-            .tab-tag, .tab-content { display: none; }
-            .tab-tag.current, .tab-content.current { display: block; }
+            /*.tab-content { display: none; }*/
+
+            .animated {
+                animation-duration: 3s;
+              	animation-fill-mode: both;
+            }
+
+            @keyframes fadeIn {
+              	from {
+                	opacity: 0;
+              	}
+
+              	to {
+                	opacity: 1;
+              	}
+            }
+
+            .fadeIn {
+              	animation-name: fadeIn;
+            }
+            @keyframes fadeOut {
+              	from {
+                	opacity: 1;
+              	}
+
+              	to {
+                	opacity: 0.2;
+              	}
+            }
+
+            .fadeOut {
+              	animation-name: fadeOut;
+            }
         </style>
     </head>
     <body>
         <ul class="tab-tag-wrapper">
             <li class="tab-tag sign-up">
-                <a href="javascript: void(0);"></a>
+                <a href="#signUp">注册</a>
                 <span class="active"></span>
             </li>
-            <li class="tab-tag sign-in current">
-                <a href="javascript: void(0);"></a>
+            <li class="tab-tag sign-in active">
+                <a href="#signIn">登录</a>
                 <span class="active"></span>
             </li>
         </ul>
@@ -51,7 +82,7 @@
                     <p>已有账户？ <a href="javascript: void(0);">去登录</a></p>
                 </div>
             </li>
-            <li id="signIn" class="tab-content current">
+            <li id="signIn" class="tab-content active">
                 <div class="account-inputs">
                     <div class="input-group">
                         <input type="text" name="phone-si" placeholder="请输入你的手机号" />
@@ -76,5 +107,98 @@
                 </div>
             </li>
         </ul>
+
+        <div id="app">
+            <tab-component></tab-component>
+        </div>
+
+
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script type="text/javascript">
+            Vue.component('tab-component', {
+                template: '<div class="tab-wrapper">\
+                    <ul class="tab-tag-wrapper" :style="styles.tagWrapper">\
+                        <li class="tab-tag" :style="styles.tag">\
+                            <a href="#">123</a>\
+                        </li>\
+                    </ul>\
+                    <ul class="tab-content-wrapper">\
+                        <li class="tab-content" id="">000</li>\
+                    </ul>\
+                </div>',
+                props: {
+
+                },
+                data: function () {
+                    return {
+                        styles: {
+                            tagWrapper: {
+                                listStyle: 'none',
+                                display: 'flex',
+                                justifyContent: 'space-between'
+                            },
+                            tab: {
+                                textAlign: 'center'
+                            }
+                        }
+                    }
+                },
+                methods: {
+
+                },
+                mounted: function () {
+
+                }
+            });
+            var vm = new Vue({
+                el: '#app',
+                data: function () {
+                    return {
+
+                    }
+                },
+                methods: {
+
+                },
+                mounted: function () {
+
+                }
+            })
+
+            ;(function () {
+                // Hide of all.
+                var hide = function () {
+                    var contents = document.querySelectorAll('.tab-content');
+                    for (var len = contents.length, i = len - 1; i >= 0; i--) {
+                        contents[i].style.display = 'none';
+                    }
+                }
+
+                // Initialize.
+                // TODO 会有闪烁 建议在 css 设置 hide
+                ;(function () {
+                    var active = document.querySelector('.tab-content.active');
+                    hide();
+                    active.style.display = 'block';
+                })();
+
+                // Tag click event method.
+                var tagEvent = function (e) {
+                    var arr = e.target.href.split('#');
+                    var id = arr[arr.length - 1];
+                    var content = document.querySelector('#' + id);
+                    hide();
+
+                    content.style.display = 'block';
+                }
+
+                // Bind event.
+                var tags = document.querySelectorAll('.tab-tag');
+                for (var len = tags.length, i = len - 1; i >= 0; i--) {
+                    tags[i].addEventListener('click', tagEvent);
+                }
+            }());
+        </script>
     </body>
 </html>
