@@ -38,9 +38,104 @@
             .fadeOut {
               	animation-name: fadeOut;
             }
+
+
+            .alert-tip {
+                position: fixed;
+                width: 200px;
+                background: rgba(0, 0, 0, .8);
+                border-radius: 4px;
+                box-shadow: 1px 1px 4px 0px #333;
+                color: #fff;
+                font-size: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -15%;
+                display: none;
+                opacity: 0;
+                transition: all .3s ease-in;
+            }
+            .alert-tip .wrapper {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .tip-content {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                text-align: center;
+                cursor: default;
+            }
+
+            .page-wrapper {
+                position: relative;
+                width: 100%;
+            }
+            .page-wrapper > img {
+                width: 100%;
+            }
+            .center-wrapper {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                display: flex;
+                justify-content: space-around;
+                padding-top: 500px;
+                align-items: flex-end;
+            }
+            .center {
+                position: relative;
+                width: 30%;
+            }
+            .center:first-child,
+            .center:last-child {
+                width: 25%;
+            }
+            .center > img {
+                width: 100%;
+            }
+            .center > p {
+                margin: 0;
+                text-align: center;
+                color: #fff;
+                font-size: 50px;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         </style>
     </head>
     <body>
+        <div class="page-wrapper">
+            <img src="./img/好友豪礼-00.png" alt="bg">
+            <div class="center-wrapper">
+                <div class="center">
+                    <img src="./img/加息礼券.png" alt="item">
+                    <p>100</p>
+                </div> <!-- /.item_1 -->
+                <div class="center">
+                    <img src="./img/加息礼券.png" alt="item">
+                    <p>101</p>
+                </div> <!-- /.item_2 -->
+                <div class="center">
+                    <img src="./img/加息礼券.png" alt="item">
+                    <p>102</p>
+                </div> <!-- /.item_3 -->
+            </div>
+        </div>
+
+
+        <input type="number" name="" value="">
+
+        <div class="alert-tip">
+            <div class="tip-content wrapper">
+                请输入手机号！
+            </div>
+        </div>
+
+        <button type="button" name="button" id="btn-1">SUB</button>
+
+
         <ul class="tab-tag-wrapper">
             <li class="tab-tag sign-up">
                 <a href="#signUp">注册</a>
@@ -116,6 +211,18 @@
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
         <script type="text/javascript">
+            var timer;
+            var tip = document.querySelector('.alert-tip');
+            document.querySelector('#btn-1').onclick = function () {
+                tip.style.cssText = 'display: block;';
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    tip.style.bottom = '5%';
+                    tip.style.opacity = '1';
+                }, 0);
+            }
+
+
             Vue.component('tab-component', {
                 template: '<div class="tab-wrapper">\
                     <ul class="tab-tag-wrapper" :style="styles.tagWrapper">\
