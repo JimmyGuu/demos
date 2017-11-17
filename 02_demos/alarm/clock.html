@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>clock</title>
+        <style media="screen">
+            body { font-size: 24px;color: #333; }
+            .btn { background: #efefef;border: 1px solid #ddd;padding: 12px 24px;cursor: pointer;border-radius: 4px; }
+            .btn.btn-primary { background-color: #ff5f00;border-color: #ff5f00;color: #fff; }
+            .input { background: #fff;border: 1px solid #ddd;padding: 12px 24px;border-radius: 4px;outline: inherit;}
+            .input.input-small { padding: 12px;max-width: 120px; }
+			.input[readonly="readonly"] { color: #999; }
+        </style>
+    </head>
+    <body>
+        <input type="text" class="input" id="min" placeholder="Please enter the minutes." />
+        <button type="button" name="button" class="btn btn-primary" id="startAlarm">SET</button>
+        <div class="wait-time">
+            The alarm will ring after <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>.
+        </div>
+		<input type="text" class="input input-small" id="path" placeholder="Audio path" readonly="readonly" value="./베베(BABE).mp3" />
+        <script type="text/javascript">
+			
+            // Double digits.
+            function timeNumber(num) {
+                let result,
+                    n = +num;
+                isNaN(n) ? n = num : n;
+
+                n < 10 ? result = '0' + n : result = n;
+
+                return result;
+            }
+
+            // Format time.
+            function formatDuring(ms) {
+                let days = Math.floor(ms / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = (ms % (1000 * 60)) / 1000;
+                return {
+                    d: days,
+                    h: hours,
+                    m: minutes,
+                    s: seconds
+                }
+            }
+
+            // Set wait time.
+            function setWaitTime(ms) {
+                let waitH = document.querySelector('#hours');
+                let waitM = document.querySelector('#minutes');
+                let waitS = document.querySelector('#seconds');
+                let wait = formatDuring(ms);
+
+                waitH.innerHTML = timeNumber(wait.h);
+                waitM.innerHTML = timeNumber(wait.m);
+                waitS.innerHTML = timeNumber(wait.s);
+            }
+
+            let timerInterval,
+                timerTimeout;
+            document.querySelector('#startAlarm').onclick  = function () {
+				const PATH = document.querySelector('#path').value;
+				
+                let min = document.querySelector('#min').value;
+				let alarm = document.querySelector('#alarmMusic');
+
+                // Millisecond.
+                let time = +min * 60 * 1000;
+                let counter = 0;
+
+                if (min == null || min === '') return;
+
+                // Initialize.
+                setWaitTime(time);
+				if (alarm) document.body.removeChild(alarm);
+
+                // Show wait time.
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    if (time > 0) {
+                        counter++;
+                        time -= 1000;
+
+                        setWaitTime(time);
+                    }
+                }, 1000);
+
+                // Alarm.
+                clearTimeout(timerTimeout);
+                timerTimeout = setTimeout(() => {
+                    let audio = document.createElement('audio');
+					audio.id = 'alarmMusic';
+                    audio.src = PATH;
+                    audio.autoplay = 'autoplay';
+					audio.controls = 'controls';
+
+                    document.body.appendChild(audio);
+                }, time);
+            }
+
+        </script>
+    </body>
+</html>

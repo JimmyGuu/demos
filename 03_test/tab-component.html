@@ -6,6 +6,7 @@
 
         <style media="screen" type="text/css">
             /*.tab-content { display: none; }*/
+            body { font-size: 24px;}
 
             .animated {
                 animation-duration: 3s;
@@ -124,18 +125,6 @@
             </div>
         </div>
 
-
-        <input type="number" name="" value="">
-
-        <div class="alert-tip">
-            <div class="tip-content wrapper">
-                请输入手机号！
-            </div>
-        </div>
-
-        <button type="button" name="button" id="btn-1">SUB</button>
-
-
         <ul class="tab-tag-wrapper">
             <li class="tab-tag sign-up">
                 <a href="#signUp">注册</a>
@@ -168,7 +157,7 @@
                 </div>
 
                 <div class="account-protocol">
-                    <p>注册账户表示你同意<a href="javascript: void(0);">《交金服注册协议》</a></p>
+                    <p>注册账户表示你同意<a href="javascript: void(0);">《xxx注册协议》</a></p>
                 </div>
 
                 <button type="submit" class="btn btn-primary">下一步</button>
@@ -204,51 +193,24 @@
         </ul>
 
         <div id="app">
-            <tab-component></tab-component>
+            <alert-tip></alert-tip>
         </div>
 
 
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
         <script type="text/javascript">
-            var timer;
-            var tip = document.querySelector('.alert-tip');
-            document.querySelector('#btn-1').onclick = function () {
-                tip.style.cssText = 'display: block;';
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                    tip.style.bottom = '5%';
-                    tip.style.opacity = '1';
-                }, 0);
-            }
-
-
-            Vue.component('tab-component', {
-                template: '<div class="tab-wrapper">\
-                    <ul class="tab-tag-wrapper" :style="styles.tagWrapper">\
-                        <li class="tab-tag" :style="styles.tag">\
-                            <a href="#">123</a>\
-                        </li>\
-                    </ul>\
-                    <ul class="tab-content-wrapper">\
-                        <li class="tab-content" id="">000</li>\
-                    </ul>\
+            Vue.component('alert-tip', {
+                template: '<div class="tips-wrapper">\
+                    <tip v-for="tip in tips" ></tip>\
                 </div>',
                 props: {
 
                 },
                 data: function () {
                     return {
-                        styles: {
-                            tagWrapper: {
-                                listStyle: 'none',
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                            },
-                            tab: {
-                                textAlign: 'center'
-                            }
-                        }
+                        // 队列数组
+                        tips: []
                     }
                 },
                 methods: {
@@ -256,6 +218,27 @@
                 },
                 mounted: function () {
 
+                },
+                components: {
+                    'tip': {
+                        template: '<div class="alert-tip" :class="isShow ? \'fadeInUp\' : \'fadeOut\'">\
+                            <div class="tip-content wrapper">\
+                                {{ text }}\
+                            </div>\
+                        </div>',
+                        props: {
+
+                        },
+                        data: function () {
+
+                        },
+                        methods: {
+
+                        },
+                        mounted: function () {
+
+                        }
+                    }
                 }
             });
             var vm = new Vue({
