@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dial</title>
+        <style media="screen">
+            body {
+                background: #efefef;
+                margin: 0;
+                padding: 0;
+            }
+            .btn {
+                display: inline-block;
+                padding: 20px 30px;
+                font-size: 34px;
+                border: 1px solid #efefef;
+                background: #fff;
+                border-radius: 12px;
+                font-size: 34px;
+                color: #333;
+                text-decoration: none;
+            }
+            .btn:focus {
+                box-shadow: 1px 2px 4px 0px #999 inset;
+                transition: all 0.1s ease-out;
+                outline: none;
+            }
+            .wrapper {
+                padding-top: 200px;
+                text-align: center;
+            }
+            .dial-wrapper {
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                width: 500px;
+                height: 500px;
+                display: inline-block;
+            }
+            .plate {
+                background: #fff url(./bg.jpg) no-repeat center/100% 100%;
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                transition: all 2s ease-out;
+                transform: rotate(0deg);
+            }
+            .plate.roll {
+                transform: rotate(720deg);
+            }
+            .pointer-wrapper {
+                background: rgba(0, 0, 0, 0);
+                border-radius: 50%;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+            }
+            .pointer {
+                display: inline-block;
+                width: 30px;
+                height: 100px;
+                margin-top: 150px;
+                background: green;
+                position: relative;
+            }
+            .pointer > .arrow {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-bottom: 30px solid green;
+                position: absolute;
+                left: 0;
+                top: -29px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <div class="dial-wrapper">
+                <div class="plate"></div>
+                <div class="pointer-wrapper">
+                    <span class="pointer">
+                        <i class="arrow"></i>
+                    </span>
+                </div>
+            </div>
+
+            <button type="button" name="button" class="btn" onclick="roll();">ROLL</button>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = function () {
+
+            }
+
+            var angle = 0;
+            let roll = function () {
+                let plate = document.querySelector('.plate');
+                angle += 720;
+                plate.style.cssText = 'transform: rotate(' + angle + 'deg);';
+            }
+        </script>
+    </body>
+</html>

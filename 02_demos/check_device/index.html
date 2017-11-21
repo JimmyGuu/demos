@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>device</title>
+        <style media="screen">
+            body {
+                margin: 0;
+                padding: 0;
+                background: #00ABC2;
+                font-size: 24px;
+            }
+            .btn {
+                display: inline-block;
+                padding: 20px 30px;
+                font-size: 34px;
+                border: 1px solid #efefef;
+                background: #fff;
+                border-radius: 12px;
+                font-size: 34px;
+                color: #333;
+                text-decoration: none;
+            }
+            .btn:focus {
+                box-shadow: 1px 2px 4px 0px #999 inset;
+                transition: all 0.1s ease-out;
+                outline: none;
+            }
+            footer {
+                position: fixed;
+                bottom: 10%;
+                width: 100%;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <footer>
+            <a href="javascript: void(0);" class="btn" id="appStart">设备检测中...</a>
+        </footer>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                var start = document.querySelector('#appStart');
+                var u = navigator.userAgent;
+                // android终端
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+                // ios终端
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+                start.innerHTML = '设备检测中...';
+                if (isAndroid) {
+                    start.innerHTML = '启动应用程序';
+                    start.href = 'myapp://jp.app/openwith?name=zhangsan&age=2';
+                } else if (isiOS) {
+                    start.innerHTML = '启动应用程序';
+                    start.href = 'jiaojinfu://m.jiaojinfu.com/Account/Register';
+                }
+            }
+        </script>
+    </body>
+</html>
