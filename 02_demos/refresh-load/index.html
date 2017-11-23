@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>123</title>
+        <style media="screen">
+            html {
+                font-size: 24px;
+                background: #efefef;
+            }
+            html, body, p, ul, li {
+                margin: 0;
+                padding: 0;
+                line-height: normal;
+            }
+            ul, li {
+                list-style: none;
+            }
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+            .list-wrapper {
+                width: 100%;
+            }
+            .list-data .item:first-child {
+                border-top: 1px solid #ddd;
+            }
+            .list-data .item {
+                border-bottom: 1px solid #ddd;
+                background: #fff;
+            }
+            .list-data .item > a {
+                font-size: 36px;
+                padding: 100px 24px;
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <link rel="stylesheet" href="./main.css">
+        <script type="text/javascript" src="./vue.min.js"></script>
+        <script type="text/javascript">
+            ;(function (window, document) {
+                // Const
+                var Constants = {
+                    REFRESH_TEXT_INIT: '下拉刷新',
+                    REFRESH_TEXT_START: '释放刷新',
+                    REFRESH_TEXT_LOADING: '正在刷新...',
+                    REFRESH_TEXT_DONE: '刷新完成',
+                    LOAD_TEXT_INIT: '',
+                    LOAD_TEXT_LOADING: '正在加载...',
+                    LOAD_TEXT_DONE: '加载完成',
+                    LOAD_TEXT_NONE: '没有更多数据',
+                    LOAD_TEXT_EMPTY: '暂无数据',
+                    STATE_INIT: 1,
+                    STATE_START: 2,
+                    STATE_LOADING: 3,
+                    STATE_DONE: 4,
+                    STATE_NONE: 5,
+                    STATE_EMPTY: 6,
+                    REFRESH: 1,
+                    LOAD: 2,
+                    CLASSNAME_TIP_DROP: 'drop-refresh',
+                    CLASSNAME_TIP_PULL: 'pull-load',
+                    CLASSNAME_TIP_TEXT: 'tip-text',
+                    CLASSNAME_TIP_ICON: 'tip-icon',
+                }
+
+                // Params initialize
+                var init = function (options) {
+                    var opts = options || {}
+
+                    // Pager size
+                    opts.pageSize = opts.pageSize || 10;
+                    // Refresh
+                    opts.refresh = opts.refresh ? opts.refresh = {
+            			styles: opts.refresh.styles || {},
+                        initText: opts.refresh.initText || Constants.REFRESH_TEXT_INIT,
+                        startText: opts.refresh.startText || Constants.REFRESH_TEXT_START,
+                        loadingText: opts.refresh.loadingText || Constants.REFRESH_TEXT_LOADING,
+                        active: opts.refresh.active === false ? opts.refresh.active : true,
+                        auto: opts.refresh.active === true ? opts.refresh.active : false,
+                        icon: opts.refresh.icon || './src/img/reload.png',
+                        offset: opts.refresh.offset || '300px',
+                        rate: parseFloat(opts.refresh.rate) || 0.7,
+                        callback: typeof opts.refresh.callback === 'function' ? opts.refresh.callback : function () { }
+            		} : {
+            			styles: {},
+                        initText: Constants.REFRESH_TEXT_INIT,
+                        startText: Constants.REFRESH_TEXT_START,
+                        loadingText: Constants.REFRESH_TEXT_LOADING,
+                        active: true,
+                        auto: false,
+                        icon: './src/img/reload.png',
+                        offset: '300px',
+                        rate: 0.7,
+                        callback: function () { }
+            		};
+
+                    // Load
+                    opts.load = opts.load ? opts.load = {
+            			styles: opts.load.styles || {},
+                        loadingText: opts.load.loadingText || Constants.LOAD_TEXT_LOADING,
+                        noneText: opts.load.noneText || Constants.LOAD_TEXT_NONE,
+                        emptyText: opts.load.emptyText || Constants.LOAD_TEXT_EMPTY,
+                        active: opts.load.active === false ? opts.load.active : true,
+                        auto: opts.load.active === false ? opts.load.active : true,
+                        offset: opts.load.offset || '100px',
+                        rate: parseFloat(opts.load.rate) || 0.7,
+                        callback: typeof opts.load.callback === 'function' ? opts.load.callback : function () { }
+            		} : {
+            			styles: {},
+                        loadingText: Constants.LOAD_TEXT_LOADING,
+                        noneText: Constants.LOAD_TEXT_NONE,
+                        emptyText: Constants.LOAD_TEXT_EMPTY,
+                        active: true,
+                        auto: true,
+                        offset: '100px',
+                        rate: 0.7,
+                        callback: function () { }
+            		};
+
+                    return opts;
+                }
+
+                /**
+            	 * class extends
+            	 * @param  {Function} Child  Child class
+            	 * @param  {Function} Parent Parent class
+            	 * @return void
+            	 */
+            	var extend = function(Child, Parent) {　　　　
+            		var F = function() {};　　　　
+            		F.prototype = Parent.prototype;　　　　
+            		Child.prototype = new F();　　　　
+            		Child.prototype.constructor = Child;　　　　
+            		Child.uber = Parent.prototype;　　
+            	}
+
+                // Set refresh/load state info
+                var setState = function (state, type, opts) {
+                    var refresh = opts.boxes.refresh,
+                        load = opts.boxes.load;
+                    var text;
+
+                    var textWrapper = function (tp) {
+                        var wrapper;
+                        if (tp === Constants.REFRESH) {
+                            wrapper = refresh.querySelector('.' + Constants.CLASSNAME_TIP_TEXT);
+                        }
+                        if (tp === Constants.LOAD) {
+                            wrapper = load.querySelector('.' + Constants.CLASSNAME_TIP_TEXT);
+                        }
+                        return wrapper;
+                    }
+
+                    switch (state) {
+                        case Constants.STATE_INIT:
+                            if (type === Constants.REFRESH) {
+                                text = Constants.REFRESH_TEXT_INIT;
+                            }
+                            if (type === Constants.LOAD) {
+                                text = Constants.LOAD_TEXT_INIT;
+                                opts.container.childNodes[1].removeChild(opts.boxes.load);
+                            }
+                            textWrapper(type).innerHTML = text;
+                            break;
+                        case Constants.STATE_START:
+                            text = Constants.REFRESH_TEXT_START;
+                            textWrapper(Constants.REFRESH).innerHTML = text;
+                            break;
+                        case Constants.STATE_LOADING:
+                            if (type === Constants.REFRESH) {
+                                text = Constants.REFRESH_TEXT_LOADING;
+                                // Async require
+                                opts.refresh.callback();
+                            }
+                            if (type === Constants.LOAD) {
+                                text = Constants.LOAD_TEXT_LOADING;
+                                opts.container.childNodes[1].appendChild(opts.boxes.load);
+                                opts.boxes.load.style.display = 'flex';
+                                // Async require
+                                opts.load.callback();
+                            }
+                            textWrapper(type).innerHTML = text;
+                            break;
+                        case Constants.STATE_DONE:
+                            if (type === Constants.REFRESH) text = Constants.REFRESH_TEXT_DONE;
+                            if (type === Constants.LOAD) text = Constants.LOAD_TEXT_DONE;
+                            textWrapper(type).innerHTML = text;
+                            break;
+                        case Constants.STATE_NONE:
+                            text = Constants.LOAD_TEXT_NONE;
+                            textWrapper(Constants.LOAD).innerHTML = text;
+                            break;
+                        case Constants.STATE_EMPTY:
+                            text = Constants.LOAD_TEXT_EMPTY;
+                            textWrapper(Constants.LOAD).innerHTML = text;
+                            break;
+                    }
+                }
+
+                // Touch events
+                var TouchEvent = function (opts) {
+                    var self = this;
+                    var boxes = opts.boxes;
+                    var list = opts.container.childNodes[1],
+                        rfH = parseInt(opts.refresh.offset, 10),
+                        ldH = parseInt(opts.load.offset, 10),
+                        rfRate = opts.refresh.rate,
+                        ldRate = opts.load.rate;
+                    var movedY = 0, // touchend moved
+                        _movedY = 0, // touchmove moved
+                        docOffset = 0, // list scroll offset
+                        timeStart = 0,
+                        timeInterval = 0;
+                    this.opts = opts;
+                    this.resetPosition = 0;
+                    this.closeType = Constants.LOAD;
+                    // Computed clientY of list
+                    this.setPosition = function (type, y) {
+                        if (type === 'touchend') {
+                            // console.log('end: ' + _movedY);
+                            if (_movedY > 0) {
+                                // TODO 刷新请求
+                                if (_movedY > rfH * rfRate)  {
+                                    self.resetPosition = 0;
+                                    self.closeType = Constants.REFRESH;
+                                    setState(Constants.STATE_LOADING, Constants.REFRESH, opts);
+                                } else {
+                                    list.style.transition = 'transform .3s ease-out';
+                                    list.style.transform = 'translate3d(0px, ' + 0 +'px, 0px)';
+                                    setState(Constants.STATE_INIT, Constants.REFRESH, self.opts);
+                                }
+                                // list.style.transition = 'transform .3s ease-out';
+                                // list.style.transform = 'translate3d(0px, ' + 0 +'px, 0px)';
+                                movedY = 0;
+
+                            } else if (_movedY < docOffset) {
+                                // TODO 加载请求
+                                if (_movedY - docOffset < -ldH * ldRate) {
+                                    self.resetPosition = docOffset;
+                                    self.closeType = Constants.LOAD;
+                                    setState(Constants.STATE_LOADING, Constants.LOAD, opts);
+
+                                }
+                                // list.style.transition = 'transform .3s ease-out';
+                                // list.style.transform = 'translate3d(0px, ' + docOffset +'px, 0px)';
+                                movedY = docOffset;
+
+                            } else {
+                                if (timeInterval > 0 && timeInterval < 300) {
+                                    var mY;
+                                    var mRate = Math.ceil((movedY - _movedY >= 0 ? movedY - _movedY : -movedY - _movedY) / 100);
+                                    console.log(mRate)
+                                    _movedY <= movedY ? mY = _movedY - 200 : mY = _movedY + 200;
+                                    // Active auto scroll
+                                    list.style.transition = 'transform 0.5s ease-out';
+                                    list.style.transform = 'translate3d(0px, ' + mY +'px, 0px)';
+                                    movedY = mY;
+                                } else {
+                                    list.style.transition = '';
+                                    movedY = _movedY;
+                                }
+                            }
+
+                            return;
+                        }
+                        if (type === 'touchstart') {
+                            startY = y;
+                            list.style.transition = '';
+                        }
+                        if (type === 'touchmove') {
+                            var moveY = y - startY;
+                            docOffset = window.innerHeight - list.clientHeight;
+                            _movedY = movedY + moveY;
+
+                            list.style.transition = '';
+
+                            // refresh
+                            if (_movedY > rfH) {
+                                _movedY = rfH;
+                            }
+                            if (_movedY > rfH * rfRate) {
+                                setState(Constants.STATE_START, Constants.REFRESH, opts);
+                            } else {
+                                setState(Constants.STATE_INIT, Constants.REFRESH, opts);
+                            }
+
+                            // load
+                            if (_movedY < docOffset - ldH) {
+                                list.style.transition = 'transform .3s ease-out';
+                                _movedY = docOffset - ldH;
+                            }
+
+                            // console.log(list.clientHeight - window.innerHeight, _movedY)
+
+
+                            list.style.transform = 'translate3d(0px, ' + _movedY +'px, 0px)';
+                        }
+                    }
+
+                    this.done = function (currentDataLenght, totalDataLength) {
+                        var pull = self.opts.container.querySelector('.' + Constants.CLASSNAME_TIP_PULL);
+
+                        if (self.closeType === Constants.REFRESH) {
+                            list.style.transition = 'transform .3s ease-out';
+                            list.style.transform = 'translate3d(0px, ' + 0 +'px, 0px)';
+                            setState(Constants.STATE_INIT, Constants.REFRESH, self.opts);
+                        }
+                        if (self.closeType === Constants.LOAD) {
+                            // list.style.transition = 'transform .3s ease-out';
+                            // list.style.transform = 'translate3d(0px, ' + docOffset +'px, 0px)';
+                            self.opts.boxes.refresh.style.display = 'flex';
+                            if (pull)
+                                self.opts.container.childNodes[1].removeChild(self.opts.boxes.load);
+                        }
+                        return
+
+                        setState(Constants.STATE_INIT, Constants.REFRESH, this.opts);
+
+                        if (totalDataLength <= 0) {
+                            setState(Constants.STATE_EMPTY, Constants.LOAD, this.opts);
+                            return;
+                        }
+                        if (currentDataLenght <= 0) {
+                            setState(Constants.STATE_NONE, Constants.LOAD, this.opts);
+                            return;
+                        }
+
+                        setState(Constants.STATE_INIT, Constants.LOAD, this.opts);
+                    }
+
+                    // Touch event handler
+                    this.handleTouchEvent = function (event) {
+                        var touch = event.touches[0];
+                        var touched = event.changedTouches[0];
+                        switch (event.type) {
+                            case "touchstart":
+                                timeStart = +new Date;
+                                timeInterval = 0;
+                                self.setPosition('touchstart', touch.clientY);
+                                break;
+                            case "touchend":
+                                timeInterval = +new Date - timeStart;
+                                self.setPosition('touchend', touched.clientY);
+                                break;
+                            case "touchmove":
+                                event.preventDefault();
+                                self.setPosition('touchmove', touched.clientY);
+                                break;
+                        }
+                    }
+                }
+
+
+                // Bind touch event
+                var TouchBind = function (opts) {
+                    var rfAuto = opts.refresh.auto,
+                        ldAuto = opts.load.auto;
+                    TouchEvent.call(this, opts);
+                    opts.container.addEventListener("touchstart", this.handleTouchEvent, false);
+                    opts.container.addEventListener("touchend", this.handleTouchEvent, false);
+                    opts.container.addEventListener("touchmove", this.handleTouchEvent, false);
+
+                    if (rfAuto) {
+                        setState(Constants.STATE_LOADING, Constants.REFRESH, opts);
+                        return;
+                    } else if (ldAuto) {
+                        setState(Constants.STATE_LOADING, Constants.LOAD, opts);
+                        return;
+                    }
+
+                }
+
+                // Extends
+                extend(TouchBind, TouchEvent);
+
+                // Create DOM elements
+                var Create = function (opts) {
+                    var self = this;
+
+                    this.container = opts.container;
+                    this.view = document.createElement('div');
+                    this.icon = document.createElement('span');
+                    this.viewTip = document.createElement('span');
+
+                    // Container init
+                    this.init = function () {
+                        document.body.parentNode.style.overflowY = 'hidden';
+                        self.container.style.position = 'relative';
+                        self.container.childNodes[1].style.position = 'absolute';
+                        self.container.childNodes[1].style.top = '0';
+                        self.container.childNodes[1].style.left = '0';
+                        self.container.childNodes[1].style.zIndex = '1';
+                        self.container.childNodes[1].style.width = '100%';
+                    }
+
+                    // View styles
+                    this.view.style.cssText = 'width: 100%;height: 0;background: #ddd;color: #666;font-size: 24px;text-align: center;overflow: hidden;position: absolute;z-index: 0;left: 0;display: none;justify-content: center;align-items: center;';
+                    this.icon.style.cssText = 'display: inline-block;';
+                    this.icon.className = Constants.CLASSNAME_TIP_ICON;
+                    this.viewTip.style.cssText = 'display: inline-block;padding-left: 24px;font-size: 32px;';
+                    this.viewTip.className = Constants.CLASSNAME_TIP_TEXT;
+
+                    // Custom styles of view
+                    try {
+                        for (var style in opts.refresh.styles) {
+                            if (opts.refresh.styles.hasOwnProperty(style)) {
+                                this.view.style[style] = opts.refresh.styles[style];
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('注意: 样式需为一个对象, 且样式名为驼峰式命名.');
+                        console.warn(e);
+                    }
+
+                    this.view.appendChild(this.icon);
+                    this.view.appendChild(this.viewTip);
+                }
+
+                // Refresh
+                var Refresh = function (opts) {
+                    Create.call(this, opts);
+
+                    var height = opts.refresh.offset;
+                    var text = document.createTextNode(opts.refresh.initText);
+                    var iconImg = '<img alt="Refresh..." src="' + opts.refresh.icon + '" style="width: 50px;" />';
+
+                    this.view.className = Constants.CLASSNAME_TIP_DROP;
+                    this.view.style.height = height;
+                    this.view.style.top = '0';
+
+                    this.icon.innerHTML = iconImg;
+                    this.viewTip.appendChild(text);
+
+                    // Insert into the parent node
+                    this.container.insertBefore(this.view, this.container.childNodes[0]);
+
+                    this.init();
+
+                    return this.view;
+                }
+
+                // Load
+                var Load = function (opts) {
+                    Create.call(this, opts);
+
+                    var height = opts.load.offset;
+                    var text = document.createTextNode(opts.load.loadingText);
+
+                    this.view.className = Constants.CLASSNAME_TIP_PULL;
+                    this.view.style.height = height;
+                    this.view.style.bottom = '0';
+                    this.view.style.position = 'initial';
+
+                    //this.icon.innerHTML = iconImg;
+                    this.viewTip.appendChild(text);
+
+                    // Insert into the parent node
+                    // this.container.childNodes[1].appendChild(this.view);
+
+                    return this.view;
+                }
+
+                // Extends
+                extend(Refresh, Create);
+                extend(Load, Create);
+
+
+
+                // Instantiation
+                var factory = function (opts) {
+                    var refresh = null,
+                        load = null;
+
+                    if (opts.refresh.active) {
+                        refresh = new Refresh(opts);
+                    }
+                    if (opts.load.active) {
+                        load = new Load(opts);
+                    }
+
+                    var bothBox = {
+                        refresh: refresh,
+                        load: load
+                    }
+                    opts.boxes = bothBox;
+                    var touch = new TouchBind(opts);
+
+                    return {
+                        container: opts.container,
+                        boxes: bothBox,
+                        done: touch.done
+                    }
+                }
+
+                // Public Object
+                var MyRefresh = {
+                    on: function (target, options) {
+                        if (!target) return;
+                        var opts = init(options);
+                        opts.container = document.querySelector('#' + target);
+
+                        if (!opts.container) return;
+
+                        var scroll = factory(opts);
+                        var obj = {
+                            done: scroll.done,
+                            container: scroll.container,
+                            boxes: scroll.boxes
+                        }
+
+                        return obj;
+                    }
+                }
+
+                window.MyRefresh = MyRefresh;
+            })(window, document);
+        </script>
+    </head>
+    <body>
+        <div class="list-wrapper" id="listWrapper">
+            <ul class="list-data">
+                <li class="item" v-for="item in list">
+                    <a href="javascript: void(0);">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <script type="text/javascript">
+            let vm = new Vue({
+                el: '#listWrapper',
+                data() {
+                    return {
+                        list: [],
+                        total: 0,
+                        scroll: null
+                    }
+                },
+                methods: {
+                    get() {
+                        setTimeout(() => {
+                            const data = {
+                                items: [
+                                    { name: '1b1' },
+                                    { name: '1b2' },
+                                    { name: '1b3' },
+                                    { name: '1b4' },
+                                    { name: '1b5' },
+                                    { name: '1b6' },
+                                    { name: '1b7' },
+                                    { name: '1b8' },
+                                    { name: '1b9' }
+                                ],
+                                total: 100
+                            }
+                            this.load(data);
+                        }, 1000);
+                    },
+                    load(result) {
+                        result.items.forEach(item => {
+                            this.list.push(item);
+                        });
+                        this.total = result.total;
+
+                        this.scroll.done(result.length, result.length);
+                    }
+                },
+                mounted() {
+                    // this.get();
+                    this.scroll = MyRefresh.on('listWrapper', {
+                        refresh: {
+                            callback: this.get
+                        },
+                        load: {
+                            callback: this.get
+                        }
+                    });
+
+                    console.log(this.scroll)
+                }
+            })
+        </script>
+    </body>
+</html>
