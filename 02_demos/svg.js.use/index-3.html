@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>面积曲线图</title>
+        <style media="screen">
+            #drawingShow {
+                background: #333 url(./img/bg.png) no-repeat left top/100% 100%;
+                width: 750px;
+            }
+            #drawingShow > div {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="drawingShow">
+    		<div id="drawing"></div>
+    	</div>
+
+        <script type="text/javascript" src="../node_modules/svg.js/dist/svg.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                var blue = '#08D5F0';
+                var orange = '#FF9957';
+                var orange_2 = '#FC7821';
+                var orange_3 = '#FF6600';
+                var draw = SVG('drawing').size('100%', 500);
+
+                // 坐标 (原点[100, 400])
+                draw.line(100, 400, 700, 400).stroke({ width: 1,  color: blue });
+                draw.line(100, 400, 100, 100).stroke({ width: 1,  color: blue });
+                draw.path('M 95 100 L 105 100 L 100 90 Z').fill(blue);
+                draw.path('M 700 395 L 700 405 L 710 400 Z').fill(blue);
+
+                // 曲线
+                var path = draw.path('M 100 400 Q 150 200 600 150 L 600 400 Z').fill(orange);
+                draw.path('M 100 400 Q 105 340 200 266 Q 200 266 250 237 L 250 400 Z').fill(orange_2);
+                draw.path('M 100 400 Q 105 340 200 266 L 200 400 Z').fill(orange_3);
+
+
+
+                var length = path.length();
+                var point = path.pointAt(length / 3 * 1 / 6 * 5);
+    			console.info(point);
+    			// console.info(length);
+
+            }
+
+
+        </script>
+    </body>
+</html>
