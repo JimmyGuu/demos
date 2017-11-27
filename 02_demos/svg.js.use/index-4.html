@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>面积图</title>
+        <style media="screen">
+            #drawingShow {
+                background: #333 url(./img/bg.png) no-repeat left top/100% 100%;
+                width: 100%;
+                padding: 100px 60px 0px 60px;
+            }
+            #drawingShow > div {
+                width: 100%;
+            }
+            svg {
+                overflow: initial;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="drawingShow">
+    		<div id="drawing"></div>
+    	</div>
+
+        <script type="text/javascript" src="../node_modules/svg.js/dist/svg.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+
+                // 转2位数字
+                function numFormat(number) {
+                    var num;
+                    number = parseInt(number, 10);
+                    num = number < 10 ? '0' + number : number;
+                    return num;
+                }
+
+                // 锁定期天数
+                var lockDays = 1;
+                // 总期限
+                var totalDays = 30;
+                // 已持有天数
+                var hadDays = 3;
+                // 年化收益率 - 大
+                var interestRateA = '9%';
+                // 年化收益率 - 小
+                var interestRateB = '3%';
+
+                // 主题蓝色
+                var blue = '#08D5F0';
+                // 主题橙色
+                var orange_1 = '#FF9957';
+                var orange_2 = '#FC7821';
+                var orange_3 = '#FF6600';
+                // 容器
+                var draw = SVG('drawing').size('100%', 400);
+                // 长度高度
+                var height = 300,
+                    totalLen = 700,
+                    lockLen = 150,
+                    dayLen = (totalLen - lockLen) / (totalDays - 1),
+                    hadLen = lockLen + dayLen * (hadDays - 1),
+                    hadWrapperWidth = 130,
+                    hadWrapperHeight = 34,
+                    hadWrapperRadius = 4,
+                    hadWrapperArrow = 14;
+                // 轴超出长度
+                var axisOver = 50,
+                    textOver = 100;
+                // 字体大小
+                var fontSize = {
+                    axis: '24px',
+                    lock: '24px',
+                    rateA: '52px',
+                    rateB: '46px',
+                    had: '18px'
+                }
+
+                // 坐标 (原点[0, 0])
+                // x轴
+                draw.line(0, height, totalLen + axisOver, height).stroke({ width: 1,  color: blue });
+                draw.path('M ' + (totalLen + axisOver) + ' ' + (height - 5) + ' L ' + (totalLen + axisOver) + ' ' + (height + 5) + ' L ' + (totalLen + axisOver + 10) + ' ' + height + ' Z').fill(blue);
+                // y轴
+                draw.line(0, height, 0, 0 - axisOver).stroke({ width: 1,  color: blue });
+                draw.path('M -5 ' + (0 - axisOver) + ' L 5 ' + (0 - axisOver) + ' L 0 ' + (0 - axisOver - 10) + ' Z').fill(blue);
+
+                // 面积图
+                draw.path('M 1 0 L 0 ' + height +' L ' + totalLen + ' ' + height +' L ' + totalLen + ' 0 Z').fill(orange_1);
+                draw.path('M 1 0 L 0 ' + height +' L ' + hadLen + ' ' + height +' L ' + hadLen + ' 0 Z').fill(orange_2);
+                draw.path('M 1 0 L 0 ' + height +' L ' + lockLen + ' ' + height +' L ' + lockLen + ' 0 Z').fill(orange_3);
+
+                // 已持有天数容器
+                draw.rect(hadWrapperWidth, hadWrapperHeight).radius(hadWrapperRadius).fill(blue).move(hadLen - hadWrapperWidth, -hadWrapperHeight + -hadWrapperArrow);
+                draw.path('M ' + hadLen + ' ' + -(hadWrapperArrow + hadWrapperRadius) + ' L ' + hadLen + ' 0 A ' + hadLen + ' 0, 0, 0, 1, ' + (hadLen - hadWrapperRadius * 2) + ' ' + -(hadWrapperArrow + hadWrapperRadius) + ' Z').fill(blue);
+
+                // 文本内容
+                var text = draw.text(function(add) {
+                    // 锁定期
+                    add.tspan(numFormat(lockDays) + '天').move(lockLen, height + parseInt(fontSize.axis, 10)).font({ fill: blue, size: fontSize.axis, anchor: 'middle' });;
+                    // 总期限
+                    add.tspan(numFormat(totalDays) + '天').move(totalLen, height + parseInt(fontSize.axis, 10)).font({ fill: blue, size: fontSize.axis, anchor: 'middle' });;
+                    // 锁定期
+                    add.tspan('锁定期').move(lockLen / 2, height / 2).font({ fill: '#fff', size: fontSize.lock, anchor: 'middle' });
+                    // 年化收益率
+                    add.tspan('预期年化收益率').move(totalLen / 2, height - textOver).font({ fill: '#fff', size: fontSize.axis, anchor: 'left' });
+                    add.tspan(interestRateA).move(totalLen / 2, height - textOver - parseInt(fontSize.rateA, 10)).font({ fill: '#fff', size: fontSize.rateA, anchor: 'left' });
+                    add.tspan('+' + interestRateB).move(totalLen / 2 + parseInt(fontSize.rateA, 10) * 1.4, height - textOver - parseInt(fontSize.rateA, 10)).font({ fill: '#fff', size: fontSize.rateB, anchor: 'left' });
+                    // 已持有天数
+                    add.tspan('已持有' + numFormat(hadDays) + '天').move(hadLen - hadWrapperWidth + hadWrapperWidth / 2, (-hadWrapperHeight + -hadWrapperArrow) / 2).font({ fill: '#fff', size: fontSize.had, anchor: 'middle' });
+
+                });
+
+                // M 起点 A 半径, x-axis-rotation(x轴旋转角度) large-arc-flag(角度大小) sweep-flag(弧线方向) 终点
+                // draw.path('M80 80 A 45 45, 0, 0, 0, 125 125 L 125 80 Z');
+                // draw.path('M230 80 A 45 45, 0, 1, 0, 275 125 L 275 80 Z');
+
+
+            }
+
+
+        </script>
+    </body>
+</html>

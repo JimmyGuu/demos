@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ECharts</title>
+        <style media="screen">
+            .chart {
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+        <script src="./echarts.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="chart" id="myChart"></div>
+
+        <script type="text/javascript">
+            // 锁定期天数
+            var lockDays = 1;
+            // 总期限
+            var totalDays = 30;
+            // 已持有天数
+            var hadDays = 2;
+            // 年化收益率 - 大
+            var interestRateA = '9%';
+            // 年化收益率 - 小
+            var interestRateB = '3%';
+
+
+            // 主题蓝色
+            var blue = '#08D5F0';
+            // 主题橙色
+            var orange_1 = '#FF9957';
+            var orange_2 = '#FC7821';
+            var orange_3 = '#FF6600';
+
+            var myChart = echarts.init(document.getElementById('myChart'));
+
+            var productStatus = [
+                {
+                    "statusParam": 12,
+                    "status": 0
+                },{
+                    "statusParam": 22,
+                    "status": 1
+                },{
+                    "statusParam": 32,
+                    "status": 1
+                }
+            ];
+
+            var days = [];
+            for(var i = 0; i <= totalDays; i++) {
+                var day = i < 10 ? '0' + i + '天' : i + '天';
+                days.push(day);
+            }
+
+            console.log(days)
+
+            var xAxis = days,
+            yAxis = [0, 10, 20, 30, 40, 50],
+            data = [],
+            series = [
+                {
+                    name: '锁定期',
+                    type: 'line',
+                    smooth: true,
+                    symbolSize: 7,
+                    data: [['00天', 0], ['01天', 20]],
+                    areaStyle: {
+                        normal: {
+                            color: orange_3,
+                            opacity: 1
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: ''
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: orange_3,
+                            borderWidth: 2,
+                            borderType: 'solid'
+                        }
+                    }
+                },
+                {
+                    name: '持有期',
+                    type: 'line',
+                    smooth: true,
+                    symbolSize: 7,
+                    data: [['01天', 20], ['02天', 30]],
+                    areaStyle: {
+                        normal: {
+                            color: orange_2,
+                            opacity: 1
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: ''
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: orange_2,
+                            borderWidth: 2,
+                            borderType: 'solid'
+                        }
+                    }
+                },
+                {
+                    name: '总期限',
+                    type: 'line',
+                    smooth: true,
+                    symbolSize: 7,
+                    data: [['02天', 30], ['30天', 50]],
+                    areaStyle: {
+                        normal: {
+                            color: orange_1,
+                            opacity: 1
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: ''
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: orange_1,
+                            borderWidth: 2,
+                            borderType: 'solid'
+                        }
+                    }
+                }
+            ],
+            seriesItem;
+            var st = productStatus[0].status;
+            /*for (var i = 0; i < productStatus.length; i++) {
+                // var date = productStatus[i].date.substring(5);
+                // xAxis.push(date);
+                yAxis.push(productStatus[i].salesCnt);
+                data.push([date, productStatus[i].salesCnt]);
+                if (st != productStatus[i].status || (i == productStatus.length - 1)) {
+                    var color = st == 1 ? orange_3 : orange_2;
+                    var name1 = st == 1 ? '锁定期' : "持有期";
+                    seriesItem = {
+                        name: name1,
+                        type: 'line',
+                        smooth: true,
+                        symbolSize: 7,
+                        data: data,
+                        areaStyle: {
+                            normal: {
+                                color: color,
+                                opacity: 1
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: ''
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: color,
+                                borderWidth: 2,
+                                borderType: 'solid'
+                            }
+                        }
+                    };
+
+                    series.push(seriesItem);
+                    data = [
+                        [date, productStatus[i].salesCnt]
+                    ];
+                    st = productStatus[i].status;
+                }
+            } */
+
+            option = {
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                title: {
+                    text: '您已持有02天,预期年化收益率9%+3%',
+                    subtext: '',
+                    textStyle: {
+                        color: blue,
+                        fontSize: '24px',
+                        align: 'center'
+                    }
+                },
+                legend: {
+                    right: 50,
+                    top: 20,
+                    data: [{
+                            name: '锁定期',
+                            icon: 'circle',
+                            textStyle: {
+                                color: '#333',
+                                fontSize: '14'
+                            }
+                        }, {
+                            name: '持有期',
+                            icon: 'circle',
+                            textStyle: {
+                                color: '#333',
+                                fontSize: '14'
+                            }
+                        }, {
+                            name: '总期限',
+                            icon: 'circle',
+                            textStyle: {
+                                color: '#333',
+                                fontSize: '14'
+                            }
+                        }
+
+                    ]
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    xAxisIndex: [0]
+                }],
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function(params) {
+                        for (let i = 0; i < params.length; i++) {
+                            if (params[i].value) {
+                                return params[i].value[1];
+                            }
+                        }
+                        return 'loading';
+                    },
+                    backgroundColor: '#ff6633',
+                    padding: [10],
+                    axisPointer: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    }
+
+                },
+                xAxis: {
+                    axisTick: {
+                        show: true
+                    },
+                    type: 'category',
+                    boundaryGap: false,
+                    data: xAxis,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#333'
+                        }
+                    }
+                },
+                yAxis: {
+                    axisTick: {
+                        show: false
+                    },
+                    type: 'value',
+                    axisLine: {
+                        show: false
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    }
+                },
+                series: series
+            };
+
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

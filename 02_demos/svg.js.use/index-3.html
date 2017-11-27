@@ -6,8 +6,8 @@
         <style media="screen">
             #drawingShow {
                 background: #333 url(./img/bg.png) no-repeat left top/100% 100%;
-                width: 750px;
-                padding: 500px 50px 0px 50px;
+                width: 100%;
+                padding: 500px 60px 0px 60px;
             }
             #drawingShow > div {
                 width: 100%;
@@ -25,19 +25,6 @@
         <script type="text/javascript" src="../node_modules/svg.js/dist/svg.js"></script>
         <script type="text/javascript">
             window.onload = function () {
-                var blue = '#08D5F0';
-                var orange_1 = '#FF9957';
-                var orange_2 = '#FC7821';
-                var orange_3 = '#FF6600';
-                var draw = SVG('drawing').size('100%', 50);
-
-                // 坐标 (原点[0, 0])
-                draw.line(0, 0, 500, 0).stroke({ width: 1,  color: blue });
-                draw.line(0, 0, 0, -400).stroke({ width: 1,  color: blue });
-
-                draw.path('M -5 -400 L 5 -400 L 0 -410 Z').fill(blue);
-                draw.path('M 500 -5 L 500 5 L 510 0 Z').fill(blue);
-
                 // var path = draw.path('M 100 400 Q 150 200 600 150 L 600 400 Z').fill(orange);
                 // draw.path('M 100 400 Q 105 340 200 266 Q 200 266 250 237 L 250 400 Z').fill(orange_2);
                 // draw.path('M 100 400 Q 105 340 200 266 L 200 400 Z').fill(orange_3);
@@ -75,6 +62,17 @@
                 // draw.circle(2).move(point1.x, point1.y).fill('red');
                 // draw.circle(2).move(point2.x, point2.y).fill('red');
 
+                // 锁定期天数
+                var lockDays = '01';
+                // 总期限
+                var totalDays = '30';
+                // 年化收益率 - 大
+                var interestRateA = '9%';
+                // 年化收益率 - 小
+                var interestRateB = '3%';
+                // 已持有天数
+                var hadDays = '02';
+
                 // 计算控制点
                 function mathCP (p1, p2, cp1) {
                     var tmpx1 = p1.x-cp1.x;
@@ -89,42 +87,93 @@
                     return controlPoint = { x: tmpx, y: tmpy }
                 }
 
-                // 起点 红色
-                var p1 = { x: 0, y: 0 }
-                // 终点 红色
-                var p2 = { x: 500, y: 400 }
-                // 经过的点 白色
-                var cp1 = { x: 100, y: 200 };
+                // 主题蓝色
+                var blue = '#08D5F0';
+                // 主题橙色
+                var orange_1 = '#FF9957';
+                var orange_2 = '#FC7821';
+                var orange_3 = '#FF6600';
+                var draw = SVG('drawing').size('100%', 50);
 
+                // 坐标 (原点[0, 0])
+                // x轴
+                draw.line(0, 0, 750, 0).stroke({ width: 1,  color: blue });
+                draw.path('M 750 -5 L 750 5 L 760 0 Z').fill(blue);
+                // y轴
+                draw.line(0, 0, 0, -400).stroke({ width: 1,  color: blue });
+                draw.path('M -5 -400 L 5 -400 L 0 -410 Z').fill(blue);
+
+                // 第1层起点
+                var p1 = { x: 0, y: 0 }
+                // 第1层终点
+                var p2 = { x: 700, y: 350 }
+                // 第1层经过的点
+                var cp1 = { x: 200, y: 200 };
+
+                // 第1层控制点
                 var cp = mathCP(p1, p2, cp1);
 
-                console.log(cp);
-
+                // 第1层 - 浅色 - 路径1
                 var path_1 = draw.path('M 0 0 Q ' + cp.x + ' ' + -cp.y + ' ' + p2.x + ' ' + -p2.y + ' L ' + p2.x + ' 0 Z').fill(orange_1);
 
-                // show
-                draw.circle(8).move(p1.x, p1.y).fill('red');
-                draw.circle(8).move(cp.x, -cp.y).fill('yellow');
-                draw.circle(8).move(p2.x, -p2.y).fill('red');
-                draw.circle(8).move(cp1.x, -cp1.y).fill('white');
-                draw.line(cp.x, -cp.y, p1.x, -p1.y).stroke({ width: 1,  color: blue });
-                draw.line(cp.x, -cp.y, p2.x, -p2.y).stroke({ width: 1,  color: blue });
+                // 辅助点线
+                // draw.circle(8).move(p1.x, p1.y).fill('red');
+                // draw.circle(8).move(cp.x, -cp.y).fill('yellow');
+                // draw.circle(8).move(p2.x, -p2.y).fill('red');
+                // draw.circle(8).move(cp1.x, -cp1.y).fill('white');
+                // draw.line(cp.x, -cp.y, p1.x, -p1.y).stroke({ width: 1,  color: blue });
+                // draw.line(cp.x, -cp.y, p2.x, -p2.y).stroke({ width: 1,  color: blue });
 
-
+                // 路径1曲线长度
                 var length_1 = path_1.length() - p2.y - p2.x;
-                var point_1 = path_1.pointAt(length_1 / 100 * 20);
-                console.log(length_1, point_1);
+                // 第2层经过的点
+                var point_1 = path_1.pointAt(length_1 / 100 * 15);
 
-                // 起点
+                // 第2层起点
                 var p1_1 = { x: 0, y: 0 }
-                // 终点
-                var p2_1 = { x: 100, y: 200 }
-                // 经过的点
+                // 第2层终点
+                var p2_1 = { x: 200, y: 200 }
+                // 第2层经过的点
                 var cp1_1 = { x: point_1.x, y: -point_1.y };
 
+                // 第2层控制点
                 var cp_1 = mathCP(p1_1, p2_1, cp1_1);
 
-                draw.path('M 0 0 Q ' + cp_1.x + ' ' + -cp_1.y + ' ' + p2_1.x + ' ' + -p2_1.y + ' L ' + p2_1.x + ' 0 Z').fill(orange_3);
+                // 第2层 - 路径2
+                var path_2 = draw.path('M 0 0 Q ' + cp_1.x + ' ' + -cp_1.y + ' ' + p2_1.x + ' ' + -p2_1.y + ' L ' + p2_1.x + ' 0 Z').fill(orange_2);
+
+                // 路径2曲线长度
+                var length_2 = path_2.length() - p2_1.y - p2_1.x;
+                // 第3层经过的点
+                var point_2 = path_2.pointAt(length_2 / 100 * 45);
+                // 第3层终点
+                var point_3 = path_2.pointAt(length_2 / 100 * 85);
+
+                // 第3层起点
+                var p1_2 = { x: 0, y: 0 }
+                // 第3层终点
+                var p2_2 = { x: point_3.x, y: -point_3.y }
+                // 第3层经过的点
+                var cp1_2 = { x: point_2.x, y: -point_2.y };
+                // 第3层控制点
+                var cp_2 = mathCP(p1_2, p2_2, cp1_2);
+
+                // 第3层 - 路径3
+                var path_3 = draw.path('M 0 0 Q ' + cp_2.x + ' ' + -cp_2.y + ' ' + p2_2.x + ' ' + -p2_2.y + ' L ' + p2_2.x + ' 0 Z').fill(orange_3);
+
+                // 文本内容
+                // 【01天】在第3层终点x轴
+                // 【03天】在第1层终点x轴
+                // 【已持有n天】在第2层终点
+                // 【预期年化收益率】在第1层右侧
+                // 【您已持有n天，预期年化收益率】在图标上方
+                var text = draw.text(function(add) {
+                    // 锁定期
+                    add.tspan(lockDays + '天').move(p2_2.x, 24).font({ fill: blue, size: '24px', anchor: 'middle' });;
+                    // 总期限
+                    add.tspan(totalDays + '天').move(p2.x, 24).font({ fill: blue, size: '24px', anchor: 'middle' });;
+
+                });
             }
 
 
