@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>无缝滚动</title>
+</head>
+<style type="text/css">
+     .row{
+      width: 1298px;
+      height: 400px;
+      border: 1px solid;
+      box-shadow:2px 2px 2px #000;
+      overflow: hidden;
+     }
+     .box{
+      position: relative;
+     }
+     .box1,.box2{
+      width: 1298px;
+      position: absolute;
+     }
+     .box2{
+      left:1298px;
+     }
+     img{
+      float: left;
+      width: 200px;
+      height: 150px;
+     }
+
+    /*跑马灯*/
+    .scroll-bar {
+        background: #669994;
+        color: #fff;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 1rem;
+    }
+    .scroll-bar .list {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        width: auto;
+    }
+    .scroll-bar .item {
+        display: inline-block;
+        transition: all 0.1s linear;
+        padding-right: 2rem;
+    }
+</style>
+<body>
+ <div class="row">
+  <div class="box" id="box">
+   <div class="box1" id="box1">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+    <img src="images/5.jpg">
+   </div>
+   <div class="box2" id="box2">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+    <img src="images/5.jpg">
+   </div>
+  </div>
+ </div>
+
+
+ <section class="scroll-bar">
+     <ul class="list scroll">
+         <li class="item">●</li>
+     </ul>
+ </section>
+
+</body>
+<script type="text/javascript">
+     window.onload = function(){
+          var _box1 = document.getElementById("box1");
+          var _box2 = document.getElementById("box2");
+          var x = 0;
+          var fun = function(){
+               _box1.style.left = x + 'px';
+               _box2.style.left = (x +1298) + 'px';
+               x--;
+               if((x +1298) == 0){
+                   x = 0;
+               }
+          }
+          setInterval(fun,1);
+
+          // custom 跑马灯
+          createItem(50);
+          setColor();
+          setInterval(function () {
+                setColor();
+          }, 100);
+
+          scroll();
+     }
+
+     // 生成指定数目的点
+     function createItem(n) {
+         var itemClass = 'item';
+         var list = document.querySelector('.scroll');
+
+         for(var i = n - 1; i >= 0; i--) {
+             var item = document.createElement('li');
+             var text = document.createTextNode('●');
+             item.className = itemClass;
+             item.appendChild(text);
+             list.appendChild(item);
+         }
+     }
+
+     // 生成16进制随机颜色
+    function randomColor() {
+        return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+    }
+    // 为字体设置随机颜色
+    function setColor() {
+        var items = document.querySelectorAll('.scroll-bar .item');
+        for (var len = items.length, i = len - 1; i >= 0; i--) {
+            var color = randomColor();
+            items[i].style.color = color;
+        }
+    }
+
+    // 跑马灯
+    function scroll() {
+        var listClass = 'list',
+            itemClass = 'item';
+        var list = document.querySelector('.scroll');
+        var items = list.querySelectorAll('.' + itemClass);
+
+        var create = function (type) {
+            var lt = document.createElement(list.tagName.toLowerCase());
+
+            lt.className = listClass + ' ' + type;
+
+            var lt_w = 0;
+            for (var len = items.length, i = 0; i < len; i++) {
+                var it = document.createElement(items[i].tagName.toLowerCase());
+                var tt = document.createTextNode(items[i].innerHTML);
+
+                it.className = itemClass + ' ' + type;
+
+                it.appendChild(tt);
+
+                lt.appendChild(it);
+
+                lt_w += items[i].clientWidth;
+            }
+
+            return {
+                list: lt,
+                width: lt_w
+            };
+        }
+
+        list.parentNode.style.display = 'flex';
+        list.parentNode.style.justifyContent = 'flex-start';
+        list.parentNode.style.alignItems = 'center';
+        list.parentNode.style.flexWrap = 'nowrap';
+
+        var lt_n = create('next');
+        list.parentNode.appendChild(lt_n.list);
+
+        var timer;
+        var counter = 0;
+        var scroll = function () {
+            list.style.marginLeft = counter + 'px';
+            // lt_n.list.style.marginLeft = (counter + lt_n.width) + 'px';
+            counter--;
+            if ((counter + lt_n.width) == 0) {
+                counter = 0;
+            }
+        }
+
+        // 启动计时器
+        timer = setInterval(scroll, 1);
+
+    }
+</script>
+</html>
