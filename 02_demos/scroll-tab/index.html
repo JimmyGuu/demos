@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tab</title>
+        <style media="screen">
+            html, body, ul, li, p {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            ul, li {
+                list-style: none;
+            }
+
+            body {
+                background: #6BADAB url(./src/02.png) no-repeat left top/100%;
+            }
+            header {
+                background: rgba(0, 0, 0, .1);
+                color: #fff;
+                font-size: 24px;
+                overflow: hidden;
+                position: relative;
+            }
+            .tab-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 166.667%;
+                transition: transform 0.3s ease-in;
+            }
+            .tab-wrapper .tab-item {
+                width: 33.333%
+            }
+            .tab-wrapper .tab-item a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                color: #fff;
+                font-size: 32px;
+                padding: 40px 0;
+                white-space: nowrap;
+            }
+            .tab-wrapper .tab-item.active a {
+                font-size: 1.8em;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="header">
+            <ul class="tab-wrapper">
+                <li class="tab-item" @click="link"><a href="javascript: void(0);">一举夺魁</a></li>
+                <li class="tab-item active" @click="link"><a href="javascript: void(0);">每日抢红包</a></li>
+                <li class="tab-item" @click="link"><a href="javascript: void(0);">小试牛刀</a></li>
+                <li class="tab-item" @click="link"><a href="javascript: void(0);">我的红包</a></li>
+                <li class="tab-item" @click="link"><a href="javascript: void(0);">我的奖品</a></li>
+            </ul>
+        </header>
+
+        <script src="./src/hammer.min.js" charset="utf-8"></script>
+        <script src="../js/vue.min.js" charset="utf-8"></script>
+        <script src="./dist/scroll-tab.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#header',
+                data() {
+                    return {
+
+                    }
+                },
+                methods: {
+                    link() {
+                        alert('fk!');
+                    }
+                },
+                mounted() {
+                    var container = document.querySelector('.tab-wrapper');
+
+                    var scrollTab = new ScrollTab({
+                        container: container,
+                        init: 0
+                    });
+
+                    /*
+                    var counts = 5;
+                    var header = document.querySelector('#header');
+                    var container = header.querySelector('.tab-wrapper');
+                    var options = {};
+                    var hammertime = new Hammer(container, options);
+                    var x = 0,
+                        direction = 'left',
+                        move = 0;
+
+                    // 阻止a标签可以在浏览器中被拖动
+                    function stopDrag(items) {
+                        if (items.length) {
+                            for (var len = items.length, i = len - 1; i >= 0; i--) {
+                                items[i].setAttribute('ondragstart', 'return false;');
+                            }
+                        } else {
+                            items.setAttribute('ondragstart', 'return false;');
+                        }
+                    }
+
+                    var items = container.querySelectorAll('.tab-item a');
+                    stopDrag(items);
+
+                    // 初始化
+                    container.style.transform = 'translate3d(' + 0 + ', 0, 0)';
+                    container.style.transitionDuration = '0s';
+
+                    // 自动归位
+                    // @param {String} direction 拖拽方向
+                    // @param {Number} move 绝对位移距离
+                    // @param {Number} x 原始绝对位置
+                    function autoPosition(direction, move, x) {
+                        move = +move;
+                        x = +x;
+
+                        var m = move,
+                            overflow = container.clientWidth - window.innerWidth,
+                            oneWidth = container.clientWidth / counts;
+                        m < 0 ? m = -m : m;
+
+                        if (direction === 'left') {
+                            if (m - oneWidth <= -oneWidth / 3 * 2) {
+                                // 从最左边拖拽的距离小于一格的三分之一
+                                // 回到原来的位置
+                                container.style.transform = 'translate3d(' + x + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m - oneWidth <= 0) {
+                                // 从最左边拖拽的距离大于一格的三分之一且小于一格
+                                // 移动到下一格
+                                //container.style.marginLeft = x - oneWidth + 'px';
+                                container.style.transform = 'translate3d(' + (x - oneWidth) + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m > overflow) {
+                                // 超过右边
+                                // 自动回到末尾
+                                // container.style.marginLeft = -overflow + 'px';
+                                container.style.transform = 'translate3d(' + -overflow + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m < 0) {
+                                // 超过左边
+                                // 自动回到起始
+                                // container.style.marginLeft = 0 + 'px';
+                                container.style.transform = 'translate3d(' + 0 + 'px, 0, 0)';
+                                return;
+                            }
+
+                            if (m % oneWidth <= oneWidth / 3 * 1) {
+                                // 超过一格且小于一格的三分之一
+                                // 回到前一格
+                                // container.style.marginLeft = -(Math.floor(m / oneWidth) * oneWidth) + 'px';
+                                container.style.transform = 'translate3d(' + -(Math.floor(m / oneWidth) * oneWidth) + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m % oneWidth > oneWidth / 3 * 1) {
+                                // 超过一格且大于一格的三分之一
+                                // 到下一格
+                                var _m = Math.ceil(m / oneWidth) * oneWidth;
+                                _m > overflow ? _m = overflow : overflow;
+
+                                // container.style.marginLeft = -_m + 'px';
+                                container.style.transform = 'translate3d(' + -_m + 'px, 0, 0)';
+                                return;
+                            }
+
+                            return;
+                        }
+
+                        if (direction === 'right') {
+                            if (move > 0) {
+                                // 超出最左边
+                                // 回到起始
+                                // container.style.marginLeft = 0 + 'px';
+                                container.style.transform = 'translate3d(' + 0 + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m % oneWidth <= oneWidth / 3 * 2) {
+                                // 取余小于一格的三分之二
+                                // 停在当前格
+
+                                var _m = Math.floor(m / oneWidth) * oneWidth;
+
+                                // container.style.marginLeft = -_m + 'px';
+                                container.style.transform = 'translate3d(' + -_m + 'px, 0, 0)';
+                                return;
+                            }
+                            if (m % oneWidth > oneWidth / 3 * 2) {
+                                // 取余大于一格的三分之二
+                                // 至下一格
+
+                                var _m = Math.ceil(m / oneWidth) * oneWidth;
+
+                                // container.style.marginLeft = -_m + 'px';
+                                container.style.transform = 'translate3d(' + -_m + 'px, 0, 0)';
+                                return;
+                            }
+
+                            return;
+                        }
+                    }
+
+                    // 拖拽
+                    hammertime.on('panstart', function (e) {
+                        container.style.transitionDuration = '0s';
+
+                        var translate3d = container.style.transform.substring(container.style.transform.indexOf('(') + 1, container.style.transform.indexOf(')')).split(',');
+                        x = parseFloat(translate3d[0], 10);
+                    });
+                    hammertime.on('panend', function (e) {
+                        container.style.transitionDuration = '0.2s';
+                        autoPosition(direction, move, x);
+                    });
+                    hammertime.on('panleft', function (e) {
+                        var left = x + e.deltaX;
+
+                        move = left;
+
+                        container.style.transform = 'translate3d(' + move + 'px, 0, 0)';
+                        direction = 'left';
+                    });
+                    hammertime.on('panright', function (e) {
+                        var right = x + e.deltaX;
+
+                        move = right;
+
+                        container.style.transform = 'translate3d(' + move + 'px, 0, 0)';
+                        direction = 'right';
+                    });
+
+
+                    */
+
+                    // 滑动手势
+                    // hammertime.on('panstart', e => {
+                    //     x = parseInt(container.style.marginLeft, 10);
+                    // });
+                    // hammertime.on('swipeleft', e => {
+                    //     console.log('swipeleft');
+                    //     console.log(e.deltaX + 'px', e.deltaTime + 'ms');
+                    //     console.log(container.clientWidth / counts);
+                    //
+                    //     var move = x - oneWidth;
+                    //     // 防止超出右侧
+                    //     move <= -overflow ? move = -overflow : move;
+                    //     // 防止超出左侧
+                    //     move >= 0 ? move = 0 : move;
+                    //
+                    //     container.style.marginLeft = move + 'px';
+                    // });
+                    // hammertime.on('swiperight', e => {
+                    //     var move = x + oneWidth;
+                    //     // 防止超出右侧
+                    //     move <= -overflow ? move = -overflow : move;
+                    //     // 防止超出左侧
+                    //     move >= 0 ? move = 0 : move;
+                    //
+                    //     container.style.marginLeft = move + 'px';
+                    // });
+
+                }
+
+            });
+        </script>
+    </body>
+</html>
