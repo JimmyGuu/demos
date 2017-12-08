@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal website.">
+    <meta name="author" content="Jehorn">
+    <title>test</title>
+    <style type="text/css">
+    .clearfix:before {
+        clear: both;
+        visibility: hidden;
+        display: table;
+        height: 0;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both;
+        visibility: hidden;
+        display: table;
+        height: 0;
+        content: "";
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .pull-right {
+        float: right;
+    }
+
+    .width-all {
+        width: 100%;
+    }
+
+    header {
+        height: 50px;
+    }
+
+    .content {
+        margin-left: 7.14%;
+        margin-right: 7.14%;
+    }
+
+    .row {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .row>.col {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .img-box {
+        position: relative;
+        width: 50%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .img-box>.img {
+        width: 100%;
+        position: relative;
+    }
+
+    .img-box>.img>img {
+        width: 100%;
+    }
+
+    .img-box>.img>.img-hover {
+        position: absolute;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, .5);
+        width: 150px;
+        height: 150px;
+        left: 0;
+        top: 0;
+        display: none;
+        border: 0;
+    }
+
+    .img-box>.img>.img-hover:hover {
+        cursor: move;
+    }
+
+    .img-box>.img-enlarge {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border: 1px solid #ddd;
+        background-color: rgb(210, 210, 210);
+        left: 100%;
+        top: 10px;
+        background-image: url(./img/002.jpg);
+        background-position-x: 0;
+        background-position-y: 0;
+        background-repeat: no-repeat;
+        display: none;
+        background-size: 500%;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="content clearfix">
+            <div class="pull-left">测试</div>
+            <div class="pull-right">&times;</div>
+        </div>
+    </header>
+    <!-- /.header -->
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col">
+                    <div class="img-box">
+                        <div class="img">
+                            <img src="./img/002.jpg" alt="img" />
+                        </div>
+                        <div class="img-enlarge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <footer>
+        <div class="content">
+        </div>
+    </footer>
+    <!-- /.footer -->
+    <script type="text/javascript">
+    window.onload = function () {
+    	const img = document.querySelector('.img-box>.img')
+    	img.addEventListener('mouseover', imgHover.mouseOver, false)
+    }
+
+    const imgHover = {}
+    imgHover.width = 150
+    imgHover.height = 150
+
+    // 鼠标在对象上方
+    imgHover.mouseOver = function(e) {
+        const width = imgHover.width,
+            height = imgHover.height
+        const box = document.createElement('div')
+        const boxNode = document.createTextNode('')
+        const img = document.querySelector('.img-box>.img')
+        const enlarge = document.querySelector('.img-enlarge')
+        let left, top
+        box.appendChild(boxNode)
+        box.classList.add('img-hover')
+        box.addEventListener('mousemove', function (event) {
+        	imgHover.mouseMove(event, box)
+        }, false)
+        img.appendChild(box)
+        // 移除鼠标鼠标移入图片事件
+        img.removeEventListener('mouseover', imgHover.mouseOver, false)
+        
+        left = e.offsetX - width / 2
+        left < 0 ? left = 0 : left = left
+        left > img.offsetWidth - width ? left = img.offsetWidth - width : left = left
+
+        top = e.offsetY - height / 2
+        top < 0 ? top = 0 : top = top
+        top > img.offsetHeight - height ? top = img.offsetHeight - height : top = top
+
+        box.style.left = left + 'px'
+        box.style.top = top + 'px'
+        box.style.display = 'block'
+        enlarge.style.display = 'block'
+    }
+
+    // 鼠标离开对象
+    imgHover.mouseOut = function(e) {
+    	const img = document.querySelector('.img-box>.img')
+        const box = document.querySelectorAll('.img-hover')
+        const enlarge = document.querySelector('.img-enlarge')
+
+        for (let i = 0; i < box.length; i++) {
+        	box[i].parentNode.removeChild(box[i]);
+        }
+        enlarge.style.display = 'none'
+
+        // 移除鼠标鼠标离开图片事件
+        img.removeEventListener('mouseout', imgHover.mouseOut, false)
+        // 添加鼠标鼠标进入图片事件
+        img.addEventListener('mouseover', imgHover.mouseOver, false)
+    }
+
+    // 鼠标移动
+    imgHover.mouseMove = function(e, box) {
+        const width = imgHover.width,
+            height = imgHover.height
+        // const box = document.querySelector('.img-hover') // 此处取到的box为null
+        const img = document.querySelector('.img-box>.img')
+
+        // 左右居中
+        let left = 0
+        if (e.offsetX > width / 2) {
+            left = (width / 2) - (width - e.offsetX) + box.offsetLeft
+            if (left > img.offsetWidth - width) {
+                left = img.offsetWidth - width
+            }
+            box.style.left = left + 'px'
+        } else {
+            left = box.offsetLeft - (width / 2 - e.offsetX)
+            if (left < 0) {
+                left = 0
+            }
+            box.style.left = left + 'px'
+        }
+        // 上下居中
+        let top = 0
+        if (e.offsetY > height / 2) {
+            top = (height / 2) - (height - e.offsetY) + box.offsetTop
+            if (top > img.offsetHeight - height) {
+                top = img.offsetHeight - height
+            }
+            box.style.top = top + 'px'
+        } else {
+            top = box.offsetTop - (height / 2 - e.offsetY)
+            if (top < 0) {
+                top = 0
+            }
+            box.style.top = top + 'px'
+        }
+
+        // 计算百分比位置
+        let percentLeft = this.position(left, img.offsetWidth - width)
+        let percentTop = this.position(top, img.offsetHeight - height)
+        imgHover.enlarge(percentLeft, percentTop)
+
+        // 添加鼠标鼠标离开图片事件
+        img.addEventListener('mouseout', imgHover.mouseOut, false)
+    }
+
+    // 放大图片移动
+    imgHover.enlarge = function(left, top) {
+        const enlargeImg = document.querySelector('.img-enlarge')
+        enlargeImg.style.backgroundPositionX = left
+        enlargeImg.style.backgroundPositionY = top
+    }
+
+    // 计算左右百分比
+    // params: 偏移长度 图片(宽/高)
+    imgHover.position = function(offset, box) {
+        let point = parseFloat(offset / box)
+        let str = Number(point * 100).toFixed(2)
+        str += '%'
+        return str
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal website.">
+    <meta name="author" content="Jehorn">
+	<title>test</title>
+	
+	<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css" />
+
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<style type="text/css">
+		.clearfix:before{ clear: both;visibility: hidden;display: table;height: 0;content: ""; }
+		.clearfix:after{ clear: both;visibility: hidden;display: table;height: 0;content: ""; }
+		.pull-left { float: left; }
+		.pull-right { float: right; }
+		.width-all{ width: 100%; }
+
+		header {
+			height: 50px;
+		}
+		.content {
+			margin-left: 7.14%;
+			margin-right: 7.14%; 
+		}
+		.row {
+			margin-left: -15px;
+			margin-right: -15px;
+			margin-bottom: 15px;
+			width: 100%;
+		}
+		.row>.col {
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+		#textareaA {
+			width: 100%;
+			max-width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="content clearfix">
+			<div class="pull-left">测试</div>
+			<div class="pull-right">&times;</div>
+		</div>
+	</header> <!-- /.header -->
+
+	<div class="content-wrapper">
+		<div class="content">
+			<div class="row">
+				<div class="col">
+					计算：
+					m: <input type="text" name="m" value="1" />
+					n: <input type="text" name="n" value="10" />
+					length: <input type="text" name="length" value="3" /> <br />
+				</div>
+				<div class="col">
+					随机数测试：
+					m: <input type="text" name="m-2" value="1" />
+					n: <input type="text" name="n-2" value="10" />
+					count: <input type="text" name="count" value="100" /> <br />
+				</div>
+				<div class="col">
+					<button type="button" onclick="arrHandler.reset()">计算</button>
+					<button type="button" onclick="arrHandler.random()">随机数测试</button>
+					<button type="button" onclick="arrHandler.sort()">排序↑↓</button>
+					<button type="button" onclick="arrHandler.delRepeat()">去重</button>
+				</div>
+				<div class="col">
+					<textarea cols="5" rows="5" class="width-all" id="textareaA"></textarea>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div> <!-- /.content-wrapper -->
+
+	<footer>
+		<div class="content">
+			
+		</div>
+	</footer> <!-- /.footer -->
+	
+
+	<script type="text/javascript" src="../node_modules/sweetalert/dist/sweetalert-dev.js"></script>
+	<script type="text/javascript">
+		const arrHandler = {};
+		arrHandler.arr = [];
+
+		// 生成指定区间(m~n)的随机数
+		arrHandler.randomNum = (m, n) => {
+			let num = Math.random() * (n - m) + m;
+			return num = Math.round(num);
+		};
+		// 在指定区间(m~n)生成指定长度(length)的随机整数数组
+		arrHandler.randomArr = (m, n, length) => {
+			let arr = [];
+			for(let i = 0; i < length; i++) {
+				let num = arrHandler.randomNum(m, n);
+				if(arr.indexOf(num) === -1) {
+					arr.push(num);
+				}
+		        else {
+					length++;
+				}
+			}
+
+			return arr;
+		};
+		// 缺失指定数组(without)的指定区间(m~n)数组生成
+		arrHandler.arrInit = (m, n, without) => {
+			let arr = [];
+			for(let i = m; i <= n; i++) {
+				// console.log(i + ':' + without.indexOf(i));
+				if(without.indexOf(i) === -1) { 
+					arr.push(i);
+				}
+			}
+			
+			return arr;
+		};
+		// 在指定区间(m~n)的数组(arr)中，获取缺失元素, return Array
+		arrHandler.getWithoutArr = (m, n, arr) => {
+			let result = [];
+
+			for(let i = m; i <= n; i++) {
+				if(arr.indexOf(i) > -1) {
+					result.push(i);
+				}
+			}
+
+			return result;
+		};
+		// 执行函数
+		arrHandler.reset = () => {
+			let m = document.querySelector('input[name="m"]').value;
+			let n = document.querySelector('input[name="n"]').value;
+			let length = document.querySelector('input[name="length"]').value;
+			m = parseInt(m);
+			n = parseInt(n);
+
+			let without = arrHandler.randomArr(m, n, length);
+			let arr = arrHandler.arrInit(m, n, without);
+			let getWithout = arrHandler.getWithoutArr = (m, n, arr);
+
+			document.querySelector('#textareaA').innerHTML = getWithout;
+		};
+		
+		
+		// 随机数测试
+		arrHandler.random = () => {
+			// Math.random() 生成 [0, 1) 随机数
+			// Math.random()*5 生成 [0, 5) 随机数
+			// parseInt() 和 Math.floor() 结果都是向下取整。
+			// 所以 parseInt(Math.random()*5) 生成的都是 [0,4] 的随机整数。
+			// 生成 [1, 5] 的随机整数，结果 +1
+
+			let num = [];
+			let m = document.querySelector('input[name="m-2"]').value;
+			let n = document.querySelector('input[name="n-2"]').value;
+			let count = document.querySelector('input[name="count"]').value;
+			m = parseInt(m);
+			n = parseInt(n);
+
+			for(let i = 0; i < count; i++) {
+				let rd = Math.random() * (n - m) + m;
+				num.push(Math.round(rd));
+			}
+
+			arrHandler.arr = num;
+			document.querySelector('#textareaA').innerHTML = num;
+		};
+		// 排序
+		arrHandler.sort = () => {
+			let num = arrHandler.arr;
+			let sortWay = '';
+
+			if(arrHandler.arr.length <= 0) {
+				swal("未能排序!", "请先生成数组!", "warning");
+				return false;
+			}
+
+			swal({ 
+				title: "排序方法", 
+				text: "0: 升序; 1: 降序", 
+				type: "input", 
+				showCancelButton: true, 
+				closeOnConfirm: false, 
+				animation: "slide-from-top", 
+				inputPlaceholder: "排序方法" }, 
+				function(inputValue){ 
+					if (inputValue === false) 
+						return false; 
+					if (inputValue === "") { 
+						swal.showInputError("请选择排序方法!"); 
+						return false;
+					}
+					// 倒序
+					if(inputValue == 1) {
+						sortWay = '降序排列';
+						// sort方法排序
+						num.sort((a, b) => {
+							return b - a;
+						});
+
+						document.querySelector('#textareaA').innerHTML = num;
+						swal("排序完成!", "您选择了: " + sortWay, "success"); 
+						return false;
+					}
+					// 升序
+					if(inputValue == 0) {
+						sortWay = '升序排列';
+						// 冒泡排序
+						for(let i = 0; i < num.length - 1; i++) {
+							for(let j = 0; j < num.length - 1 - i; j++) {
+								if(num[j] > num[j + 1]) {
+									let temp = num[j];
+									num[j] = num[j + 1];
+									num[j + 1] = temp;
+								}
+							}
+						}
+						document.querySelector('#textareaA').innerHTML = num;
+						swal("排序完成!", "您选择了: " + sortWay, "success"); 
+						return false;
+					}
+
+					swal("排序失败!", "请输入已有排序方法!", "error");
+			});
+		};
+		// 去重
+		arrHandler.delRepeat = () => {
+			let arr = [];
+			arrHandler.arr.forEach((ele, index) => {
+				if(arr.indexOf(ele) === -1) {
+					arr.push(ele);
+				}
+			});
+
+			document.querySelector('#textareaA').innerHTML = arr;
+		};
+		
+	</script>
+</body>
+</html>

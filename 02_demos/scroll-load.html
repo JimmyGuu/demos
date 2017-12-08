@@ -1,0 +1,1047 @@
+﻿<!DOCTYPE=html>
+
+<html>
+<head>
+<!--[if It IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+
+<script src="D:/Work/Test/echarts/echarts.js"></script>
+<script src="D:/Work/Test/web/node_modules/nicescroll/jquery.nicescroll.js"></script>
+
+<style>
+	.text-white { color: white; }
+	.title-padding { padding-top: 30px;padding-bottom: 30px;transition: all 0.5s ease-in; }
+	.title-padding h1 { font-size: 36px;transition: all 0.5s ease-in; }
+	.fixed-top { position: fixed;top: 0;width: 100%;z-index: 2; }
+	.animate-small-title { padding-top: 10px;padding-bottom: 10px;transition: all 0.5s ease-in; }
+	.animate-small-title h1 { font-size: 16px;transition: all 0.5s ease-in; }
+
+
+	body { background-color: #eee;height: 2000px; }
+
+	header nav {
+		margin: 0!important;
+	}
+	.index-wrapper .body-top {
+		background-image: linear-gradient(to right,#EB3349 0,#F45C43 100%);
+		margin-top: 0;
+	}
+	.index-wrapper .body-content {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+
+
+
+	.carousel {
+		position: relative;
+	}
+	.carousel .imgs img {
+		width: 100%;
+		display: none;
+		opacity: 0;
+		transition: opacity 1s linear;
+	}
+	.carousel .imgs .img-active {
+		display: block;
+		opacity: 1;
+		transition: opacity 1s linear;
+	}
+	.carousel .pages {
+		position: absolute;
+		bottom: 50px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+	}
+	.carousel .pages .page {
+		width: 20px;
+		height: 20px;
+		background-color: #fff;
+		display: inline-block;
+		margin-right: 5px;
+		cursor: pointer;
+	}
+	.page-active {
+		background-color: #ff5f00!important;
+		transition: all 0.3s linear;
+	}
+
+
+	#scrollLoad {
+		margin-top: 20px;
+	}
+	#scrollLoad input {
+		border-right: 0;
+	}
+	#scrollLoad input + .input-group-addon {
+		background-color: #fff;
+		border-left: 0;
+	}
+
+	#scrollLoad .input-group + .menu {
+		width: 99%;
+		background-color: #fff;
+		box-shadow: 1px 4px 4px 0 #ddd;
+		padding: 10px 0;
+		max-height: 150px;
+		overflow-y: auto;
+	}
+
+	.items {
+		display: block;
+		padding: 4px 10px;
+		cursor: pointer;
+	}
+	.items:hover {
+		background-color: #ddd;
+		transition: all 0.3s linear;
+	}
+
+</style>
+
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">ECMAScript 6</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">type-a</a></li>
+							<li><a href="#">type-b</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">type-c</a></li>
+							<li><a href="#">type-d</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">About</a></li>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</header>
+
+	<div class="index-wrapper" id="body-wrapper">
+		<div class="body-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 title-padding">
+						<h1 class="text-white">ECMAScript 6</h1>
+						<h4>
+							<small class="text-white">Test the front-end pages.</small>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="body-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="btn-group btn-group-justified" role="group" id="btn-group-box">
+							<div class="btn-group" role="group">
+								<button type="button" name="btn" class="btn btn-primary" onclick="methodA();">Left</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" name="btn" class="btn btn-warning" onclick="methodB(event);">Middle</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" name="btn" class="btn btn-success" onclick="methodC(event);">Right</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="carousel" id="carouselBox">
+							<div class="imgs">
+								<img src="C:\Users\gerar\Pictures\壁纸\32608-106.jpg" alt="1" name="carousel-img" class="img-active">
+								<img src="C:\Users\gerar\Pictures\壁纸\33246-106.jpg" alt="1" name="carousel-img">
+								<img src="C:\Users\gerar\Pictures\壁纸\40439-106.jpg" alt="1" name="carousel-img">
+								<img src="C:\Users\gerar\Pictures\壁纸\41541-106.jpg" alt="1" name="carousel-img">
+								<img src="C:\Users\gerar\Pictures\壁纸\49990-106.jpg" alt="1" name="carousel-img">
+							</div>
+							<div class="pages">
+								<span class="page page-active" name="carousel-page" onclick="carousel.pageFn(event)"></span>
+								<span class="page" name="carousel-page" onclick="carousel.pageFn(event)"></span>
+								<span class="page" name="carousel-page" onclick="carousel.pageFn(event)"></span>
+								<span class="page" name="carousel-page" onclick="carousel.pageFn(event)"></span>
+								<span class="page" name="carousel-page" onclick="carousel.pageFn(event)"></span>
+							</div>
+							<div class="points">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" id="scrollLoad">
+					<div class="col-lg-4 col-sm-6">
+						<div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="usrAddAccount" class="col-sm-3 control-label">
+                                    <span class="center-block text-nowrap text-center">账号角色</span>
+                                </label>
+                                <div class="col-sm-9">
+                                	<div class="input-group">
+									  	<input type="text" :name="name" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="val"  @focus="isMenu = true" @blur="isMenu = false"/>
+									  	<span class="input-group-addon" @click="isMenu = !isMenu;"><i class="caret"></i></span>
+									</div>
+                                    <div class="menu" id="scrollLoadMenu" v-if="isMenu">
+                                    	<span class="items" v-for="i in 6">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+
+				</div>
+
+
+				<div class="row" style="border: 1px solid #ff5f00;">
+					<div class="col-lg-offset-2 col-lg-4 col-md-6 col-sm-8" style="background-color: #ff5f00;padding-top: 15px;padding-bottom: 15px;">
+						<div class="row">
+							<div class="col-lg-3" style="border: 1px solid #ddd;padding-top: 15px;padding-bottom: 15px;"> </div>
+							<div class="col-lg-9" style="border: 1px solid #ddd;padding-top: 15px;padding-bottom: 15px;"> </div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<button class="btn btn-primary" onclick="obj.a();">btn</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="img-box">
+			<div class="img">
+				<img src="D:\Work\Projects\太平流向\代码\TaipingLiuxiang\static\img\user-test.jpg">
+			</div>
+		</div>
+
+		<style type="text/css">
+			.img-box {
+				width: 400px;
+				height: 600px;
+				padding: 15px;
+				border: 1px solid #ff5f00;
+				margin-left: 15px;
+			}
+			.img-box .img {
+				width: 100%;
+				overflow-x: hidden;
+			}
+			.img-box .img img {
+				height: 100%;
+			}
+		</style>
+
+		<vue-alert v-if="isAlert">
+
+		</vue-alert>
+
+	</div> <!-- /.body-wrapper -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div id="echartsA"></div>
+			</div>
+			<div class="col-lg-6">
+				<div id="echartsB"></div>
+			</div>
+			<div class="col-lg-6">
+				<div id="echartsC"></div>
+			</div>
+			<div class="col-lg-6">
+				<div class="btn-group" role="group">
+				    <button type="button" class="btn btn-primary" onclick="myCharts.echartsAChange()">柱状图</button>
+				    <button type="button" class="btn btn-primary">饼图</button>
+				    <button type="button" class="btn btn-primary">折线图</button>
+				</div>
+			</div>
+		</div>
+		<div class="row video">
+			<div class="col-lg-12">
+				<video src="QQ20170630-180400-HD.mp4" autoplay="true" loop="true" muted="true"></video>
+			</div>
+		</div>
+		<div class="row circle">
+			<div class="col-lg-12">
+				<div class="square clearfix">
+					<div class="circle-inner"></div>
+					<div class="circle-top"></div>
+					<div class="right pull-right">
+						<span class="strip"></span>
+						<span class="strip"></span>
+						<span class="strip"></span>
+						<span class="strip"></span>
+						<span class="strip"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<style type="text/css">
+		#echartsA {
+			width: 500px;
+			height: 300px;
+		}
+		#echartsB {
+			width: 500px;
+			height: 300px;
+		}
+		#echartsC {
+			width: 500px;
+			height: 300px;
+		}
+		.video video {
+			width: 100%;
+		}
+
+		.circle .square {
+			height: 400px;
+			border: 1px solid #ddd;
+			background-color: #fff;
+			overflow: hidden;
+			background-color: #ff5f00;
+			position: relative;
+		}
+		.circle .square>.right {
+			height: 100%;
+			width: 500px;
+			position: relative;
+		}
+		.circle .square>.right>.strip {
+			display: block;
+			height: 80px;
+			width: 100%;
+			background-color: #ff1100;
+			border-bottom: 1px solid #fff;
+			position: absolute;
+			z-index: 9;
+		}
+		.circle .square>.right>.strip:nth-child(2) {
+			top: 80px;
+		}
+		.circle .square>.right>.strip:nth-child(3) {
+			top: 160px;
+		}
+		.circle .square>.right>.strip:nth-child(4) {
+			top: 240px;
+		}
+		.circle .square>.right>.strip:last-child {
+			border-bottom: 0;
+			top: 320px;
+		}
+		.circle .square>.right>.strip:hover {
+			z-index: 11;
+		}
+		.circle .square>.circle-inner {
+			width: 1000px;
+			height: 1000px;
+			border: 0px solid #ff5f00;
+			border-radius: 500px;
+			background-color: #fff;
+			position: absolute;
+			z-index: 10;
+			top: -300px;
+			left: -200px;
+		}
+		.circle .square>.circle-top {
+			position: absolute;
+			width: 900px;
+			height: 900px;
+			border-radius: 450px;
+			border: 1px solid #ddd;
+			top: -250px;
+			left: -150px;
+			z-index: 12;
+		}
+	</style>
+
+	<div class="container" id="arrTest">
+		<div class="row">
+			<div class="col-lg-12">
+				<button class="btn btn-primary" @click="change">Vue.set方法</button>
+				<button class="btn btn-primary" @click="clear">clear</button>
+			</div>
+			<div class="col-lg-12">
+				{{ arr }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="test-plugin" id="testPlugin">
+					<input type="text" name="" value="" />
+					<button type="button" name="button" id="testPluginBtn">btn</button>
+				</div>
+			</div>
+		</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-box">
+                <label>链接标题</label>
+                <input type="text" name="share-title" />
+            </div>
+        </div>
+    </div>
+		<div class="row">
+			<div class="col-lg-6">
+				<input type="file" id="upload" name="upload" /> <br />
+				<progress id="uploadprogress" min="0" max="100" value="0">0</progress> <br />
+　　　　 <input type="button" value="Upload" id="uploadBtn" />
+			</div>
+		</div>
+	</div>
+
+	<footer>
+
+	</footer>
+	<script type="text/javascript">
+		(function (window, document, undefined) {
+			var UploadFile = function (obj) {
+				if (this instanceof UploadFile) {
+					this.author = 'Jehorn'
+					this.version = '0.0.1'
+
+					this.file = obj.file || 'upload'
+					this.url = obj.url || null
+					this.progress = obj.progress || 'uploadprogress'
+
+					this.init()
+				} else {
+					return new UploadFile(obj)
+				}
+			}
+
+			var upload = function (_this) {
+				var file = document.getElementById(_this.file)
+				var url = _this.url
+
+				if (url === null) {
+					console.log('%c Please set the url!', 'background: red;color: #fff;')
+					return
+				}
+
+				if (window.FormData) {
+					var formData = new FormData()
+
+					// Create a upload form, the upload file as value.
+					formData.append('upload', file.files[0])
+					var xhr = new XMLHttpRequest()
+					xhr.open('POST', url)
+
+					// callback.
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							console.log('Upload successed.')
+						} else {
+							console.log('Error.')
+						}
+					}
+
+					// progress.
+					xhr.upload.onprogress = function (event) {
+						if (event.lengthComputable) {
+							var complete = (event.loaded / event.total * 100 | 0)
+							var progress = document.getElementById(_this.progress)
+							progress.value = progress.innerHTML = complete
+						}
+					}
+
+					xhr.send(formData)
+				}
+			}
+
+			UploadFile.prototype.init = function () {
+				upload(this)
+			}
+
+			window.uploadFile = UploadFile
+		}) (window, document, undefined)
+
+		window.onload = function () {
+
+
+			var btn = document.getElementById('uploadBtn')
+			btn.addEventListener('click', function () {
+				uploadFile({
+					file: 'upload',
+					url: 'http://localhost:3000/'
+				})
+			})
+		}
+	</script>
+</body>
+
+<script>
+
+const vm2 = new Vue({
+	el: '#arrTest',
+	data() {
+		return {
+			arr: [1, 2, 3]
+		}
+	},
+	methods: {
+		change() {
+			this.$set(this.arr, 0, 'bb');
+		},
+		clear() {
+			let arr = this.arr;
+			arr.forEach((ele, index) => {
+				this.$set(this.arr, index);
+			});
+		}
+	}
+})
+
+
+
+	// ECharts
+	const myCharts = {};
+
+	// 柱状图
+	const myChart = echarts.init(document.getElementById('echartsA'));
+	// 饼图
+	const myChartB = echarts.init(document.getElementById('echartsB'));
+	// 折线图
+	const myChartC = echarts.init(document.getElementById('echartsC'));
+
+	// 柱状图
+	myChart.setOption({
+		title: {
+			text: 'Hello world! 异步加载.'
+		},
+		tooltip: {},
+		// 色条说明
+		legend: {
+			data: ['销量']
+		},
+		// x坐标
+		xAxis: {
+			data: []
+		},
+		// y坐标
+		yAxis: {},
+		// x坐标各项值
+		series: [{
+			name: '销量',
+			type: 'bar',
+			data: []
+		}]
+	});
+	// 饼图
+	myChartB.setOption({
+		title : {
+	        text: '某站点用户访问来源',
+	        subtext: '副标题',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    legend: {
+	        orient: 'vertical',
+	        left: 'left',
+	        data: []
+	    },
+	    series : [
+	        {
+	            name: '访问来源',
+	            type: 'pie',
+	            radius : '55%',
+	            center: ['50%', '60%'],
+	            data:[],
+	            itemStyle: {
+	                emphasis: {
+	                    shadowBlur: 10,
+	                    shadowOffsetX: 0,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                }
+	            }
+	        }
+	    ]
+	});
+	// 折线图
+	myChartC.setOption({
+		title: {
+	        text: '堆叠区域图'
+	    },
+	    tooltip : {
+	        trigger: 'axis',
+	        axisPointer: {
+	            type: 'cross',
+	            label: {
+	                backgroundColor: '#6a7985'
+	            }
+	        }
+	    },
+	    legend: {
+	        data:[]
+	    },
+	    toolbox: {
+	        feature: {
+	            saveAsImage: {}
+	        }
+	    },
+	    grid: {
+	        left: '3%',
+	        right: '4%',
+	        bottom: '3%',
+	        containLabel: true
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : false,
+	            data : []
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : []
+	});
+
+	// 柱状图 数据异步
+	myChart.showLoading();
+	setTimeout(() => {
+		myChart.hideLoading();
+		myChart.setOption({
+			xAxis: {
+				data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+			},
+			series: [{
+				// 根据名字对应到相应的系列
+				name: '销量',
+				data: [5, 20, 36, 10, 10, 20]
+			}]
+		});
+	}, 1000);
+	// 饼图 数据异步
+	myChartB.showLoading();
+	setTimeout(() => {
+		myChartB.hideLoading();
+		myChartB.setOption({
+			legend: {
+				data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+			},
+			series: [{
+				// 根据名字对应到相应的系列
+				name: '访问来源',
+				data: [
+					{value:335, name:'直接访问'},
+	                {value:310, name:'邮件营销'},
+	                {value:234, name:'联盟广告'},
+	                {value:135, name:'视频广告'},
+	                {value:1548, name:'搜索引擎'}
+				]
+			}]
+		});
+	}, 2000);
+	// 折线图 数据异步
+	myChartC.showLoading();
+	setTimeout(() => {
+		myChartC.hideLoading();
+		myChartC.setOption({
+			legend: {
+		        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+		    },
+		    xAxis : [{
+	            data : ['周一','周二','周三','周四','周五','周六','周日']
+	        }],
+	        series : [
+		        {
+		            name:'邮件营销',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {normal: {}},
+		            data:[120, 132, 101, 134, 90, 230, 210]
+		        },
+		        {
+		            name:'联盟广告',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {normal: {}},
+		            data:[220, 182, 191, 234, 290, 330, 310]
+		        },
+		        {
+		            name:'视频广告',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {normal: {}},
+		            data:[150, 232, 201, 154, 190, 330, 410]
+		        },
+		        {
+		            name:'直接访问',
+		            type:'line',
+		            stack: '总量',
+		            areaStyle: {normal: {}},
+		            data:[320, 332, 301, 334, 390, 330, 320]
+		        },
+		        {
+		            name:'搜索引擎',
+		            type:'line',
+		            stack: '总量',
+		            label: {
+		                normal: {
+		                    show: true,
+		                    position: 'top'
+		                }
+		            },
+		            areaStyle: {normal: {}},
+		            data:[820, 932, 901, 934, 1290, 1330, 1320]
+		        }
+		    ]
+		});
+	}, 3000);
+
+	// ECharts methods
+	myCharts.echartsAChange = () => {
+		myChart.showLoading();
+		setTimeout(() => {
+			myChart.hideLoading();
+			myChart.setOption({
+				xAxis: {
+					data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+				},
+				series: [{
+					name: '销量',
+					data: [7, 15, 20, 40, 26, 12]
+				}]
+			});
+		}, 1000);
+	};
+
+
+
+
+
+
+
+
+
+	const obj = {};
+	obj.a = async () => { await obj.b(); console.log('a方法'); }
+	obj.b = () => { return new Promise((resolve, reject) => { setTimeout(() => { console.log('b方法'); resolve(); }, 1000); });}
+
+
+
+
+	const vm = new Vue({
+		el: '#scrollLoad',
+		data() {
+			return {
+				val: '',
+				isMenu: false,
+				name: 'enter-input'
+			}
+		},
+		methods: {
+
+		},
+		mounted () {
+			this.$nextTick(() => {
+				$('#scrollLoadMenu').on('click', () => {
+					console.log(111 )
+					console.log($('#scrollLoad .menu').scrollTop());
+				});
+			});
+
+		}
+	});
+
+
+
+
+	var carousel = {};
+	// 起始播放图片
+	// 暂时无效，要起作用需要将写死的起始图片更改
+	carousel.count = 0;
+
+	// 播放速度
+	carousel.speed = 1500;
+
+	// 点击页切换
+	carousel.pageFn = function(event) {
+		// 所有按钮
+		var btns = document.getElementsByName('carousel-page');
+		// 所有图片
+		var imgs = document.getElementsByName('carousel-img');
+
+		// 页切换
+		event.target.classList.add('page-active');
+		for(var i = 0; i < btns.length; i++) {
+			if(!(btns[i] == event.target)) btns[i].classList.remove('page-active');
+			else carousel.count = i;
+		}
+
+		// 图片切换
+		for(var i = 0; i < imgs.length; i++) {
+			if(i == carousel.count) imgs[i].classList.add('img-active');
+			else imgs[i].classList.remove('img-active');
+		}
+	}
+
+	// 图片播放
+	carousel.play = function () {
+		var btns = document.getElementsByName('carousel-page');
+		var imgs = document.getElementsByName('carousel-img');
+
+		if(carousel.count >= imgs.length) carousel.count = 0;
+		imgs[carousel.count].classList.add('img-active');
+		for(var i = 0; i < imgs.length; i++) {
+			if(i != carousel.count) imgs[i].classList.remove('img-active');
+		}
+
+		btns[carousel.count].classList.add('page-active');
+		for(var i = 0; i < btns.length; i++) {
+			if(i != carousel.count) btns[i].classList.remove('page-active');
+		}
+
+		carousel.count++;
+
+	}
+
+	// 定时器
+	carousel.autoPlay = setInterval(carousel.play, carousel.speed);
+
+	// 鼠标悬浮停止轮播
+	carousel.hoverCarousel = function () {
+		let box = document.getElementById('carouselBox');
+		box.onmouseover = function () {
+			window.clearInterval(carousel.autoPlay);
+		}
+		box.onmouseout = function () {
+			carousel.autoPlay = setInterval(carousel.play, carousel.speed);
+			carousel.autoPlay;
+		}
+	}
+
+	// 执行图片自动轮播
+	window.carousel.autoPlay;
+	// 鼠标悬浮停止轮播
+	carousel.hoverCarousel();
+
+
+
+
+
+
+
+	$(document).ready(() => {
+		$(document).scroll(() => {
+			let scroll = $(window).scrollTop();
+			let height = $('header').height();
+
+			if(scroll > height)
+			{
+				$('.body-top').addClass('fixed-top');
+				$('.body-top .col-lg-12').removeClass('title-padding');
+				$('.body-top .col-lg-12').addClass('animate-small-title');
+
+				$('.body-content').css({ paddingTop: '180px', transition: 'all 0.3s linear' });
+			}
+			else
+			{
+				$('.body-top').removeClass('fixed-top');
+				$('.body-top .col-lg-12').addClass('title-padding');
+				$('.body-top .col-lg-12').removeClass('animate-small-title');
+
+				$('.body-content').css({ paddingTop: '40px', transition: 'all 0.6s linear' });
+			}
+
+		});
+	});
+
+	function methodA()
+	{
+		let a = Symbol(); 	// Symbol()
+		let b = Symbol('foo'); 	// Symbol(foo)
+		let c = b.toString(); 	// Symbol(foo)
+
+		const d = {
+			toString() {
+				return 'abc';
+			}
+		};
+
+		const e = Symbol(d);
+		console.log(e); // Symbol(abc)
+
+		// 相同参数的Symbol函数的返回值是不相等的.
+		let f = Symbol('foo');
+		console.log(b == f); // false
+
+		// Symbol 值不能与其他类型的值进行运算，会报错。
+		// 可以toString()
+		let g = Symbol('My symbol');
+		console.log('your symbol is ' + g.toString());
+		console.log('your symbol is ${g}');
+
+		// Symbol 值也可以转为布尔值，但是不能转为数值。
+		let h = Symbol();
+		h = Boolean(h);
+		console.log(h); 	// true
+
+		// Symbol用法 作为对象属性名
+		const mySymbol = Symbol();
+		const mySymbol2 = Symbol();
+		const obj = {};
+		obj[mySymbol] = 'Hello world!';
+		Object.defineProperty(obj, mySymbol2, { value: 'Hello world again!' });
+
+		console.log(obj[mySymbol]);
+		console.log(obj[mySymbol2]);
+
+		// Symbol用法 对象内部定义属性
+		let mySymbol3 = Symbol();
+		let obj2 = {
+			[mySymbol3](arg) {
+				console.log(arg);
+			}
+		};
+
+		obj2[mySymbol3](123); 	// 123
+
+		// Symbol用法 定义一组常量1
+		const logs = {};
+		logs.levels = {
+			DEBUG: Symbol('debug'),
+			INFO: Symbol('info'),
+			WARN: Symbol('warn')
+		};
+
+		console.log(logs.levels.DEBUG, 'debug message'); // Symbol(debug) "debug message"
+		console.log(logs.levels.WARN, 'warning message'); // Symbol(warn) "warning message"
+
+		// Symbol用法 定义一组常量2
+		const symGroup = {};
+		const COLOR_RED = Symbol();
+		const COLOR_GREEN = Symbol();
+
+		symGroup.getComplement = color => {
+			switch(color) {
+				case COLOR_RED:
+					return COLOR_GREEN;
+					break;
+				case COLOR_GREEN:
+					return COLOR_RED;
+					break;
+				default:
+					throw new Error('Undefined color');
+			}
+		}
+
+		console.log(symGroup.getComplement(COLOR_RED)); // Symbol()
+		console.log(symGroup.getComplement(COLOR_GREEN)); // Symbol()
+		//console.log(symGroup.getComplement('COLOR_YELLOW')); // Uncaught Error: Undefined color
+
+		// Symbol用法 消除"魔术字符串(自定义字符串)"
+		const shapeType = {
+			triangle: Symbol('Triangle')
+		}
+
+		let getArea = (shape, options) => {
+			let area = 0;
+			switch (shape) {
+				case shapeType.triangle:
+					area = .5 * options.width * options.height;
+					break;
+			}
+			return area;
+		}
+
+		let area = getArea(shapeType.triangle, { width: 100, height: 100 });
+		console.log(area); // 5000
+
+		// Symbol用法 属性名的遍历
+		console.log('%c属性名的遍历', 'color: #ff5f00; font-weight: 600;');
+		const obj3 = {};
+		const syma = Symbol('a');
+		const symb = Symbol('b');
+
+		obj3[syma] = 'Hello';
+		obj3[symb] = 'World';
+
+		let objectSymbols = Object.getOwnPropertySymbols(obj3);
+
+		console.log(objectSymbols);
+
+
+	}
+
+	function methodB(event)
+	{
+		let btns = document.getElementsByName('btn');
+
+		event.target.classList.add('btn-lg');
+		for(let i = 0; i < btns.length; i++) {
+			console.log(btns[i] == event.target);
+			if(!(btns[i] == event.target)) {
+				btns[i].classList.remove('btn-lg');
+				console.log(btns[i]);
+			}
+		}
+	}
+
+	function methodC(event)
+	{
+		let btns = document.getElementsByName('btn');
+
+		event.target.classList.add('btn-lg');
+		for(let i = 0; i < btns.length; i++) {
+			if(!(btns[i] == event.target)) {
+				btns[i].classList.remove('btn-lg');
+				console.log(btns[i]);
+			}
+		}
+	}
+
+
+
+
+
+</script>
+
+</html>
