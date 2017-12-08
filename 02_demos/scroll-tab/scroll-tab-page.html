@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ScrollTabPage - 滑动标签页</title>
+        <style media="screen">
+            /*Base Styles*/
+            html, body { margin: 0;padding: 0;background: #efefef;font-size: 62.5%; }
+            ul, li { list-style: none;margin: 0;padding: 0; }
+            p { margin: 0;padding: 0; }
+            a { text-decoration: none; }
+            .clearfix::before, .clearfix::after { content: '', display: table; }
+            .clearfix::after { clear: both; }
+
+
+            /*Styles*/
+            .tab-wrapper { width: 100%;overflow: hidden; }
+
+            /*.tab-label::before, .tab-label::after, .tab-content::before, .tab-content::after { content: ''; display: table; }
+            .tab-label::after, .tab-content::after { clear: both; }*/
+
+            /*.tab-content { transition: transform 1s ease-out; }*/
+            /*.tab-label, .tab-content { display: block;width: 300%;}*/
+            /*.tab-label > .label-item, .tab-content > .content-item { float: left;}*/
+            .tab-label > .label-item.active { text-decoration: underline; }
+            .tab-content > .content-item { background: #fff;color: #ff5f00;font-size: 1.4rem;padding: 2rem 1rem;}
+            .tab-content > .content-item:first-child { background: #ff5f00;color: #fff; }
+            .tab-content > .content-item:nth-child(2) { background: blue;color: #fff; }
+            .tab-content > .content-item:last-child { background: red;color: #fff; }
+        </style>
+    </head>
+    <body>
+        <div class="tab-container">
+            <ul class="tab-label">
+                <li class="label-item active" data-id="0">
+                    <a href="javascript: void(0);">标签1</a>
+                </li>
+                <li class="label-item" data-id="1">
+                    <a href="javascript: void(0);">标签2</a>
+                </li>
+                <li class="label-item" data-id="2">
+                    <a href="javascript: void(0);">标签3</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="content-item">
+                    内容1
+                </div>
+                <div class="content-item">
+                    内容2
+                </div>
+                <div class="content-item">
+                    内容3
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                var container = document.querySelector('.' + CLASS_NAME.container);
+                var labelBox = container.querySelector('.' + CLASS_NAME.labelBox),
+                    labels = labelBox.querySelectorAll('.' + CLASS_NAME.label);
+                var contentBox = container.querySelector('.' + CLASS_NAME.contentBox),
+                    contents = contentBox.querySelectorAll('.' + CLASS_NAME.content);
+
+                // Init
+                labelBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+                contentBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+                contentBox.style.width = (100 * total) + '%';
+                var left = getLeftDistance(init, contentBox);
+                // contentBox.style.transform = 'translate3d(0px, 0px, ' + left + ')';
+                contents.forEach(function (content, index) {
+                    content.style.width = (100 / total) + '%';
+                    clearActive(content);
+                });
+                labels.forEach(function (label, index) {
+                    binde(label, 'click', tabLabel, false);
+                    clearActive(label);
+                });
+                contents[init].classList.add(CLASS_NAME.active);
+                labels[init].classList.add(CLASS_NAME.active);
+
+                // 监听
+        		Object.defineProperty(tabObj, "index", {
+        		    get: function() {
+        		        return this._index;
+        		    },
+        		    set: function(value) {
+        		        if (value !== this._index) {
+        		            this._index = value;
+                            tabContent(value, contents, contentBox);
+        		        }
+        		    }
+        		});
+            }
+
+            var init = 0,
+                total = 3,
+                speed = 800;
+            var CLASS_NAME = {
+                container: 'tab-container',
+                labelBox: 'tab-label',
+                label: 'label-item',
+                contentBox: 'tab-content',
+                content: 'content-item',
+                active: 'active'
+            }
+
+            var tabObj = { _index: init }
+
+            // Bind Event
+            function binde(node, eventType, fn, stopSuper) {
+                node.addEventListener(eventType, function(event) {
+                    if (stopSuper === true) {
+                        if (event.target === this) {
+                            fn(this);
+                        }
+                    } else {
+                        fn(this);
+                    }
+                });
+            }
+            // Unbind Event
+            function unbinde(node, eventType, fn) {
+                node.removeEventListener(eventType, fn);
+            }
+
+            // 验证浏览器对 transition 的兼容
+        	function transitionEvent () {
+               	var el = document.createElement('surface'),
+               	transitions = {
+                 	'transition':'transitionend',
+                 	'OTransition':'oTransitionEnd',
+                 	'MozTransition':'transitionend',
+                 	'WebkitTransition':'webkitTransitionEnd'
+               	}
+
+               	for(var t in transitions){
+                  	if( el.style[t] !== undefined ){
+                       	return transitions[t];
+                   	}
+               	}
+           	}
+
+            // 清除active状态
+            function clearActive(items) {
+                if (items.length) {
+                    for (var len = items.length, i = len - 1; i >= 0; i--) {
+                        items[i].classList.remove(CLASS_NAME.active);
+                    }
+                } else {
+                    items.classList.remove(CLASS_NAME.active);
+                }
+            }
+
+            // 计算左偏移量
+            function getLeftDistance(index, contentBox) {
+                var contentBoxLen = contentBox.clientWidth,
+                    left = -(parseFloat(contentBoxLen, 10) / total * index) + 'px';
+
+                contentBox.style.transition = 'transform 0.3s ease-out';
+                contentBox.style.transitionDuration = parseInt(speed, 10) / 1000 + 's';
+                contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
+                return left;
+            }
+
+            /*实现方法*/
+            // Tab-label Click
+            function tabLabel(e) {
+                var children = e.parentNode.children;
+                for (var len = children.length, i = len - 1; i >= 0; i--) {
+                    children[i].classList.remove(CLASS_NAME.active);
+                }
+                e.classList.add(CLASS_NAME.active);
+
+                tabObj.index = +e.dataset.id;
+            }
+
+            // Content Change
+            function tabContent(index, contents, contentBox) {
+                clearActive(contents);
+                contents[index].classList.add(CLASS_NAME.active);
+                getLeftDistance(index, contentBox);
+            }
+        </script>
+    </body>
+</html>
