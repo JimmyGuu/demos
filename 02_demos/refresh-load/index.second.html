@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>refresh-load</title>
+	<style media="screen">
+		html {
+			font-size: 62.5%;
+			background: #efefef;
+		}
+		html, body, p, ul, li {
+			margin: 0;
+			padding: 0;
+		}
+		ul, li {
+			list-style: none;
+		}
+		a {
+			color: #333;
+			text-decoration: none;
+			font-size: 4.4rem;
+		}
+		.list-wrapper {
+			width: 100%;
+		}
+		.list-data .item:first-child {
+			border-top: 1px solid #ddd;
+		}
+		.list-data .item {
+			border-bottom: 1px solid #ddd;
+			background: #fff;
+		}
+		.list-data .item > a {
+			font-size: 36px;
+			padding: 5rem 2rem;
+			display: block;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="list-wrapper" id="listWrapper">
+		<ul class="list-data" id="listData">
+			<li class="item" v-for="item in list">
+				<a href="javascript: void(0);">{{ item.name }}</a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript">
+		
+		;(function (window, document) {
+			// 常量
+			var CONSTANTS = {
+				REFRESH: 1,
+				LOAD: 2,
+				TEXT_REFRESH_INIT: '下拉刷新',
+				TEXT_REFRESH_START: '释放刷新',
+				TEXT_REFRESH_LOADING: '正在刷新...',
+				TEXT_REFRESH_DONE: '刷新完成',
+				TEXT_LOAD_INIT: '',
+				TEXT_LOAD_LOADING: '正在加载...',
+				TEXT_LOAD_DONE: '加载完成',
+				TEXT_LOAD_NONE: '没有更多数据',
+				TEXT_LOAD_EMPTY: '暂无数据',
+				CLASSNAME_TIP_DROP: 'drop-refresh',
+				CLASSNAME_TIP_PULL: 'pull-load',
+				CLASSNAME_TIP_TEXT: 'tip-text',
+				CLASSNAME_TIP_ICON: 'tip-icon',
+				TYPE: [
+					{ id: 1, name: 'Vertical' },
+					{ id: 2, name: 'Horizontal' }
+				]
+			}
+
+			// 参数初始化
+			function optionsInit(options) {
+				var _t = undefined;
+				var opts = options || {};
+				
+				opts._type = opts.type || CONSTANTS.TYPE_VERTICAL;
+				_t = CONSTANTS.TYPE.find(x => x.id === opts._type);
+				opts._type = _t ? _t.id : CONSTANTS.TYPE[0].id;
+				opts.loadType = _t ? _t.name : CONSTANTS.TYPE[0].name;
+				
+				
+
+				return opts;
+			}
+
+			// 类继承
+			function extend(Child, Parent) {
+				var F = function () {};
+				F.prototype = Parent.prototype;
+				Child.prototype = new F();
+				Child.prototype.constructor = Child;
+				Child.uber = Parent.prototype;
+			}
+
+			// 基类
+			function SuperLoad() {
+
+			}
+
+			// 纵向
+			// 下拉刷新 上拉加载
+			function VerticalLoad() {
+
+			}
+
+			// 横向
+			// 右拉刷新 左拉加载
+			function HorizontalLoad() {
+
+			}
+
+			extend(VerticalLoad, SuperLoad);
+			extend(HorizontalLoad, SuperLoad);
+
+			// 工厂方法
+			function Factory(type, options) {
+				if (this instanceof Factory) {
+					return new this[type](options);
+				} else {
+					return new Factory(type, options);
+				}
+			}
+			Factory.prototype = {
+				Vertical: function (options) {
+					console.log(options);
+				},
+				Horizontal: function (options) {
+					console.log(options);
+				}
+			}
+
+			var DropPullLoad = {
+				on: function (target, options) {
+					if (!target) return;
+					var opts = optionsInit(options);
+
+					var load = new Factory(opts.loadType, opts);
+
+
+				}
+			}
+
+			window.DropPullLoad = DropPullLoad;
+			
+		})(window, document);
+			
+		window.onload = function () {
+			DropPullLoad.on('aa', {
+				type: '2'
+			});
+		}
+	</script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#listWrapper',
+			data: function () {
+				return {
+					list: [],
+					total: 0,
+					scroll: null
+				}
+			},
+			methods: {
+				get: function () {
+					setTimeout(() => {
+						const data = {
+							items: [
+								{ name: '1' },
+								{ name: '2' },
+								{ name: '3' },
+								{ name: '4' },
+								{ name: '5' },
+								{ name: '6' },
+								{ name: '7' },
+								{ name: '8' },
+								{ name: '9' }
+							],
+							total: 100
+						}
+						this.load(data);
+					}, 1000);
+				},
+				load: function (result) {
+					result.items.forEach(item => {
+						this.list.push(item);
+					});
+					this.total = result.total;
+				}
+			},
+			mounted: function () {
+				this.get();
+			}
+		});
+	</script>
+</body>
+</html>
