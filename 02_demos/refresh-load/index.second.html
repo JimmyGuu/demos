@@ -42,7 +42,7 @@
 <body>
 
 	<div class="list-wrapper" id="listWrapper">
-		<ul class="list-data" id="listData">
+		<ul class="list-data" id="listData" v-cloak>
 			<li class="item" v-for="item in list">
 				<a href="javascript: void(0);">{{ item.name }}</a>
 			</li>
@@ -69,27 +69,41 @@
 				CLASSNAME_TIP_PULL: 'pull-load',
 				CLASSNAME_TIP_TEXT: 'tip-text',
 				CLASSNAME_TIP_ICON: 'tip-icon',
-				TYPE: [
+				TYPES: [
 					{ id: 1, name: 'Vertical' },
 					{ id: 2, name: 'Horizontal' }
-				]
+				],
+				VALIDATOR_TYPES: {
+					STRING: 1,
+					NUMBER: 2,
+					BOOLEAN: 3,
+					ARRAY: 4,
+					OBJECT: 5
+				}
 			}
-
-			// 参数初始化
-			function optionsInit(options) {
-				var _t = undefined;
-				var opts = options || {};
+			
+			// 验证
+			function dataType(value) {
+				if (value === '' || value == null) return undefined;
+				if (typeof value === 'string') {
+					return CONSTANTS.VALIDATOR_TYPES.STRING;
+				}
+				if (typeof value === 'number') {
+					return CONSTANTS.VALIDATOR_TYPES.NUMBER;
+				}
+				if (typeof value === 'boolean') {
+					return CONSTANTS.VALIDATOR_TYPES.BOOLEAN;
+				}
+				if (typeof value === 'object' && value.length) {
+					return CONSTANTS.VALIDATOR_TYPES.ARRAY;
+				}
+				if (typeof value === 'object' && value.length) {
+					return CONSTANTS.VALIDATOR_TYPES.OBJECT;
+				}
 				
-				opts._type = opts.type || CONSTANTS.TYPE_VERTICAL;
-				_t = CONSTANTS.TYPE.find(x => x.id === opts._type);
-				opts._type = _t ? _t.id : CONSTANTS.TYPE[0].id;
-				opts.loadType = _t ? _t.name : CONSTANTS.TYPE[0].name;
-				
-				
-
-				return opts;
+				return undefined;
 			}
-
+			
 			// 类继承
 			function extend(Child, Parent) {
 				var F = function () {};
@@ -99,51 +113,136 @@
 				Child.uber = Parent.prototype;
 			}
 
-			// 基类
-			function SuperLoad() {
+			// 参数初始化
+			function optionsInit(options) {
+				var _t = undefined;
+				var opts = options || {};
+				
+				opts._type = opts.type || CONSTANTS.TYPES[0].id;
+				_t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
+				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
+				
+				// Refresh
+				opts.styles = opts.styles ? opts.styles = {
+					width: opts.refresh.width || '100%',
+					height: opts.refresh.height || '200px',
+					background: opts.refresh.background || '#fff',
+					color: opts.refresh.color || '#000',
+					fontSize: opts.refresh.fontSize || '14px',
+					icon: opts.refresh.icon || ['./src/img/reload.png', './src/img/rolling.png'],
+					iconSize: opts.refresh.fontSize || '50px'
+				} : {
+					width: '100%',
+					height: '200px',
+					background: '#fff',
+					color: '#000',
+					fontSize: '14px',
+					icon: ['./src/img/reload.png', './src/img/rolling.png'],
+					iconSize: '50px',
+				};
 
+				return opts;
 			}
 
-			// 纵向
-			// 下拉刷新 上拉加载
-			function VerticalLoad() {
-
+			// 私有方法
+			function styleDataType(style, index) {
+				if (dataType(style) === CONSTANTS.VALIDATOR_TYPES.STRING
+				   	|| dataType(style) === CONSTANTS.VALIDATOR_TYPES.NUMBER
+			   	) {
+					return style;
+				}
+				if (dataType(style) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
+					return style[index];
+				}
 			}
-
-			// 横向
-			// 右拉刷新 左拉加载
-			function HorizontalLoad() {
-
+			
+			// 基类 - 公共属性
+			function SuperLoad(options) {
+				this.options = options;
+				
 			}
-
-			extend(VerticalLoad, SuperLoad);
-			extend(HorizontalLoad, SuperLoad);
+			
+			
+			SuperLoad.prototype.create = function () {
+				var refresh = document.createElement('span'),
+					load = document.createElement('span');
+				var refresh_text = document.createTextNode(CONSTANTS.TEXT_REFRESH_INIT),
+					load_text = document.createTextNode(CONSTANTS.TEXT_LOAD_INIT);
+				var refresh_icon = document.createElement('i'),
+					load_icon = document.createElement('i');
+				
+				var refresh_icon_size = styleDataType(this.options.styles.iconSize, 0),
+					load_icon_size = styleDataType(this.options.styles.iconSize, 1);
+				
+				refresh.style.cssText = 'display: block;text-align: center;';
+				load.style.cssText = 'display: block;text-align: center;';
+				refresh_icon.style.cssText = 'display: inline-block;text-align: center;width: ' + refresh_icon_size + ';height: ' + refresh_icon_size + ';';
+				load_icon.style.cssText = 'display: inline-block;text-align: center;width: ' + load_icon_size + ';height: ' + load_icon_size + ';';
+				// Custom Styles
+				for (var i in this.options.styles) {
+					if (dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.STRING
+						|| dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.NUMBER
+					) {
+						refresh.style[i] = this.options.styles[i];
+						load.style[i] = this.options.styles[i];
+					}
+					if (dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
+						refresh.style[i] = this.options.styles[i][0];
+						load.style[i] = this.options.styles[i][1];
+					}
+				}
+				
+				refresh_icon.style.background = 'url("' + styleDataType(this.options.styles.icon, 0) + '") no-repeat center/100%';
+				load_icon.style.background = 'url("' + styleDataType(this.options.styles.icon, 1) + '") no-repeat center/100%';
+				
+				
+				console.log(refresh, load);
+				console.log(refresh_text, load_text);
+				console.log(refresh_icon, load_icon);
+				
+			}
+			
 
 			// 工厂方法
 			function Factory(type, options) {
 				if (this instanceof Factory) {
+					// 继承基类
+					extend(this[type], SuperLoad);
+					
 					return new this[type](options);
 				} else {
 					return new Factory(type, options);
 				}
 			}
+			
 			Factory.prototype = {
+				// 纵向
+				// 下拉刷新 上拉加载
 				Vertical: function (options) {
-					console.log(options);
+					SuperLoad.call(this, options);
+					
+					console.log(this.options);
+					this.create();
 				},
+				// 横向
+				// 右拉刷新 左拉加载
 				Horizontal: function (options) {
-					console.log(options);
+					SuperLoad.call(this, options);
+					
+					console.log(this.options);
+					this.create();
 				}
 			}
-
+			
+			// 暴露对象
 			var DropPullLoad = {
 				on: function (target, options) {
 					if (!target) return;
 					var opts = optionsInit(options);
 
 					var load = new Factory(opts.loadType, opts);
-
-
+					
 				}
 			}
 

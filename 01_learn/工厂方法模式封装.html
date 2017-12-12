@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js工厂方法模式封装结构</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	;(function (window, document) {
+		// 常量
+		var CONSTANTS = {
+			TYPES: [
+				{ id: 1, name: 'Vertical' },
+				{ id: 2, name: 'Horizontal' }
+			]
+		}
+
+		// 参数初始化
+		function optionsInit(options) {
+			var _t = undefined;
+			var opts = options || {};
+
+			opts._type = opts.type || CONSTANTS.TYPES[0].id;
+			_t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+			opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
+			opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
+
+
+
+			return opts;
+		}
+
+		// 类继承
+		function extend(Child, Parent) {
+			var F = function () {};
+			F.prototype = Parent.prototype;
+			Child.prototype = new F();
+			Child.prototype.constructor = Child;
+			Child.uber = Parent.prototype;
+		}
+
+		// 基类 - 公共属性
+		function SuperLoad(options) {
+			this.options = options;
+			this.pub = 'public';
+			
+		}
+
+		SuperLoad.prototype.create = function () {
+			console.log('create');
+		}
+
+		// 工厂方法
+		function Factory(type, options) {
+			if (this instanceof Factory) {
+				// 继承基类
+				extend(this[type], SuperLoad);
+
+				return new this[type](options);
+			} else {
+				return new Factory(type, options);
+			}
+		}
+
+		Factory.prototype = {
+			// 纵向
+			Vertical: function (options) {
+				SuperLoad.call(this, options);
+
+				console.log(this.options, this.pub);
+				this.create();
+			},
+			// 横向
+			Horizontal: function (options) {
+				SuperLoad.call(this, options);
+
+				console.log(this.options, this.pub);
+				this.create();
+			}
+		}
+
+		// 暴露对象
+		var DropPullLoad = {
+			on: function (target, options) {
+				if (!target) return;
+				var opts = optionsInit(options);
+
+				var load = new Factory(opts.loadType, opts);
+
+			}
+		}
+
+		window.DropPullLoad = DropPullLoad;
+
+	})(window, document);
+
+	window.onload = function () {
+		DropPullLoad.on('aa', {
+			type: '2'
+		});
+	}	
+</script>
+</body>
+</html>
