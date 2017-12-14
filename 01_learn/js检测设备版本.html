@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js check client version</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var version = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+	     	version = parseInt(version[1], 10);
+	     	console.log(version);
+		    if(version < 10) {
+		        alert("需要IOS10及以上支持");
+		        return;
+		    }
+		}
+	</script>
+</body>
+</html>

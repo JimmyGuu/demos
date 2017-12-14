@@ -1,112 +1,154 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>ScrollTabPage - 滑动标签页</title>
-        <style media="screen">
-            /*Base Styles*/
-            html, body { margin: 0;padding: 0;background: #efefef;font-size: 62.5%; }
-            ul, li { list-style: none;margin: 0;padding: 0; }
-            p { margin: 0;padding: 0; }
-            a { text-decoration: none; }
-            .clearfix::before, .clearfix::after { content: '', display: table; }
-            .clearfix::after { clear: both; }
 
+<head>
+    <meta charset="utf-8">
+    <title>ScrollTabPage - 滑动标签页</title>
+    <style>
+    /*Base Styles*/
 
-            /*Styles*/
-            .tab-wrapper { width: 100%;overflow: hidden; }
+    html {
+        font-size: 62.5%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background: #efefef;
+    }
 
-            /*.tab-label::before, .tab-label::after, .tab-content::before, .tab-content::after { content: ''; display: table; }
-            .tab-label::after, .tab-content::after { clear: both; }*/
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 
-            /*.tab-content { transition: transform 1s ease-out; }*/
-            /*.tab-label, .tab-content { display: block;width: 300%;}*/
-            /*.tab-label > .label-item, .tab-content > .content-item { float: left;}*/
-            .tab-label > .label-item.active { text-decoration: underline; }
-            .tab-content > .content-item { background: #fff;color: #ff5f00;font-size: 1.4rem;padding: 2rem 1rem;}
-            .tab-content > .content-item:first-child { background: #ff5f00;color: #fff; }
-            .tab-content > .content-item:nth-child(2) { background: blue;color: #fff; }
-            .tab-content > .content-item:last-child { background: red;color: #fff; }
-        </style>
-    </head>
-    <body>
-        <div class="tab-container">
-            <ul class="tab-label">
-                <li class="label-item active" data-id="0">
-                    <a href="javascript: void(0);">标签1</a>
-                </li>
-                <li class="label-item" data-id="1">
-                    <a href="javascript: void(0);">标签2</a>
-                </li>
-                <li class="label-item" data-id="2">
-                    <a href="javascript: void(0);">标签3</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="content-item">
-                    内容1
-                </div>
-                <div class="content-item">
-                    内容2
-                </div>
-                <div class="content-item">
-                    内容3
-                </div>
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .clearfix::before,
+    .clearfix::after {
+        content: '', display: table;
+    }
+
+    .clearfix::after {
+        clear: both;
+    }
+    /*Styles*/
+
+    .tab-container {
+        overflow: hidden;
+    }
+
+    .tab-label>.label-item {
+        font-size: 5rem;
+    }
+
+    .tab-label>.label-item.active {
+        text-decoration: underline;
+    }
+
+    .tab-content>.content-item {
+        background: #fff;
+        color: #ff5f00;
+        font-size: 4.4rem;
+        padding: 2rem 1rem;
+        min-height: 100rem;
+    }
+
+    .tab-content>.content-item:first-child {
+        background: #ff5f00;
+        color: #fff;
+    }
+
+    .tab-content>.content-item:nth-child(2) {
+        background: blue;
+        color: #fff;
+    }
+
+    .tab-content>.content-item:last-child {
+        background: red;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tab-container" id="tabContainer">
+        <ul class="tab-label">
+            <li class="label-item active">
+                <a href="javascript: void(0);">标签1</a>
+            </li>
+            <li class="label-item">
+                <a href="javascript: void(0);">标签2</a>
+            </li>
+            <li class="label-item">
+                <a href="javascript: void(0);">标签3</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="content-item">
+                内容1
+            </div>
+            <div class="content-item">
+                内容2
+            </div>
+            <div class="content-item">
+                内容3
             </div>
         </div>
-
-        <script type="text/javascript">
-            window.onload = function () {
-                var container = document.querySelector('.' + CLASS_NAME.container);
-                var labelBox = container.querySelector('.' + CLASS_NAME.labelBox),
-                    labels = labelBox.querySelectorAll('.' + CLASS_NAME.label);
-                var contentBox = container.querySelector('.' + CLASS_NAME.contentBox),
-                    contents = contentBox.querySelectorAll('.' + CLASS_NAME.content);
-
-                // Init
-                labelBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
-                contentBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
-                contentBox.style.width = (100 * total) + '%';
-                var left = getLeftDistance(init, contentBox);
-                // contentBox.style.transform = 'translate3d(0px, 0px, ' + left + ')';
-                contents.forEach(function (content, index) {
-                    content.style.width = (100 / total) + '%';
-                    clearActive(content);
-                });
-                labels.forEach(function (label, index) {
-                    binde(label, 'click', tabLabel, false);
-                    clearActive(label);
-                });
-                contents[init].classList.add(CLASS_NAME.active);
-                labels[init].classList.add(CLASS_NAME.active);
-
-                // 监听
-        		Object.defineProperty(tabObj, "index", {
-        		    get: function() {
-        		        return this._index;
-        		    },
-        		    set: function(value) {
-        		        if (value !== this._index) {
-        		            this._index = value;
-                            tabContent(value, contents, contentBox);
-        		        }
-        		    }
-        		});
+    </div>
+    <script type="text/javascript">
+        ;
+        (function (window, document) {
+            // Constants
+            var CONSTANTS = {
+                ACTIVE: 'active',
+                CONTAINER: 'tab-container',
+                LABEL_BOX: 'tab-label',
+                LABEL: 'label-item',
+                CONTENT_BOX: 'tab-content',
+                CONTENT: 'content-item',
+                TYPES: [
+                    { id: 1, name: 'Normal' }
+                ],
+                TYPES_VALIDATOR: {
+                    POSITIVE_INTEGER_0: 1
+                }
             }
 
-            var init = 0,
-                total = 3,
-                speed = 800;
-            var CLASS_NAME = {
-                container: 'tab-container',
-                labelBox: 'tab-label',
-                label: 'label-item',
-                contentBox: 'tab-content',
-                content: 'content-item',
-                active: 'active'
+            // Common Methods
+            // class extend
+            function extend(Child, Parent) {
+                var F = function () {};
+                F.prototype = Parent.prototype;
+                Child.prototype = new F();
+                Child.prototype.constructor = Child;
+                Child.uber = Parent.prototype;
             }
 
-            var tabObj = { _index: init }
+            // Transition Compatibility
+            function transitionEvent() {
+                var el = document.createElement('surface'),
+                    transitions = {
+                        'transition': 'transitionend',
+                        'OTransition': 'oTransitionEnd',
+                        'MozTransition': 'transitionend',
+                        'WebkitTransition': 'webkitTransitionEnd'
+                    }
+
+                for (var t in transitions) {
+                    if (el.style[t] !== undefined) {
+                        return transitions[t];
+                    }
+                }
+            }
 
             // Bind Event
             function binde(node, eventType, fn, stopSuper) {
@@ -120,68 +162,419 @@
                     }
                 });
             }
+
             // Unbind Event
             function unbinde(node, eventType, fn) {
                 node.removeEventListener(eventType, fn);
             }
 
-            // 验证浏览器对 transition 的兼容
-        	function transitionEvent () {
-               	var el = document.createElement('surface'),
-               	transitions = {
-                 	'transition':'transitionend',
-                 	'OTransition':'oTransitionEnd',
-                 	'MozTransition':'transitionend',
-                 	'WebkitTransition':'webkitTransitionEnd'
-               	}
+            // Regular expression validator
+            function validator(type, value) {
+                var reg = null,
+                    result = false;
 
-               	for(var t in transitions){
-                  	if( el.style[t] !== undefined ){
-                       	return transitions[t];
-                   	}
-               	}
-           	}
+                switch (type) {
+                    case CONSTANTS.TYPES_VALIDATOR.POSITIVE_INTEGER_0:
+                        reg = /^(0|[1-9][0-9]*)$/;
+                        result = reg.test(value);
+                }
 
-            // 清除active状态
-            function clearActive(items) {
-                if (items.length) {
-                    for (var len = items.length, i = len - 1; i >= 0; i--) {
-                        items[i].classList.remove(CLASS_NAME.active);
+                return result;
+            }
+
+            // Initialize Options
+            function optionsInit(options) {
+                var _t = undefined;
+                var opts = options || {};
+
+                opts._type = opts.type || CONSTANTS.TYPES[0].id;
+                _t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+                opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
+                opts.tabType = _t ? _t.name : CONSTANTS.TYPES[0].name;
+
+                opts.total = parseInt(opts.total, 10) || 1;
+                opts.init = parseInt(opts.init, 10) || 0;
+                opts.init = validator(CONSTANTS.TYPES_VALIDATOR.POSITIVE_INTEGER_0, opts.init) ? opts.init : 0;
+                opts.init = opts.init >= opts.total ? 0 : opts.init;
+                opts.speed = parseInt(opts.speed, 10) || 600;
+
+                return opts;
+            }
+
+            // Base Class
+            function SuperScroll(options) {
+                var self = this;
+                var time_start = 0;
+
+                this.options = options;
+                this.tabObj = { _index: this.options.init };
+                this.labelBox = this.options.container.querySelector('.' + CONSTANTS.LABEL_BOX);
+                this.contentBox = this.options.container.querySelector('.' + CONSTANTS.CONTENT_BOX);
+                this.labels = this.labelBox.querySelectorAll('.' + CONSTANTS.LABEL);
+                this.contents = this.contentBox.querySelectorAll('.' + CONSTANTS.CONTENT);
+
+                this.time_interval = 0;
+                this.move_start = 0;
+                this.move_end = 0;
+                this.move_on = 0;
+
+                // initialize
+                this._init = function () {
+                    var total = self.options.total,
+                        init = self.options.init;
+
+                    var labelBox = self.labelBox,
+                        labels = self.labels;
+                    var contentBox = self.contentBox,
+                        contents = self.contents;
+
+                    // Init
+                    labelBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+                    contentBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+                    contentBox.style.width = (100 * total) + '%';
+
+                    contents.forEach(function(content, index) {
+                        content.style.width = (100 / total) + '%';
+                        self._clearActive(content);
+                    });
+
+                    labels.forEach(function(label, index) {
+                        // Bind click event
+                        binde(label, 'click', self._tabLabel, false);
+                        self._clearActive(label);
+                        label.dataset.id = index;
+                    });
+
+                    contents[init].classList.add(CONSTANTS.ACTIVE);
+                    labels[init].classList.add(CONSTANTS.ACTIVE);
+
+                }
+
+                // tab click
+                this._tabLabel = function (e) {
+                    var children = e.parentNode.children;
+                    for (var len = children.length, i = len - 1; i >= 0; i--) {
+                        children[i].classList.remove(CONSTANTS.ACTIVE);
                     }
+                    e.classList.add(CONSTANTS.ACTIVE);
+
+                    self.tabObj.index = +e.dataset.id;
+                }
+
+                // clear state of active
+                this._clearActive = function (items) {
+                    if (items.length) {
+                        for (var len = items.length, i = len - 1; i >= 0; i--) {
+                            items[i].classList.remove(CONSTANTS.ACTIVE);
+                        }
+                    } else {
+                        items.classList.remove(CONSTANTS.ACTIVE);
+                    }
+                }
+
+                // change tab content
+                this._tabContent = function (index, contents, contentBox, fn) {
+                    self._clearActive(contents);
+                    contents[index].classList.add(CONSTANTS.ACTIVE);
+                    fn(index, contentBox);
+                }
+
+                this._handleTouchEvent = function (event) {
+                    var touch = event.touches[0],
+                        touched = event.changedTouches[0];
+
+                    switch (event.type) {
+                        case 'touchstart':
+                            time_start = +new Date;
+                            self.time_interval = 0;
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                                self.move_start = touch.clientX;
+                            }
+                            self.touchCallback('touchstart', self.move_start);
+                            break;
+                        case 'touchend':
+                            self.time_interval = +new Date - time_start;
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                                self.move_end = touched.clientX;
+                            }
+                            self.touchCallback('touchend', self.move_end);
+                            break;
+                        case 'touchmove':
+                            event.preventDefault();
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                                self.move_on = touched.clientX;
+                            }
+                            self.touchCallback('touchmove', self.move_on);
+                            break;
+                    }
+                }
+            }
+
+            SuperScroll.prototype.touchBind = function (target) {
+                target.addEventListener("touchstart", this._handleTouchEvent, false);
+                target.addEventListener("touchend", this._handleTouchEvent, false);
+                target.addEventListener("touchmove", this._handleTouchEvent, false);
+            }
+
+            SuperScroll.prototype.touchCallback = function (touchType, move) {
+                console.log(touchType, move);
+            }
+
+
+            // Factory Method
+            function Factory(type, options) {
+                if (this instanceof Factory) {
+                    // 继承基类
+                    extend(this[type], SuperScroll);
+
+                    return new this[type](options);
                 } else {
-                    items.classList.remove(CLASS_NAME.active);
+                    return new Factory(type, options);
                 }
             }
 
-            // 计算左偏移量
-            function getLeftDistance(index, contentBox) {
-                var contentBoxLen = contentBox.clientWidth,
-                    left = -(parseFloat(contentBoxLen, 10) / total * index) + 'px';
+            // Sub Class
+            Factory.prototype = {
+                Normal: function (options) {
+                    SuperScroll.call(this, options);
 
-                contentBox.style.transition = 'transform 0.3s ease-out';
-                contentBox.style.transitionDuration = parseInt(speed, 10) / 1000 + 's';
-                contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
-                return left;
-            }
+                    var self = this;
 
-            /*实现方法*/
-            // Tab-label Click
-            function tabLabel(e) {
-                var children = e.parentNode.children;
-                for (var len = children.length, i = len - 1; i >= 0; i--) {
-                    children[i].classList.remove(CLASS_NAME.active);
+                    // set left distance
+                    this._getLeftDistance = function (index, contentBox) {
+                        var total = self.options.total,
+                            speed = self.options.speed;
+                        var contentBoxLen = contentBox.clientWidth,
+                            left = -(parseFloat(contentBoxLen, 10) / total * index) + 'px';
+
+                        contentBox.style.transition = 'transform 0.3s ease-out';
+                        contentBox.style.transitionDuration = speed / 1000 + 's';
+                        contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
+                        return left;
+                    }
+
+                    // watch
+                    Object.defineProperty(this.tabObj, "index", {
+                        get: function() {
+                            return this._index;
+                        },
+                        set: function(value) {
+                            if (value !== this._index) {
+                                this._index = value;
+                                self._tabContent(value, self.contents, self.contentBox, self._getLeftDistance);
+                            }
+                        }
+                    });
+
+                    // initialize
+                    this._init();
+                    self._tabContent(this.options.init, self.contents, self.contentBox, self._getLeftDistance);
+
+                    // set touch event
+                    this.touchBind(this.contentBox);
+
+                    this.touchCallback = function (touchType, move) {
+                        var move_on,
+                            moved;
+                        if (touchType === 'touchstart') {
+
+                        }
+                        if (touchType === 'touchmove') {
+                            move_on = move;
+                        }
+                        if (touchType === 'touchend') {
+
+                        }
+                        var move = move_on - self.move_start;
+                        moved = move < 0 ? -move : move;
+                        console.log(move, moved)
+
+                        console.log(self.contentBox.style.transform)
+                        console.log(self.contentBox.style.transform.substring(13, self.contentBox.style.transform.indexOf('px')))
+                        return;
+                        if (move < 0) {
+                            // right 2 left
+                            self.contentBox.style.transition = 'transform 0.3s ease-out';
+                            self.contentBox.style.transitionDuration = speed / 1000 + 's';
+                            self.contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
+                        }
+                        if (move > 0) {
+                            // left 2 right
+                            self.contentBox.style.transition = 'transform 0.3s ease-out';
+                            self.contentBox.style.transitionDuration = speed / 1000 + 's';
+                            self.contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
+                        }
+                    }
                 }
-                e.classList.add(CLASS_NAME.active);
-
-                tabObj.index = +e.dataset.id;
             }
 
-            // Content Change
-            function tabContent(index, contents, contentBox) {
-                clearActive(contents);
-                contents[index].classList.add(CLASS_NAME.active);
-                getLeftDistance(index, contentBox);
+            // Public Object
+            var TabPageScroll = {
+                on: function (target, options) {
+                    if (!target) return;
+
+                    var container = document.getElementById(target);
+                    if (!container) throw new Error('TabPageScroll ERR! config error');
+
+                    options.container = container;
+                    var opts = optionsInit(options);
+
+                    var tab = new Factory(opts.tabType, opts);
+
+                    return tab;
+                }
             }
-        </script>
-    </body>
+
+            // Bind on window
+            window.TabPageScroll = TabPageScroll;
+
+        })(window, document);
+
+    window.onload = function() {
+        var tab = TabPageScroll.on('tabContainer', {
+            total: 3,
+            init: 0,
+            speed: 300
+        });
+
+        console.log(tab);
+/*
+        var container = document.querySelector('.' + CLASS_NAME.CONTAINER);
+        var labelBox = container.querySelector('.' + CLASS_NAME.LABEL_BOX),
+            labels = labelBox.querySelectorAll('.' + CLASS_NAME.LABEL);
+        var contentBox = container.querySelector('.' + CLASS_NAME.CONTENT_BOX),
+            contents = contentBox.querySelectorAll('.' + CLASS_NAME.CONTENT);
+
+        // Init
+        labelBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+        contentBox.style.cssText = 'display: flex;justify-content: flex-start;align-items: flex-end;';
+        contentBox.style.width = (100 * total) + '%';
+        var left = getLeftDistance(init, contentBox);
+        // contentBox.style.transform = 'translate3d(0px, 0px, ' + left + ')';
+        contents.forEach(function(content, index) {
+            content.style.width = (100 / total) + '%';
+            clearActive(content);
+        });
+        labels.forEach(function(label, index) {
+            // Bind click event
+            binde(label, 'click', tabLabel, false);
+            clearActive(label);
+            label.dataset.id = index;
+        });
+        contents[init].classList.add(CLASS_NAME.ACTIVE);
+        labels[init].classList.add(CLASS_NAME.ACTIVE);
+
+        // 监听
+        Object.defineProperty(tabObj, "index", {
+            get: function() {
+                return this._index;
+            },
+            set: function(value) {
+                if (value !== this._index) {
+                    this._index = value;
+                    tabContent(value, contents, contentBox);
+                }
+            }
+        });
+    }
+
+    var init = 0,
+        total = 3,
+        speed = 800;
+    var CLASS_NAME = {
+        CONTAINER: 'tab-container',
+        LABEL_BOX: 'tab-label',
+        LABEL: 'label-item',
+        CONTENT_BOX: 'tab-content',
+        CONTENT: 'content-item',
+        ACTIVE: 'active'
+    }
+
+    var tabObj = { _index: init }
+
+    // Bind Event
+    function binde(node, eventType, fn, stopSuper) {
+        node.addEventListener(eventType, function(event) {
+            if (stopSuper === true) {
+                if (event.target === this) {
+                    fn(this);
+                }
+            } else {
+                fn(this);
+            }
+        });
+    }
+    // Unbind Event
+    function unbinde(node, eventType, fn) {
+        node.removeEventListener(eventType, fn);
+    }
+
+    // 验证浏览器对 transition 的兼容
+    function transitionEvent() {
+        var el = document.createElement('surface'),
+            transitions = {
+                'transition': 'transitionend',
+                'OTransition': 'oTransitionEnd',
+                'MozTransition': 'transitionend',
+                'WebkitTransition': 'webkitTransitionEnd'
+            }
+
+        for (var t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+            }
+        }
+    }
+
+    // 清除active状态
+    function clearActive(items) {
+        if (items.length) {
+            for (var len = items.length, i = len - 1; i >= 0; i--) {
+                items[i].classList.remove(CLASS_NAME.ACTIVE);
+            }
+        } else {
+            items.classList.remove(CLASS_NAME.ACTIVE);
+        }
+    }
+
+    // 计算左偏移量
+    function getLeftDistance(index, contentBox) {
+        var contentBoxLen = contentBox.clientWidth,
+            left = -(parseFloat(contentBoxLen, 10) / total * index) + 'px';
+
+        contentBox.style.transition = 'transform 0.3s ease-out';
+        contentBox.style.transitionDuration = parseInt(speed, 10) / 1000 + 's';
+        contentBox.style.transform = 'translate3d(' + left + ', 0px, 0px)';
+        return left;
+    }
+
+
+    // Tab-label Click
+    function tabLabel(e) {
+        var children = e.parentNode.children;
+        for (var len = children.length, i = len - 1; i >= 0; i--) {
+            children[i].classList.remove(CLASS_NAME.ACTIVE);
+        }
+        e.classList.add(CLASS_NAME.ACTIVE);
+
+        tabObj.index = +e.dataset.id;
+    }
+
+    // Content Change
+    function tabContent(index, contents, contentBox) {
+        clearActive(contents);
+        contents[index].classList.add(CLASS_NAME.ACTIVE);
+        getLeftDistance(index, contentBox);
+
+
+
+
+
+
+        */
+    }
+
+    </script>
+</body>
+
 </html>

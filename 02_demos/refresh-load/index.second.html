@@ -50,18 +50,19 @@
 	</div>
 	<script type="text/javascript" src="vue.min.js"></script>
 	<script type="text/javascript">
-		
+
 		;(function (window, document) {
 			// 常量
 			var CONSTANTS = {
 				REFRESH: 1,
 				LOAD: 2,
+				REFRESH_INDEX: 0,
+				LOAD_INDEX: 1,
 				TEXT_REFRESH_INIT: '下拉刷新',
 				TEXT_REFRESH_START: '释放刷新',
 				TEXT_REFRESH_LOADING: '正在刷新...',
 				TEXT_REFRESH_DONE: '刷新完成',
-				TEXT_LOAD_INIT: '',
-				TEXT_LOAD_LOADING: '正在加载...',
+				TEXT_LOAD_INIT: '正在加载...',
 				TEXT_LOAD_DONE: '加载完成',
 				TEXT_LOAD_NONE: '没有更多数据',
 				TEXT_LOAD_EMPTY: '暂无数据',
@@ -81,7 +82,7 @@
 					OBJECT: 5
 				}
 			}
-			
+
 			// 验证
 			function dataType(value) {
 				if (value === '' || value == null) return undefined;
@@ -100,10 +101,10 @@
 				if (typeof value === 'object' && value.length) {
 					return CONSTANTS.VALIDATOR_TYPES.OBJECT;
 				}
-				
+
 				return undefined;
 			}
-			
+
 			// 类继承
 			function extend(Child, Parent) {
 				var F = function () {};
@@ -117,30 +118,49 @@
 			function optionsInit(options) {
 				var _t = undefined;
 				var opts = options || {};
-				
+
 				opts._type = opts.type || CONSTANTS.TYPES[0].id;
 				_t = CONSTANTS.TYPES.find(x => x.id === opts._type);
 				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
 				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
-				
-				// Refresh
+
+				// Styles
 				opts.styles = opts.styles ? opts.styles = {
-					width: opts.refresh.width || '100%',
-					height: opts.refresh.height || '200px',
-					background: opts.refresh.background || '#fff',
-					color: opts.refresh.color || '#000',
-					fontSize: opts.refresh.fontSize || '14px',
-					icon: opts.refresh.icon || ['./src/img/reload.png', './src/img/rolling.png'],
-					iconSize: opts.refresh.fontSize || '50px'
+					width: opts.styles.width || '100%',
+					height: opts.styles.height || '200px',
+					background: opts.styles.background || '#fff',
+					color: opts.styles.color || '#000',
+					fontSize: opts.styles.fontSize || '14px',
+					icon: opts.styles.icon || ['./src/img/reload.png', './src/img/rolling.gif'],
+					iconSize: opts.styles.iconSize || '50px',
+
 				} : {
 					width: '100%',
 					height: '200px',
 					background: '#fff',
 					color: '#000',
 					fontSize: '14px',
-					icon: ['./src/img/reload.png', './src/img/rolling.png'],
+					icon: ['./src/img/reload.png', './src/img/rolling.gif'],
 					iconSize: '50px',
+
 				};
+
+				// Refresh
+				opts.refresh = opts.refresh ? opts.refresh = {
+					use: opts.refresh.use === false ? opts.refresh.use : true,
+
+				} : {
+					use: true,
+
+				}
+				// Load
+				opts.load = opts.load ? opts.load = {
+					use: opts.load.use === false ? opts.load.use : true,
+
+				} : {
+					use: true,
+
+				}
 
 				return opts;
 			}
@@ -156,105 +176,183 @@
 					return style[index];
 				}
 			}
-			
+
 			// 基类 - 公共属性
 			function SuperLoad(options) {
+				var self = this;
+				var time_start = 0;
+
 				this.options = options;
-				
-			}
-			
-			
-			SuperLoad.prototype.create = function () {
-				var refresh = document.createElement('span'),
-					load = document.createElement('span');
-				var refresh_text = document.createTextNode(CONSTANTS.TEXT_REFRESH_INIT),
-					load_text = document.createTextNode(CONSTANTS.TEXT_LOAD_INIT);
-				var refresh_icon = document.createElement('i'),
-					load_icon = document.createElement('i');
-				
-				var refresh_icon_size = styleDataType(this.options.styles.iconSize, 0),
-					load_icon_size = styleDataType(this.options.styles.iconSize, 1);
-				
-				refresh.style.cssText = 'display: block;text-align: center;';
-				load.style.cssText = 'display: block;text-align: center;';
-				refresh_icon.style.cssText = 'display: inline-block;text-align: center;width: ' + refresh_icon_size + ';height: ' + refresh_icon_size + ';';
-				load_icon.style.cssText = 'display: inline-block;text-align: center;width: ' + load_icon_size + ';height: ' + load_icon_size + ';';
-				// Custom Styles
-				for (var i in this.options.styles) {
-					if (dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.STRING
-						|| dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.NUMBER
-					) {
-						refresh.style[i] = this.options.styles[i];
-						load.style[i] = this.options.styles[i];
+				this.time_interval = 0;
+				this.move_start = 0;
+				this.move_end = 0;
+
+				// Methods
+				this._create = function (index, text, classname) {
+					var span = document.createElement('span');
+					var span_text = document.createTextNode(text);
+					var icon = document.createElement('i');
+					var icon_size = styleDataType(this.options.styles.iconSize, index);
+
+					span.className = classname;
+					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
+					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;transition: transform .3s linear;';
+
+					// Custom Styles
+					for (var i in this.options.styles) {
+						span.style[i] = styleDataType(this.options.styles[i], index);
 					}
-					if (dataType(this.options.styles[i]) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
-						refresh.style[i] = this.options.styles[i][0];
-						load.style[i] = this.options.styles[i][1];
+					icon.style.background = 'url("' + styleDataType(this.options.styles.icon, index) + '") no-repeat center/100%';
+
+					// Reset Styles
+					if (index === CONSTANTS.REFRESH_INDEX) span.style.height = '0px';
+					// span.style.display = 'none';
+
+					span.appendChild(icon);
+					span.appendChild(span_text);
+
+					return span;
+				}
+
+				this._handleTouchEvent = function (event) {
+					var touch = event.touches[0],
+						touched = event.changedTouches[0];
+
+                    switch (event.type) {
+                        case 'touchstart':
+                            time_start = +new Date;
+                            self.time_interval = 0;
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                            	self.move_start = touch.clientY;
+                            	self._getPosition('touchstart', touch.clientY);
+                            }
+                            if (self.options._type === CONSTANTS.TYPES[1].id) {
+                            	self.move_start = touch.clientX;
+                            	self._getPosition('touchstart', touch.clientX);
+                            }
+                            break;
+                        case 'touchend':
+                            self.time_interval = +new Date - time_start;
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                            	self.move_end = touched.clientY;
+                            	self._getPosition('touchend', touched.clientY);
+                            }
+                            if (self.options._type === CONSTANTS.TYPES[1].id) {
+                            	self.move_end = touched.clientX;
+                            	self._getPosition('touchend', touched.clientX);
+                            }
+                            break;
+                        case 'touchmove':
+                            event.preventDefault();
+                            if (self.options._type === CONSTANTS.TYPES[0].id) {
+                            	self._getPosition('touchmove', touched.clientY);
+                            }
+                            if (self.options._type === CONSTANTS.TYPES[1].id) {
+                            	self._getPosition('touchmove', touched.clientX);
+                            }
+                            break;
+                    }
+				}
+
+				this._getPosition = function (touchType, move) {
+					console.log(touchType, move);
+					console.log(this.move_start, this.move_end);
+
+					var height = this.move_end - this.move_start;
+
+					if (height > 0) {
+						
 					}
 				}
-				
-				refresh_icon.style.background = 'url("' + styleDataType(this.options.styles.icon, 0) + '") no-repeat center/100%';
-				load_icon.style.background = 'url("' + styleDataType(this.options.styles.icon, 1) + '") no-repeat center/100%';
-				
-				
-				console.log(refresh, load);
-				console.log(refresh_text, load_text);
-				console.log(refresh_icon, load_icon);
-				
 			}
-			
+
+			SuperLoad.prototype.createRefresh = function () {
+				var refresh = this._create(CONSTANTS.REFRESH_INDEX,
+					CONSTANTS.TEXT_REFRESH_INIT,
+					CONSTANTS.CLASSNAME_TIP_DROP);
+
+				this.options.container.insertBefore(refresh, this.options.container.childNodes[0]);
+
+				console.log(refresh)
+			}
+
+			SuperLoad.prototype.createLoad = function () {
+				var load = this._create(CONSTANTS.LOAD_INDEX,
+					CONSTANTS.TEXT_LOAD_INIT,
+					CONSTANTS.CLASSNAME_TIP_PULL);
+
+
+				this.options.container.appendChild(load);
+
+				console.log(load)
+			}
+
+			SuperLoad.prototype.touchBind = function () {
+				this.options.container.addEventListener("touchstart", this._handleTouchEvent, false);
+                this.options.container.addEventListener("touchend", this._handleTouchEvent, false);
+                this.options.container.addEventListener("touchmove", this._handleTouchEvent, false);
+			}
+
 
 			// 工厂方法
 			function Factory(type, options) {
 				if (this instanceof Factory) {
 					// 继承基类
 					extend(this[type], SuperLoad);
-					
+
 					return new this[type](options);
 				} else {
 					return new Factory(type, options);
 				}
 			}
-			
+
 			Factory.prototype = {
 				// 纵向
 				// 下拉刷新 上拉加载
 				Vertical: function (options) {
 					SuperLoad.call(this, options);
-					
+
 					console.log(this.options);
-					this.create();
+
+					this.options.refresh.use ? this.createRefresh() : '';
+					this.options.load.use ? this.createLoad() : '';
+
+					this.touchBind();
 				},
 				// 横向
 				// 右拉刷新 左拉加载
 				Horizontal: function (options) {
 					SuperLoad.call(this, options);
-					
+
 					console.log(this.options);
-					this.create();
+
+					this.options.refresh.use ? this.createRefresh() : '';
+					this.options.load.use ? this.createLoad() : '';
+
+					this.touchBind();
 				}
 			}
-			
+
 			// 暴露对象
 			var DropPullLoad = {
 				on: function (target, options) {
 					if (!target) return;
+
+					var list = document.getElementById(target);
+					if (!list) throw new Error('TabPageScroll ERR! config error');
+
+					options.container = list;
 					var opts = optionsInit(options);
 
 					var load = new Factory(opts.loadType, opts);
-					
+
 				}
 			}
 
 			window.DropPullLoad = DropPullLoad;
-			
+
 		})(window, document);
-			
-		window.onload = function () {
-			DropPullLoad.on('aa', {
-				type: '2'
-			});
-		}
+
 	</script>
 	<script type="text/javascript">
 		var vm = new Vue({
@@ -291,6 +389,21 @@
 						this.list.push(item);
 					});
 					this.total = result.total;
+
+					this.$nextTick(() => {
+						DropPullLoad.on('listData', {
+							type: 1,
+							styles: {
+								fontSize: '24px'
+							},
+							refresh: {
+								use: true
+							},
+							load: {
+								use: true
+							}
+						});
+					});
 				}
 			},
 			mounted: function () {
