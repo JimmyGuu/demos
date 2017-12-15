@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eb97e315-9577-4da0-9983-f6b6ad40bf04" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/AUTHORS.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/LICENSE.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/core.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.min.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.slim.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.slim.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/dist/jquery.slim.min.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/external/sizzle/LICENSE.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/external/sizzle/dist/sizzle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/external/sizzle/dist/sizzle.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/external/sizzle/dist/sizzle.min.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/.eslintrc.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/jsonp.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/load.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/parseXML.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/script.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/var/location.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/var/nonce.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/var/rquery.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/ajax/xhr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes/attr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes/classes.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes/prop.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/attributes/val.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/callbacks.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/DOMEval.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/access.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/init.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/nodeName.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/parseHTML.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/ready-no-deferred.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/ready.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/readyException.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/stripAndCollapse.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/core/var/rsingleTag.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/addGetHookIf.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/adjustCSS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/curCSS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/hiddenVisibleSelectors.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/showHide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/cssExpand.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/getStyles.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/isHiddenWithinTree.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/rmargin.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/rnumnonpx.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/css/var/swap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/data.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/data/Data.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/data/var/acceptData.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/data/var/dataPriv.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/data/var/dataUser.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/deferred.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/deferred/exceptionHook.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/deprecated.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/dimensions.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/effects.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/effects/Tween.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/effects/animatedSelector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event/ajax.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event/alias.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event/focusin.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/event/trigger.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/exports/amd.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/exports/global.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/jquery.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/_evalUrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/buildFragment.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/getAll.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/setGlobalEval.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/var/rcheckableType.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/var/rscriptType.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/var/rtagName.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/manipulation/wrapMap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/offset.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/queue.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/queue/delay.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/selector-native.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/selector-sizzle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/selector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/serialize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/traversing.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/traversing/findFilter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/traversing/var/dir.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/traversing/var/rneedsContext.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/traversing/var/siblings.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/ObjectFunctionString.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/arr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/class2type.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/concat.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/document.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/documentElement.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/fnToString.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/getProto.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/hasOwn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/indexOf.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/pnum.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/push.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/rcssNum.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/rnothtmlwhite.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/slice.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/var/toString.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/jquery/src/wrap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/.editorconfig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/.jshintrc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/gulpfile-wrap-template.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/ie9.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/loader-animation.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/default-params.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/handle-click.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/handle-dom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/handle-key.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/handle-swal-dom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/injected-html.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/set-params.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/modules/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/sweetalert.es6.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dev/sweetalert.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dist/sweetalert-dev.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dist/sweetalert.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/dist/sweetalert.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/example.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/example.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/logo_big.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/logo_big@2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/logo_small.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/logo_small@2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/te-logo-small.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/thumbs-up.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/vs_icon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/example/images/vs_icon@2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/default-params.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/handle-click.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/handle-dom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/handle-key.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/handle-swal-dom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/injected-html.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/set-params.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/modules/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/lib/sweetalert.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/sweetalert.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/test/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/test/tests.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/facebook/facebook.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/facebook/facebook.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/google/google.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/google/google.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/twitter/twitter.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/node_modules/sweetalert/themes/twitter/twitter.scss" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01_learn/react-learn/prev/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/01_learn/node_modules" />
+    <handled-path value="$PROJECT_DIR$/01_learn/react-learn/prev/my-app/node_modules" />
+    <handled-path value="$PROJECT_DIR$/02_demos/node_modules" />
+    <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="96" />
+    <option name="y" value="36" />
+    <option name="width" value="1755" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="react-learn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="react-learn" type="462c0819:PsiDirectoryNode" />
+              <item name="prev" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb97e315-9577-4da0-9983-f6b6ad40bf04" name="Default" comment="" />
+      <created>1513331965575</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1513331965575</updated>
+      <workItem from="1513331967814" duration="579000" />
+      <workItem from="1513332557415" duration="403000" />
+      <workItem from="1513332970217" duration="135000" />
+      <workItem from="1513333264040" duration="43000" />
+      <workItem from="1513333325815" duration="265000" />
+      <workItem from="1513333602297" duration="164000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1589000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="96" y="36" width="1755" height="1000" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19896492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/01_learn/react-learn/prev/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/react-learn/prev/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
