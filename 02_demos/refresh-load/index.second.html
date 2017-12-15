@@ -22,6 +22,9 @@
 		}
 		.list-wrapper {
 			width: 100%;
+			height: 600px;
+			overflow-x: hidden;
+			overflow-y: scroll;
 		}
 		.list-data .item:first-child {
 			border-top: 1px solid #ddd;
@@ -120,7 +123,12 @@
 				var opts = options || {};
 
 				opts._type = opts.type || CONSTANTS.TYPES[0].id;
-				_t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+				// _t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+				for (var len = CONSTANTS.TYPES.length, i = len - 1; i >= 0; i--) {
+					if (CONSTANTS.TYPES[i].id === opts._type) {
+						_t = CONSTANTS.TYPES[i];
+					}
+				}
 				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
 				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
 
@@ -148,10 +156,10 @@
 				// Refresh
 				opts.refresh = opts.refresh ? opts.refresh = {
 					use: opts.refresh.use === false ? opts.refresh.use : true,
-
+					step: parseFloat(opts.refresh.step) > 0 ? parseFloat(opts.refresh.step) : 3
 				} : {
 					use: true,
-
+					step: 3
 				}
 				// Load
 				opts.load = opts.load ? opts.load = {
@@ -177,6 +185,17 @@
 				}
 			}
 
+			// 阻止a标签可以在浏览器中被拖动
+		    function stopDrag(items) {
+		        if (items.length) {
+		            for (var len = items.length, i = len - 1; i >= 0; i--) {
+		                items[i].setAttribute('ondragstart', 'return false;');
+		            }
+		        } else {
+		            items.setAttribute('ondragstart', 'return false;');
+		        }
+		    }
+
 			// 基类 - 公共属性
 			function SuperLoad(options) {
 				var self = this;
@@ -186,17 +205,20 @@
 				this.time_interval = 0;
 				this.move_start = 0;
 				this.move_end = 0;
+				this.move_on = 0;
 
 				// Methods
 				this._create = function (index, text, classname) {
 					var span = document.createElement('span');
-					var span_text = document.createTextNode(text);
+					var span_text = document.createElement('i');
 					var icon = document.createElement('i');
 					var icon_size = styleDataType(this.options.styles.iconSize, index);
 
 					span.className = classname;
 					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
-					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;transition: transform .3s linear;';
+					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;font-style: normal;transition: transform .3s linear;';
+					span_text.style.cssText = 'display: inline-block;text-align: left;font-style: normal;';
+					span_text.innerText = text;
 
 					// Custom Styles
 					for (var i in this.options.styles) {
@@ -206,15 +228,19 @@
 
 					// Reset Styles
 					if (index === CONSTANTS.REFRESH_INDEX) span.style.height = '0px';
-					// span.style.display = 'none';
 
 					span.appendChild(icon);
 					span.appendChild(span_text);
 
-					return span;
+					return {
+						span: span,
+						icon: icon,
+						span_text: span_text
+					};
 				}
 
 				this._handleTouchEvent = function (event) {
+					event.preventDefault();
 					var touch = event.touches[0],
 						touched = event.changedTouches[0];
 
@@ -245,9 +271,11 @@
                         case 'touchmove':
                             event.preventDefault();
                             if (self.options._type === CONSTANTS.TYPES[0].id) {
+                            	self.move_on = touched.clientY;
                             	self._getPosition('touchmove', touched.clientY);
                             }
                             if (self.options._type === CONSTANTS.TYPES[1].id) {
+                            	self.move_on = touched.clientX;
                             	self._getPosition('touchmove', touched.clientX);
                             }
                             break;
@@ -255,42 +283,43 @@
 				}
 
 				this._getPosition = function (touchType, move) {
-					console.log(touchType, move);
-					console.log(this.move_start, this.move_end);
-
-					var height = this.move_end - this.move_start;
-
-					if (height > 0) {
-						
-					}
+					var self = this;
 				}
 			}
 
 			SuperLoad.prototype.createRefresh = function () {
-				var refresh = this._create(CONSTANTS.REFRESH_INDEX,
+				var refreshObj = this._create(CONSTANTS.REFRESH_INDEX,
 					CONSTANTS.TEXT_REFRESH_INIT,
 					CONSTANTS.CLASSNAME_TIP_DROP);
 
-				this.options.container.insertBefore(refresh, this.options.container.childNodes[0]);
+				refreshObj.span.style.transitionTimingFunction = 'ease-in';
+				this.options.container.insertBefore(refreshObj.span, this.options.container.childNodes[0]);
 
-				console.log(refresh)
+				return refreshObj;
 			}
 
 			SuperLoad.prototype.createLoad = function () {
-				var load = this._create(CONSTANTS.LOAD_INDEX,
+				var loadObj = this._create(CONSTANTS.LOAD_INDEX,
 					CONSTANTS.TEXT_LOAD_INIT,
 					CONSTANTS.CLASSNAME_TIP_PULL);
 
+				loadObj.span.style.display = 'none';
 
-				this.options.container.appendChild(load);
+				this.options.container.appendChild(loadObj.span);
 
-				console.log(load)
+				return loadObj;
 			}
 
 			SuperLoad.prototype.touchBind = function () {
 				this.options.container.addEventListener("touchstart", this._handleTouchEvent, false);
                 this.options.container.addEventListener("touchend", this._handleTouchEvent, false);
                 this.options.container.addEventListener("touchmove", this._handleTouchEvent, false);
+			}
+
+			SuperLoad.prototype.touchUnbind = function () {
+				this.options.container.removeEventListener("touchstart", this._handleTouchEvent, false);
+                this.options.container.removeEventListener("touchend", this._handleTouchEvent, false);
+                this.options.container.removeEventListener("touchmove", this._handleTouchEvent, false);
 			}
 
 
@@ -312,11 +341,134 @@
 				Vertical: function (options) {
 					SuperLoad.call(this, options);
 
-					console.log(this.options);
+					var refreshObj = {},
+						refresh,
+						loadObj = {},
+						load,
+						icon,
+						refresh_text,
+						threshold = 2 / 3,
+						isThreshold = false,
+						isLoading = false,
+						speed = 300,
+						rotateInit = 0,
+						rotateStep = 90,
+						moved = 0;
+					var self = this,
+						max = parseInt(styleDataType(this.options.styles.height, 0), 10),
+						step = this.options.refresh.step;
 
-					this.options.refresh.use ? this.createRefresh() : '';
-					this.options.load.use ? this.createLoad() : '';
+					var offset = 100,
+						isWindow = false,
 
+						window_h = 0,
+						list_h = 0,
+						scroll_top = 0,
+						scroll_max = 0;
+					var window_box = this.options.container.parentNode,
+						list_doc = this.options.container;
+
+					this.options.refresh.use ? refreshObj = this.createRefresh() : '';
+					this.options.load.use ? loadObj = this.createLoad() : '';
+					refresh = refreshObj.span;
+					icon = refreshObj.icon;
+					refresh_text = refreshObj.span_text;
+					load = loadObj.span;
+
+					window_h = window_box.clientHeight;
+					list_h = list_doc.clientHeight;
+					if (isWindow === true)  {
+						window_box = window;
+						window_h = window_box.innerHeight;
+					};
+					scroll_top = window_box.scrollTop;
+					scroll_max = list_h - window_h;
+
+					console.log(scroll_max)
+					// 重写touch回调方法
+					this._getPosition = function (touchType, move) {
+						var height = this.move_on - this.move_start;
+
+						if (isLoading) return;
+						if (touchType === 'touchstart') {
+							refresh.style.transitionDuration = '0s';
+							icon.style.transitionDuration = '0s';
+							height = 0;
+						}
+						// 松手
+						if (touchType === 'touchend') {
+							refresh.style.transitionDuration = (speed / 1000) + 's';
+							icon.style.transitionDuration = (speed / 1000) + 's';
+
+							if (isThreshold) {
+								var _counter = 1,
+									_interval;
+								isLoading = true;
+								refresh_text.innerText = CONSTANTS.TEXT_REFRESH_LOADING;
+								_interval = setInterval(function () {
+									_counter++;
+									icon.style.transform = 'rotate(' + (360 + rotateStep * _counter) + 'deg)';
+								}, speed);
+
+								// TODO 异步请求
+								setTimeout(function () {
+									refresh_text.innerText = CONSTANTS.TEXT_REFRESH_DONE;
+									refresh.style.height = '0px';
+									clearInterval(_interval);
+
+									setTimeout(function () {
+										refresh_text.innerText = CONSTANTS.TEXT_REFRESH_INIT;
+										isThreshold = false;
+										isLoading = false;
+									}, speed);
+								}, 2000);
+
+								return;
+							}
+
+							refresh.style.height = '0px';
+							icon.style.transform = 'rotate(' + rotateInit + 'deg)';
+
+							return;
+						}
+						if (height > max * step) height = max * step;
+
+						if (height > 0) {
+							var _h = height / step;
+							refresh.style.height = _h + 'px';
+							icon.style.transform = 'rotate(' + (360 / max * _h) + 'deg)';
+
+							if (_h > max * threshold) {
+								refresh_text.innerText = CONSTANTS.TEXT_REFRESH_START;
+								isThreshold = true;
+							} else {
+								refresh_text.innerText = CONSTANTS.TEXT_REFRESH_INIT;
+								isThreshold = false;
+							}
+						}
+
+						if (height < 0) {
+							var _h = -height;
+							window_box.scrollTop = _h;
+						}
+
+					}
+
+					
+
+					console.log(window_h, list_h, scroll_top);
+
+					window_box.addEventListener('scroll', function (e) {
+						console.log(window_box.scrollTop);
+					});
+					if (list_h + offset <= window_h) {
+						console.log('少数据');
+					} else {
+
+					}
+
+
+					// 绑定touch事件
 					this.touchBind();
 				},
 				// 横向
@@ -342,6 +494,7 @@
 					if (!list) throw new Error('TabPageScroll ERR! config error');
 
 					options.container = list;
+					stopDrag(options.container.getElementsByTagName('a'));
 					var opts = optionsInit(options);
 
 					var load = new Factory(opts.loadType, opts);
