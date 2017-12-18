@@ -1,0 +1,54 @@
+html
+{
+    font-size: 62.5%;
+
+    background: #efefef;
+}
+html,
+body,
+p,
+ul,
+li
+{
+    margin: 0;
+    padding: 0;
+}
+ul,
+li
+{
+    list-style: none;
+}
+a
+{
+    font-size: 4.4rem;
+
+    text-decoration: none;
+
+    color: #333;
+}
+.list-wrapper
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    width: 100%;
+    height: 1000px;
+}
+.list-data .item:first-child
+{
+    border-top: 1px solid #ddd;
+}
+.list-data .item
+{
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+.list-data .item > a
+{
+    font-size: 36px;
+
+    display: block;
+
+    height: 100%;
+    padding: 5rem 2rem;
+}

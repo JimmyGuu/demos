@@ -90,8 +90,14 @@
 
 			}
 		}
-
-		window.DropPullLoad = DropPullLoad;
+		
+		if (typeof module != 'undefined' && module.exports) {
+			module.exports = DropPullLoad;
+		} else if (typeof define == 'function' && define.amd) {
+			define(function () { return DropPullLoad; });
+		} else {
+			window.DropPullLoad = DropPullLoad;
+		}
 
 	})(window, document);
 
@@ -99,7 +105,150 @@
 		DropPullLoad.on('aa', {
 			type: '2'
 		});
-	}	
+	}
+
+	// 返回原型封装
+	;
+	(function (window, document) {
+		// Constants
+		var CONSTANTS = {
+			REFRESH: 1,
+			LOAD: 2,
+			REFRESH_INDEX: 0,
+			LOAD_INDEX: 1,
+			TEXT_REFRESH_INIT: '下拉刷新',
+			TEXT_REFRESH_START: '释放刷新',
+			TEXT_REFRESH_LOADING: '正在刷新...',
+			TEXT_REFRESH_DONE: '刷新完成',
+			TEXT_LOAD_INIT: '正在加载...',
+			TEXT_LOAD_DONE: '加载完成',
+			TEXT_LOAD_NONE: '没有更多数据',
+			TEXT_LOAD_EMPTY: '暂无数据',
+			CLASSNAME_TIP_DROP: 'drop-refresh',
+			CLASSNAME_TIP_PULL: 'pull-load',
+			CLASSNAME_TIP_TEXT: 'tip-text',
+			CLASSNAME_TIP_ICON: 'tip-icon',
+			TYPES: [
+				{ id: 1, name: 'Vertical' },
+				{ id: 2, name: 'Horizontal' }
+			],
+			VALIDATOR_TYPES: {
+				STRING: 1,
+				NUMBER: 2,
+				BOOLEAN: 3,
+				ARRAY: 4,
+				OBJECT: 5
+			}
+		}
+
+		// Utils methods
+		var utils = (function () {
+			var me = {};
+
+			me.getDataType = function (value) {
+				if (value === '' || value == null) return undefined;
+
+				if (typeof value === 'string') {
+					return CONSTANTS.VALIDATOR_TYPES.STRING;
+				}
+				if (typeof value === 'number') {
+					return CONSTANTS.VALIDATOR_TYPES.NUMBER;
+				}
+				if (typeof value === 'boolean') {
+					return CONSTANTS.VALIDATOR_TYPES.BOOLEAN;
+				}
+				if (typeof value === 'object' && value.length) {
+					return CONSTANTS.VALIDATOR_TYPES.ARRAY;
+				}
+				if (typeof value === 'object' && !value.length) {
+					return CONSTANTS.VALIDATOR_TYPES.OBJECT;
+				}
+
+				return undefined;
+			}
+
+			me.extend = function (Child, Parent) {
+				var F = function () {};
+				F.prototype = Parent.prototype;
+				Child.prototype = new F();
+				Child.prototype.constructor = Child;
+				Child.uber = Parent.prototype;
+			}
+
+			me.getStyleData = function (style, index) {
+				if (dataType(style) === CONSTANTS.VALIDATOR_TYPES.STRING
+				   	|| dataType(style) === CONSTANTS.VALIDATOR_TYPES.NUMBER
+			   	) {
+					return style;
+				}
+				if (dataType(style) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
+					return style[index];
+				}
+			}
+
+			me.stopDrag = function (items) {
+		        if (items.length) {
+		            for (var len = items.length, i = len - 1; i >= 0; i--) {
+		                items[i].setAttribute('ondragstart', 'return false;');
+		            }
+		        } else {
+		            items.setAttribute('ondragstart', 'return false;');
+		        }
+		    }
+
+			return me;
+
+		})();
+
+		// Base Class
+		function SuperLoad(options) {
+			var self = this;
+
+			// Protect methods
+			this._create = function (index, text, classname) {
+				
+			}
+
+		}
+
+		// Factory Method
+		function Factory(type, options) {
+			if (this instanceof Factory) {
+				// 继承基类
+				extend(this[type], SuperLoad);
+
+				return new this[type](options);
+			} else {
+				return new Factory(type, options);
+			}
+		}
+
+		Factory.prototype = {
+
+		}
+
+		// Interface
+		function RefreshLoad(el, options) {
+			if (this instanceof RefreshLoad) {
+
+			} else {
+				return new RefreshLoad(el, options);
+			}
+		}
+
+		RefreshLoad.prototype = {
+
+		}
+
+		if (typeof module != 'undefined' && module.exports) {
+			module.exports = RefreshLoad;
+		} else if (typeof define == 'function' && define.amd) {
+			define(function () { return RefreshLoad; });
+		} else {
+			window.RefreshLoad = RefreshLoad;
+		}
+
+	})(window, document);
 </script>
 </body>
 </html>

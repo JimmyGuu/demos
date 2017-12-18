@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Base on iScroll refresh-load plugin</title>
+	<link rel="stylesheet" type="text/css" href="./src/css/main.css">
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./src/js/iscroll-probe.js"></script>
+	<script type="text/javascript">
+		;
+		(function (window, document, IScroll) {
+
+			// Constants
+			var CONSTANTS = {
+				REFRESH: 1,
+				LOAD: 2,
+				REFRESH_INDEX: 0,
+				LOAD_INDEX: 1,
+				TEXT_REFRESH_INIT: '下拉刷新',
+				TEXT_REFRESH_START: '释放刷新',
+				TEXT_REFRESH_LOADING: '正在刷新...',
+				TEXT_REFRESH_DONE: '刷新完成',
+				TEXT_LOAD_INIT: '正在加载...',
+				TEXT_LOAD_DONE: '加载完成',
+				TEXT_LOAD_NONE: '没有更多数据',
+				TEXT_LOAD_EMPTY: '暂无数据',
+				CLASSNAME_TIP_DROP: 'drop-refresh',
+				CLASSNAME_TIP_PULL: 'pull-load',
+				CLASSNAME_TIP_TEXT: 'tip-text',
+				CLASSNAME_TIP_ICON: 'tip-icon',
+				TYPES: [
+					{ id: 1, name: 'Vertical' },
+					{ id: 2, name: 'Horizontal' }
+				],
+				VALIDATOR_TYPES: {
+					STRING: 1,
+					NUMBER: 2,
+					BOOLEAN: 3,
+					ARRAY: 4,
+					OBJECT: 5
+				}
+			}
+
+			// Utils methods
+			var utils = (function () {
+				var me = {};
+
+				me.getDataType = function (value) {
+					if (value === '' || value == null) return undefined;
+
+					if (typeof value === 'string') {
+						return CONSTANTS.VALIDATOR_TYPES.STRING;
+					}
+					if (typeof value === 'number') {
+						return CONSTANTS.VALIDATOR_TYPES.NUMBER;
+					}
+					if (typeof value === 'boolean') {
+						return CONSTANTS.VALIDATOR_TYPES.BOOLEAN;
+					}
+					if (typeof value === 'object' && value.length) {
+						return CONSTANTS.VALIDATOR_TYPES.ARRAY;
+					}
+					if (typeof value === 'object' && !value.length) {
+						return CONSTANTS.VALIDATOR_TYPES.OBJECT;
+					}
+
+					return undefined;
+				}
+
+				me.extend = function (Child, Parent) {
+					var F = function () {};
+					F.prototype = Parent.prototype;
+					Child.prototype = new F();
+					Child.prototype.constructor = Child;
+					Child.uber = Parent.prototype;
+				}
+
+				me.getStyleData = function (style, index) {
+					if (this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.STRING
+					   	|| this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.NUMBER
+				   	) {
+						return style;
+					}
+					if (this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
+						return style[index];
+					}
+				}
+
+				me.stopDrag = function (items) {
+			        if (items.length) {
+			            for (var len = items.length, i = len - 1; i >= 0; i--) {
+			                items[i].setAttribute('ondragstart', 'return false;');
+			            }
+			        } else {
+			            items.setAttribute('ondragstart', 'return false;');
+			        }
+			    }
+
+				// 循环设置默认属性 注意需要设置原始参数为false等的必须使用excluded
+				// @param {Object} options 传入属性对象
+				// @param {Object} defaults 默认属性对象
+				// @param {Array} excluded 设置完全等于属性数组 [{attr: 'name', val: 'value'}]
+				// @param {string} excluded[index].attr 属性名称
+				// @param {string} excluded[index].val 判断属性是否完全等于的值
+				me.setObjectOption = function (options, defaults, excluded) {
+					var opts = {}
+						_options = options || {},
+						arr = excluded || [];
+
+					for (var opt in defaults) {
+						opts[opt] = _options[opt] || defaults[opt];
+						for (var i = arr.length - 1; i >= 0; i--) {
+							if (opt === arr[i].attr) {
+								opts[opt] = _options[opt] === arr[i].val ? _options[opt] : defaults[opt];
+							}
+						}
+					}
+
+					return opts;
+				}
+
+				return me;
+
+			})();
+
+			// 参数初始化
+			function optionsInit(options) {
+				var _t = undefined;
+				var opts = options || {};
+
+				opts.default = {
+					_styles: {
+						width: '100%',
+						height: '200px',
+						background: '#fff',
+						color: '#000',
+						fontSize: '14px',
+						icon: ['./src/img/reload.png', './src/img/rolling.gif'],
+						iconSize: '50px',
+					},
+					_refresh: {
+						use: true,
+						step: 3
+					},
+					_load: {
+						use: true
+					}
+				}
+
+				opts._type = opts.type || CONSTANTS.TYPES[0].id;
+				// _t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+				for (var len = CONSTANTS.TYPES.length, i = len - 1; i >= 0; i--) {
+					if (CONSTANTS.TYPES[i].id === opts._type) {
+						_t = CONSTANTS.TYPES[i];
+					}
+				}
+				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
+				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
+
+				opts.styles = utils.setObjectOption(opts.styles, opts.default._styles);
+
+				// Refresh
+				var _refreshExcluded = [
+					{ attr: 'use', val: false }
+				];
+				opts.refresh = utils.setObjectOption(opts.refresh, opts.default._refresh, _refreshExcluded);
+
+				// Load
+				var _loadExcluded = [
+					{ attr: 'use', val: false }
+				];
+				opts.load = utils.setObjectOption(opts.load, opts.default._load, _loadExcluded);
+
+				return opts;
+			}
+
+			// Base Class
+			function SuperLoad(options) {
+				var self = this;
+
+				this.options = options;
+
+				// Protect methods
+				this._create = function (index, text, classname) {
+					var span = document.createElement('span');
+					var span_text = document.createElement('i');
+					var icon = document.createElement('i');
+					var icon_size = utils.getStyleData(this.options.styles.iconSize, index);
+
+					span.className = classname;
+					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
+					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;font-style: normal;transition: transform .3s linear;';
+					span_text.style.cssText = 'display: inline-block;text-align: left;font-style: normal;';
+					span_text.innerText = text;
+
+					// Custom Styles
+					for (var i in this.options.styles) {
+						span.style[i] = utils.getStyleData(this.options.styles[i], index);
+					}
+					icon.style.background = 'url("' + utils.getStyleData(this.options.styles.icon, index) + '") no-repeat center/100%';
+
+					// Reset Styles
+					if (index === CONSTANTS.REFRESH_INDEX) span.style.height = '0px';
+
+					span.appendChild(icon);
+					span.appendChild(span_text);
+
+					return {
+						span: span,
+						icon: icon,
+						span_text: span_text
+					};
+				}
+
+			}
+
+			SuperLoad.prototype.createRefresh = function () {
+				var refreshObj = this._create(CONSTANTS.REFRESH_INDEX,
+					CONSTANTS.TEXT_REFRESH_INIT,
+					CONSTANTS.CLASSNAME_TIP_DROP);
+
+				refreshObj.span.style.transitionTimingFunction = 'ease-in';
+				this.options.container.insertBefore(refreshObj.span, this.options.container.childNodes[0]);
+
+				return refreshObj;
+			}
+
+			SuperLoad.prototype.createLoad = function () {
+				var loadObj = this._create(CONSTANTS.LOAD_INDEX,
+					CONSTANTS.TEXT_LOAD_INIT,
+					CONSTANTS.CLASSNAME_TIP_PULL);
+
+				loadObj.span.style.display = 'flex';
+
+				this.options.container.appendChild(loadObj.span);
+
+				return loadObj;
+			}
+
+
+			// Factory method
+			function Factory(type, options) {
+				if (this instanceof Factory) {
+					// 继承基类
+					utils.extend(this[type], SuperLoad);
+
+					return new this[type](options);
+				} else {
+					return new Factory(type, options);
+				}
+			}
+
+			Factory.prototype = {
+				// 纵向
+				// 下拉刷新 上拉加载
+				Vertical: function (options) {
+					SuperLoad.call(this, options);
+
+					this.options.refresh.use ? refreshObj = this.createRefresh() : '';
+					this.options.load.use ? loadObj = this.createLoad() : '';
+				}
+			}
+
+			// Interface
+			function RefreshLoad(el, options) {
+				if (this instanceof RefreshLoad) {
+					var wrapper = typeof el === 'string' ? document.querySelector(el) : el;
+					if (!wrapper) throw new Error('RefreshLoad ERR! config error');
+
+					options.container = wrapper;
+					var opts = optionsInit(options);
+					
+					var load = new Factory(opts.loadType, opts);
+				} else {
+					return new RefreshLoad(el, options);
+				}
+			}
+
+			// Exposed methods
+			RefreshLoad.prototype = {
+
+			}
+
+			if (typeof module != 'undefined' && module.exports) {
+				module.exports = RefreshLoad;
+			} else if (typeof define == 'function' && define.amd) {
+				define(function () { return RefreshLoad; });
+			} else {
+				window.RefreshLoad = RefreshLoad;
+			}
+
+		})(window, document, IScroll);
+	</script>
+</head>
+<body>
+	<div class="list-wrapper" id="listWrapper">
+		<ul class="list-data" id="listData" v-cloak>
+			<li class="item" v-for="item in list">
+				<a href="javascript: void(0);">{{ item.name }}</a>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript">
+		var refreshLoad = new RefreshLoad('#listWrapper', {
+			styles: {
+				background: '#ff5f00'
+			},
+			refresh: {
+				use: true
+			}
+		});
+
+
+		const vm = new Vue({
+			el: '#listWrapper',
+			data() {
+				return {
+					list: [],
+					total: 0,
+					scroll: null
+				}
+			},
+			methods: {
+				get() {
+					setTimeout(() => {
+						const data = {
+							items: [
+								{ name: '1' },
+								{ name: '2' },
+								{ name: '3' },
+								{ name: '4' },
+								{ name: '5' },
+								{ name: '6' },
+								{ name: '7' },
+								{ name: '8' },
+								{ name: '9' }
+							],
+							total: 100
+						}
+						this.load(data);
+					}, 1000);
+				},
+				load(result) {
+					result.items.forEach(item => {
+						this.list.push(item);
+					});
+					this.total = result.total;
+
+					this.$nextTick(() => {
+						
+					});
+				}
+			},
+			mounted() {
+				this.get();
+			}
+		});
+	</script>
+</body>
+</html>

@@ -3,43 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>refresh-load</title>
-	<style media="screen">
-		html {
-			font-size: 62.5%;
-			background: #efefef;
-		}
-		html, body, p, ul, li {
-			margin: 0;
-			padding: 0;
-		}
-		ul, li {
-			list-style: none;
-		}
-		a {
-			color: #333;
-			text-decoration: none;
-			font-size: 4.4rem;
-		}
-		.list-wrapper {
-			width: 100%;
-			height: 600px;
-			overflow-x: hidden;
-			overflow-y: scroll;
-		}
-		.list-data .item:first-child {
-			border-top: 1px solid #ddd;
-		}
-		.list-data .item {
-			border-bottom: 1px solid #ddd;
-			background: #fff;
-		}
-		.list-data .item > a {
-			font-size: 36px;
-			padding: 5rem 2rem;
-			display: block;
-			height: 100%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="./src/css/main.css">
 </head>
 
 <body>
@@ -133,16 +97,34 @@
 				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
 
 				// Styles
-				opts.styles = opts.styles ? opts.styles = {
-					width: opts.styles.width || '100%',
-					height: opts.styles.height || '200px',
-					background: opts.styles.background || '#fff',
-					color: opts.styles.color || '#000',
-					fontSize: opts.styles.fontSize || '14px',
-					icon: opts.styles.icon || ['./src/img/reload.png', './src/img/rolling.gif'],
-					iconSize: opts.styles.iconSize || '50px',
+				// @param {Object} options 传入属性对象
+				// @param {Object} default 默认属性对象
+				// @param {Array} equalArr 设置完全等于属性数组 [{attr: 'name', val: 'value', default: 'value'}]
+				// @param {string} equalArr[index].attr 属性名称
+				// @param {string} equalArr[index].val 属性是否完全等于的值
+				// @param {string} equalArr[index].default 属性默认的值
+				var setOpt = function (option, default) {
+					var opt = option || default;
+					return opt;
+				}
+				var setOptEqual = function (option, default, val) {
+					var opt = option === val ? val : default;
+					return opt;
+				}
+				var setObjectOption = function (option, default) {
+					var obj = {},
+						arr = equalArr || [];
 
-				} : {
+					for (var opt in default) {
+						obj[opt] = options[opt] || default[opt];
+					}
+
+					for (var len = arr.length, i = len - 1; i >= 0; i--) {
+						obj[arr[i].attr] === arr[i].val ? obj[arr[i].attr] : obj[arr[i].attr] = arr[i].default;
+					}
+				}
+
+				opts._styles = {
 					width: '100%',
 					height: '200px',
 					background: '#fff',
@@ -150,6 +132,24 @@
 					fontSize: '14px',
 					icon: ['./src/img/reload.png', './src/img/rolling.gif'],
 					iconSize: '50px',
+				}
+				opts.styles = opts.styles ? opts.styles = {
+					width: opts.styles.width || opts._styles.width,
+					height: opts.styles.height || opts._styles.height,
+					background: opts.styles.background || opts._styles.background,
+					color: opts.styles.color || opts._styles.color,
+					fontSize: opts.styles.fontSize || opts._styles.fontSize,
+					icon: opts.styles.icon || opts._styles.icon,
+					iconSize: opts.styles.iconSize || opts._styles.iconSize,
+
+				} : {
+					width: opts._styles.width,
+					height: opts._styles.height,
+					background: opts._styles.background,
+					color: opts._styles.color,
+					fontSize: opts._styles.fontSize,
+					icon: opts._styles.icon,
+					iconSize: opts._styles.iconSize,
 
 				};
 
