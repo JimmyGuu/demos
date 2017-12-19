@@ -121,6 +121,14 @@
 					return opts;
 				}
 
+				me.refreshRotate = function (move) {
+					var _const = 200,
+						_r = 360 / _const,
+						_move = parseFloat(move, 10) < 0 ? -parseFloat(move, 10) : parseFloat(move, 10);
+
+					return _move * _r + 'deg';
+				}
+
 				return me;
 
 			})();
@@ -142,7 +150,8 @@
 					},
 					_refresh: {
 						use: true,
-						step: 3
+						step: 3,
+						trigger: 100
 					},
 					_load: {
 						use: true
@@ -182,6 +191,8 @@
 
 				this.options = options;
 
+				utils.stopDrag(this.options.container.getElementsByTagName('a'));
+
 				// Protect methods
 				this._create = function (index, text, classname) {
 					var span = document.createElement('span');
@@ -191,7 +202,7 @@
 
 					span.className = classname;
 					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
-					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;font-style: normal;transition: transform .3s linear;';
+					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;font-style: normal;';
 					span_text.style.cssText = 'display: inline-block;text-align: left;font-style: normal;';
 					span_text.innerText = text;
 
@@ -214,6 +225,55 @@
 					};
 				}
 
+				this._setScroll = function () {
+					this.myScroll = new IScroll(this.options.container, {
+						mouseWheel: true,
+						probeType: 3
+					});
+				}
+
+				this._watchScrollEvent = function (type) {
+					var self = this,
+						refresh_size,
+						refresh_text,
+						trigger_h = this.options.refresh.trigger;
+					this.myScroll.on('scroll', function () {
+						refresh_size = 0;
+						refresh_text = CONSTANTS.TEXT_REFRESH_INIT;
+
+						if (type === CONSTANTS.TYPES[0].id) {
+							if (this.y > 0) {
+								refresh_size = this.y;
+							}
+							if (this.y > trigger_h) {
+								refresh_text = CONSTANTS.TEXT_REFRESH_START;
+							}
+							self.refreshObj.span.style.height = refresh_size + 'px';
+							self.refreshObj.span.style.transform = 'translateY(' + -refresh_size + 'px)';
+							self.refreshObj.icon.style.transitionDuration = '0s';
+							self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(refresh_size) + ')';
+
+						}
+						if (type === CONSTANTS.TYPES[1].id) {
+							if (this.x > 0) {
+								refresh_size = this.x;
+							}
+							self.refreshObj.span.style.width = refresh_size + 'px';
+							self.refreshObj.span.style.transform = 'translateY(' + -refresh_size + 'px)';
+						}
+
+						self.refreshObj.span_text.innerText = refresh_text;
+					});
+
+					this.myScroll.on('scrollEnd', function () {
+						console.log(this.y, trigger_h);
+						if (this.y > trigger_h) {
+							refresh_text = CONSTANTS.TEXT_REFRESH_START;
+							this.myScroll.scrollTo(0, this.y);
+						}
+
+					});
+				}
 			}
 
 			SuperLoad.prototype.createRefresh = function () {
@@ -222,7 +282,10 @@
 					CONSTANTS.CLASSNAME_TIP_DROP);
 
 				refreshObj.span.style.transitionTimingFunction = 'ease-in';
-				this.options.container.insertBefore(refreshObj.span, this.options.container.childNodes[0]);
+				refreshObj.span.style.position = 'absolute';
+				refreshObj.span.style.top = '0px';
+				refreshObj.span.style.left = '0px';
+				this.options.list.insertBefore(refreshObj.span, this.options.list.childNodes[0]);
 
 				return refreshObj;
 			}
@@ -232,9 +295,9 @@
 					CONSTANTS.TEXT_LOAD_INIT,
 					CONSTANTS.CLASSNAME_TIP_PULL);
 
-				loadObj.span.style.display = 'flex';
+				loadObj.span.style.display = 'none';
 
-				this.options.container.appendChild(loadObj.span);
+				this.options.list.appendChild(loadObj.span);
 
 				return loadObj;
 			}
@@ -258,8 +321,11 @@
 				Vertical: function (options) {
 					SuperLoad.call(this, options);
 
-					this.options.refresh.use ? refreshObj = this.createRefresh() : '';
-					this.options.load.use ? loadObj = this.createLoad() : '';
+					this.options.refresh.use ? this.refreshObj = this.createRefresh() : '';
+					this.options.load.use ? this.loadObj = this.createLoad() : '';
+
+					this._setScroll();
+					this._watchScrollEvent(CONSTANTS.TYPES[0].id);
 				}
 			}
 
@@ -270,6 +336,7 @@
 					if (!wrapper) throw new Error('RefreshLoad ERR! config error');
 
 					options.container = wrapper;
+					options.list = wrapper.children[0];
 					var opts = optionsInit(options);
 					
 					var load = new Factory(opts.loadType, opts);
@@ -295,6 +362,7 @@
 	</script>
 </head>
 <body>
+	<h3>Refresh & Load</h3>
 	<div class="list-wrapper" id="listWrapper">
 		<ul class="list-data" id="listData" v-cloak>
 			<li class="item" v-for="item in list">
@@ -305,14 +373,7 @@
 
 	<script type="text/javascript" src="vue.min.js"></script>
 	<script type="text/javascript">
-		var refreshLoad = new RefreshLoad('#listWrapper', {
-			styles: {
-				background: '#ff5f00'
-			},
-			refresh: {
-				use: true
-			}
-		});
+		
 
 
 		const vm = new Vue({
@@ -351,7 +412,15 @@
 					this.total = result.total;
 
 					this.$nextTick(() => {
-						
+						var refreshLoad = new RefreshLoad('#listWrapper', {
+							styles: {
+								background: '#f5f5f5',
+								fontSize: '3rem'
+							},
+							refresh: {
+								use: true
+							}
+						});
 					});
 				}
 			},
