@@ -40,6 +40,11 @@
 					BOOLEAN: 3,
 					ARRAY: 4,
 					OBJECT: 5
+				},
+				PAGE_RESULT: {
+					DONE: 1,
+					NONE: 2,
+					EMPTY: 3
 				}
 			}
 
@@ -126,7 +131,34 @@
 						_r = 360 / _const,
 						_move = parseFloat(move, 10) < 0 ? -parseFloat(move, 10) : parseFloat(move, 10);
 
-					return _move * _r + 'deg';
+					return _move * _r;
+				}
+
+				me.show = function (ele, type) {
+					type = type || 'flex';
+					ele.style.display = type;
+				}
+
+				me.hide = function (ele) {
+					ele.style.display = 'none';
+				}
+
+				me.getPageResult = function (crt, size, total) {
+					var counts = Math.ceil(total / size);
+					if (total <= 0) {
+						// EMPTY
+						return CONSTANTS.TEXT_LOAD_EMPTY;
+					}
+					if (crt < counts) {
+						// DONE
+						return CONSTANTS.TEXT_LOAD_DONE;
+					}
+					if (crt >= counts) {
+						// NONE
+						return CONSTANTS.TEXT_LOAD_NONE;
+					}
+
+					return CONSTANTS.TEXT_LOAD_DONE;
 				}
 
 				return me;
@@ -151,11 +183,16 @@
 					_refresh: {
 						use: true,
 						step: 3,
-						trigger: 100
+						trigger: 150,
+						iconSpeed: 300
 					},
 					_load: {
-						use: true
-					}
+						use: true,
+						trigger: 100
+					},
+					_pageSize: 0,
+					_pageTotal: 0,
+					_pageCurrent: 0
 				}
 
 				opts._type = opts.type || CONSTANTS.TYPES[0].id;
@@ -182,6 +219,10 @@
 				];
 				opts.load = utils.setObjectOption(opts.load, opts.default._load, _loadExcluded);
 
+				opts.pageSize = opts.pageSize || opts.default._pageSize;
+				opts.pageTotal = opts.pageTotal || opts.default._pageTotal;
+				opts.pageCurrent = opts.pageCurrent || opts.default._pageCurrent;
+
 				return opts;
 			}
 
@@ -191,6 +232,11 @@
 
 				this.options = options;
 
+				this.isLoading = false;
+				this.current = this.options.pageCurrent;
+				this.pageSize = this.options.pageSize;
+				this.pageTotal = this.options.pageTotal;
+
 				utils.stopDrag(this.options.container.getElementsByTagName('a'));
 
 				// Protect methods
@@ -199,6 +245,9 @@
 					var span_text = document.createElement('i');
 					var icon = document.createElement('i');
 					var icon_size = utils.getStyleData(this.options.styles.iconSize, index);
+
+					this.options.container.style.position = 'relative';
+					this.options.list.style.position = 'initial';
 
 					span.className = classname;
 					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
@@ -228,51 +277,180 @@
 				this._setScroll = function () {
 					this.myScroll = new IScroll(this.options.container, {
 						mouseWheel: true,
-						probeType: 3
+						probeType: 2,
+						useTransform: true,
+						useTransition: true,
+						bounce: true
 					});
+				}
+
+				this._bindTouchEvent = function () {
+					this.options.list.addEventListener("touchstart", this._handleTouchEvent, false);
+                	this.options.list.addEventListener("touchend", this._handleTouchEvent, false);
+                	this.options.list.addEventListener("touchmove", this._handleTouchEvent, false);
+				}
+
+				this._handleTouchEvent = function (event) {
+					event.preventDefault();
+
+					var touch = event.touches[0],
+						touched = event.changedTouches[0];
+					var rotate_step = 90,
+						refresh_icon_speed = self.options.refresh.iconSpeed;
+					switch (event.type) {
+                        case 'touchstart':
+                        	self.touch_end = false;
+                        	self.touch_moved = 0;
+                        	self.refresh_height = 0;
+                            break;
+                        case 'touchend':
+                        	self.touch_end = true;
+
+                        	if (!self.isLoading && self.isScroll && self.refresh_height > self.options.refresh.trigger && self.touch_moved > 0) {
+
+                        		console.log('refreshing...');
+
+                        		// self.myScroll.destroy();
+                        		self.refreshObj.span.style.position = 'initial';
+                        		self.refreshObj.span.style.height = self.refresh_height + 'px';
+                        		self.refreshObj.span.style.transform = 'translateY(' + 0 + 'px)';
+	                            self.myScroll.scrollTo(0, self.refresh_height);
+	                            self.myScroll.refresh();
+
+	                            self.isLoading = true;
+	                            self.isScroll = false;
+
+	                            var _counter = 1,
+									_interval;
+								self.refreshObj.span_text.innerText = CONSTANTS.TEXT_REFRESH_LOADING;
+								_interval = setInterval(function () {
+									_counter++;
+									self.refreshObj.icon.style.transitionDuration = refresh_icon_speed + 'ms';
+									self.refreshObj.icon.style.transform = 'rotate(' + (utils.refreshRotate(self.refresh_height) + rotate_step * _counter) + 'deg)';
+								}, refresh_icon_speed);
+
+	                            //TODO virtual
+	                            setTimeout(() => {
+
+                            		self._refreshCallBack(_interval);
+
+	                            }, 2000);
+                        	}
+
+                            break;
+                        case 'touchmove':
+                            event.preventDefault();
+                            break;
+                    }
+				}
+
+				this._refreshCallBack = function (interval) {
+					var reset = function () {
+						self.refreshObj.icon.style.transitionDuration = '0ms';
+						self.refreshObj.icon.style.transform = 'rotate(' + 0 + 'deg)';
+						self.refreshObj.span.style.position = 'absolute';
+                		self.refreshObj.span.style.height = 0 + 'px';
+						// self._setScroll();
+            			// self._watchScrollEvent(self.scrollType);
+            			self.myScroll.refresh();
+            			self.isLoading = false;
+
+            			console.log('refresh end');
+					}
+					clearInterval(interval);
+					self.current = 0;
+					self.refreshObj.span_text.innerText = CONSTANTS.TEXT_REFRESH_DONE;
+					// self.options.list.style.transitionTimingFunction = 'ease-out';
+					// self.options.list.style.transitionDuration = speed + 'ms';
+					self.options.list.style.transform = 'translate(0px, 0px)';
+					reset();
+				}
+
+				this._loadCallBack = function () {
+					self.current++;
+					var _result_t = utils.getPageResult(self.current, self.pageSize, self.pageTotal);
+					self.loadObj.span_text.innerText = _result_t;
+
+					// utils.hide(self.loadObj.span);
+					utils.hide(self.loadObj.icon);
+					self.myScroll.refresh();
+					self.isLoading = false;
+
+					console.log('load end');
 				}
 
 				this._watchScrollEvent = function (type) {
 					var self = this,
-						refresh_size,
 						refresh_text,
-						trigger_h = this.options.refresh.trigger;
+						trigger_r = this.options.refresh.trigger,
+						trigger_l = this.options.load.trigger,
+						load_m = 0,
+						refresh_m = 0;
+					this.scrollType = type;
 					this.myScroll.on('scroll', function () {
-						refresh_size = 0;
+						// console.log(this)
 						refresh_text = CONSTANTS.TEXT_REFRESH_INIT;
+						self.isScroll = true;
 
 						if (type === CONSTANTS.TYPES[0].id) {
-							if (this.y > 0) {
-								refresh_size = this.y;
-							}
-							if (this.y > trigger_h) {
-								refresh_text = CONSTANTS.TEXT_REFRESH_START;
-							}
-							self.refreshObj.span.style.height = refresh_size + 'px';
-							self.refreshObj.span.style.transform = 'translateY(' + -refresh_size + 'px)';
-							self.refreshObj.icon.style.transitionDuration = '0s';
-							self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(refresh_size) + ')';
+							// refresh and load can not trigger request at the same time
+							
+							if (this.y > 0 && !self.isLoading) {
+								self.isScroll = true;
+								refresh_m = this.y;
+								// Refresh
+								if (!self.touch_end) {
+									self.refresh_height = this.y;
+								}
+								if (this.y > trigger_r) {
+									refresh_text = CONSTANTS.TEXT_REFRESH_START;
+								}
 
+								self.refreshObj.span.style.transitionDuration = '0ms';
+								self.refreshObj.span.style.transitionTimingFunction = '';
+								self.refreshObj.span.style.height = this.y + 'px';
+								self.refreshObj.span.style.transform = 'translateY(' + -this.y + 'px)';
+								self.refreshObj.icon.style.transitionDuration = '0s';
+								self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(this.y) + 'deg)';
+
+								self.refreshObj.span_text.innerText = refresh_text;
+							}
+
+							if (this.y < this.maxScrollY + trigger_l && this.y < load_m) {
+								load_m = this.y;
+								if (!self.isLoading) {
+									console.log('loading...');
+
+									self.loadObj.span_text.innerText = CONSTANTS.TEXT_LOAD_INIT;
+									self.isLoading = true;
+									utils.show(self.loadObj.span);
+									utils.show(self.loadObj.icon, 'inline-block');
+									self.myScroll.refresh();
+
+									// TODO virtual
+									setTimeout(() => {
+										self._loadCallBack();
+									}, 2000);
+								}
+							}
+
+							self.touch_moved  = this.y;
 						}
 						if (type === CONSTANTS.TYPES[1].id) {
 							if (this.x > 0) {
-								refresh_size = this.x;
+								self.refresh_height = this.x;
 							}
-							self.refreshObj.span.style.width = refresh_size + 'px';
-							self.refreshObj.span.style.transform = 'translateY(' + -refresh_size + 'px)';
+							self.refreshObj.span.style.width = self.refresh_height + 'px';
+							self.refreshObj.span.style.transform = 'translateY(' + -self.refresh_height + 'px)';
 						}
 
-						self.refreshObj.span_text.innerText = refresh_text;
+						
 					});
 
 					this.myScroll.on('scrollEnd', function () {
-						console.log(this.y, trigger_h);
-						if (this.y > trigger_h) {
-							refresh_text = CONSTANTS.TEXT_REFRESH_START;
-							this.myScroll.scrollTo(0, this.y);
-						}
 
 					});
+
 				}
 			}
 
@@ -283,8 +461,12 @@
 
 				refreshObj.span.style.transitionTimingFunction = 'ease-in';
 				refreshObj.span.style.position = 'absolute';
-				refreshObj.span.style.top = '0px';
+				// refreshObj.span.style.position = 'initial';
+				refreshObj.span.style.zIndex = '-1';
 				refreshObj.span.style.left = '0px';
+				refreshObj.span.style.top = '0px';
+				refreshObj.span.style.height = '0px';
+				refreshObj.icon.style.transitionTimingFunction = 'linear';
 				this.options.list.insertBefore(refreshObj.span, this.options.list.childNodes[0]);
 
 				return refreshObj;
@@ -321,11 +503,13 @@
 				Vertical: function (options) {
 					SuperLoad.call(this, options);
 
+					this._setScroll();
+					this._watchScrollEvent(CONSTANTS.TYPES[0].id);
+					this._bindTouchEvent();
+
 					this.options.refresh.use ? this.refreshObj = this.createRefresh() : '';
 					this.options.load.use ? this.loadObj = this.createLoad() : '';
 
-					this._setScroll();
-					this._watchScrollEvent(CONSTANTS.TYPES[0].id);
 				}
 			}
 
