@@ -96,34 +96,6 @@
 				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
 				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
 
-				// Styles
-				// @param {Object} options 传入属性对象
-				// @param {Object} default 默认属性对象
-				// @param {Array} equalArr 设置完全等于属性数组 [{attr: 'name', val: 'value', default: 'value'}]
-				// @param {string} equalArr[index].attr 属性名称
-				// @param {string} equalArr[index].val 属性是否完全等于的值
-				// @param {string} equalArr[index].default 属性默认的值
-				var setOpt = function (option, default) {
-					var opt = option || default;
-					return opt;
-				}
-				var setOptEqual = function (option, default, val) {
-					var opt = option === val ? val : default;
-					return opt;
-				}
-				var setObjectOption = function (option, default) {
-					var obj = {},
-						arr = equalArr || [];
-
-					for (var opt in default) {
-						obj[opt] = options[opt] || default[opt];
-					}
-
-					for (var len = arr.length, i = len - 1; i >= 0; i--) {
-						obj[arr[i].attr] === arr[i].val ? obj[arr[i].attr] : obj[arr[i].attr] = arr[i].default;
-					}
-				}
-
 				opts._styles = {
 					width: '100%',
 					height: '200px',

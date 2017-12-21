@@ -143,6 +143,12 @@
 					ele.style.display = 'none';
 				}
 
+				me.setTransition = function (ele, duration, timingFn) {
+					timingFn = timingFn || 'linear';
+					ele.style.transitionDuration = duration + 'ms';
+					ele.style.transitionTimingFunction = timingFn;
+				}
+
 				me.getPageResult = function (crt, size, total) {
 					var counts = Math.ceil(total / size);
 					if (total <= 0) {
@@ -280,7 +286,7 @@
 						probeType: 2,
 						useTransform: true,
 						useTransition: true,
-						bounce: true
+						bounce: false
 					});
 				}
 
@@ -296,17 +302,33 @@
 					var touch = event.touches[0],
 						touched = event.changedTouches[0];
 					var rotate_step = 90,
-						refresh_icon_speed = self.options.refresh.iconSpeed;
+						refresh_icon_speed = self.options.refresh.iconSpeed,
+						refresh_trigger = self.options.refresh.trigger,
+						refresh_step = self.options.refresh.step;
 					switch (event.type) {
                         case 'touchstart':
-	                        if (!self.isLoading) {
-	                        	self.touch_end = false;
-	                        }
+                        	self.touch_start = touch.clientY;
                             break;
                         case 'touchend':
-                        	self.touch_end = true;
+                        	if (self.isLoading) return;
+                        	if (self.refresh_moved < refresh_trigger) {
+                        		utils.setTransition(self.refreshObj.span, 300, 'ease-out');
+                            	self.refreshObj.span.style.height =  0 + 'px';
+                            	return;
+                            }
 
-                        	if (!self.isLoading && self.isScroll && self.refresh_height > self.options.refresh.trigger && self.touch_moved > 0) {
+                            self.isLoading = true;
+                            var _counter = 1,
+								_interval;
+                            self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_LOADING;
+                            _interval = setInterval(function () {
+								_counter++;
+								utils.setTransition(self.refreshObj.icon, refresh_icon_speed);
+								self.refreshObj.icon.style.transform = 'rotate(' + (utils.refreshRotate(self.refresh_moved) + rotate_step * _counter) + 'deg)';
+							}, refresh_icon_speed);
+							self.myScroll.refresh();
+
+                        	/*if (!self.isLoading && self.isScroll && self.refresh_height > self.options.refresh.trigger && self.touch_moved > 0) {
 
                         		// self.myScroll.destroy();
                         		self.refreshObj.span.style.position = 'initial';
@@ -314,7 +336,7 @@
                         		self.refreshObj.span.style.transform = 'translateY(' + 0 + 'px)';
 	                            // self.myScroll.scrollTo(0, self.refresh_height);
 	                            self.myScroll.scrollTo(0, 0);
-	                            // self.myScroll.refresh();
+	                            self.myScroll.refresh();
 	                            
 	                            self.isLoading = true;
 	                            self.isScroll = false;
@@ -334,11 +356,46 @@
                             		self._refreshCallBack(_interval);
 
 	                            }, 2000);
-                        	}
+                        	}*/
 
                             break;
                         case 'touchmove':
-                            event.preventDefault();
+                            
+
+                            if (self.isLoading) {
+                            	self.isRefreshed = false;
+                            	if (self.scroll_move < 0) {
+                            		// self.refreshObj.span.style.transform = 'translate(0, ' + self.scroll_move + 'px)';
+                            	}
+
+                            	return;
+                            }
+
+                            if (self.scroll_move < 0 && !self.isRefreshed) {
+                            	self.touch_start = touch.clientY;
+                            	// self.refreshObj.span.style.height = 0 + 'px';
+                            	return;
+                            }
+
+                            self.touch_move = touched.clientY;
+                            	self.refresh_moved = (self.touch_move - self.touch_start) / refresh_step;
+                            if (self.refresh_moved > 0) {
+                            	self.isRefreshed = true;
+                            	utils.setTransition(self.refreshObj.span, 0, '');
+                            	self.refreshObj.span.style.position = 'initial';
+                            	self.refreshObj.span.style.height =  self.refresh_moved + 'px';
+                            	self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_INIT;
+                            	self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(self.refresh_moved) + 'deg)';
+                            	if (self.refresh_moved >= refresh_trigger) {
+	                            	self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_START;
+	                            }
+                            } else {
+                            	self.isRefreshed = false;
+                            }
+
+                            // self.myScroll.refresh();
+
+                    		// self.scroll_move
                             break;
                     }
 				}
@@ -350,8 +407,9 @@
 						self.refreshObj.icon.style.transform = 'rotate(' + 0 + 'deg)';
 						// refresh styles reset
 						self.refreshObj.span.style.position = 'absolute';
-						self.refreshObj.span.style.transitionDuration = '300ms';
-						self.refreshObj.span.style.transitionTimingFunction = 'ease-out';
+						utils.setTransition(self.refreshObj.span, 300, 'ease-out');
+						// self.refreshObj.span.style.transitionDuration = '300ms';
+						// self.refreshObj.span.style.transitionTimingFunction = 'ease-out';
                 		self.refreshObj.span.style.height = 0 + 'px';
             			self.myScroll.refresh();
             			self.isLoading = false;
@@ -388,9 +446,15 @@
 						refresh_text = CONSTANTS.TEXT_REFRESH_INIT;
 						self.isScroll = true;
 
+						self.scroll_move = this.y;
 						if (type === CONSTANTS.TYPES[0].id) {
+							console.log(self.isRefreshed);
+							if (self.isRefreshed) {
+								self.myScroll.scrollTo(0, 0);
+							}
 							// refresh and load can not trigger request at the same time
-							if (this.y > 0) {
+							/*if (this.y >= 0) {
+								self.isRefresh = true;
 								// Refresh
 								if (self.isLoading && this.y > refresh_m) {
 									self.myScroll.scrollTo(0, refresh_m);
@@ -413,9 +477,9 @@
 									// refresh text
 									self.refreshObj.span_text.innerText = refresh_text;
 								}
-							}
+							}*/
 
-							if (this.y < this.maxScrollY + trigger_l && this.y < load_m) {
+							/*if (this.y < this.maxScrollY + trigger_l && this.y < load_m) {
 								// Load
 								if (!self.isLoading) {
 									self.loadObj.span_text.innerText = CONSTANTS.TEXT_LOAD_INIT;
@@ -429,7 +493,7 @@
 										self._loadCallBack();
 									}, 2000);
 								}
-							}
+							}*/
 
 							self.touch_moved  = this.y;
 							refresh_m = this.y;
@@ -459,7 +523,7 @@
 				refreshObj.span.style.top = '0px';
 				refreshObj.span.style.height = '0px';
 				refreshObj.icon.style.transitionTimingFunction = 'linear';
-				this.options.list.insertBefore(refreshObj.span, this.options.list.childNodes[0]);
+				this.options.container.insertBefore(refreshObj.span, this.options.container.childNodes[0]);
 
 				return refreshObj;
 			}
@@ -471,7 +535,7 @@
 
 				loadObj.span.style.display = 'none';
 
-				this.options.list.appendChild(loadObj.span);
+				this.options.container.appendChild(loadObj.span);
 
 				return loadObj;
 			}
