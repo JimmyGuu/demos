@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>PAGER</title>
+	<style type="text/css">
+		html, body, ul, li, p {
+			margin: 0;
+			padding: 0;
+		}
+		ul, li {
+			list-style: none;
+		}
+		a, button, input {
+			outline: none;
+		}
+		a {
+			text-decoration: none;
+			color: initial;
+		}
+
+		.clearfix:before,
+		.clearfix:after {
+			content: '';
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+
+		.wrapper-pager {
+			text-align: center;
+			font-size: 18px;
+			margin-top: 30px;
+		}
+		.wrapper-pager span,
+		.wrapper-pager a {
+			display: inline-block;
+		}
+		.wrapper-pager > .pager-item {
+			float: left;
+			margin-right: 10px;
+		}
+		.wrapper-pager > .pager-item:last-child {
+			margin-right: 0px;
+		}
+		.wrapper-pager > .pager-item.pager-info {
+
+		}
+		.wrapper-pager > .pager-item.pager-list {
+			
+		}
+		.wrapper-pager > .pager-item.pager-link {
+			
+		}
+	
+		.wrapper-pager .info-current,
+		.wrapper-pager .info-total,
+		.wrapper-pager .pager-link {
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+		.wrapper-pager .btn-page {
+			float: left;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			margin-right: 4px;
+		}
+		.wrapper-pager .btn-page > a {
+			color: #000;
+			background: #fff;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		.wrapper-pager .btn-page:last-child {
+			margin-right: 0;
+		}
+		.wrapper-pager .btn-page.btn-page-more {
+			border-width: 0;
+		}
+		.wrapper-pager .btn-page.btn-page-disabled > a {
+			background: #efefef;
+			color: #666;
+		}
+		.wrapper-pager .btn-page.btn-page-current > a {
+			background: #999;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var class_name = CONSTANTS.CLASS_NAME;
+			var wrapper = document.querySelector('.' + class_name.WRAPPER),
+				pager_info = wrapper.querySelector('.' + class_name.PAGE_INFO),
+				pager_list = wrapper.querySelector('.' + class_name.PAGE_LIST),
+				pager_link = wrapper.querySelector('.' + class_name.PAGE_LINK);
+
+			var pagerObj = {
+				_current: 0
+			}
+
+			Object.defineProperty(pagerObj, '');
+
+		}
+
+		var CONSTANTS = {
+			CLASS_NAME: {
+				WRAPPER: 'wrapper-pager',
+				PAGE_ITEM: 'pager-item',
+				PAGE_INFO: 'pager-info',
+				PAGE_INFO_CURRENT: 'info-current',
+				PAGE_INFO_TOTAL: 'info-total',
+				PAGE_INFO_FRONT: 'front',
+				PAGE_INFO_PAGE: 'page',
+				PAGE_INFO_UNIT: 'unit',
+				PAGE_INFO_BEHIND: 'behind',
+				PAGE_FRONT: 'front',
+				PAGE_LIST: 'pager-list',
+				PAGE_BTN: 'btn-page',
+				PAGE_BTN_PREV: 'btn-page-prev',
+				PAGE_BTN_NEXT: 'btn-page-next',
+				PAGE_BTN_FIRST: 'btn-page-first',
+				PAGE_BTN_LAST: 'btn-page-last',
+				PAGE_BTN_CURRENT: 'btn-page-current',
+				PAGE_BTN_MORE: 'btn-page-more',
+				PAGE_BTN_DISABLED: 'btn-page-disabled',
+				PAGE_LINK: 'pager-link',
+				PAGE_LINK_FRONT: 'link-front',
+				PAGE_LINK_PAGE: 'link-page',
+				PAGE_LINK_GO: 'link-go'
+			}
+			
+		}
+	</script>
+
+	<div class="wrapper-pager clearfix">
+		<div class="pager-item pager-info clearfix">
+			<span class="info-current">
+				<span class="front">第</span>
+				<span class="page">1</span>
+				<span class="unit">页</span>
+				<span class="behind">/</span>
+			</span>
+			<span class="info-total">
+				<span class="front">共</span>
+				<span class="page">10</span>
+				<span class="unit">页</span>
+				<span class="behind"></span>
+			</span>
+		</div>
+		<ul class="pager-item pager-list clearfix">
+			<li class="btn-page btn-page-prev"><a href="javascript: void(0);">上一页</a></li>
+			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">3</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">4</a></li>
+			<li class="btn-page btn-page-current"><a href="javascript: void(0);">5</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">7</a></li>
+			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
+			<li class="btn-page btn-page-last"><a href="javascript: void(0);">10</a></li>
+			<li class="btn-page btn-page-next"><a href="javascript: void(0);">下一页</a></li>
+		</ul>
+		<div class="pager-item pager-link clearfix">
+			<span class="link-front">跳转到</span>
+			<input type="text" name="link-page" />
+			<button type="button" class="link-go">GO</button>
+		</div>
+	</div>
+
+	<div class="wrapper-pager clearfix">
+		<div class="pager-item pager-info clearfix">
+			<span class="info-current">
+				<span class="front">第</span>
+				<span class="page">1</span>
+				<span class="unit">页</span>
+				<span class="behind">/</span>
+			</span>
+			<span class="total">
+				<span class="info-front">共</span>
+				<span class="page">10</span>
+				<span class="unit">页</span>
+				<span class="behind"></span>
+			</span>
+		</div>
+		<ul class="pager-item pager-list clearfix">
+			<li class="btn-page btn-page-prev btn-page-disabled"><a href="javascript: void(0);">上一页</a></li>
+			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">2</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">3</a></li>
+			<li class="btn-page btn-page-current"><a href="javascript: void(0);">4</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">5</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
+			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
+			<li class="btn-page btn-page-last"><a href="javascript: void(0);">10</a></li>
+			<li class="btn-page btn-page-next"><a href="javascript: void(0);">下一页</a></li>
+		</ul>
+		<div class="pager-item pager-link clearfix">
+			<span class="link-front">跳转到</span>
+			<input type="text" name="link-page" />
+			<button type="button" class="link-go">GO</button>
+		</div>
+	</div>
+
+	<div class="wrapper-pager clearfix">
+		<div class="pager-item pager-info clearfix">
+			<span class="info-current">
+				<span class="front">第</span>
+				<span class="page">1</span>
+				<span class="unit">页</span>
+				<span class="behind">/</span>
+			</span>
+			<span class="info-total">
+				<span class="front">共</span>
+				<span class="page">10</span>
+				<span class="unit">页</span>
+				<span class="behind"></span>
+			</span>
+		</div>
+		<ul class="pager-item pager-list clearfix">
+			<li class="btn-page btn-page-prev"><a href="javascript: void(0);">上一页</a></li>
+			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">5</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
+			<li class="btn-page btn-page-current"><a href="javascript: void(0);">7</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">8</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">9</a></li>
+			<li class="btn-page btn-page-last"><a href="javascript: void(0);">10</a></li>
+			<li class="btn-page btn-page-next btn-page-disabled"><a href="javascript: void(0);">下一页</a></li>
+		</ul>
+		<div class="pager-item pager-link clearfix">
+			<span class="link-front">跳转到</span>
+			<input type="text" name="link-page" />
+			<button type="button" class="link-go">GO</button>
+		</div>
+	</div>
+</body>
+</html>
