@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Base on iScroll refresh-load plugin</title>
+	<link rel="stylesheet" type="text/css" href="./src/css/main.css">
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="./src/js/iscroll-probe.js"></script>
+	<script type="text/javascript">
+		;
+		(function (window, document, IScroll) {
+
+			// Constants
+			var CONSTANTS = {
+				REFRESH: 1,
+				LOAD: 2,
+				REFRESH_INDEX: 0,
+				LOAD_INDEX: 1,
+				TEXT_REFRESH_INIT: '下拉刷新',
+				TEXT_REFRESH_START: '释放刷新',
+				TEXT_REFRESH_LOADING: '正在刷新...',
+				TEXT_REFRESH_DONE: '刷新完成',
+				TEXT_LOAD_INIT: '正在加载...',
+				TEXT_LOAD_DONE: '加载完成',
+				TEXT_LOAD_NONE: '没有更多数据',
+				TEXT_LOAD_EMPTY: '暂无数据',
+				CLASSNAME_TIP_DROP: 'drop-refresh',
+				CLASSNAME_TIP_PULL: 'pull-load',
+				CLASSNAME_TIP_TEXT: 'tip-text',
+				CLASSNAME_TIP_ICON: 'tip-icon',
+				TYPES: [
+					{ id: 1, name: 'Vertical' },
+					{ id: 2, name: 'Horizontal' }
+				],
+				VALIDATOR_TYPES: {
+					STRING: 1,
+					NUMBER: 2,
+					BOOLEAN: 3,
+					ARRAY: 4,
+					OBJECT: 5
+				},
+				PAGE_RESULT: {
+					DONE: 1,
+					NONE: 2,
+					EMPTY: 3
+				}
+			}
+
+			// Utils methods
+			var utils = (function () {
+				var me = {};
+
+				me.getDataType = function (value) {
+					if (value === '' || value == null) return undefined;
+
+					if (typeof value === 'string') {
+						return CONSTANTS.VALIDATOR_TYPES.STRING;
+					}
+					if (typeof value === 'number') {
+						return CONSTANTS.VALIDATOR_TYPES.NUMBER;
+					}
+					if (typeof value === 'boolean') {
+						return CONSTANTS.VALIDATOR_TYPES.BOOLEAN;
+					}
+					if (typeof value === 'object' && value.length) {
+						return CONSTANTS.VALIDATOR_TYPES.ARRAY;
+					}
+					if (typeof value === 'object' && !value.length) {
+						return CONSTANTS.VALIDATOR_TYPES.OBJECT;
+					}
+
+					return undefined;
+				}
+
+				me.extend = function (Child, Parent) {
+					var F = function () {};
+					F.prototype = Parent.prototype;
+					Child.prototype = new F();
+					Child.prototype.constructor = Child;
+					Child.uber = Parent.prototype;
+				}
+
+				me.getStyleData = function (style, index) {
+					if (this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.STRING
+					   	|| this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.NUMBER
+				   	) {
+						return style;
+					}
+					if (this.getDataType(style) === CONSTANTS.VALIDATOR_TYPES.ARRAY) {
+						return style[index];
+					}
+				}
+
+				me.stopDrag = function (items) {
+			        if (items.length) {
+			            for (var len = items.length, i = len - 1; i >= 0; i--) {
+			                items[i].setAttribute('ondragstart', 'return false;');
+			            }
+			        } else {
+			            items.setAttribute('ondragstart', 'return false;');
+			        }
+			    }
+
+				// 循环设置默认属性 注意需要设置原始参数为false等的必须使用excluded
+				// @param {Object} options 传入属性对象
+				// @param {Object} defaults 默认属性对象
+				// @param {Array} excluded 设置完全等于属性数组 [{attr: 'name', val: 'value'}]
+				// @param {string} excluded[index].attr 属性名称
+				// @param {string} excluded[index].val 判断属性是否完全等于的值
+				me.setObjectOption = function (options, defaults, excluded) {
+					var opts = {}
+						_options = options || {},
+						arr = excluded || [];
+
+					for (var opt in defaults) {
+						opts[opt] = _options[opt] || defaults[opt];
+						for (var i = arr.length - 1; i >= 0; i--) {
+							if (opt === arr[i].attr) {
+								opts[opt] = _options[opt] === arr[i].val ? _options[opt] : defaults[opt];
+							}
+						}
+					}
+
+					return opts;
+				}
+
+				me.refreshRotate = function (move) {
+					var _const = 200,
+						_r = 360 / _const,
+						_move = parseFloat(move, 10) < 0 ? -parseFloat(move, 10) : parseFloat(move, 10);
+
+					return _move * _r;
+				}
+
+				me.show = function (ele, type) {
+					type = type || 'flex';
+					ele.style.display = type;
+				}
+
+				me.hide = function (ele) {
+					ele.style.display = 'none';
+				}
+
+				me.setTransition = function (ele, duration, timingFn) {
+					timingFn = timingFn || 'linear';
+					ele.style.transitionDuration = duration + 'ms';
+					ele.style.transitionTimingFunction = timingFn;
+				}
+
+				me.getPageResult = function (crt, size, total) {
+					var counts = Math.ceil(total / size);
+					if (total <= 0) {
+						// EMPTY
+						return CONSTANTS.TEXT_LOAD_EMPTY;
+					}
+					if (crt < counts) {
+						// DONE
+						return CONSTANTS.TEXT_LOAD_DONE;
+					}
+					if (crt >= counts) {
+						// NONE
+						return CONSTANTS.TEXT_LOAD_NONE;
+					}
+
+					return CONSTANTS.TEXT_LOAD_DONE;
+				}
+
+				return me;
+
+			})();
+
+			// 参数初始化
+			function optionsInit(options) {
+				var _t = undefined;
+				var opts = options || {};
+
+				opts.default = {
+					_styles: {
+						width: '100%',
+						height: '200px',
+						background: '#fff',
+						color: '#000',
+						fontSize: '14px',
+						icon: ['./src/img/reload.png', './src/img/rolling.gif'],
+						iconSize: '50px',
+					},
+					_refresh: {
+						use: true,
+						step: 3,
+						trigger: 150,
+						iconSpeed: 300
+					},
+					_load: {
+						use: true,
+						trigger: 100
+					},
+					_pageSize: 0,
+					_pageTotal: 0,
+					_pageCurrent: 0
+				}
+
+				opts._type = opts.type || CONSTANTS.TYPES[0].id;
+				// _t = CONSTANTS.TYPES.find(x => x.id === opts._type);
+				for (var len = CONSTANTS.TYPES.length, i = len - 1; i >= 0; i--) {
+					if (CONSTANTS.TYPES[i].id === opts._type) {
+						_t = CONSTANTS.TYPES[i];
+					}
+				}
+				opts._type = _t ? _t.id : CONSTANTS.TYPES[0].id;
+				opts.loadType = _t ? _t.name : CONSTANTS.TYPES[0].name;
+
+				opts.styles = utils.setObjectOption(opts.styles, opts.default._styles);
+
+				// Refresh
+				var _refreshExcluded = [
+					{ attr: 'use', val: false }
+				];
+				opts.refresh = utils.setObjectOption(opts.refresh, opts.default._refresh, _refreshExcluded);
+
+				// Load
+				var _loadExcluded = [
+					{ attr: 'use', val: false }
+				];
+				opts.load = utils.setObjectOption(opts.load, opts.default._load, _loadExcluded);
+
+				opts.pageSize = opts.pageSize || opts.default._pageSize;
+				opts.pageTotal = opts.pageTotal || opts.default._pageTotal;
+				opts.pageCurrent = opts.pageCurrent || opts.default._pageCurrent;
+
+				return opts;
+			}
+
+			// Base Class
+			function SuperLoad(options) {
+				var self = this;
+
+				this.options = options;
+
+				this.isLoading = false;
+				this.current = this.options.pageCurrent;
+				this.pageSize = this.options.pageSize;
+				this.pageTotal = this.options.pageTotal;
+
+				utils.stopDrag(this.options.container.getElementsByTagName('a'));
+
+				// Protect methods
+				this._create = function (index, text, classname) {
+					var span = document.createElement('span');
+					var span_text = document.createElement('i');
+					var icon = document.createElement('i');
+					var icon_size = utils.getStyleData(this.options.styles.iconSize, index);
+
+					this.options.container.style.position = 'relative';
+					this.options.list.style.position = 'initial';
+
+					span.className = classname;
+					span.style.cssText = 'display: flex;justify-content: center;align-items: center;overflow: hidden;';
+					icon.style.cssText = 'display: inline-block;text-align: center;width: ' + icon_size + ';height: ' + icon_size + ';margin-right: 1%;font-style: normal;';
+					span_text.style.cssText = 'display: inline-block;text-align: left;font-style: normal;';
+					span_text.innerText = text;
+
+					// Custom Styles
+					for (var i in this.options.styles) {
+						span.style[i] = utils.getStyleData(this.options.styles[i], index);
+					}
+					icon.style.background = 'url("' + utils.getStyleData(this.options.styles.icon, index) + '") no-repeat center/100%';
+
+					// Reset Styles
+					if (index === CONSTANTS.REFRESH_INDEX) span.style.height = '0px';
+
+					span.appendChild(icon);
+					span.appendChild(span_text);
+
+					return {
+						span: span,
+						icon: icon,
+						span_text: span_text
+					};
+				}
+
+				this._setScroll = function () {
+					this.myScroll = new IScroll(this.options.container, {
+						mouseWheel: true,
+						probeType: 2,
+						useTransform: true,
+						useTransition: true,
+						bounce: false
+					});
+				}
+
+				this._bindTouchEvent = function () {
+					this.options.list.addEventListener("touchstart", this._handleTouchEvent, false);
+                	this.options.list.addEventListener("touchend", this._handleTouchEvent, false);
+                	this.options.list.addEventListener("touchmove", this._handleTouchEvent, false);
+				}
+
+				this._handleTouchEvent = function (event) {
+					event.preventDefault();
+
+					var touch = event.touches[0],
+						touched = event.changedTouches[0];
+					var rotate_step = 90,
+						refresh_icon_speed = self.options.refresh.iconSpeed,
+						refresh_trigger = self.options.refresh.trigger,
+						refresh_step = self.options.refresh.step;
+					switch (event.type) {
+                        case 'touchstart':
+                        	self.touch_start = touch.clientY;
+                            break;
+                        case 'touchend':
+                        	if (self.isLoading) return;
+                        	if (self.refresh_moved < refresh_trigger) {
+                        		utils.setTransition(self.refreshObj.span, 300, 'ease-out');
+                            	self.refreshObj.span.style.height =  0 + 'px';
+                            	return;
+                            }
+
+                            self.isLoading = true;
+                            var _counter = 1,
+								_interval;
+                            self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_LOADING;
+                            _interval = setInterval(function () {
+								_counter++;
+								utils.setTransition(self.refreshObj.icon, refresh_icon_speed);
+								self.refreshObj.icon.style.transform = 'rotate(' + (utils.refreshRotate(self.refresh_moved) + rotate_step * _counter) + 'deg)';
+							}, refresh_icon_speed);
+							self.myScroll.refresh();
+
+                        	/*if (!self.isLoading && self.isScroll && self.refresh_height > self.options.refresh.trigger && self.touch_moved > 0) {
+
+                        		// self.myScroll.destroy();
+                        		self.refreshObj.span.style.position = 'initial';
+                        		self.refreshObj.span.style.height = self.refresh_height + 'px';
+                        		self.refreshObj.span.style.transform = 'translateY(' + 0 + 'px)';
+	                            // self.myScroll.scrollTo(0, self.refresh_height);
+	                            self.myScroll.scrollTo(0, 0);
+	                            self.myScroll.refresh();
+	                            
+	                            self.isLoading = true;
+	                            self.isScroll = false;
+
+	                            var _counter = 1,
+									_interval;
+								self.refreshObj.span_text.innerText = CONSTANTS.TEXT_REFRESH_LOADING;
+								_interval = setInterval(function () {
+									_counter++;
+									self.refreshObj.icon.style.transitionDuration = refresh_icon_speed + 'ms';
+									self.refreshObj.icon.style.transform = 'rotate(' + (utils.refreshRotate(self.refresh_height) + rotate_step * _counter) + 'deg)';
+								}, refresh_icon_speed);
+
+	                            //TODO virtual
+	                            setTimeout(() => {
+
+                            		self._refreshCallBack(_interval);
+
+	                            }, 2000);
+                        	}*/
+
+                            break;
+                        case 'touchmove':
+                            
+
+                            if (self.isLoading) {
+                            	self.isRefreshed = false;
+                            	if (self.scroll_move < 0) {
+                            		// self.refreshObj.span.style.transform = 'translate(0, ' + self.scroll_move + 'px)';
+                            	}
+
+                            	return;
+                            }
+
+                            if (self.scroll_move < 0 && !self.isRefreshed) {
+                            	self.touch_start = touch.clientY;
+                            	// self.refreshObj.span.style.height = 0 + 'px';
+                            	return;
+                            }
+
+                            self.touch_move = touched.clientY;
+                            	self.refresh_moved = (self.touch_move - self.touch_start) / refresh_step;
+                            if (self.refresh_moved > 0) {
+                            	self.isRefreshed = true;
+                            	utils.setTransition(self.refreshObj.span, 0, '');
+                            	self.refreshObj.span.style.position = 'initial';
+                            	self.refreshObj.span.style.height =  self.refresh_moved + 'px';
+                            	self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_INIT;
+                            	self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(self.refresh_moved) + 'deg)';
+                            	if (self.refresh_moved >= refresh_trigger) {
+	                            	self.refreshObj.span_text.innerText =  CONSTANTS.TEXT_REFRESH_START;
+	                            }
+                            } else {
+                            	self.isRefreshed = false;
+                            }
+
+                            // self.myScroll.refresh();
+
+                    		// self.scroll_move
+                            break;
+                    }
+				}
+
+				this._refreshCallBack = function (interval) {
+					var reset = function () {
+						// refresh icon styles reset
+						self.refreshObj.icon.style.transitionDuration = '0ms';
+						self.refreshObj.icon.style.transform = 'rotate(' + 0 + 'deg)';
+						// refresh styles reset
+						self.refreshObj.span.style.position = 'absolute';
+						utils.setTransition(self.refreshObj.span, 300, 'ease-out');
+						// self.refreshObj.span.style.transitionDuration = '300ms';
+						// self.refreshObj.span.style.transitionTimingFunction = 'ease-out';
+                		self.refreshObj.span.style.height = 0 + 'px';
+            			self.myScroll.refresh();
+            			self.isLoading = false;
+					}
+					clearInterval(interval);
+					self.current = 0;
+					self.refreshObj.span_text.innerText = CONSTANTS.TEXT_REFRESH_DONE;
+					// self.options.list.style.transitionTimingFunction = 'ease-out';
+					// self.options.list.style.transitionDuration = speed + 'ms';
+					self.options.list.style.transform = 'translate(0px, 0px)';
+					reset();
+				}
+
+				this._loadCallBack = function () {
+					self.current++;
+					var _result_t = utils.getPageResult(self.current, self.pageSize, self.pageTotal);
+					self.loadObj.span_text.innerText = _result_t;
+
+					// utils.hide(self.loadObj.span);
+					utils.hide(self.loadObj.icon);
+					self.myScroll.refresh();
+					self.isLoading = false;
+				}
+
+				this._watchScrollEvent = function (type) {
+					var self = this,
+						refresh_text,
+						trigger_r = this.options.refresh.trigger,
+						trigger_l = this.options.load.trigger,
+						load_m = 0,
+						refresh_m = 0;
+					this.scrollType = type;
+					this.myScroll.on('scroll', function () {
+						refresh_text = CONSTANTS.TEXT_REFRESH_INIT;
+						self.isScroll = true;
+
+						self.scroll_move = this.y;
+						if (type === CONSTANTS.TYPES[0].id) {
+							console.log(self.isRefreshed);
+							if (self.isRefreshed) {
+								self.myScroll.scrollTo(0, 0);
+							}
+							// refresh and load can not trigger request at the same time
+							/*if (this.y >= 0) {
+								self.isRefresh = true;
+								// Refresh
+								if (self.isLoading && this.y > refresh_m) {
+									self.myScroll.scrollTo(0, refresh_m);
+								} else if (!self.isLoading) {
+									self.isScroll = true;
+									if (!self.touch_end) {
+										self.refresh_height = this.y;
+									}
+									if (this.y > trigger_r) {
+										refresh_text = CONSTANTS.TEXT_REFRESH_START;
+									}
+									// refresh height
+									self.refreshObj.span.style.transitionDuration = '0ms';
+									self.refreshObj.span.style.transitionTimingFunction = '';
+									self.refreshObj.span.style.height = this.y + 'px';
+									self.refreshObj.span.style.transform = 'translateY(' + -this.y + 'px)';
+									// refresh icon rotate
+									self.refreshObj.icon.style.transitionDuration = '0s';
+									self.refreshObj.icon.style.transform = 'rotate(' + utils.refreshRotate(this.y) + 'deg)';
+									// refresh text
+									self.refreshObj.span_text.innerText = refresh_text;
+								}
+							}*/
+
+							/*if (this.y < this.maxScrollY + trigger_l && this.y < load_m) {
+								// Load
+								if (!self.isLoading) {
+									self.loadObj.span_text.innerText = CONSTANTS.TEXT_LOAD_INIT;
+									self.isLoading = true;
+									utils.show(self.loadObj.span);
+									utils.show(self.loadObj.icon, 'inline-block');
+									self.myScroll.refresh();
+
+									// TODO virtual
+									setTimeout(() => {
+										self._loadCallBack();
+									}, 2000);
+								}
+							}*/
+
+							self.touch_moved  = this.y;
+							refresh_m = this.y;
+							load_m = this.y;
+						}
+						if (type === CONSTANTS.TYPES[1].id) {
+							console.warn('waiting build.');
+							return;
+						}
+
+					});
+
+					this.myScroll.on('scrollEnd', function () { });
+
+				}
+			}
+
+			SuperLoad.prototype.createRefresh = function () {
+				var refreshObj = this._create(CONSTANTS.REFRESH_INDEX,
+					CONSTANTS.TEXT_REFRESH_INIT,
+					CONSTANTS.CLASSNAME_TIP_DROP);
+
+				refreshObj.span.style.transitionTimingFunction = 'ease-in';
+				refreshObj.span.style.position = 'absolute';
+				refreshObj.span.style.zIndex = '-1';
+				refreshObj.span.style.left = '0px';
+				refreshObj.span.style.top = '0px';
+				refreshObj.span.style.height = '0px';
+				refreshObj.icon.style.transitionTimingFunction = 'linear';
+				this.options.container.insertBefore(refreshObj.span, this.options.container.childNodes[0]);
+
+				return refreshObj;
+			}
+
+			SuperLoad.prototype.createLoad = function () {
+				var loadObj = this._create(CONSTANTS.LOAD_INDEX,
+					CONSTANTS.TEXT_LOAD_INIT,
+					CONSTANTS.CLASSNAME_TIP_PULL);
+
+				loadObj.span.style.display = 'none';
+
+				this.options.container.appendChild(loadObj.span);
+
+				return loadObj;
+			}
+
+
+			// Factory method
+			function Factory(type, options) {
+				if (this instanceof Factory) {
+					// 继承基类
+					utils.extend(this[type], SuperLoad);
+
+					return new this[type](options);
+				} else {
+					return new Factory(type, options);
+				}
+			}
+
+			Factory.prototype = {
+				// 纵向
+				// 下拉刷新 上拉加载
+				Vertical: function (options) {
+					SuperLoad.call(this, options);
+
+					this._setScroll();
+					this._watchScrollEvent(CONSTANTS.TYPES[0].id);
+					this._bindTouchEvent();
+
+					this.options.refresh.use ? this.refreshObj = this.createRefresh() : '';
+					this.options.load.use ? this.loadObj = this.createLoad() : '';
+
+				}
+			}
+
+			// Interface
+			function RefreshLoad(el, options) {
+				if (this instanceof RefreshLoad) {
+					var wrapper = typeof el === 'string' ? document.querySelector(el) : el;
+					if (!wrapper) throw new Error('RefreshLoad ERR! config error');
+
+					options.container = wrapper;
+					options.list = wrapper.children[0];
+					var opts = optionsInit(options);
+					
+					var load = new Factory(opts.loadType, opts);
+				} else {
+					return new RefreshLoad(el, options);
+				}
+			}
+
+			// Exposed methods
+			RefreshLoad.prototype = {
+
+			}
+
+			if (typeof module != 'undefined' && module.exports) {
+				module.exports = RefreshLoad;
+			} else if (typeof define == 'function' && define.amd) {
+				define(function () { return RefreshLoad; });
+			} else {
+				window.RefreshLoad = RefreshLoad;
+			}
+
+		})(window, document, IScroll);
+	</script>
+</head>
+<body>
+	<h3 style="font-size: 5rem;">Refresh & Load</h3>
+	<div class="list-wrapper" id="listWrapper">
+		<ul class="list-data" id="listData" v-cloak>
+			<li class="item" v-for="item in list">
+				<a href="javascript: void(0);">{{ item.name }}</a>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript">
+		
+
+
+		const vm = new Vue({
+			el: '#listWrapper',
+			data() {
+				return {
+					list: [],
+					total: 0,
+					scroll: null
+				}
+			},
+			methods: {
+				get() {
+					setTimeout(() => {
+						const data = {
+							items: [
+								{ name: '1' },
+								{ name: '2' },
+								{ name: '3' },
+								{ name: '4' },
+								{ name: '5' },
+								{ name: '6' },
+								{ name: '7' },
+								{ name: '8' },
+								{ name: '9' }
+							],
+							total: 100
+						}
+						this.load(data);
+					}, 1000);
+				},
+				load(result) {
+					result.items.forEach(item => {
+						this.list.push(item);
+					});
+					this.total = result.total;
+
+					this.$nextTick(() => {
+						var refreshLoad = new RefreshLoad('#listWrapper', {
+							styles: {
+								background: '#f5f5f5',
+								fontSize: '3rem'
+							},
+							refresh: {
+								use: true
+							}
+						});
+					});
+				}
+			},
+			mounted() {
+				this.get();
+			}
+		});
+	</script>
+</body>
+</html>

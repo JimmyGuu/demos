@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 History API</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// history.pushState(stateObject, title, url)
+		// stateObject: 状态对象 存储自定义数据
+		// title: 标题
+		// URL地址: 以当前url为基准 本参数需要和当前页面url同源
+		// 调用 pushState() 方法会生成一条历史记录 可以用浏览器的前进个后退导航
+		
+		// history.replaceState()
+		// 不会生成新的历史记录，替换当前历史记录
+		
+		// window.onpopstate
+		// 浏览器前进后退或者js调用history.go()等导航方法时触发
+		// 上面2个方法不触发这个事件 设置的状态对象会通过 event.state 返回
+	</script>
+</body>
+</html>

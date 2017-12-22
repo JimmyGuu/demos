@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript工厂模式</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 简单工厂模式 - 1 返回实例
+		var Opera = function () {
+			this.description = '歌剧很好听~';
+		}
+		Opera.prototype.getDesc = function () {
+			console.info('你造吗, ' + this.description);
+		}
+		
+		var Dance = function () {
+			this.description = '舞蹈很好看~';
+		}
+		Dance.prototype.getDesc = function () {
+			console.info('你造吗, ' + this.description);
+		}
+		
+		var Crosstalk = function () {
+			this.description = '相声很有趣~';
+		}
+		Crosstalk.prototype.getDesc = function () {
+			console.info('你造吗, ' + this.description);
+		}
+		
+		var ArtFactory = function (name) {
+			var art = null;
+			switch (name) {
+				case 'Opera':
+					art = new Opera();
+					break;
+				case 'Dance':
+					art = new Dance();
+					break;
+				case 'Crosstalk':
+					art = new Crosstalk();
+					break;
+			}
+			
+			return art;
+		}
+		
+		// 简单工厂应用
+		var dance = ArtFactory('Dance');
+		console.log(dance);
+		console.log(dance.description);
+		dance.getDesc();
+		
+		// Result
+		// Dance {description: "舞蹈很好看~"}
+		//  舞蹈很好看~
+		// 你造吗, 舞蹈很好看~
+		
+		
+		// 简单工厂模式 - 2 返回对象
+		function createBook(name, time, type) {
+			var obj = new Object();
+			obj.name = name;
+			obj.time = time;
+			obj.type = type;
+			obj.getName = function () {
+				console.info(this.name);
+			}
+			
+			switch (type) {
+				case 'js':
+					obj.description = 'JavaScript是世界上最好的语言！';
+					obj.getName = function () {
+						console.info('呵呵，' + this.name + '才是世界上最好的语言！');
+					}
+					break;
+				case 'php':
+					obj.description = 'PHP是世界上最好的语言！';
+					break;
+				case 'c#':
+					obj.description = 'c#是世界上最好的语言！';
+					break;
+				case 'java':
+					obj.description = 'Java是世界上最好的语言！';
+					break;
+				default:
+					obj.description = 'Python是世界上最好的语言！';
+					break;
+			}
+			
+			return obj;
+		}
+		
+		var book = createBook('JavaScript', '2017-01-01', 'js');
+		console.log(book);
+		console.log(book.description);
+		book.getName();
+		
+		// Result
+		// {name: "JavaScript", time: "2017-01-01", type: "js", getName: ƒ, description: "JavaScript是世界上最好的语言！"}
+		// JavaScript是世界上最好的语言！
+		// 呵呵，JavaScript才是世界上最好的语言！
+		
+		
+		// 工厂方法模式
+		var Factory = function (type, content) {
+			if (this instanceof Factory) {
+				var ad = new this[type](content);
+				return ad;
+			} else {
+				return new Factory(type, content);
+			}
+		}
+		
+		Factory.prototype = {
+			Java: function (content) {
+				console.info('Java, ' + content);
+			},
+			FrontEnd: function (content) {
+				console.info('前端, ' + content);
+			},
+			PHP: function (content) {
+				console.info('PHP, ' + content);
+			},
+			UI: function (content) {
+				console.info('UI, ' + content);
+			}
+		}
+		
+		// 工厂方法模式应用
+		var datas = [
+			{ type: 'Java', content: '只要学好了Java，走遍天下都不怕！' },
+			{ type: 'FrontEnd', content: '月薪20k！' },
+			{ type: 'PHP', content: '世界上最好的语言！' },
+			{ type: 'UI', content: '我想要一种五彩斑斓的黑色！' }
+		];
+		datas.forEach(function (data, idnex) {
+			var ad = new Factory(data.type, data.content);
+		});
+		
+		// Result
+		// Java, 只要学好了Java，走遍天下都不怕！
+		// 前端, 月薪20k！
+		// PHP, 世界上最好的语言！
+		// UI, 我想要一种五彩斑斓的黑色！
+		
+		
+		// 抽象工厂方法
+		var VehicleFactory = function (subType, superType) {
+			// 判断抽象工厂中是否有该抽象类
+			if (typeof VehicleFactory[superType] === 'function') {
+				// 缓存类
+				var F = function () {}
+				// 继承父类属性和方法
+				F.prototype = new VehicleFactory[superType]();
+				// 将子类constructor指向子类
+				subType.constructor = subType;
+				// 子类原型继承父类
+				subType.prototype = new F();
+				subType.uber = superType.prototype;
+			} else {
+				throw new Error('未创建该抽象类！');
+			}
+		}
+		// 抽象父类 - 1
+		VehicleFactory.Car = function () {
+			this.type = 'car';
+		}
+		VehicleFactory.Car.prototype = {
+			getPrice: function () {
+				return new Error('抽象方法不能调用！');
+			},
+			getSpeed: function () {
+				return new Error('抽象方法不能调用！');
+			}
+		}
+		// 抽象父类 - 2
+		VehicleFactory.Truck = function () {
+			this.type = 'truck';
+		}
+		VehicleFactory.Truck.prototype = {
+			getPrice: function () {
+				return new Error('抽象方法不能调用！');
+			},
+			getSpeed: function () {
+				return new Error('抽象方法不能调用！');
+			}
+		}
+		
+		// 子类 - 1
+		var BMW = function (price, speed) {
+			this.price = price;
+			this.speed = speed;
+		}
+		// 抽象工厂实现对 Car 抽象类的继承
+		VehicleFactory(BMW, 'Car');
+		// 必须在抽象实现后重写
+		BMW.prototype.getPrice = function () {
+			console.info('$' + this.price);
+		}
+		BMW.prototype.getSpeed = function () {
+			console.info(this.speed + 'km/h');
+		}
+		
+		// 子类 - 2
+		var Lamborghini = function (price, speed) {
+			this.price = price;
+			this.speed = speed;
+		}
+		VehicleFactory(Lamborghini, 'Car');
+		Lamborghini.prototype = {
+			getPrice: function () {
+				console.info('$' + this.price);
+			},
+			getSpeed: function () {
+				console.info(this.speed + 'km/h');
+			},
+			getNumber: function () {
+				console.info('888');
+			}
+		}
+		
+		// 抽象工厂模式应用
+		var car = new BMW('1,000,000', '500');
+		console.log(car);
+		console.log(car.price);
+		car.getPrice();
+		car.getSpeed();
+		// Result
+		// BMW {price: "1,000,000", speed: "500"}
+		// 1,000,000
+		// $1,000,000
+		// 500km/h
+		
+		var car_2 = new Lamborghini('2,000,000', '600');
+		console.log(car_2);
+		car_2.getPrice();
+		car_2.getSpeed();
+		car_2.getNumber();
+		// Result
+		// Lamborghini {price: "2,000,000", speed: "600"}
+		// $2,000,000
+		// 600km/h
+		// 888
+	</script>
+</body>
+</html>

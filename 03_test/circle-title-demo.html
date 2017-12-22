@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<style type="text/css">
+		html {
+			font-size: 62.5%;
+		}
+		html, body {
+			margin: 0;
+			padding: 0;
+			background: #666;
+			color: #fff;
+		}
+		.wrapper {
+			text-align: center;
+			margin-top: 10rem;
+			position: relative;
+		}
+		.circle {
+			border: 1px solid #fff;
+			border-radius: 50%;
+		}
+		.base-circle {
+			display: inline-block;
+			border-color: #efefef;
+			width: 50rem;
+			height: 50rem;
+			position: relative;
+		}
+		.center {
+			display: inline-block;
+			width: 0.5rem;
+			height: 0.5rem;
+			background: #f00;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(50%, 50%);
+		}
+		.title-item {
+			display: block;
+			width: 10rem;
+			height: 10rem;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #fff;
+			font-size: 3rem;
+			text-align: center;
+		}
+		.title-item:nth-child(1) {
+			top: 0;
+			right: 10%;
+			background: #ff5f00;
+		}
+		.title-item:nth-child(2) {
+			top: 20%;
+    		right: -5%;
+    		background: blue;
+		}
+		.title-item:nth-child(3) {
+			top: 45%;
+    		right: -10%;
+    		background: purple;
+		}
+		.title-item:nth-child(4) {
+			top: 45%;
+    		right: -10%;
+    		background: yellow;
+		}
+		.title-item:nth-child(5) {
+			top: 45%;
+    		right: -10%;
+    		background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper" id="myApp">
+		<div class="circle base-circle" :style="baseStyles">
+			<span class="circle title-item" v-for="(i, index) in total" :data-id="index" :style="itemStyles">{{ i.title }}</span>
+		</div>
+		<i class="circle center" :style="o"></i>
+	</div>
+
+	<script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el: '#myApp',
+			data() {
+				return {
+					total: [
+						{ title: '1' },
+						{ title: '2' },
+						{ title: '3' },
+						{ title: '4' },
+						{ title: '5' }
+					],
+					// 大圆的半径
+					size: 250,
+					// 小圆的半径
+					itemSize: 50
+				}
+			},
+			computed: {
+				// 圆心 - 非数学意义上
+				o() {
+					return {
+						// right
+						right: this.size + 'px',
+						// top
+						top: this.size + 'px'
+					}
+				},
+				// 大圆样式
+				baseStyles() {
+					return {
+						width: this.size * 2 + 'px',
+						height: this.size * 2 + 'px'
+					}
+				},
+				// 小圆样式
+				itemStyles() {
+					return {
+						width: this.itemSize * 2 + 'px',
+						height: this.itemSize * 2 + 'px'
+					}
+				}
+			},
+			methods: {
+				// 计算小圆的相对位置
+				itemPosition() {
+					let init = -135,
+						step = 30,
+						counter = 0;
+					let items = document.querySelectorAll('.title-item');
+
+					for (var len = items.length, i = 0; i < len; i++) {
+						items[i].style.right = this.position(init - step * counter).right;
+						items[i].style.top = this.position(init - step * counter).top;
+						counter++;
+					}
+				},
+				// 计算在大圆上的坐标
+				position(angle) {
+					if (angle === '' || angle == null) return;
+
+					let x0 = this.size,
+						y0 = this.size;
+					let r = this.size;
+
+					let x1 = x0 + r * Math.cos(angle * Math.PI / 180);
+					let y1 = y0 + r * Math.sin(angle * Math.PI /180);
+
+					return {
+						right: x1 - this.itemSize + 'px',
+						top: y1 - this.itemSize + 'px'
+					}
+				}
+			},
+			mounted() {
+				this.itemPosition();
+
+			}
+		});
+	</script>
+</body>
+</html>
