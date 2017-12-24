@@ -42,6 +42,97 @@
     // 如果 freeze 可用，防止代码添加或删除对象原型的属性
     // （value，get，set，enumerable，writable，configurable）
     (Object.freeze || Object)(Object.prototype);
+
+
+
+
+    function Pager(cb) {
+        var current = null,
+            callback = typeof cb === 'function' ? cb : function () { };
+
+        var getterSetter = {
+            get: function () {
+                return current;
+            },
+            set: function (v) {
+                current = v;
+                callback(current);
+            }
+        };
+
+        Object.defineProperty(this, 'current', getterSetter);
+        
+        this.getCurrent = function () {
+            return current;
+        }
+    }
+
+    var pageCrtChange = function (value) {
+        console.log(value);
+    }
+    var pagerObj = new Pager(pageCrtChange);
+    pagerObj.current = 1;
+    pagerObj.current = 2;
+
+
+    var pagerObject = {
+      _pager: {
+          current: 1
+      }
+    };
+
+    Object.defineProperty(pagerObject, 'pager', {
+        get: function () { return this._pager; },
+        set: function (v) {
+            for (var i in this._pager) {
+                this._pager[i] = v[i];
+            }
+
+            // console.log(this._pager);
+        }
+    });
+
+    // console.log(pagerObject.pager);
+    pagerObject.pager = { current: 2 };
+
+    function PagerObject(cb) {
+        var pager = {
+                current: 1,
+                total: 0
+            },
+            callback = typeof cb === 'function' ? cb : function (obj) { };
+
+        var _getterSetter = {
+            get: function () {
+                return pager;
+            },
+            set: function (value) {
+                for (var v in pager) {
+                    if (value[v] !== '' && value[v] != null) {
+                        pager[v] = value[v];
+                    }
+                }
+
+                callback(pager);
+            }
+        };
+
+        Object.defineProperty(this, 'pager', _getterSetter);
+
+        this.getPager = function () {
+            return pager;
+        }
+    }
+
+    var callback = function (obj) {
+        console.log('callback: ', obj);
+    };
+    var pagerObj = new PagerObject(callback);
+    var pager = pagerObj.getPager();
+
+    pager.current = 2;
+    pagerObj.pager = pager;
+
 </script>
 </body>
 </html>

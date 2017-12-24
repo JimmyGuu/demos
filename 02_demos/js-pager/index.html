@@ -99,15 +99,23 @@
 				pager_info = wrapper.querySelector('.' + class_name.PAGE_INFO),
 				pager_list = wrapper.querySelector('.' + class_name.PAGE_LIST),
 				pager_link = wrapper.querySelector('.' + class_name.PAGE_LINK);
+			var pager_btns = pager_list.querySelectorAll('.' + class_name.PAGE_BTN),
+                pager_prev = pager_list.querySelector('.' + class_name.PAGE_BTN_PREV),
+                pager_next = pager_list.querySelector('.' + class_name.PAGE_BTN_NEXT);
 
-			var pagerObj = {
-				_current: 0
-			}
+            // init
+            pager.current = 5;
+            pager.total = 10;
+            pagerObj.pager = pager;
 
-			Object.defineProperty(pagerObj, '');
+            utils.bind(pager_btns, 'click', pageBtnFn);
+            // utils.bind(pager_prev, 'click', prevBtnFn);
 
+            var btnEvents = btnFn();
+            utils.bind(pager_prev, 'click', btnEvents.prev);
 		}
 
+		// constants
 		var CONSTANTS = {
 			CLASS_NAME: {
 				WRAPPER: 'wrapper-pager',
@@ -135,7 +143,202 @@
 				PAGE_LINK_GO: 'link-go'
 			}
 			
-		}
+		};
+
+		var utils = (function () {
+		    var me = {};
+
+		    // bind event
+		    me.bind = function (ele, eventType, fn) {
+		        if (ele.length) {
+		            for (var i = ele.length - 1; i >= 0; i--) {
+		                ele[i].addEventListener(eventType, fn);
+                    }
+                } else {
+                    ele.addEventListener(eventType, fn);
+                }
+
+            }
+
+		    // check element in array
+		    me.isInArr = function (arr, value) {
+		        var isInside = false;
+                if (arr.indexOf && typeof arr.indexOf === 'function') {
+                    if (arr.indexOf(value) > -1) {
+                        isInside = true;
+                    }
+                } else {
+                    for (var i = arr.length - 1; i >= 0; i--) {
+                        if (arr[i] === value) {
+                            isInside = true;
+                        }
+                    }
+                }
+
+                return isInside;
+            }
+
+            // class extend
+		    me.extends = function (Child, Parent) {
+                var F = function () {};
+                F.prototype = Parent.prototype;
+                Child.prototype = new F();
+                Child.prototype.constructor = Child;
+                Child.uber = Parent.prototype;
+            }
+
+            me.isDOM = (typeof HTMLElement === 'object')
+                ? function (obj) {
+                    return obj instanceof HTMLElement;
+                }
+                : function (obj) {
+                    return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
+                };
+
+            return me;
+        })();
+
+        // pager watched properties
+        function PagerObject(cb) {
+            var pager = {
+                    current: 1,
+                    total: 0
+                },
+                callback = typeof cb === 'function' ? cb : function (obj) { };
+
+            var _getterSetter = {
+                get: function () {
+                    return pager;
+                },
+                set: function (value) {
+                    for (var v in pager) {
+                        if (value[v] !== '' && value[v] != null) {
+                            pager[v] = value[v];
+                        }
+                    }
+
+                    callback(pager);
+                }
+            };
+
+            Object.defineProperty(this, 'pager', _getterSetter);
+
+            this.getPager = function () {
+                return pager;
+            }
+        }
+
+        // when change trigger events
+        var callback = function (obj) {
+            console.log('callback: ', obj);
+            var wrapper = document.querySelector('.' + CONSTANTS.CLASS_NAME.WRAPPER);
+            var pager_list = wrapper.querySelector('.' + CONSTANTS.CLASS_NAME.PAGE_LIST);
+            var pager_btns = pager_list.querySelectorAll('.' + CONSTANTS.CLASS_NAME.PAGE_BTN);
+
+            var crtPage;
+            for (var i  = pager_btns.length - 1; i >= 0; i--) {
+                pager_btns[i].classList.remove(CONSTANTS.CLASS_NAME.PAGE_BTN_CURRENT);
+                if (pager_btns[i].dataset.id == obj.current) {
+                    crtPage = pager_btns[i];
+                }
+            }
+
+            if (crtPage) crtPage.classList.add(CONSTANTS.CLASS_NAME.PAGE_BTN_CURRENT);
+        };
+
+        var pagerObj = new PagerObject(callback);
+        var pager = pagerObj.getPager();
+
+        var btnFn = function () {
+            var me = {};
+
+            me._crt = pager.current;
+            me._total = pager.total;
+            me._prev_disabled = CONSTANTS.CLASS_NAME.PAGE_BTN_DISABLED;
+
+            me._setCrt = function () {
+                pager.current = me._crt;
+                pagerObj.pager = pager;
+            }
+
+            me.page = function (e) {
+                e.stopPropagation();
+                if (this.dataset.id) {
+                    // pager.current = this.dataset.id;
+                    // pagerObj.pager = pager;
+                    me._crt = +this.dataset.id;
+                }
+            }
+
+            me.prev = function (e) {
+                e.stopPropagation();
+                console.log(me._crt);
+                console.log(this);
+                me._crt--;
+                if (me._crt <= 1) {
+                    this.classList.add(me.prev_disabled);
+                } else {
+                    this.classList.remove(me.prev_disabled);
+                }
+
+                if (me._crt < 1) {
+                    me._crt = 1;
+                    return;
+                };
+
+                me.setCrt();
+            }
+
+            return me;
+        };
+
+
+        // page btn change style
+        // only use in bind event
+        function pageBtnFn(e) {
+            e.stopPropagation();
+            // console.log(this.dataset.id);
+            if (this.dataset.id) {
+                pager.current = this.dataset.id;
+                pagerObj.pager = pager;
+            }
+        }
+
+        function prevBtnFn(e) {
+            e.stopPropagation();
+            this.crt = pager.current;
+            this.total = pager.total;
+            this.prev_disabled = CONSTANTS.CLASS_NAME.PAGE_BTN_DISABLED;
+            this.crt--;
+
+
+            // console.log(this.crt);
+            this.isChange = function () {
+                if (this.crt <= 1) {
+                    this.classList.add(this.prev_disabled);
+                } else {
+                    this.classList.remove(this.prev_disabled);
+                }
+
+                if (this.crt < 1) return false;
+                return true;
+            }
+
+            this.setCrt = function () {
+                pager.current = this.crt;
+                pagerObj.pager = pager;
+            }
+
+        }
+
+        function NextBtnFn(e) {
+            PrevBtnFn.call(this, e);
+        }
+
+        // async request event
+        function asyncFn() {
+            cosole.log('async request');
+        }
 	</script>
 
 	<div class="wrapper-pager clearfix">
@@ -155,15 +358,15 @@
 		</div>
 		<ul class="pager-item pager-list clearfix">
 			<li class="btn-page btn-page-prev"><a href="javascript: void(0);">上一页</a></li>
-			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page btn-page-first" data-id="1"><a href="javascript: void(0);">1</a></li>
 			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
-			<li class="btn-page"><a href="javascript: void(0);">3</a></li>
-			<li class="btn-page"><a href="javascript: void(0);">4</a></li>
-			<li class="btn-page btn-page-current"><a href="javascript: void(0);">5</a></li>
-			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
-			<li class="btn-page"><a href="javascript: void(0);">7</a></li>
+			<li class="btn-page" data-id="3"><a href="javascript: void(0);">3</a></li>
+			<li class="btn-page" data-id="4"><a href="javascript: void(0);">4</a></li>
+			<li class="btn-page btn-page-current" data-id="5"><a href="javascript: void(0);">5</a></li>
+			<li class="btn-page" data-id="6"><a href="javascript: void(0);">6</a></li>
+			<li class="btn-page" data-id="7"><a href="javascript: void(0);">7</a></li>
 			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
-			<li class="btn-page btn-page-last"><a href="javascript: void(0);">10</a></li>
+			<li class="btn-page btn-page-last" data-id="10"><a href="javascript: void(0);">10</a></li>
 			<li class="btn-page btn-page-next"><a href="javascript: void(0);">下一页</a></li>
 		</ul>
 		<div class="pager-item pager-link clearfix">
@@ -190,10 +393,10 @@
 		</div>
 		<ul class="pager-item pager-list clearfix">
 			<li class="btn-page btn-page-prev btn-page-disabled"><a href="javascript: void(0);">上一页</a></li>
-			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page btn-page-first btn-page-current"><a href="javascript: void(0);">1</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">2</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">3</a></li>
-			<li class="btn-page btn-page-current"><a href="javascript: void(0);">4</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">4</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">5</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
 			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
@@ -228,11 +431,42 @@
 			<li class="btn-page btn-page-more"><a href="javascript: void(0);">...</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">5</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">6</a></li>
-			<li class="btn-page btn-page-current"><a href="javascript: void(0);">7</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">7</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">8</a></li>
 			<li class="btn-page"><a href="javascript: void(0);">9</a></li>
-			<li class="btn-page btn-page-last"><a href="javascript: void(0);">10</a></li>
+			<li class="btn-page btn-page-last btn-page-current"><a href="javascript: void(0);">10</a></li>
 			<li class="btn-page btn-page-next btn-page-disabled"><a href="javascript: void(0);">下一页</a></li>
+		</ul>
+		<div class="pager-item pager-link clearfix">
+			<span class="link-front">跳转到</span>
+			<input type="text" name="link-page" />
+			<button type="button" class="link-go">GO</button>
+		</div>
+	</div>
+
+	<div class="wrapper-pager clearfix">
+		<div class="pager-item pager-info clearfix">
+			<span class="info-current">
+				<span class="front">第</span>
+				<span class="page">1</span>
+				<span class="unit">页</span>
+				<span class="behind">/</span>
+			</span>
+			<span class="info-total">
+				<span class="front">共</span>
+				<span class="page">4</span>
+				<span class="unit">页</span>
+				<span class="behind"></span>
+			</span>
+		</div>
+		<ul class="pager-item pager-list clearfix">
+			<li class="btn-page btn-page-prev"><a href="javascript: void(0);">上一页</a></li>
+			<li class="btn-page btn-page-first"><a href="javascript: void(0);">1</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">2</a></li>
+			<li class="btn-page"><a href="javascript: void(0);">3</a></li>
+			<li class="btn-page btn-page-current"><a href="javascript: void(0);">4</a></li>
+			<li class="btn-page btn-page-last"><a href="javascript: void(0);">5</a></li>
+			<li class="btn-page btn-page-next"><a href="javascript: void(0);">下一页</a></li>
 		</ul>
 		<div class="pager-item pager-link clearfix">
 			<span class="link-front">跳转到</span>
