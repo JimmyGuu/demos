@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocumentFragment</title>
+</head>
+<body>
+<div id="forDocumentFragment"></div>
+<div id="forDirectInsert"></div>
+<div id="forInnerHTML"></div>
+
+<script type="text/javascript">
+    window.onload = function (ev) {
+        console.warn('funny test: ');
+        var counts = 20000;
+        var wrapper_1 = document.getElementById('forDocumentFragment'),
+            wrapper_2 = document.getElementById('forDirectInsert'),
+            wrapper_3 = document.getElementById('forInnerHTML');
+
+        // 创建文档碎片
+        var start_time = +new Date();
+        var docFragment = document.createDocumentFragment();
+
+        for (var i = counts; i > 0; i--) {
+            var node = document.createElement('p');
+            var node_text = document.createTextNode(i + ', hehe');
+
+            node.appendChild(node_text);
+
+            docFragment.appendChild(node);
+        }
+
+        wrapper_1.appendChild(docFragment);
+        console.log('DocumentFragment: ' + (+new Date() - start_time) + 'ms');
+
+        // 直接插入文档
+        start_time = +new Date();
+        for (var i = counts; i > 0; i--) {
+            var node = document.createElement('p');
+            var node_text = document.createTextNode(i + ', hehe');
+
+            node.appendChild(node_text);
+
+            wrapper_2.appendChild(node);
+        }
+        console.log('direct inserted: ' + (+new Date() - start_time) + 'ms');
+
+        // innerHTML
+        start_time = +new Date();
+        var content = '';
+        for (var i = counts; i > 0; i--) {
+            content += ('<p>' + i + ', hehe</p>');
+        }
+        wrapper_3.innerHTML = content;
+
+        console.log('innerHTML: ' + (+new Date() - start_time) + 'ms');
+    }
+</script>
+</body>
+</html>

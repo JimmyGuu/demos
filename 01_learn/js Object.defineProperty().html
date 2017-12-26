@@ -106,9 +106,146 @@
             value: 2,
             writable: false
         });
-        o.b = 3; // 抛出类型错误：'b' is read-only
+        // o.b = 3; // 抛出类型错误：'b' is read-only
         return o.b; // 返回2没有上面的行
     })();
+
+
+
+    // enumerable定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+    var o2 = {};
+    Object.defineProperty(o2, 'a', { value: 1, enumerable: true });
+    Object.defineProperty(o2, 'b', { value: 2, enumerable: false });
+    Object.defineProperty(o2, 'c', { value: 3 }); // emumerable默认为false
+    o2.d = 4; // 如果直接赋值创建对象的属性 默认为true
+
+    for (var i in o2) {
+        console.log(i);
+        // 打印 'a' 'd'
+    }
+
+    var o2a = o2.propertyIsEnumerable('a'); // true
+    var o2b = o2.propertyIsEnumerable('b'); // false
+    var o2c = o2.propertyIsEnumerable('c'); // false
+    console.log(o2a, o2b, o2c);
+
+
+    // configurable特性表示对象的属性是否可以被删除，以及除writable特性外的其他特性是否可以被修改。
+    var o3 = {};
+    Object.defineProperty(o3, 'a', {
+        get: function () { return 1; },
+        configurable: false
+    });
+
+    Object.defineProperty(o3, 'a', {
+        // configurable: true
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    Object.defineProperty(o3, 'a', {
+        // enumerable: true
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    Object.defineProperty(o3, 'a', {
+        // set: function (v) { }
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    Object.defineProperty(o3, 'a', {
+        // get: function () { return 1; }
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    Object.defineProperty(o3, 'a', {
+        // value: 12
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    Object.defineProperty(o3, 'a', {
+        // writable: true
+    });
+    // Uncaught TypeError: Cannot redefine property: a
+
+    console.log(o3.a); // 1
+    delete o3.a;
+    console.log(o3.a); // 1
+
+
+
+    // 添加多个属性和默认值
+    var o4 = {};
+
+    o4.a = 1;
+    // 等同于：
+    Object.defineProperty(o4, 'a', {
+        value: 1,
+        writable: true,
+        configurable: true,
+        enumerable: true
+    });
+
+    // 另一方面
+    Object.defineProperty(o4, 'b', { value: 1 });
+    // 等同于
+    Object.defineProperty(o, 'b', {
+        value: 1,
+        writable: false,
+        configurable: false,
+        enumerable: false
+    });
+
+
+
+    // getters和setters
+    function Archiver() {
+        var temperature = null;
+        var archive = [];
+
+        Object.defineProperty(this, 'temperature', {
+            get: function () {
+                console.log('get...');
+                return temperature;
+            },
+            set: function (v) {
+                temperature = v;
+                archive.push({ val: temperature });
+            }
+        });
+
+        this.getArchive = function () {
+            console.log(archive);
+            return archive;
+        }
+    }
+
+    var arc = new Archiver();
+    arc.temperature; // get...
+    arc.temperature = 11;
+    arc.temperature = 12;
+    arc.getArchive(); // [{ val: 11 }, { val: 12 }]
+
+
+    var pattern = {
+        get: function () {
+            return 'I alway return this string, whatever u have assigned.';
+        },
+        set: function () {
+            this.myname = 'This is my name string.';
+        }
+    };
+
+    function TestDefineSetAndGet() {
+        Object.defineProperty(this, 'myproperty', pattern);
+    }
+
+    var instance = new TestDefineSetAndGet();
+    instance.myproperty = 'test';
+
+    console.log(instance.myproperty); // I alway return this string, whatever u have assigned.
+    console.log(instance.myname); // This is my name string.
+
+
 
 
     function Pager(cb) {
