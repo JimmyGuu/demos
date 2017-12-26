@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>foo</title>
+</head>
+<body>
+<h1>This is foo.</h1>
+<a href="./other.html">other.html</a>
+<script type="text/javascript">
+    var stateObj = { foo: 'bar' };
+    window.history.pushState(stateObj, 'page 2', 'bar.html');
+
+    window.history.replaceState(stateObj, 'page 3', 'bar2.html');
+</script>
+</body>
+</html>

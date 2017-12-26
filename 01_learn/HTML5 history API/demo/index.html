@@ -1,0 +1,199 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>history demo</title>
+    <style type="text/css">
+        @font-face {
+            font-family: SourceCodeProExtraLight;
+            src: url('./fonts/SourceCodePro-ExtraLight.ttf'), url('./fonts/SourceCodePro-ExtraLight.eot');
+        }
+    </style>
+    <style type="text/css">
+        html {
+            font-size: 62.5%;
+            font-family: "SourceCodeProExtraLight";
+            color: #333;
+            min-width: 1200px;
+            background: #efefef;
+        }
+        html, body, h1, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .clearfix:before,
+        .clearfix:after{
+            content: '';
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+    </style>
+    <style type="text/css">
+        .container {
+            padding: 1rem 2rem;
+        }
+        header {
+            background: #333;
+            color: #fff;
+        }
+        header > h1 {
+            float: left;
+        }
+        header > a {
+            display: block;
+            float: right;
+            color: inherit;
+            font-size: 2.4rem;
+        }
+
+        aside {
+            width: 25%;
+            background: #44ACFF;
+            margin: 0.5rem 0;
+            text-align: left;
+            float: left;
+        }
+        aside .title {
+            font-size: 2rem;
+            color: #ddd;
+            font-weight: bold;
+            padding: 2rem 0 3rem 2rem;
+            text-transform: uppercase;
+        }
+        .item-list {
+            list-style: none;
+            margin: 0rem 2rem 2rem 2rem;
+        }
+        .item-list a {
+            display: block;
+            color: #fff;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            border-left: 2px solid #44ACFF;
+        }
+        .item-list a:hover,
+        .item-list a.active{
+            border-color: #efefef;
+            background: #333;
+            transition: all 0.3s linear;
+        }
+        article {
+            width: 74.5%;
+            overflow: hidden;
+            float: right;
+            margin: 0.5rem 0;
+        }
+        article img {
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<header class="container clearfix">
+    <h1>Demo of HTML5 History API</h1>
+    <a href="javascript: void(0);" id="close">&times;</a>
+</header>
+<div class="clearfix">
+    <aside>
+        <p class="title">nav</p>
+        <ul class="item-list">
+            <li class="item"><a href="javascript: void(0);">beauty</a></li>
+            <li class="item"><a href="javascript: void(0);">landscape</a></li>
+            <li class="item"><a href="javascript: void(0);">car</a></li>
+            <li class="item"><a href="javascript: void(0);">electronic</a></li>
+            <li class="item"><a href="javascript: void(0);">emoji</a></li>
+        </ul>
+    </aside>
+    <article>
+        <div class="img">
+            <img src="./img/1.jpg" alt="show" />
+        </div>
+        <p class="description"></p>
+    </article>
+</div>
+<footer class="container"></footer>
+
+<script type="text/javascript">
+
+    $(document).ready(() => {
+        demo.close();
+    });
+
+    const utils = (function () {
+        const me = {};
+
+        me.closePage = function () {
+            let r = confirm('Confirm leave?');
+            if(r) {
+                window.opener=null;
+                window.open('','_self');
+                window.close();
+            }
+        }
+
+        me.ajaxOption = function (data, callback, isPost, error) {
+            let options = {};
+            error = typeof error === 'function' ? error : function () {};
+            isPost = isPost === true ? isPost : false;
+
+            data.clientType = 1;
+            options.data = data;
+            options.dataType = 'json';
+            options.type = 'GET';
+            if (isPost) options.type = 'POST';
+
+            options.success = function (result) {
+                if (result) {
+                    switch (result.code) {
+                        case -1:
+                            console.warn('failed');
+                            break;
+                        case 0:
+                            callback(result);
+                            break;
+                    }
+                    return;
+                }
+
+                throw new Error('ERR! get none of data.');
+            };
+            options.error = function (result) {
+                console,warn(result);
+                error();
+            }
+
+            return options;
+        }
+
+        return me;
+    })();
+
+    const demo = {
+        close: function () {
+            let close = $('#close');
+            close.on('click', utils.closePage);
+        },
+        select: function () {
+
+        },
+        request: function (data, success) {
+            let data = {
+                cate: 1
+            };
+            let opt = utils.ajaxOption(data, success, true);
+            $.ajax('', opt);
+        }
+    }
+</script>
+</body>
+</html>

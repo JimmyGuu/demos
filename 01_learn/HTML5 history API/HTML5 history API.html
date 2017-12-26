@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 history API</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    window.onload = function (ev) {
+        // 在history中向后跳转
+        window.history.back();
+        window.history.go(-1);
+
+        // 向前跳转
+        window.history.forward();
+        window.history.go(1);
+
+        // 当前页
+        window.history.go(0);
+    }
+</script>
+</body>
+</html>
