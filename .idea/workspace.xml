@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/my-pager.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/test-base-on-frame.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/test-frame.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/test-frame.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html" afterPath="$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html" />
+      <change beforePath="$PROJECT_DIR$/02_demos/js-pager/index.html" afterPath="$PROJECT_DIR$/02_demos/js-pager/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,119 +24,76 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6344">
-              <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
+            <state relative-caret-position="447">
+              <caret line="344" column="34" lean-forward="true" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
               <folding>
-                <element signature="e#3735#4017#0" expanded="false" />
-                <element signature="e#4092#4607#0" expanded="false" />
-                <element signature="e#4681#4927#0" expanded="false" />
-                <element signature="e#5373#6163#0" expanded="false" />
-                <element signature="e#8214#8311#0" expanded="false" />
-                <element signature="e#8348#8539#0" expanded="false" />
-                <element signature="e#8576#8844#0" expanded="false" />
-                <element signature="e#8881#9153#0" expanded="false" />
-                <element signature="e#10157#10889#0" expanded="false" />
+                <element signature="e#3795#4077#0" expanded="false" />
+                <element signature="e#4152#4667#0" expanded="false" />
+                <element signature="e#4741#4987#0" expanded="false" />
+                <element signature="e#5433#6223#0" expanded="false" />
+                <element signature="e#8377#8474#0" expanded="false" />
+                <element signature="e#8528#9024#0" expanded="false" />
+                <element signature="e#9061#9252#0" expanded="false" />
+                <element signature="e#9289#9557#0" expanded="false" />
+                <element signature="e#9594#9866#0" expanded="false" />
+                <element signature="e#10972#11704#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocumentFragment.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
+      <file leaf-file-name="my-pager.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state relative-caret-position="52">
+              <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTML5 history API.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
+      <file leaf-file-name="test-frame.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-frame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="foo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/foo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="example.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+            <state relative-caret-position="501">
+              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#2;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#2838#2845#1" expanded="true" />
-                <element signature="e#3705#3902#0" expanded="false" />
-                <element signature="e#3928#3960#0" expanded="false" />
-                <element signature="e#3993#4999#0" expanded="false" />
-                <element signature="e#4054#4255#0" expanded="false" />
-                <element signature="e#4322#4973#0" expanded="false" />
-                <element signature="e#4759#4808#0" expanded="false" />
-                <element signature="e#4856#4934#0" expanded="false" />
-                <element signature="e#5038#5091#0" expanded="false" />
-                <element signature="e#5116#5375#0" expanded="false" />
-                <element signature="e#5166#5369#0" expanded="false" />
-                <element signature="e#5394#6950#0" expanded="false" />
-                <element signature="e#5423#5519#0" expanded="false" />
-                <element signature="e#5869#6128#0" expanded="false" />
-                <element signature="e#6169#6271#0" expanded="false" />
-                <element signature="e#6309#6625#0" expanded="false" />
-                <element signature="e#6659#6943#0" expanded="false" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#680#716#0" expanded="false" />
+                <element signature="e#753#913#0" expanded="false" />
+                <element signature="e#987#1028#0" expanded="false" />
+                <element signature="e#1070#1230#0" expanded="false" />
+                <element signature="e#2908#3180#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bar2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar2.html">
+      <file leaf-file-name="index.fourth.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_demos/refresh-load/index.fourth.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="43">
+              <caret line="106" column="32" lean-forward="true" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-frame.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="other.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/other.html">
+      <file leaf-file-name="test-base-on-frame.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-base-on-frame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+            <state relative-caret-position="338">
+              <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="15" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -144,6 +105,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -154,6 +116,7 @@
       <find>me._crt</find>
       <find>var</find>
       <find>active</find>
+      <find>Jehorn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/02_demos/js-pager/index.html" />
         <option value="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" />
         <option value="$PROJECT_DIR$/01_learn/DocumentFragment.html" />
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API.html" />
@@ -173,6 +135,11 @@
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html" />
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/example.js" />
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html" />
+        <option value="$PROJECT_DIR$/02_demos/js-pager/index.html" />
+        <option value="$PROJECT_DIR$/02_demos/js-pager/my-pager.js" />
+        <option value="$PROJECT_DIR$/02_demos/js-pager/test-base-on-frame.js" />
+        <option value="$PROJECT_DIR$/02_demos/js-pager/test-frame.html" />
+        <option value="$PROJECT_DIR$/02_demos/js-pager/test-frame.js" />
       </list>
     </option>
   </component>
@@ -195,8 +162,8 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
-    <option name="y" value="58" />
+    <option name="x" value="98" />
+    <option name="y" value="62" />
     <option name="width" value="1648" />
     <option name="height" value="910" />
   </component>
@@ -215,8 +182,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,18 +194,19 @@
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
-              <item name="HTML5 history API" type="462c0819:PsiDirectoryNode" />
+              <item name="02_demos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
               <item name="02_demos" type="462c0819:PsiDirectoryNode" />
+              <item name="js-pager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="02_demos" type="462c0819:PsiDirectoryNode" />
+              <item name="refresh-load" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,17 +262,18 @@
       <workItem from="1514170881124" duration="10493000" />
       <workItem from="1514249826143" duration="17819000" />
       <workItem from="1514337582158" duration="9531000" />
+      <workItem from="1514357075190" duration="7911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51270000" />
+    <option name="totallyTimeSpent" value="59181000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="58" width="1648" height="910" extended-state="0" />
+    <frame x="98" y="62" width="1648" height="910" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25061274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25061274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -349,7 +318,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -359,15 +328,119 @@
         <state relative-caret-position="6344">
           <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
           <folding>
-            <element signature="e#3735#4017#0" expanded="false" />
-            <element signature="e#4092#4607#0" expanded="false" />
-            <element signature="e#4681#4927#0" expanded="false" />
-            <element signature="e#5373#6163#0" expanded="false" />
-            <element signature="e#8214#8311#0" expanded="false" />
-            <element signature="e#8348#8539#0" expanded="false" />
-            <element signature="e#8576#8844#0" expanded="false" />
-            <element signature="e#8881#9153#0" expanded="false" />
-            <element signature="e#10157#10889#0" expanded="false" />
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/foo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/other.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#1;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#2;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#3705#3902#0" expanded="false" />
+            <element signature="e#3928#3960#0" expanded="false" />
+            <element signature="e#3993#4999#0" expanded="false" />
+            <element signature="e#4054#4255#0" expanded="false" />
+            <element signature="e#4322#4973#0" expanded="false" />
+            <element signature="e#4759#4808#0" expanded="false" />
+            <element signature="e#4856#4934#0" expanded="false" />
+            <element signature="e#5038#5091#0" expanded="false" />
+            <element signature="e#5116#5375#0" expanded="false" />
+            <element signature="e#5166#5369#0" expanded="false" />
+            <element signature="e#5394#6950#0" expanded="false" />
+            <element signature="e#5423#5519#0" expanded="false" />
+            <element signature="e#5869#6128#0" expanded="false" />
+            <element signature="e#6169#6271#0" expanded="false" />
+            <element signature="e#6309#6625#0" expanded="false" />
+            <element signature="e#6659#6943#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6344">
+          <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
+          <folding>
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -436,7 +509,6 @@
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#1;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#2;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#2838#2845#1" expanded="true" />
             <element signature="e#3705#3902#0" expanded="false" />
             <element signature="e#3928#3960#0" expanded="false" />
             <element signature="e#3993#4999#0" expanded="false" />
@@ -462,15 +534,16 @@
         <state relative-caret-position="8528">
           <caret line="328" column="29" lean-forward="true" selection-start-line="328" selection-start-column="29" selection-end-line="328" selection-end-column="29" />
           <folding>
-            <element signature="e#3735#4017#0" expanded="false" />
-            <element signature="e#4092#4607#0" expanded="false" />
-            <element signature="e#4681#4927#0" expanded="false" />
-            <element signature="e#5373#6163#0" expanded="false" />
-            <element signature="e#8214#8311#0" expanded="false" />
-            <element signature="e#8348#8539#0" expanded="false" />
-            <element signature="e#8576#8844#0" expanded="false" />
-            <element signature="e#8881#9153#0" expanded="false" />
-            <element signature="e#10157#10889#0" expanded="false" />
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -487,15 +560,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3735#4017#0" expanded="false" />
-            <element signature="e#4092#4607#0" expanded="false" />
-            <element signature="e#4681#4927#0" expanded="false" />
-            <element signature="e#5373#6163#0" expanded="false" />
-            <element signature="e#8214#8311#0" expanded="false" />
-            <element signature="e#8348#8539#0" expanded="false" />
-            <element signature="e#8576#8844#0" expanded="false" />
-            <element signature="e#8881#9153#0" expanded="false" />
-            <element signature="e#10157#10889#0" expanded="false" />
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -505,15 +579,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3735#4017#0" expanded="false" />
-            <element signature="e#4092#4607#0" expanded="false" />
-            <element signature="e#4681#4927#0" expanded="false" />
-            <element signature="e#5373#6163#0" expanded="false" />
-            <element signature="e#8214#8311#0" expanded="false" />
-            <element signature="e#8348#8539#0" expanded="false" />
-            <element signature="e#8576#8844#0" expanded="false" />
-            <element signature="e#8881#9153#0" expanded="false" />
-            <element signature="e#10157#10889#0" expanded="false" />
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -522,13 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5226">
           <caret line="201" column="19" lean-forward="true" selection-start-line="201" selection-start-column="19" selection-end-line="201" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/refresh-load/index.fourth.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4284">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -560,32 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6344">
-          <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
-          <folding>
-            <element signature="e#3735#4017#0" expanded="false" />
-            <element signature="e#4092#4607#0" expanded="false" />
-            <element signature="e#4681#4927#0" expanded="false" />
-            <element signature="e#5373#6163#0" expanded="false" />
-            <element signature="e#8214#8311#0" expanded="false" />
-            <element signature="e#8348#8539#0" expanded="false" />
-            <element signature="e#8576#8844#0" expanded="false" />
-            <element signature="e#8881#9153#0" expanded="false" />
-            <element signature="e#10157#10889#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -612,39 +654,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/example.js" />
     <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/.vs/config/applicationhost.config" />
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/foo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+        <state relative-caret-position="288">
+          <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#1;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#2;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#2838#2845#1" expanded="true" />
             <element signature="e#3705#3902#0" expanded="false" />
             <element signature="e#3928#3960#0" expanded="false" />
             <element signature="e#3993#4999#0" expanded="false" />
@@ -661,6 +678,120 @@
             <element signature="e#6169#6271#0" expanded="false" />
             <element signature="e#6309#6625#0" expanded="false" />
             <element signature="e#6659#6943#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/foo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="344" column="34" lean-forward="true" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
+          <folding>
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/工厂方法模式封装.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/jsFactory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-754">
+          <caret line="172" column="22" lean-forward="false" selection-start-line="172" selection-start-column="22" selection-end-line="172" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-base-on-frame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="15" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/refresh-load/index.fourth.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="106" column="32" lean-forward="true" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-frame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#680#716#0" expanded="false" />
+            <element signature="e#753#913#0" expanded="false" />
+            <element signature="e#987#1028#0" expanded="false" />
+            <element signature="e#1070#1230#0" expanded="false" />
+            <element signature="e#2908#3180#0" expanded="false" />
           </folding>
         </state>
       </provider>

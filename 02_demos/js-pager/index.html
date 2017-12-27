@@ -115,6 +115,7 @@
             utils.bind(pager_prev, 'click', btnEvents.prev);
             utils.bind(pager_next, 'click', btnEvents.next);
             utils.bind(pager_link, 'click', btnEvents.link);
+            btnEvents.pageText(pager.current, pager.total);
 		}
 
 		// constants
@@ -242,13 +243,13 @@
             var min = 1,
                 disabled = CONSTANTS.CLASS_NAME.PAGE_BTN_DISABLED;
             var btn_disabled = function () {
+                pager_prev.classList.remove(disabled);
+                pager_next.classList.remove(disabled);
                 if (obj.current <= min) {
                     pager_prev.classList.add(disabled);
-                } else if (obj.current >= obj.total) {
+                }
+                if (obj.current >= obj.total) {
                     pager_next.classList.add(disabled);
-                } else {
-                    pager_prev.classList.remove(disabled);
-                    pager_next.classList.remove(disabled);
                 }
             }
 
@@ -260,7 +261,11 @@
                 }
             }
 
-            if (crtPage) crtPage.classList.add(CONSTANTS.CLASS_NAME.PAGE_BTN_CURRENT);
+            var btnEvents = btnFn();
+            btnEvents.pageText(obj.current, obj.total);
+            if (crtPage) {
+                crtPage.classList.add(CONSTANTS.CLASS_NAME.PAGE_BTN_CURRENT);
+            }
             btn_disabled();
         };
 
@@ -283,6 +288,15 @@
             me._getCrt = function () {
                 me._crt = pager.current;
                 me._total = pager.total;
+            }
+
+            me.pageText = function (current, total) {
+                var wrapper = document.querySelector('.' + CONSTANTS.CLASS_NAME.WRAPPER);
+                var current_text = wrapper.querySelector('.' + CONSTANTS.CLASS_NAME.PAGE_INFO_CURRENT + ' .' + CONSTANTS.CLASS_NAME.PAGE_INFO_PAGE);
+                var total_text = wrapper.querySelector('.' + CONSTANTS.CLASS_NAME.PAGE_INFO_TOTAL + ' .' + CONSTANTS.CLASS_NAME.PAGE_INFO_PAGE);
+
+                current_text.innerText = current;
+                total_text.innerText = total;
             }
 
             me.page = function (e) {
@@ -321,12 +335,14 @@
             
             me.link = function () {
                 var wrapper = document.querySelector('.' + CONSTANTS.CLASS_NAME.WRAPPER);
-                var page = wrapper.querySelector('.' + CONSTANTS.CLASS_NAME.PAGE_LINK_PAGE);
-                console.log(page);
-                page = page.value;
-                page = +page || me._min;
+                var page_input = wrapper.querySelector('input[name="' + CONSTANTS.CLASS_NAME.PAGE_LINK_PAGE + '"]');
+
+                var page = page_input.value;
+                page = +page || null;
 
                 me._getCrt();
+
+                if (!page) return;
 
                 if (page < me._min) {
                     page = me._min
@@ -337,6 +353,8 @@
                 }
 
                 me._crt = page;
+                me._setCrt();
+                page_input.value = '';
             }
 
             return me;
@@ -401,7 +419,7 @@
 			</span>
 			<span class="info-total">
 				<span class="front">共</span>
-				<span class="page">10</span>
+				<span class="page">1</span>
 				<span class="unit">页</span>
 				<span class="behind"></span>
 			</span>
@@ -425,6 +443,8 @@
 			<button type="button" class="link-go">GO</button>
 		</div>
 	</div>
+
+
 
 	<div class="wrapper-pager clearfix">
 		<div class="pager-item pager-info clearfix">
