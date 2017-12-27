@@ -92,8 +92,12 @@
             float: right;
             margin: 0.5rem 0;
         }
-        article img {
+        article .img {
+            max-height: 600px;
+        }
+        article .img img {
             width: 100%;
+            height: 100%;
         }
     </style>
     <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
@@ -107,16 +111,16 @@
     <aside>
         <p class="title">nav</p>
         <ul class="item-list">
-            <li class="item"><a href="javascript: void(0);">beauty</a></li>
-            <li class="item"><a href="javascript: void(0);">landscape</a></li>
-            <li class="item"><a href="javascript: void(0);">car</a></li>
-            <li class="item"><a href="javascript: void(0);">electronic</a></li>
-            <li class="item"><a href="javascript: void(0);">emoji</a></li>
+            <li class="item" data-id="1"><a href="javascript: void(0);">beauty</a></li>
+            <li class="item" data-id="2"><a href="javascript: void(0);">landscape</a></li>
+            <li class="item" data-id="3"><a href="javascript: void(0);">car</a></li>
+            <li class="item" data-id="4"><a href="javascript: void(0);">electronic</a></li>
+            <li class="item" data-id="5"><a href="javascript: void(0);">emoji</a></li>
         </ul>
     </aside>
     <article>
         <div class="img">
-            <img src="./img/1.jpg" alt="show" />
+            <img src="./img/1.jpg" alt="show" id="showPicture" />
         </div>
         <p class="description"></p>
     </article>
@@ -124,10 +128,19 @@
 <footer class="container"></footer>
 
 <script type="text/javascript">
-
     $(document).ready(() => {
+        const init = 1;
         demo.close();
+        demo.onPopState();
+        demo.historyState(init);
+
+        // Bind nav events
+        $('.item-list .item').on('click', demo.select);
     });
+
+    const CONSTANTS = {
+        ACTIVE: 'active'
+    }
 
     const utils = (function () {
         const me = {};
@@ -142,33 +155,22 @@
         }
 
         me.ajaxOption = function (data, callback, isPost, error) {
+            jQuery.support.cors = true;
             let options = {};
             error = typeof error === 'function' ? error : function () {};
             isPost = isPost === true ? isPost : false;
 
-            data.clientType = 1;
+            data.ClientType = 1;
             options.data = data;
             options.dataType = 'json';
             options.type = 'GET';
             if (isPost) options.type = 'POST';
 
             options.success = function (result) {
-                if (result) {
-                    switch (result.code) {
-                        case -1:
-                            console.warn('failed');
-                            break;
-                        case 0:
-                            callback(result);
-                            break;
-                    }
-                    return;
-                }
-
-                throw new Error('ERR! get none of data.');
+                callback(result);
             };
             options.error = function (result) {
-                console,warn(result);
+                console.warn(result);
                 error();
             }
 
@@ -178,21 +180,64 @@
         return me;
     })();
 
+    const Service  = function () {
+        this.host = 'http://localhost:56258';
+    }
+    Service.prototype = {
+        selectRequest: function (data, success) {
+            let _data = {
+                Id: data.id
+            };
+            let opt = utils.ajaxOption(_data, success, true);
+            $.ajax(this.host + '/api/Demo/GetPicture', opt);
+        }
+    }
+
     const demo = {
         close: function () {
             let close = $('#close');
             close.on('click', utils.closePage);
         },
-        select: function () {
-
+        activeItem: function (id) {
+            $('.item-list .item').each(function (index, ele) {
+                $(ele).children().removeClass(CONSTANTS.ACTIVE);
+                if (ele.dataset.id == id) {
+                    $(ele).children().addClass(CONSTANTS.ACTIVE);
+                }
+            });
         },
-        request: function (data, success) {
+        select: function (e) {
+            let id = e.target.parentNode.dataset.id;
+            if (!id) id = 1;
             let data = {
-                cate: 1
+                id: +id
             };
-            let opt = utils.ajaxOption(data, success, true);
-            $.ajax('', opt);
+            new Service().selectRequest(data, demo.selectSuccess);
+            demo.historyState(id);
+        },
+        selectSuccess: function (data) {
+            $('#showPicture').attr('src', data.Src);
+            demo.activeItem(data.Id);
+        },
+        historyState: function (id) {
+            const stateObj = { cate: id };
+            // if (isChange) {
+            //     window.history.replaceState(stateObj, 'cates', '?cate=' + id);
+            //     return;
+            // }
+            demo.activeItem(id);
+            window.history.pushState(stateObj, 'cates', '?cate=' + id);
+        },
+        onPopState: function () {
+            window.onpopstate = function (event) {
+                if (!event.state.cate) return;
+                let data = {
+                    id: +event.state.cate
+                };
+                new Service().selectRequest(data, demo.selectSuccess);
+            }
         }
+
     }
 </script>
 </body>
