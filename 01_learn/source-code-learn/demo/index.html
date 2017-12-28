@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var jQuery = function (selector, context) {
+        // jQuery框架分隔作用域的处理
+        return new jQuery.prototype.init();
+    }
+    jQuery.prototype = {
+        init: function () {
+            return this;
+        },
+        name: function () {
+            return this.age;
+        },
+        age: 20
+    }
+    // 通过原型传递把jq的原型赋值给了init原型
+    jQuery.prototype.init.prototype = jQuery.prototype;
+
+    console.log(jQuery().name());
+
+    // 通过return this 实现链式调用
+
+    // extend接口实现
+    // jQuery.extend = jQuery.fn.extend = function () {
+    //
+    // }
+
+</script>
+</body>
+</html>

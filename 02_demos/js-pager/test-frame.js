@@ -6,8 +6,6 @@
  */
 ;
 (function (window, document) {
-    var isJehorn = false;
-
     function JehornFactory(subType, superType) {
         if (typeof JehornFactory[superType] === 'function') {
             var F = function () { };
@@ -28,6 +26,9 @@
         // Version - Have to override
         getVersion: function () {
             return new Error('ERR! Abstract method can not be used!');
+        },
+        getType: function () {
+            return new Error('ERR! Abstract method can not be used!');
         }
     }
 
@@ -39,9 +40,13 @@
         // Version - Have to override
         getVersion: function () {
             return new Error('ERR! Abstract method can not be used!');
+        },
+        getType: function () {
+            return new Error('ERR! Abstract method can not be used!');
         }
     }
 
+    // Common methods
     var Utils = new (function () {
         // 循环设置默认属性 注意需要设置原始参数为false等的必须使用excluded
         // @param {Object} options 传入属性对象
@@ -65,10 +70,21 @@
 
             return opts;
         }
+
     })();
 
-    var Jehorn = {
+    // // Private Tools object
+    var _Tools = {
+
+    }
+
+    // TODO: add new Tools extends and prototype on here.
+
+
+    // Private Components object
+    var _Components = {
         Pager: function (options) {
+            JehornFactory.Components.call(this);
             if (this instanceof Pager) {
                 this.version = '1.0.0';
                 this.options = options || {};
@@ -79,23 +95,41 @@
         }
     }
 
-    JehornFactory(Jehorn.Pager, 'Tools');
-    Jehorn.Pager.prototype = {
+    // Component - Pager
+    JehornFactory(_Components.Pager, 'Components');
+    _Components.Pager.prototype = {
         _DefaultOptions:  function () {
-            this.isJehorn = false;
+
         },
         _initOptions: function () {
-            var _default = new _DefaultOptions();
+            var _default = new this._DefaultOptions();
 
-            console.log(Utils);
 
         },
         getVersion: function () {
             return this.version;
+        },
+        getType: function () {
+            return this.type;
         }
     }
 
-    var _export = function (type, fn) {
+    // TODO: add new Components extends and prototype on here.
+
+
+    // subclasses exposed
+    var Jehorn = {};
+    // TODO: when some new super classes added, push them into this array.
+    var Classes = [_Tools, _Components];
+    (function InterfaceExposed(supclasses) {
+        for (var i = supclasses.length - 1; i >= 0; i--) {
+            for (var sup in supclasses[i]) {
+                Jehorn[sup] = supclasses[i][sup];
+            }
+        }
+    })(Classes);
+
+    function _export(type, fn) {
         if (typeof module != 'undefined' && module.exports) {
             module.exports = fn;
         } else if (typeof define == 'function' && define.amd) {
@@ -108,5 +142,7 @@
     for (var type in Jehorn) {
         _export(type, Jehorn[type]);
     }
+
+    _export('Jehorn', Jehorn);
 
 })(window, document);
