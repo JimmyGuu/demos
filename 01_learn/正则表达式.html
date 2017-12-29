@@ -69,6 +69,62 @@
     console.log(/a{1,3}/.exec(str_7)); // ["aa", index: 1, input: "caandy"]
     console.log(/a{1,3}/.exec(str_8)); // ["aaa", index: 1, input: "caaandy"]
     console.log(/a{1,3}/.exec(str_9)); // ["aaa", index: 1, input: "caaaaaaandy"]
+
+
+    let str_10 = 'test.i.ng',
+        str_11 = 'xx.com/abc?a=\\b';
+    console.log(/[a-z.]+/.exec(str_10)); // ["test.i.ng", index: 0, input: "test.i.ng"]
+    console.log(/[\w.]+/.exec(str_10)); // ["test.i.ng", index: 0, input: "test.i.ng"]
+    console.log(/[\w.]+/.exec(str_11)); // ["xx.com", index: 0, input: "xx.com/abc?a=\b"]
+    console.log(/[\w./]+/.exec(str_11)); // ["xx.com/abc", index: 0, input: "xx.com/abc?a=\b"]
+    console.log(/[\w.\/]+/.exec(str_11)); // ["xx.com/abc", index: 0, input: "xx.com/abc?a=\b"]
+    console.log(/[\w.\/?=]+/.exec(str_11)); // ["xx.com/abc?a=", index: 0, input: "xx.com/abc?a=\b"]
+    console.log(/[\w.\\/?=]+/.exec(str_11)); // ["xx.com/abc?a=\b", index: 0, input: "xx.com/abc?a=\b"]
+
+
+    let str_12 = 'brisket';
+    console.log(/[^a-c]/.exec(str_12)); // ["r", index: 1, input: "brisket"]
+    console.log(/[^a-c]+/.exec(str_12)); // ["risket", index: 1, input: "brisket"]
+
+    console.warn('====================');
+
+
+    let str_13 = 'moon';
+
+    console.log(/\bm/.exec(str_13)); // ["m", index: 0, input: "moon"]
+    console.log(/oo\b/.exec(str_13)); // null
+    console.log(/oon\b/.exec(str_13)); // ["oon", index: 1, input: "moon"]
+    console.log(/\w\b\w/.exec(str_13)); // null
+
+    let str_14 = 'noonday',
+        str_15 = 'possibly yesterday';
+
+    console.log(/\B../.exec(str_14)); // ["oo", index: 1, input: "noonday"]
+    console.log(/y\B/.exec(str_15)); // ["y", index: 9, input: "possibly yesterday"]
+
+    let str_16 = 'B2 is the suite number 3dm.';
+
+    console.log(/\d/.exec(str_16)); // ["2", index: 1, input: "B2 is the suite number 3dm."]
+
+    console.log(/\D/.exec(str_16)); // ["B", index: 0, input: "B2 is the suite number 3dm."]
+
+
+    console.log(/\f/.exec('123\f')); // ["", index: 3, input: "123"]
+    console.log(/\n/.exec('123\n')); // ["↵", index: 3, input: "123↵"]
+    console.log(/\r/.exec('123\r')); // ["", index: 3, input: "123"]
+    console.log(/\s\w*/.exec('foo bar')); // [" bar", index: 3, input: "foo bar"]
+    console.log(/\S\w*/.exec('foo bar')); // ["foo", index: 0, input: "foo bar"]
+
+
+
+    console.log(/\w/.exec('apple')); // ["a", index: 0, input: "apple"]
+    console.log(/\w/.exec('$5.28')); // ["5", index: 1, input: "$5.28"]
+    console.log(/\w*/.exec('3D.')); // ["3D", index: 0, input: "3D."]
+    console.log(/\W/.exec('12%')); // ["%", index: 2, input: "12%"]
+
+    console.log(/apple(,)\sorange\1/.exec('apple, orange, cherry, peach'));
+    // ["apple, orange,", ",", index: 0, input: "apple, orange, cherry, peach"]
+
 </script>
 </body>
 </html>
