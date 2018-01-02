@@ -6,6 +6,15 @@
 </head>
 <body>
 
+<p>
+    Enter your phone number (with area code) and then click 'SUBMIT'. <br>
+    The expected format is like ###-###-####.
+</p>
+<form action="javascript: void(0);">
+    <input type="text" id="phone">
+    <button type="submit" onclick="testInfo(document.getElementById('phone'));">SUBMIT</button>
+</form>
+
 <script type="text/javascript">
     'use strict'
     // 构建正则表达式
@@ -122,9 +131,159 @@
     console.log(/\w*/.exec('3D.')); // ["3D", index: 0, input: "3D."]
     console.log(/\W/.exec('12%')); // ["%", index: 2, input: "12%"]
 
-    console.log(/apple(,)\sorange\1/.exec('apple, orange, cherry, peach'));
+    console.log('%c about \\n use: ', 'color: green;font-weight: bold;');
+    console.log(/apple(,)\sorange\1/.exec('apple, orange, cherry, peach,'));
     // ["apple, orange,", ",", index: 0, input: "apple, orange, cherry, peach"]
+    console.log(/apple(,)(\s\w+\1)*\spen(\+)\spager\3/.exec('apple, orange, cherry, peach, pen+ pager+'));
+    // ["apple, orange, cherry, peach, pen+ pager+", ",", " peach,", "+", index: 0, input: "apple, orange, cherry, peach, pen+ pager+"]
+
+
+    let str_17 = 'Open Chapter 4.3, paragraph 6';
+    console.log(/Chapter (\d+)\.\d*/.exec(str_17)); // ["Chapter 4.3", "4", index: 5, input: "Open Chapter 4.3, paragraph 6"]
+
+
+    const myRe = /d(b+)d/g;
+    let str_18 = 'cdbbdbsbz';
+    let myArray = myRe.exec(str_18);
+    console.log(myArray); // ["dbbd", "bb", index: 1, input: "cdbbdbsbz"]
+
+    let myArray_2 = /d(b+)d/g.exec(str_18);
+    console.log(myArray); // ["dbbd", "bb", index: 1, input: "cdbbdbsbz"]
+
+    const myRe_2 = new RegExp('d(b+)d', 'g');
+    let myArray_3 = myRe_2.exec(str_18);
+    console.log(myArray_3); // ["dbbd", "bb", index: 1, input: "cdbbdbsbz"]
+
+    let myArray_4 = /d(b+)d/g.exec(str_18);
+    console.log('The value of lastIndex is ' + /d(b+)d/g.lastIndex); // The value of lastIndex is 0
+
+
+    const re_11 = /(\w+)\s(\w+)/;
+    let str_19 = 'Jehorn Gu';
+    let str_19_r = str_19.replace(re_11, '$2, $1');
+    console.log(str_19_r); // Gu, Jehorn
+
+    const re_12 = /\w+\s/g;
+    let str_20 = 'fee fi fo fum';
+    let myArray_5 = str_20.match(re_12);
+    console.log(myArray_5); //  ["fee ", "fi ", "fo "]
+
+
+    // 姓名字符串包含多个空格和制表符
+    // 而且可能在姓氏和名字之间有多个空格
+    let names = 'Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ; Chris Hand ';
+
+    let output = ['---------- Original String\n', names + '\n'];
+
+    // 准备两个正则表达式和数组模型
+    // 将字符串分隔到数组元素中
+
+    // 正则: 可能空格 分号 空格
+    let pattern = /\s*;\s*/;
+
+    // 将字符串拆分成上面模式分隔的部分
+    // 将这些片段存储在名为nameList的数组中
+    let nameList = names.split(pattern);
+
+    // 新的正则: 一个或多个字符 空格 字符
+    // 使用圆括号来"记住"匹配的部分
+    // 记住的部分将在后面使用
+    pattern = /(\w+)\s+(\w)/;
+
+    // 用于存放被处理后名字的数组
+    let bySurnameList = [];
+
+    // 显示名称数组并将用逗号分隔的名字填充到新的数组
+    // 替换方法删除了所有匹配到的，并且替换为记住的字符串的第一部分
+    // 随后是逗号，最后是记住字符串的第二部分
+    output.push('---------- After Split by Regular Expression');
+
+    let i, len;
+    for (i = 0, len = nameList.length; i < len; i++) {
+        output.push(nameList[i]);
+        bySurnameList[i] = nameList[i].replace(pattern, '$2, $1');
+    }
+
+    // 显示新数组
+    output.push('---------- Names Reversed');
+    for (i = 0, len = bySurnameList.length; i < len; i++) {
+        output.push(bySurnameList[i]);
+    }
+
+    // 根据姓氏排序 然后显示排好序的数组
+    bySurnameList.sort();
+    output.push('---------- Sorted');
+    for (i = 0, len = bySurnameList.length; i < len; i++) {
+        output.push(bySurnameList[i]);
+    }
+
+    output.push('---------- End');
+
+    console.log(output.join('\n'));
+    // join() 方法用于把数组中的所有元素放入一个字符串。
+    // 元素是通过指定的分隔符进行分隔的。
+    // arrayObject.join(separator);
+
+
+
+    const re_phone = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
+    function testInfo(phoneInput) {
+        let OK = re_phone.exec(phoneInput.value),
+            OK_str;
+
+        console.log(OK);
+        OK_str = phoneInput.value + ' isn\'t a phone number with area code!';
+        if (OK) OK_str = 'Thanks, ur phone number is ' + OK[0];
+
+        window.alert(OK_str);
+    }
+
 
 </script>
+
+<!--<table style="text-align: left;">-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th>对象</th>-->
+        <!--<th>属性或索引</th>-->
+        <!--<th>描述</th>-->
+        <!--<th>在例子中对应的值</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr>-->
+        <!--<td rowspan="4"><code>myArray</code></td>-->
+        <!--<td></td>-->
+        <!--<td>匹配到的字符串和所有被记住的子字符串。</td>-->
+        <!--<td><code>["dbbd", "bb"]</code></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><code>index</code></td>-->
+        <!--<td>在输入的字符串中匹配到的以0开始的索引值。</td>-->
+        <!--<td>1</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><code>input</code></td>-->
+        <!--<td>初始字符串。</td>-->
+        <!--<td><code>"cdbbdbsbz"</code></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><code>[0]</code></td>-->
+        <!--<td>匹配到的所有字符串（并不是匹配后记住的字符串）。匹配到的最后一个字符索引。</td>-->
+        <!--<td><code>"dbbd"</code></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td rowspan="2"><code>myRe</code></td>-->
+        <!--<td><code>'lastIndex'</code></td>-->
+        <!--<td>下一个匹配的索引值（这个属性只有在使用g参数时可用）。</td>-->
+        <!--<td><code>5</code></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><code>'source'</code></td>-->
+        <!--<td>模式文本。在正则表达式创建时更细，不执行。</td>-->
+        <!--<td><code>d(b+)d</code></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
 </body>
 </html>

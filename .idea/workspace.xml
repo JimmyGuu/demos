@@ -20,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6474">
-              <caret line="344" column="34" lean-forward="false" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
+            <state relative-caret-position="129">
+              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding>
                 <element signature="e#3795#4077#0" expanded="false" />
                 <element signature="e#4152#4667#0" expanded="false" />
@@ -51,7 +51,7 @@
       <file leaf-file-name="jquery.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/src/jquery.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76206">
+            <state relative-caret-position="26">
               <caret line="2960" column="24" lean-forward="false" selection-start-line="2960" selection-start-column="24" selection-end-line="2960" selection-end-column="24" />
               <folding>
                 <element signature="e#386#1016#0" expanded="false" />
@@ -90,8 +90,8 @@
       <file leaf-file-name="正则表达式.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_learn/正则表达式.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="127" column="9" lean-forward="true" selection-start-line="127" selection-start-column="9" selection-end-line="127" selection-end-column="9" />
+            <state relative-caret-position="286">
+              <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -100,7 +100,7 @@
       <file leaf-file-name="vue.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/node_modules/vue/dist/vue.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-9">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -128,6 +128,9 @@
       <find>jQuery.fn.init</find>
       <find>options</find>
       <find>src</find>
+      <find>re</find>
+      <find>re_8</find>
+      <find>apple</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,6 +156,7 @@
         <option value="$PROJECT_DIR$/02_demos/js-pager/test-frame.html" />
         <option value="$PROJECT_DIR$/01_learn/source-code-learn/jquery.js" />
         <option value="$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html" />
+        <option value="$USER_HOME$/Desktop/index.html" />
         <option value="$PROJECT_DIR$/01_learn/正则表达式.html" />
       </list>
     </option>
@@ -175,11 +179,11 @@
     <handled-path value="$PROJECT_DIR$/02_demos/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="132" />
-    <option name="y" value="403" />
-    <option name="width" value="1045" />
-    <option name="height" value="527" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="513" />
+    <option name="y" value="56" />
+    <option name="width" value="1378" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -196,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,24 +207,21 @@
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/index.html" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -270,17 +270,18 @@
       <workItem from="1514422790243" duration="16550000" />
       <workItem from="1514509120145" duration="3077000" />
       <workItem from="1514525383223" duration="5044000" />
+      <workItem from="1514858341881" duration="16039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83852000" />
+    <option name="totallyTimeSpent" value="99891000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="132" y="403" width="1045" height="527" extended-state="0" />
+    <frame x="513" y="56" width="1378" height="807" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47337964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22834067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -330,25 +331,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6344">
-          <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
-          <folding>
-            <element signature="e#3795#4077#0" expanded="false" />
-            <element signature="e#4152#4667#0" expanded="false" />
-            <element signature="e#4741#4987#0" expanded="false" />
-            <element signature="e#5433#6223#0" expanded="false" />
-            <element signature="e#8377#8474#0" expanded="false" />
-            <element signature="e#8528#9024#0" expanded="false" />
-            <element signature="e#9061#9252#0" expanded="false" />
-            <element signature="e#9289#9557#0" expanded="false" />
-            <element signature="e#9594#9866#0" expanded="false" />
-            <element signature="e#10972#11704#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -686,33 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6474">
-          <caret line="344" column="34" lean-forward="false" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
-          <folding>
-            <element signature="e#3795#4077#0" expanded="false" />
-            <element signature="e#4152#4667#0" expanded="false" />
-            <element signature="e#4741#4987#0" expanded="false" />
-            <element signature="e#5433#6223#0" expanded="false" />
-            <element signature="e#8377#8474#0" expanded="false" />
-            <element signature="e#8528#9024#0" expanded="false" />
-            <element signature="e#9061#9252#0" expanded="false" />
-            <element signature="e#9289#9557#0" expanded="false" />
-            <element signature="e#9594#9866#0" expanded="false" />
-            <element signature="e#10972#11704#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-base-on-frame.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -722,15 +677,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/node_modules/vue/dist/vue.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-9">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/src/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76206">
+        <state relative-caret-position="26">
           <caret line="2960" column="24" lean-forward="false" selection-start-line="2960" selection-start-column="24" selection-end-line="2960" selection-end-column="24" />
           <folding>
             <element signature="e#386#1016#0" expanded="false" />
@@ -755,18 +718,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html">
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        <state relative-caret-position="26">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding>
+            <element signature="e#3795#4077#0" expanded="false" />
+            <element signature="e#4152#4667#0" expanded="false" />
+            <element signature="e#4741#4987#0" expanded="false" />
+            <element signature="e#5433#6223#0" expanded="false" />
+            <element signature="e#8377#8474#0" expanded="false" />
+            <element signature="e#8528#9024#0" expanded="false" />
+            <element signature="e#9061#9252#0" expanded="false" />
+            <element signature="e#9289#9557#0" expanded="false" />
+            <element signature="e#9594#9866#0" expanded="false" />
+            <element signature="e#10972#11704#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="40" column="135" lean-forward="false" selection-start-line="40" selection-start-column="135" selection-end-line="40" selection-end-column="135" />
+          <folding>
+            <element signature="e#430#488#0" expanded="false" />
+            <element signature="e#504#545#0" expanded="false" />
+            <element signature="e#571#609#0" expanded="false" />
+            <element signature="e#620#694#0" expanded="false" />
+            <element signature="e#746#810#0" expanded="false" />
+            <element signature="e#835#871#0" expanded="false" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2494#2696#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/正则表达式.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="127" column="9" lean-forward="true" selection-start-line="127" selection-start-column="9" selection-end-line="127" selection-end-column="9" />
+        <state relative-caret-position="286">
+          <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
           <folding />
         </state>
       </provider>
