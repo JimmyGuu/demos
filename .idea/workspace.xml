@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/01_learn/正则表达式.html" afterPath="$PROJECT_DIR$/01_learn/正则表达式.html" />
+      <change beforePath="$PROJECT_DIR$/01_learn/react-learn/prev/index.html" afterPath="$PROJECT_DIR$/01_learn/react-learn/prev/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,92 +17,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01_learn/react-learn/prev/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="385">
+              <caret line="70" column="498" lean-forward="false" selection-start-line="70" selection-start-column="498" selection-end-line="70" selection-end-column="498" />
               <folding>
-                <element signature="e#3795#4077#0" expanded="false" />
-                <element signature="e#4152#4667#0" expanded="false" />
-                <element signature="e#4741#4987#0" expanded="false" />
-                <element signature="e#5433#6223#0" expanded="false" />
-                <element signature="e#8377#8474#0" expanded="false" />
-                <element signature="e#8528#9024#0" expanded="false" />
-                <element signature="e#9061#9252#0" expanded="false" />
-                <element signature="e#9289#9557#0" expanded="false" />
-                <element signature="e#9594#9866#0" expanded="false" />
-                <element signature="e#10972#11704#0" expanded="false" />
+                <element signature="n#style#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-pager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/src/jquery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="2960" column="24" lean-forward="false" selection-start-line="2960" selection-start-column="24" selection-end-line="2960" selection-end-column="24" />
-              <folding>
-                <element signature="e#386#1016#0" expanded="false" />
-                <element signature="e#391#461#0" expanded="false" />
-                <element signature="e#81870#81891#0" expanded="false" />
-                <element signature="e#82086#83936#0" expanded="false" />
-                <element signature="e#84135#84282#0" expanded="false" />
-                <element signature="e#258230#258326#0" expanded="false" />
-                <element signature="e#258348#259818#0" expanded="false" />
-                <element signature="e#259839#262675#0" expanded="false" />
-                <element signature="e#262818#263406#0" expanded="false" />
-                <element signature="e#263865#264194#0" expanded="false" />
-                <element signature="e#264359#265808#0" expanded="false" />
-                <element signature="e#265832#266308#0" expanded="false" />
-                <element signature="e#266349#266426#0" expanded="false" />
-                <element signature="e#266523#266601#0" expanded="false" />
-                <element signature="e#267053#267127#0" expanded="false" />
-                <element signature="e#267417#267479#0" expanded="false" />
-                <element signature="e#267651#267795#0" expanded="false" />
-                <element signature="e#267975#268014#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="806">
-              <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="正则表达式.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/01_learn/正则表达式.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/node_modules/vue/dist/vue.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -158,6 +83,7 @@
         <option value="$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html" />
         <option value="$USER_HOME$/Desktop/index.html" />
         <option value="$PROJECT_DIR$/01_learn/正则表达式.html" />
+        <option value="$PROJECT_DIR$/01_learn/react-learn/prev/index.html" />
       </list>
     </option>
   </component>
@@ -179,9 +105,9 @@
     <handled-path value="$PROJECT_DIR$/02_demos/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="513" />
-    <option name="y" value="56" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="185" />
+    <option name="y" value="78" />
     <option name="width" value="1378" />
     <option name="height" value="807" />
   </component>
@@ -200,6 +126,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,12 +135,28 @@
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="react-learn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="react-learn" type="462c0819:PsiDirectoryNode" />
+              <item name="prev" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,15 +214,16 @@
       <workItem from="1514422790243" duration="16550000" />
       <workItem from="1514509120145" duration="3077000" />
       <workItem from="1514525383223" duration="5044000" />
-      <workItem from="1514858341881" duration="16039000" />
+      <workItem from="1514858341881" duration="16562000" />
+      <workItem from="1514941130769" duration="8395000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99891000" />
+    <option name="totallyTimeSpent" value="108809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="513" y="56" width="1378" height="807" extended-state="1" />
+    <frame x="185" y="78" width="1378" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22834067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -331,13 +276,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -675,9 +613,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="40" column="135" lean-forward="false" selection-start-line="40" selection-start-column="135" selection-end-line="40" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/正则表达式.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="237" column="28" lean-forward="true" selection-start-line="237" selection-start-column="28" selection-end-line="237" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/node_modules/vue/dist/vue.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -685,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/source-code-learn/demo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        <state relative-caret-position="281">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -728,8 +680,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="-3276">
+          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
             <element signature="e#3795#4077#0" expanded="false" />
             <element signature="e#4152#4667#0" expanded="false" />
@@ -745,28 +697,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/index.html">
+    <entry file="file://$PROJECT_DIR$/01_learn/react-learn/prev/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="40" column="135" lean-forward="false" selection-start-line="40" selection-start-column="135" selection-end-line="40" selection-end-column="135" />
+        <state relative-caret-position="385">
+          <caret line="70" column="498" lean-forward="false" selection-start-line="70" selection-start-column="498" selection-end-line="70" selection-end-column="498" />
           <folding>
-            <element signature="e#430#488#0" expanded="false" />
-            <element signature="e#504#545#0" expanded="false" />
-            <element signature="e#571#609#0" expanded="false" />
-            <element signature="e#620#694#0" expanded="false" />
-            <element signature="e#746#810#0" expanded="false" />
-            <element signature="e#835#871#0" expanded="false" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#2494#2696#0" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/正则表达式.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
