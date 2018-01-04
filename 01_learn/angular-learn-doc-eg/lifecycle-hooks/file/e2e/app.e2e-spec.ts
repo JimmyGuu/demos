@@ -175,7 +175,7 @@ describe('Lifecycle hooks', function () {
       return resetCounterButtonEle.click();
     }).then(function() {
       expect(textEle.getText()).toContain('Counter = 0');
-      expect(logEles.count()).toBe(7, 'should now have 7 log entries - 3 prev + 1 reset + 2 destroy + 1 init');
+      expect(logEles.count()).toBe(7, 'should now have 7 log entries - 3 demo + 1 reset + 2 destroy + 1 init');
     });
   });
 });

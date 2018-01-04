@@ -1837,15 +1837,15 @@ intellisense.annotate(jQuery.fn, {
   },
   'next adjacent': function() {
     /// <signature>
-    ///   <summary>Selects all next elements matching "next" that are immediately preceded by a sibling "prev".</summary>
-    ///   <param name="prev" type="String">Any valid selector.</param>
+    ///   <summary>Selects all next elements matching "next" that are immediately preceded by a sibling "demo".</summary>
+    ///   <param name="demo" type="String">Any valid selector.</param>
     ///   <param name="next" type="String">A selector to match the element that is next to the first selector.</param>
     /// </signature>
   },
   'next siblings': function() {
     /// <signature>
-    ///   <summary>Selects all sibling elements that follow after the "prev" element, have the same parent, and match the filtering "siblings" selector.</summary>
-    ///   <param name="prev" type="String">Any valid selector.</param>
+    ///   <summary>Selects all sibling elements that follow after the "demo" element, have the same parent, and match the filtering "siblings" selector.</summary>
+    ///   <param name="demo" type="String">Any valid selector.</param>
     ///   <param name="siblings" type="String">A selector to filter elements that are the following siblings of the first selector.</param>
     /// </signature>
   },

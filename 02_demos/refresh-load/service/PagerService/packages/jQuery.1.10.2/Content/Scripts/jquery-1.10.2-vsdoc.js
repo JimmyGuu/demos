@@ -3354,7 +3354,7 @@ jQuery.prototype.children = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -3484,7 +3484,7 @@ jQuery.prototype.contents = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -4950,7 +4950,7 @@ jQuery.prototype.next = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -4983,7 +4983,7 @@ jQuery.prototype.nextAll = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5021,7 +5021,7 @@ jQuery.prototype.nextUntil = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5359,7 +5359,7 @@ jQuery.prototype.parent = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5392,7 +5392,7 @@ jQuery.prototype.parents = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5430,7 +5430,7 @@ jQuery.prototype.parentsUntil = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5550,7 +5550,7 @@ jQuery.prototype.prev = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5583,7 +5583,7 @@ jQuery.prototype.prevAll = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -5621,7 +5621,7 @@ jQuery.prototype.prevUntil = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}
@@ -6160,7 +6160,7 @@ jQuery.prototype.siblings = function( until, selector ) {
 				ret = jQuery.unique( ret );
 			}
 
-			// Reverse order for parents* and prev-derivatives
+			// Reverse order for parents* and demo-derivatives
 			if ( rparentsprev.test( name ) ) {
 				ret = ret.reverse();
 			}

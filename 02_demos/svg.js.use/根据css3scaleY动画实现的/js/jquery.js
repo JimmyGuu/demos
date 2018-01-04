@@ -8101,7 +8101,7 @@ function ajaxConvert( s, response ) {
 		// There's only work to do if current dataType is non-auto
 		if ( current !== "*" ) {
 
-			// Convert response if prev dataType is non-auto and differs from current
+			// Convert response if demo dataType is non-auto and differs from current
 			if ( prev !== "*" && prev !== current ) {
 
 				// Seek a direct converter
@@ -8115,7 +8115,7 @@ function ajaxConvert( s, response ) {
 						tmp = conv2.split(" ");
 						if ( tmp[ 1 ] === current ) {
 
-							// If prev can be converted to accepted input
+							// If demo can be converted to accepted input
 							conv = converters[ prev + " " + tmp[ 0 ] ] ||
 								converters[ "* " + tmp[ 0 ] ];
 							if ( conv ) {
@@ -8151,7 +8151,7 @@ function ajaxConvert( s, response ) {
 				}
 			}
 
-			// Update prev for next iteration
+			// Update demo for next iteration
 			prev = current;
 		}
 	}
