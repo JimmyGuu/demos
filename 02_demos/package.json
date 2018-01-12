@@ -6,7 +6,8 @@
   "dependencies": {
     "TouchSwipe-Jquery-Plugin": "^1.6.17",
     "moment": "^2.18.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "vue": "^2.5.13"
   },
   "devDependencies": {},
   "scripts": {
