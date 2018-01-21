@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagination</title>
+    <link rel="stylesheet" href="./my-pager.css">
 </head>
 <body>
 
+<div class="pager-wrapper"></div>
 <script type="text/javascript" src="https://cdn.bootcss.com/require.js/2.3.5/require.js" defer async="true" data-main="test-frame.js"></script>
 <script type="text/javascript"></script>
 <script type="text/javascript" src="my-pager.js"></script>
 <script type="text/javascript">
-    console.log(Test);
+    window.onload = function () {
+        var pager = myPagination('.pager-wrapper', {
+            pageSize: 5,
+            pageCurrent: 5,
+            pageRange: 6,
+            total: 50,
+            isGo: true,
+            tipPosition: 'left',
+            isTip: true,
+            isZero: false,
+            isPage: true
+        });
+
+        console.log(pager);
+        // pager.render();
+        //pager.clear();
+        //pager.destroy()
+    }
+
 </script>
 </body>
 </html>

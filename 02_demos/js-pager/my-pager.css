@@ -1,0 +1,8 @@
+.pager-btn {
+    margin-right: 10px;
+    display: inline-block;
+}
+.pager-btn.active {
+    background: #ff5f00;
+    color: #fff;
+}
