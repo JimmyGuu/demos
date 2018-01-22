@@ -10,25 +10,32 @@
 <div class="pager-wrapper"></div>
 <script type="text/javascript" src="https://cdn.bootcss.com/require.js/2.3.5/require.js" defer async="true" data-main="test-frame.js"></script>
 <script type="text/javascript"></script>
-<script type="text/javascript" src="my-pager.js"></script>
+<script type="text/javascript" src="my-pagination.js"></script>
 <script type="text/javascript">
     window.onload = function () {
         var pager = myPagination('.pager-wrapper', {
+            isDebug: true,
             pageSize: 5,
-            pageCurrent: 5,
-            pageRange: 6,
-            total: 50,
+            pageCurrent: 1,
+            pageRange: 5,
+            total: 25,
             isGo: true,
             tipPosition: 'left',
             isTip: true,
-            isZero: false,
-            isPage: true
+            isPage: true,
+            callback: function (data) {
+                console.log(data);
+                console.log('请求接口获取第' + data.pageCurrent + '页的数据');
+                console.log('请求失败可以调用"pager.prev()"返回上一页视图');
+            }
         });
 
         console.log(pager);
         // pager.render();
         //pager.clear();
-        //pager.destroy()
+        //pager.destroy();
+        // pager.prev();
+        // pager.next();
     }
 
 </script>

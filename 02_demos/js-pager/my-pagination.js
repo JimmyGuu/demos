@@ -1,4 +1,10 @@
-
+/*!
+ * My Pagination
+ * A simple plugin of javascript pagination.
+ * @author Jehorn(gerardgu@outlook.com)
+ * @version 1.0.0
+ * 1. 首先需要获取数据总数
+ */
 ;(function (global, factory) {
     'use strict';
 
@@ -17,7 +23,7 @@
 }(typeof window !== 'undefined' ? window : this, function (window, noGlobal) {
     'use strict';
 
-    var _isDebug = true;
+    var _isDebug = false;
 
     var MyPagination = function (selector, config) {
         return new MyPagination.prototype._init(selector, config);
@@ -51,6 +57,7 @@
         IS_GO: false,
         IS_TIP: true,
         IS_PAGE: true,
+        IS_DEBUG: false,
         TIP_POSITION: 'left',
         TIP_POSITIONS: ['left', 'right'],
         CONTAINER_CLASSNAME: 'my-pagination-contianer',
@@ -202,19 +209,68 @@
             }
         }
 
+        tools.clearDOM = function (ele) {
+            while(ele.hasChildNodes()) {
+                ele.removeChild(ele.firstChild);
+            }
+        }
+
         return tools;
     })();
+
+    var _flux = {
+        state: {
+            counts: 0
+        },
+        setter: function (key, val) {
+            if (!key) return;
+            _utils.l('更新"' + key + '"的值为"' + val + '".');
+            this.state[key] = val;
+        },
+        getter: function (key) {
+            if (!key) return;
+            _utils.l('获取"' + key + '"的值, 当前值为"' + this.state[key] + '".');
+            return this.state[key];
+        },
+        clear: function (key) {
+            if (!key) return;
+            _utils.l('清除了"' + key + '"的值.');
+            this.state[key] = '';
+        }
+    };
 
     MyPagination.prototype = {
         render: function (current) {
             current = _utils.isPosInteger('' + current) ?  +current : _consts.PAGE_CURRENT;
+            if (current > this.totalPage) current = this.totalPage;
+            if (current < this.firstPage) current = this.firstPage;
+
             this.options.pageCurrent = current;
             this.clear();
             this.doms = this._renderDOM(this.doms);
             this._bindEvent();
+            this.options.callback({
+                pageCurrent: current,
+                pageTotal: this.totalPage,
+                pageSize: this.options.pageSize
+            });
         },
         clear: function () {
-            this.options.wrapper.innerHTML = '';
+            this.doms.goInput.value = '';
+            _utils.clearDOM(this.doms.pageBox);
+            _utils.clearDOM(this.options.wrapper);
+        },
+        go: function (current) {
+            if (!current) return;
+            this.render(current);
+        },
+        prev: function () {
+            var _prevPage = this.options.pageCurrent - 1;
+            this.render(_prevPage);
+        },
+        next: function () {
+            var _nextPage = this.options.pageCurrent + 1;
+            this.render(_nextPage);
         },
         _getWrapper: function (selector) {
             try {
@@ -251,8 +307,11 @@
             opts.isGo = _utils.isDefault(opts.isGo, _consts.IS_GO);
             opts.isTip = _utils.isDefault(opts.isTip, _consts.IS_TIP);
             opts.isPage = _utils.isDefault(opts.isPage, _consts.IS_PAGE);
+            opts.isDebug = _utils.isDefault(opts.isDebug, _consts.IS_DEBUG);
 
             opts.tipPosition = _utils.getTextFromArr(opts.tipPosition, _consts.TIP_POSITIONS) ? opts.tipPosition : _consts.TIP_POSITIONS[0];
+
+            opts.callback = typeof opts.callback === 'function' ? opts.callback : function () { };
 
             return opts;
         },
@@ -344,9 +403,10 @@
 
             // Is display the tip text and it's position.
             if (options.isTip) {
-                options.tipText = options.tipText.replace(_regs.get_tip_crt, pages.current);
-                options.tipText = options.tipText.replace(_regs.get_tip_total, pages.total);
-                doms.tip.innerHTML = options.tipText;
+                var _tipText = options.tipText;
+                _tipText = _tipText.replace(_regs.get_tip_crt, pages.current);
+                _tipText = _tipText.replace(_regs.get_tip_total, pages.total);
+                doms.tip.innerHTML = _tipText;
 
                 switch (options.tipPosition) {
                     case _consts.TIP_POSITIONS[0]:
@@ -410,8 +470,8 @@
         },
         _mathPage: function () {
             var options = this.options;
-            var totalPage = Math.ceil(options.total / options.pageSize),
-                firstPage = 1,
+            var totalPage = this.totalPage = Math.ceil(options.total / options.pageSize),
+                firstPage = this.firstPage = 1,
                 pageRange = options.pageRange,
                 current = options.pageCurrent,
                 isPage = options.isPage;
@@ -488,23 +548,41 @@
                 }
             }
 
+            var _arr = getInsidePage(firstPage + 1, totalPage - 1);
+            pageBtnObj.inside = _arr;
+
             return pageBtnObj;
         },
         _bindEvent: function () {
-            _utils.bindClicks([
-                this.doms.prevBtn,
-                this.doms.nextBtn,
-                this.doms.firstBtn,
-                this.doms.lastBtn
-            ], this._changeEvent);
+            var self = this;
+            var _counts = _flux.getter('counts');
+
+            if (_counts < 1) {
+                this._changeEvent = function (e) {
+                    var _reg = new RegExp('\\s' + _consts.BTN_CLASSNAME + '-(\\d+)', '');
+                    var page = _reg.exec(e.currentTarget.className)[1];
+                    self.render(page);
+                    _utils.l(page);
+                    return page;
+                }
+                this._goEvent = function (e) {
+                    var page = self.doms.goInput.value;
+                    self.go(page);
+                }
+
+                _utils.bindClicks([
+                    this.doms.prevBtn,
+                    this.doms.nextBtn,
+                    this.doms.firstBtn,
+                    this.doms.lastBtn
+                ], this._changeEvent);
+
+                _utils.bindClicks(this.doms.goBtn, this._goEvent);
+            }
+
             _utils.bindClicks(this.doms.pageBtns, this._changeEvent);
-        },
-        _changeEvent: function (e) {
-            var _reg = new RegExp('\\s' + _consts.BTN_CLASSNAME + '-(\\d+)', '');
-            var page = _reg.exec(e.currentTarget.className)[1];
-            _utils.l(page);
-            console.log(this);
-            return page;
+
+            _flux.setter('counts', _counts + 1);
         }
     };
 
@@ -513,6 +591,7 @@
 
         config.wrapper = this._getWrapper(selector);
         this.options = this._configInit(config);
+        _isDebug = this.options.isDebug;
         this._create(this.options);
         this.render(this.options.pageCurrent);
 
@@ -524,6 +603,7 @@
     // Alias
     init.prototype.init = MyPagination.prototype.render;
     init.prototype.destroy = MyPagination.prototype.clear;
+    init.prototype.set = MyPagination.prototype.go;
 
     // Browser
     if (!noGlobal) window.myPagination = MyPagination;
