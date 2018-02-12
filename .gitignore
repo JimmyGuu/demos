@@ -7,3 +7,6 @@
 *.iml
 out
 gen
+.idea/
+.gitignore
+.vs/

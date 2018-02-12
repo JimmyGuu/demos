@@ -1,0 +1,7 @@
+<input type="text" [(ngModel)]="name" />
+<button type="button" (click)="addHero()">add</button>
+<button type="button" (click)="removeHero()">remove</button>
+<button type="button" (click)="resetHero()">reset</button>
+<div *ngFor="let hero of heroes" appSpy class="heroes">
+  {{hero.id}}: {{hero.name}}
+</div>
