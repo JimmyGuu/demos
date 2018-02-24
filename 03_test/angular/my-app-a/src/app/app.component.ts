@@ -9,11 +9,11 @@ import {OnChangesComponent} from "./on-changes.component";
 })
 export class AppComponent implements AfterViewChecked, AfterViewInit, OnInit{
   title = 'app';
-  private hero: Hero;
-  private power: string;
+  public hero: Hero;
+  public power: string;
 
-  private prevName:string = '';
-  private comment: string = '';
+  public prevName = '';
+  public comment = '';
 
   @ViewChild(OnChangesComponent) viewChild: OnChangesComponent;
   // @ContentChild(OnChangesComponent) onChangesComponent: OnChangesComponent;
@@ -46,7 +46,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit, OnInit{
   }
 
   private doSomething() {
-    let c = this.viewChild.name.length > 10 ? 'That\'s a long name' : '';
+    const c = this.viewChild.name.length > 10 ? 'That\'s a long name' : '';
     if (c !== this.comment) {
       // 必须异步更新
       // Angular的“单向数据流”规则禁止在一个视图已经被组合好之后再更新视图。

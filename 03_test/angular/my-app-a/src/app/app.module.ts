@@ -15,6 +15,11 @@ import { VersionChildComponent } from "./version-child.component";
 import { VersionParentComponent } from "./version-parent.component";
 import { VoterComponent } from "./voter.component";
 import { VotetakerComponent } from "./votetaker.component";
+import { CountdownParentComponent } from './countdown-parent.component';
+import { CountdownTimerComponent } from './countdown-timer.component';
+import { CountdownParentSecondComponent } from './countdown-parent-second.component';
+import { MissioncontrolComponent } from './missioncontrol.component';
+import { AstronautComponent } from './astronaut.component';
 
 import { LoggerService } from './logger.service';
 
@@ -35,7 +40,12 @@ import { SpyDirective } from './spy.directive';
     VersionChildComponent,
     VersionParentComponent,
     VoterComponent,
-    VotetakerComponent
+    VotetakerComponent,
+    CountdownParentComponent,
+    CountdownTimerComponent,
+    CountdownParentSecondComponent,
+    MissioncontrolComponent,
+    AstronautComponent
   ],
   imports: [
     BrowserModule,

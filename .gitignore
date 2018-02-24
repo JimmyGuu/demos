@@ -10,3 +10,4 @@ gen
 .idea/
 .gitignore
 .vs/
+node_modules/
