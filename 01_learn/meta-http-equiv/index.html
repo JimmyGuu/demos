@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML &lt;meta&gt; http-equiv Attribute</title>
+</head>
+<body>
+<h2>HTML <meta> http-equiv Attribute</h2>
+<article>
+    <h4>定义和用法</h4>
+    <p>
+        The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+        The http-equiv attribute can be used to simulate(模拟) an HTTP response header.
+    </p>
+    <p>
+        <code>
+            &lt;meta http-equiv="content-type|default-style|refresh"&gt;
+        </code>
+    </p>
+    <ul>
+        <li>
+            <code>HTML 4.01: &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;</code>
+        </li>
+        <li><code>HTML5: &lt;meta charset="UTF-8"&gt;</code></li>
+    </ul>
+    <h4>属性值</h4>
+    <table border="1" cellpadding="5px" cellspacing="0">
+        <thead>
+        <tr>
+            <th>值</th>
+            <th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>content-type</code></td>
+            <td>指定文档的字符编码。<br> eg.&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;</td>
+        </tr>
+        <tr>
+            <td><code>default-style</code></td>
+            <td>指定要使用的首选样式表。 <br> eg.&lt;meta http-equiv="default-style" content="the document's preferred stylesheet"&gt;
+                <br> tip: 上面 content 属性的值必须匹配同一文档中的一个 link 元素上的 title 属性的值，<br>或者必须匹配同一文档中的一个 style 元素上的 title 属性的值。</td>
+        </tr>
+        <tr>
+            <td><code>refresh</code></td>
+            <td>定义文档自行刷新的时间间隔。 <br> eg.&lt;meta http-equiv="refresh" content="300"&gt; <br> tip: 值 "refresh" 应该慎重使用，因为它会使得页面不受用户控制。</td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>生产用法</h4>
+    <ul>
+        <li>
+            <p>
+                <code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /&gt;</code>
+            <div>IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame。</div>
+            </p>
+        </li>
+        <li>
+            <p>
+                <code>&lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8"&gt;</code>
+                <div>规定网页编码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta http-equiv="Cache-Control" content="max-age=604800" /&gt;</code>
+            <div>设置http cache时间，在快速迭代的项目中，我们可以设置max-age=604800s，也就是七天</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta content="always" name="referrer"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="description" content="网站描述"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="keywords" content="关键词1,关键词2"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="applicable-device" content="pc"&gt;</code>
+            <div>申明网站为pc站，避免被转码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta http-equiv="Cache-Control" content="no-transform" /&gt;</code>
+            <div>禁止浏览器转码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="format-detection" content="telephone=no"&gt;</code>
+            <div>禁止浏览器识别手机号码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</code>
+            <div>声明视窗大小，禁止用户缩放，移动端必备</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="renderer" content="webkit"&gt;</code>
+            <div>规定360安全浏览器使用webkit内核进行渲染</div>
+            </p>
+        </li>
+    </ul>
+
+</article>
+</body>
+</html>
