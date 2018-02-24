@@ -1,0 +1,30 @@
+import {Component} from "@angular/core";
+
+@Component({
+  selector: 'app-version-parent',
+  template: `
+    <h2>Source code version</h2>
+    <button (click)="newMinor()">New minor version</button>
+    <button (click)="newMajor()">New major version</button>
+    <app-version-child [major]="major" [minor]="minor"></app-version-child>
+  `
+})
+
+export class VersionParentComponent {
+  private major: number;
+  private minor: number;
+
+  constructor () {
+    this.major = 1;
+    this.minor = 23;
+  }
+
+  newMinor() {
+    this.minor++;
+  }
+
+  newMajor() {
+    this.major++;
+    this.minor = 0;
+  }
+}

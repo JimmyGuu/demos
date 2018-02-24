@@ -2,7 +2,679 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/default.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/border-radius.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/center-block.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/clearfix.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/flex.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/opacity.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/text-hide.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/mixins/text-overflow.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/pages/home/index.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/pages/layout-footer.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/pages/layout-header.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/utilities.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/less/variables.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/less-file-struct/main.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/my-pager.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/js-pager/my-pagination.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.common.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.esm.browser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.esm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.runtime.common.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.runtime.esm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.runtime.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/dist/vue.runtime.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/codegen/events.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/codegen/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/create-compiler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/directives/bind.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/directives/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/directives/on.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/error-detector.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/helpers.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/optimizer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/parser/entity-decoder.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/parser/filter-parser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/parser/html-parser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/parser/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/parser/text-parser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/compiler/to-function.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/components/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/components/keep-alive.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/config.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/global-api/assets.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/global-api/extend.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/global-api/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/global-api/mixin.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/global-api/use.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/events.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/init.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/inject.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/lifecycle.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/proxy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/bind-object-listeners.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/bind-object-props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/check-keycodes.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/render-list.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/render-slot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/render-static.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/resolve-filter.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render-helpers/resolve-slots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/render.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/instance/state.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/array.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/dep.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/scheduler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/traverse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/observer/watcher.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/debug.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/env.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/error.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/lang.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/next-tick.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/options.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/perf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/util/props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/create-component.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/create-element.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/create-functional-component.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/extract-props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/get-first-component-child.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/is-async-placeholder.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/merge-hook.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/normalize-children.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/resolve-async-component.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/helpers/update-listeners.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/modules/directives.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/modules/ref.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/patch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/core/vdom/vnode.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/directives/html.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/directives/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/directives/text.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/modules/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/modules/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/modules/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/options.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/compiler/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/entry-compiler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/entry-runtime-with-compiler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/entry-runtime.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/entry-server-basic-renderer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/entry-server-renderer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/class-util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/components/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/components/transition-group.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/components/transition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/directives/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/directives/show.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/attrs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/dom-props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/events.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/modules/transition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/node-ops.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/patch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/runtime/transition-util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/compiler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/directives/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/directives/show.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/modules/attrs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/modules/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/modules/dom-props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/modules/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/server/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/attrs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/compat.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/element.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/web/util/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/directives/model.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/append.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/props.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/component-root.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/component.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/text.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-bind.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-for.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-if.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-on.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/compiler/modules/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/entry-compiler.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/entry-framework.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/entry-runtime-factory.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/components/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/components/richtext.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/components/transition-group.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/components/transition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/directives/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/attrs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/class.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/events.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/style.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/modules/transition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/node-ops.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/patch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/recycle-list/render-component-template.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/recycle-list/virtual-component.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/runtime/text-node.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/util/element.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/platforms/weex/util/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/bundle-renderer/create-bundle-renderer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/bundle-renderer/create-bundle-runner.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/bundle-renderer/source-map-support.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/create-basic-renderer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/create-renderer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/optimizing-compiler/codegen.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/optimizing-compiler/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/optimizing-compiler/modules.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/optimizing-compiler/optimizer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/optimizing-compiler/runtime-helpers.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/render-context.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/render-stream.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/render.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/template-renderer/create-async-file-mapper.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/template-renderer/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/template-renderer/parse-template.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/template-renderer/template-stream.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/webpack-plugin/client.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/webpack-plugin/server.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/webpack-plugin/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/server/write.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/sfc/parser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/shared/constants.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/src/shared/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/types/index.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/types/options.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/types/plugin.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/types/vnode.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/node_modules/vue/types/vue.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/package-lock.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/python/hello.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/PagerService/obj/Release/PagerService.csproj.CoreCompileInputs.cache" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/.angular-cli.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/.editorconfig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/e2e/app.e2e-spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/e2e/app.po.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/e2e/tsconfig.e2e.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/karma.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/package-lock.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/protractor.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-child.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-parent.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/logger.service.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/mock-heroes.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-child.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-parent.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.directive.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-child.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-parent.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/voter.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/votetaker.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/assets/.gitkeep" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/environments/environment.prod.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/environments/environment.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/favicon.ico" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/main.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/polyfills.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/styles.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/test.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/tsconfig.app.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/tsconfig.spec.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/typings.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/tsconfig.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/tslint.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/CHANGELOG.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/Gruntfile.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap-theme.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap-theme.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap-theme.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/css/bootstrap.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/js/bootstrap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/js/bootstrap.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/dist/js/npm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/.jshintrc" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/bs-commonjs-generator.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/bs-glyphicons-data-generator.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/bs-lessdoc-parser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/bs-raw-files-generator.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/change-version.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/configBridge.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/npm-shrinkwrap.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/grunt/sauce_browsers.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/affix.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/alert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/button.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/carousel.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/collapse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/dropdown.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/modal.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/popover.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/scrollspy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/tab.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/tooltip.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/js/transition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/alerts.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/badges.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/bootstrap.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/breadcrumbs.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/button-groups.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/buttons.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/carousel.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/close.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/code.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/component-animations.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/dropdowns.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/forms.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/glyphicons.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/grid.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/input-groups.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/jumbotron.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/labels.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/list-group.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/media.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/alerts.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/background-variant.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/border-radius.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/buttons.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/center-block.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/clearfix.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/forms.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/gradients.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/grid-framework.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/grid.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/hide-text.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/image.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/labels.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/list-group.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/nav-divider.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/nav-vertical-align.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/opacity.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/pagination.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/panels.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/progress-bar.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/reset-filter.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/reset-text.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/resize.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/responsive-visibility.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/size.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/tab-focus.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/table-row.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/text-emphasis.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/text-overflow.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/mixins/vendor-prefixes.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/modals.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/navbar.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/navs.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/normalize.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/pager.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/pagination.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/panels.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/popovers.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/print.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/progress-bars.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/responsive-embed.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/responsive-utilities.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/scaffolding.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/tables.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/theme.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/thumbnails.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/tooltip.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/type.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/utilities.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/variables.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/less/wells.less" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/node_modules/bootstrap/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/03_test/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/02_demos/js-pager/my-pager-demo.html" afterPath="$PROJECT_DIR$/02_demos/js-pager/my-pager-demo.html" />
+      <change beforePath="$PROJECT_DIR$/02_demos/js-pager/my-pager.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/.config/karma.conf.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/.config/karma.quick.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/.config/pretest.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/.npmignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/.travis.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/LICENSE.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/runner.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/svg.bench.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-circles.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-each.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-pathArray-bbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-pathArrays.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-paths.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-pointArray-bbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bench/tests/10000-rects.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/dist/svg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/dist/svg.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/SpecRunner.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/fixtures/fixture.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/fixtures/fixture.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/fixtures/pixel.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/boot.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/console.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/jasmine-html.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/jasmine.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/jasmine.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/lib/jasmine-2.6.0/jasmine_favicon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/adopter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/arrange.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/array.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/bare.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/boxes.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/circle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/clip.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/color.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/container.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/defs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/doc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/easing.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/element.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/ellipse.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/event.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/fx.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/gradient.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/group.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/helper.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/hyperlink.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/image.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/line.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/marker.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/mask.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/matrix.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/memory.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/nested.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/number.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/path.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/pattern.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/point.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/polygon.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/polyline.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/rect.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/regex.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/selector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/set.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/sugar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/svg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/symbol.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/text.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/textpath.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/transformations.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/tspan.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/use.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/spec/viewbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/spec/support/jasmine.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/arrange.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/array.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/attr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/bare.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/boxes.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/clip.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/color.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/container.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/data.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/default.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/defs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/doc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/element.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/ellipse.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/event.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/fx.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/gradient.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/group.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/helpers.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/hyperlink.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/image.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/line.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/marker.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/mask.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/matrix.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/memory.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/nested.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/number.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/parent.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/path.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/patharray.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/pattern.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/point.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/pointarray.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/pointed.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/poly.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/polyfill.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/rect.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/regex.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/selector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/set.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/shape.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/style.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/sugar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/svg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/symbol.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/text.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/textpath.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/transform.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/umd.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/ungroup.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/use.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/utilities.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/src/viewbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/node_modules/svg.js/svg.js.d.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/02_demos/package.json" afterPath="$PROJECT_DIR$/02_demos/package.json" />
+      <change beforePath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/PagerService/v15/.suo" afterPath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/PagerService/v15/.suo" />
+      <change beforePath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/PagerService/v15/Server/sqlite3/storage.ide" afterPath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/PagerService/v15/Server/sqlite3/storage.ide" />
+      <change beforePath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/config/applicationhost.config" afterPath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/.vs/config/applicationhost.config" />
+      <change beforePath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/PagerService/obj/Debug/PagerService.csproj.CoreCompileInputs.cache" afterPath="$PROJECT_DIR$/02_demos/refresh-load/service/PagerService/PagerService/obj/Debug/PagerService.csproj.CoreCompileInputs.cache" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/.editorconfig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/.eslintrc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/dist/dom7.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/dist/dom7.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/dist/dom7.min.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/dist/dom7.modular.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/dist/dom7.module.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/$.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/animate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/dom7-class.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/dom7.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/dom7.modular.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/event-shortcuts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/methods.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/scroll.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/dom7/src/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/.eslintrc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/CHANGELOG.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/component.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/css/swiper.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/css/swiper.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/js/swiper.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/js/swiper.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/js/swiper.min.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/js/swiper.modular.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/dist/js/swiper.module.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/package.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/a11y/a11y.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/a11y/a11y.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/autoplay/autoplay.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/controller/controller.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/controller/controller.less" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/after-content.component.ts" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/breakpoints/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/breakpoints/setBreakpoint.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/classes/addClasses.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/classes/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/classes/removeClasses.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/core-class.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/core.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/defaults.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/onClick.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/onResize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/onTouchEnd.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/onTouchMove.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/events/onTouchStart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/grab-cursor/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/grab-cursor/setGrabCursor.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/grab-cursor/unsetGrabCursor.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/images/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/images/loadImage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/images/preloadImages.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/loop/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/loop/loopCreate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/loop/loopDestroy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/loop/loopFix.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/manipulation/appendSlide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/manipulation/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/manipulation/prependSlide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/manipulation/removeAllSlides.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/manipulation/removeSlide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/slideNext.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/slidePrev.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/slideReset.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/slideTo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/slide/slideToClickedSlide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/transition/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/transition/setTransition.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/transition/transitionEnd.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/transition/transitionStart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/translate/getTranslate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/translate/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/translate/maxTranslate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/translate/minTranslate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/translate/setTranslate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateActiveIndex.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateAutoHeight.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateClickedSlide.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateProgress.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateRealIndex.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateSize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateSlides.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateSlidesClasses.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateSlidesOffset.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/core/update/updateSlidesProgress.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-coverflow/effect-coverflow.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-coverflow/effect-coverflow.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-cube/effect-cube.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-cube/effect-cube.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-fade/effect-fade.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-fade/effect-fade.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-flip/effect-flip.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/effect-flip/effect-flip.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/hash-navigation/hash-navigation.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/history/history.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/keyboard/keyboard.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/lazy/lazy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/lazy/lazy.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/mousewheel/mousewheel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/navigation/navigation.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/navigation/navigation.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/pagination/pagination.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/pagination/pagination.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/parallax/parallax.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/scrollbar/scrollbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/scrollbar/scrollbar.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/virtual/virtual.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/zoom/zoom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/components/zoom/zoom.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/less/mixins.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/browser/browser.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/device/device.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/observer/observer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/resize/resize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/resize/resize.less" afterPath="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.css" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/modules/support/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/swiper.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/swiper.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/browser.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/class.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/device.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/dom.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/support.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/node_modules/swiper/src/utils/window.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/03_test/package.json" afterPath="$PROJECT_DIR$/03_test/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,13 +687,64 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="868">
+              <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1120">
+              <caret line="39" column="3" lean-forward="false" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#106#0" expanded="true" />
+                <element signature="n#!!block;n#doSomething#0;n#AppComponent#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="countdown-timer.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="603">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="868">
+              <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -75,6 +798,23 @@
         <option value="$PROJECT_DIR$/01_learn/module-programing-webpack/demo/webpack.config.js" />
         <option value="$PROJECT_DIR$/01_learn/module-programing-webpack/demo/webpack.config.second.js" />
         <option value="$PROJECT_DIR$/01_learn/react-learn/prev/index.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.directive.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/after-content.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-parent.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-child.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-child.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-parent.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-parent.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-child.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/mock-heroes.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/votetaker.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/voter.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts" />
       </list>
     </option>
   </component>
@@ -94,11 +834,12 @@
     <handled-path value="$PROJECT_DIR$/01_learn/angular-learn-Heroes/node_modules" />
     <handled-path value="$PROJECT_DIR$/01_learn/node_modules" />
     <handled-path value="$PROJECT_DIR$/02_demos/node_modules" />
+    <handled-path value="$PROJECT_DIR$/03_test/angular/my-app-a/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="274" />
-    <option name="y" value="31" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="283" />
+    <option name="y" value="11" />
     <option name="width" value="1644" />
     <option name="height" value="990" />
   </component>
@@ -133,7 +874,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -142,10 +882,46 @@
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-a" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-a" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-a" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -157,16 +933,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
+      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-a\src\app" />
       <recent name="C:\Work\Projects\my-test\01_learn\module-programing-requirejs\lib" />
       <recent name="C:\Work\Projects\my-test\01_learn\module-programing\lib" />
       <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\doc" />
       <recent name="C:\Work\Projects\my-test\01_learn\jquery-source-code" />
-      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API\demo\service" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
-      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -208,16 +984,21 @@
       <workItem from="1515028568047" duration="8916000" />
       <workItem from="1515911890666" duration="59000" />
       <workItem from="1518772415867" duration="148000" />
+      <workItem from="1518772682496" duration="8473000" />
+      <workItem from="1518844331336" duration="2156000" />
+      <workItem from="1519094043290" duration="6805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123330000" />
+    <option name="totallyTimeSpent" value="140764000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="283" y="11" width="1644" height="990" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19322917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22788697" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -267,155 +1048,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/other.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4238">
-          <caret line="180" column="18" lean-forward="true" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8528">
-          <caret line="328" column="29" lean-forward="true" selection-start-line="328" selection-start-column="29" selection-end-line="328" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2184">
-          <caret line="84" column="19" lean-forward="false" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/carousel/carousel-pro.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5226">
-          <caret line="201" column="19" lean-forward="true" selection-start-line="201" selection-start-column="19" selection-end-line="201" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/carousel/index-2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/carousel/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="230" column="24" lean-forward="false" selection-start-line="230" selection-start-column="24" selection-end-line="230" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/other.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/bar2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/example.js" />
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/.vs/config/applicationhost.config" />
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/src/foo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/HTML5 history API/HTML5 history API.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/DocumentFragment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/jsFactory.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-754">
@@ -484,7 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="619">
           <caret line="201" column="13" lean-forward="false" selection-start-line="201" selection-start-column="13" selection-end-line="201" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -586,13 +1217,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/my-pager.js" />
     <entry file="file://$PROJECT_DIR$/01_learn/module-programing-webpack/demo/webpack.config.first.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -604,6 +1229,213 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/logger.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.directive.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/after-content.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/angular-learn-doc-eg/template-syntax/src/app/hero.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/angular-learn-Heroes/src/app/data/mock-heroes.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/spy.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-parent.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <marker date="1519114234270" expanded="true" signature="275:345" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/hero-child.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-parent.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="17" column="3" lean-forward="false" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding>
+            <marker date="1519115047766" expanded="true" signature="199:243" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/on-changes.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-parent.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/name-child.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/mock-heroes.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/version-child.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding>
+            <marker date="1519116326321" expanded="true" signature="208:277" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/votetaker.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <marker date="1519117221528" expanded="true" signature="249:325" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/voter.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="39" column="3" lean-forward="false" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#106#0" expanded="true" />
+            <element signature="n#!!block;n#doSomething#0;n#AppComponent#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

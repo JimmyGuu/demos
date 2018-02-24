@@ -1,0 +1,237 @@
+//
+// Variables 变量
+// --------------------------------------------------
+
+
+//== Colors 颜色
+//
+//## 公共颜色配置
+
+//** 通用灰色
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+
+//** 主题色
+@theme-gold: #caba9d;
+@theme-blue: #034085;
+@theme-red:  #e84142;
+
+//** 通用颜色
+@usual-primary: @theme-blue;
+@usual-success: @theme-blue;
+@usual-danger:  @theme-red;
+@usual-info:    #5bc0de;
+@usual-warning: #f0ad4e;
+@usual-focus:   lighten(@theme-blue, 20%);
+
+
+//== Scaffolding 基本脚手架
+//
+//## 一些最通用的样式
+
+//** 版心大小（最小宽度）
+@body-width:            1200px;
+
+//** 背景色
+@body-bg:               #fff;
+//** 默认字体颜色
+@text-color:            @gray-dark;
+//** 默认字体对齐
+@text-align:            left;
+//** 默认字体大小
+@text-size:             14px;
+
+//** 默认链接颜色
+@link-color:            @gray-dark;
+//** 链接hover颜色
+@link-hover-color:      darken(@link-color, 15%);
+//** 链接hover装饰
+@link-hover-decoration: underline;
+
+
+//== Typography 字体设置
+//
+//## body等的字体，行高和字体颜色
+
+//** 无衬线字体
+@font-family:  			  'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, 'Times New Roman', Times, serif;
+
+//** 等宽字体 `<code>`, `<kbd>`, `<pre>`
+@font-family-monospace:   Menlo, Monaco, Consolas, 'Courier New', monospace;
+@font-family-base:        @font-family;
+
+//** 默认字体大小
+@font-size-base:          @text-size;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * .85)); // ~12px
+
+//** H标签字体大小
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * .85)); // ~12px
+
+//** 默认行高`line-height`
+@line-height-base:        1.428571429; // 20/14
+//** 计算的“line-height”（`font-size` *`line-height`）用于`margin`，`padding`等
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//** 从 `<body>` 继承的默认属性
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+//== Iconography icon字体图标
+//
+//## 定义字体图标的路径文件名等
+
+@icon-font-path:          '../fonts/';
+@icon-font-name:          'glyphicons-halflings-regular';
+@icon-font-svg-id:        'glyphicons_halflingsregular';
+
+
+//== Components 组件
+//
+//## 定义常见的 padding 和 border radius 尺寸等等。基于14px文本和1.428行高（约20px开始）的值
+
+//** 不同的padding
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+
+//** 行高
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+
+//** 边框圆角
+@border-radius-base:        4px;
+@border-radius-large:       6px;
+@border-radius-small:       3px;
+
+//** active 项目的公共颜色
+@component-active-color:    #fff;
+//** active 项目的公共背景色
+@component-active-bg:       @theme-gold;
+
+
+//== Tables 表格
+//
+//## 定义表格的基础样式
+
+//** `<th>` 和 `<td>` 的 padding 值
+@table-cell-padding:            8px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding:  5px;
+
+//** 表格默认背景色
+@table-bg:                      transparent;
+//** 表格默认hover时背景色
+@table-bg-hover:                #f5f5f5;
+@table-bg-active:               @table-bg-hover;
+
+//** 表格默认边框颜色
+@table-border-color:            #ddd;
+
+
+//== Buttons 按钮
+//
+//## 定义按钮基础样式
+
+@btn-normal-color:               #fff;
+@btn-font-weight:                normal;
+
+@btn-default-color:              @text-color;
+@btn-default-bg:                 #fff;
+@btn-default-border:             #ccc;
+
+@btn-primary-color:              @btn-normal-color;
+@btn-primary-bg:                 @usual-primary;
+@btn-primary-border:             darken(@btn-primary-bg, 5%);
+
+@btn-success-color:              @btn-normal-color;
+@btn-success-bg:                 @usual-success;
+@btn-success-border:             darken(@btn-success-bg, 5%);
+
+@btn-info-color:                 @btn-normal-color;
+@btn-info-bg:                    @usual-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
+@btn-warning-color:              @btn-normal-color;
+@btn-warning-bg:                 @usual-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:               @btn-normal-color;
+@btn-danger-bg:                  @usual-danger;
+@btn-danger-border:              darken(@btn-danger-bg, 5%);
+
+@btn-link-disabled-color:        @gray-light;
+
+//** 按钮圆角
+@btn-border-radius-base:         @border-radius-base;
+@btn-border-radius-large:        @border-radius-large;
+@btn-border-radius-small:        @border-radius-small;
+
+
+//== Forms 表单
+//
+//## 基础表单样式
+
+//** input元素背景色
+@input-bg:                       #fff;
+//** input元素disabled时背景色
+@input-bg-disabled:              @gray-lighter;
+
+//** input元素字体颜色
+@input-color:                    @gray;
+//** input元素边框颜色
+@input-border:                   #ccc;
+
+//** input元素边框圆角
+@input-border-radius:            @border-radius-base;
+@input-border-radius-large:      @border-radius-large;
+@input-border-radius-small:      @border-radius-small;
+
+//** input元素focus边框颜色
+@input-border-focus:             @usual-focus;
+
+//** Placeholder 文字颜色
+@input-color-placeholder:        @gray-light;
+
+//** 表单元素Disabled时指针样式
+@cursor-disabled:                not-allowed;
+
+
+//-- Z-index 定位的层级属性
+//
+//## 定位的 z-index 属性值
+
+//** 弹出对话框
+@zindex-dialog:          1000;
+
+
+
+/**
+ * 开发中新增组件样式于此注释上方补充
+ * 格式如下所示
+ */
+
+//-- 组件名称
+//
+//## 组件样式基本描述
+
+//** 细节注释
+// @<变量名>: <属性值>

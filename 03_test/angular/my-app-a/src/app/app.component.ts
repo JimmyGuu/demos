@@ -1,0 +1,59 @@
+import {AfterViewChecked, AfterViewInit, Component, ContentChild, OnInit, ViewChild} from '@angular/core';
+import {Hero} from "./hero";
+import {OnChangesComponent} from "./on-changes.component";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements AfterViewChecked, AfterViewInit, OnInit{
+  title = 'app';
+  private hero: Hero;
+  private power: string;
+
+  private prevName:string = '';
+  private comment: string = '';
+
+  @ViewChild(OnChangesComponent) viewChild: OnChangesComponent;
+  // @ContentChild(OnChangesComponent) onChangesComponent: OnChangesComponent;
+
+  constructor () {
+    this.hero = new Hero(7, 'Bob');
+    this.power = 'fly';
+  }
+
+  ngOnInit() {
+    console.warn('ng on init...');
+    // console.log('onChangesComponent: ', this.onChangesComponent);
+  }
+
+  ngAfterViewChecked() {
+    console.log('after view checked...');
+    if (this.prevName === this.viewChild.name) {
+      console.warn('AfterViewChecked (no changes)');
+    } else {
+      this.prevName = this.viewChild.name;
+      console.warn('AfterViewChecked');
+      this.doSomething();
+    }
+  }
+
+  ngAfterViewInit() {
+    console.log('after view init...');
+    console.log(this.viewChild);
+    this.doSomething();
+  }
+
+  private doSomething() {
+    let c = this.viewChild.name.length > 10 ? 'That\'s a long name' : '';
+    if (c !== this.comment) {
+      // 必须异步更新
+      // Angular的“单向数据流”规则禁止在一个视图已经被组合好之后再更新视图。
+      setTimeout(() => {
+        this.comment = c;
+      }, 0);
+
+    }
+  }
+}

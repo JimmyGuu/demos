@@ -1,0 +1,13 @@
+<h2>OnChanges</h2>
+
+<div class="input-group">
+  <label for="name2">name:</label>
+  <input type="text" id="name2" [(ngModel)]="name" />
+</div>
+
+<div class="input-show">
+  <span>{{ hero.name }} can {{ power }}</span>
+</div>
+<div class="log-wrapper">
+  <p *ngFor="let log of changeLog">{{ log }}</p>
+</div>
