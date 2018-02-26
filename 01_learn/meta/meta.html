@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#ff5f00">
+    <title>HTML &lt;meta&gt; Attribute</title>
+</head>
+<body>
+<h1>HTML &lt;meta&gt; Attribute</h1>
+<small><a href="http://www.cnblogs.com/jehorn/p/8472118.html" target="_blank" rel="external">参见博客</a></small>
+<article>
+    <h2>http-equiv 定义和用法</h2>
+    <p>
+    <pre>
+    The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+    The http-equiv attribute can be used to simulate(模拟) an HTTP response header.
+    </pre>
+    </p>
+    <p>
+        <code>
+            &lt;meta http-equiv="content-type|default-style|refresh"&gt;
+        </code>
+    </p>
+    <ul>
+        <li>
+            <code>HTML 4.01: &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;</code>
+        </li>
+        <li><code>HTML5: &lt;meta charset="UTF-8"&gt;</code></li>
+    </ul>
+    <h4>属性值</h4>
+    <table border="1" cellpadding="5px" cellspacing="0">
+        <thead>
+        <tr>
+            <th>值</th>
+            <th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>content-type</code></td>
+            <td>指定文档的字符编码。<br> eg.&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;</td>
+        </tr>
+        <tr>
+            <td><code>default-style</code></td>
+            <td>指定要使用的首选样式表。 <br> eg.&lt;meta http-equiv="default-style" content="the document's preferred stylesheet"&gt;
+                <br> tip: 上面 content 属性的值必须匹配同一文档中的一个 link 元素上的 title 属性的值，<br>或者必须匹配同一文档中的一个 style 元素上的 title 属性的值。</td>
+        </tr>
+        <tr>
+            <td><code>refresh</code></td>
+            <td>定义文档自行刷新的时间间隔。 <br> eg.&lt;meta http-equiv="refresh" content="300"&gt; <br> tip: 值 "refresh" 应该慎重使用，因为它会使得页面不受用户控制。</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>&lt;meta&gt;生产用法</h2>
+    <ul>
+        <li>
+            <p>
+                <code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /&gt;</code>
+            <div>IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame。</div>
+            </p>
+        </li>
+        <li>
+            <p>
+                <code>&lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8"&gt;</code>
+                <div>规定网页编码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta http-equiv="Cache-Control" content="max-age=604800" /&gt;</code>
+            <div>设置http cache时间，在快速迭代的项目中，我们可以设置max-age=604800s，也就是七天</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta content="always" name="referrer"&gt;</code>
+            <div>
+                <a href="http://www.freebuf.com/news/57497.html" target="_blank" rel="nofollow">关于meta标签的referrer</a>
+            </div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="applicable-device" content="pc"&gt;</code>
+            <div>申明网站为pc站，避免被转码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta http-equiv="Cache-Control" content="no-transform" /&gt;</code>
+            <div>禁止浏览器转码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="format-detection" content="telephone=no"&gt;</code>
+            <div>禁止浏览器识别手机号码</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</code>
+            <div>声明视窗大小，禁止用户缩放，移动端必备</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="renderer" content="webkit"&gt;</code>
+            <div>规定360安全浏览器使用webkit内核进行渲染</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="theme-color" content="#ff5f00"&gt;</code>
+            <div>
+                Android Lollipop 中的 Chrome 39 增加 theme-color meta 标签，用来控制选项卡颜色。<span><i style="width: 14px;height: 14px;display: inline-block;background: #ff5f00;"></i><code>#ff5f00</code></span><br>
+
+                <img src="./meta_theme_color_eg.jpg" alt="" style="width: 200px;cursor:pointer;" title="Chrome 63.0.3239.111 & Android 7.1.1">
+            </div>
+            </p>
+        </li>
+
+        <li><h3><a href="https://msdn.microsoft.com/zh-cn/library/ff723998(v=expression.40).aspx"  target="_blank" rel="nofollow">SEO</a> 优化</h3></li>
+        <li>
+            <p><code>&lt;meta name="description" content="网站描述"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="keywords" content="关键词1,关键词2"&gt;</code>
+            <div></div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="author" content="name, email@gmail.com"&gt;</code>
+            <div>定义网页作者</div>
+            </p>
+        </li>
+        <li>
+            <p><code>&lt;meta name="robots" content="index,follow"&gt; &lt;!-- 搜索引擎抓取 index,follow 为默认值 --&gt;</code>
+            <div>定义网页搜索引擎索引方式，robotterms是一组使用英文逗号「,」分割的值，通常有如下几种取值：none，noindex，nofollow，all，index和follow。<br><a
+                href="https://msdn.microsoft.com/zh-cn/library/ff724037(v=expression.40).aspx" target="_blank" rel="nofollow">meta标签的robots</a></div>
+            </p>
+        </li>
+
+        <li><a href="http://www.runoob.com/w3cnote/html-meta-intro.html" target="_blank" rel="nofollow">more &gt;</a></li>
+    </ul>
+
+</article>
+
+</body>
+</html>
