@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        #canvas {
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="1024" height="768">
+    当前浏览器不支持 canvas 标签，请升级您的浏览器获得更好的体验。
+</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        // 画布的大小也可以在js中设置
+        // 等同于HTML标签上的设置
+        canvas.width = 1024;
+        canvas.height = 768;
+
+        // 兼容性判断
+        if (!context) return;
+
+        // 画布坐标是左上角为原点
+        // 下方为Y轴正方向
+        // 右方为X轴正方向
+
+        // 使用 context.beginPath();
+        // 来分隔不同的canvas状态
+        context.beginPath();
+        context.moveTo(100, 100);
+        context.lineTo(700, 700);
+        context.lineTo(100, 700);
+        context.lineTo(100, 100);
+
+        context.lineWidth = 5;
+
+        // 边框
+        context.strokeStyle = '#ff5f00';
+        context.stroke();
+
+        // 填充
+        context.fillStyle = 'rgb(2, 100, 30)';
+        context.fill();
+
+        context.closePath();
+
+        // 第二条线
+        context.beginPath();
+        context.moveTo(200, 100);
+        context.lineTo(800, 700);
+        context.lineWidth = 2;
+        context.strokeStyle = 'blue';
+        context.stroke();
+        context.closePath();
+    }
+</script>
+</body>
+</html>

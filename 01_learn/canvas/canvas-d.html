@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        #canvas {
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+    当前浏览器不支持 canvas 标签，请升级您的浏览器获得更好的体验。
+</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 1024;
+        canvas.height = 768;
+
+        // 兼容性判断
+        if (!context) return false;
+
+        setInterval(() => {
+            render(context);
+            update();
+        }, 50);
+    }
+
+    const ball = {
+        x: 512,
+        y: 100,
+        r: 20,
+        g: 2,
+        vx: -4,
+        vy: 0,
+        color: '#ff5f00'
+    };
+    
+    function render(ctx) {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        ctx.fillStyle = ball.color;
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI);
+        ctx.closePath();
+
+        ctx.fill();
+    }
+    
+    function update() {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        ball.vy += ball.g;
+
+        // console.log(ball.vy);
+
+        if (ball.y >= 768 - ball.r) {
+            ball.y = 768 - ball.r;
+            ball.vy = -ball.vy * 0.6;
+        }
+
+        if (ball.x < 0 + ball.r) {
+            ball.x = 0 + ball.r;
+            ball.vx = -ball.vx * 0.6;
+        }
+    }
+</script>
+</body>
+</html>

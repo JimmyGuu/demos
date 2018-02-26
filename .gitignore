@@ -11,3 +11,4 @@ gen
 .gitignore
 .vs/
 node_modules/
+/.vs/

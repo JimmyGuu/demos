@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        #canvas {
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+    当前浏览器不支持 canvas 标签，请升级您的浏览器获得更好的体验。
+</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 1024;
+        canvas.height = 768;
+
+        // 兼容性判断
+        if (!context) return false;
+
+        // context.arc([圆心x坐标], [圆心y坐标], [半径], [起始位置(0-2*PI)], [结束位置], [是否逆时针(false)])
+        // 无论顺时针逆时针 PI的位置不会变
+        context.beginPath();
+        context.lineWidth = 5;
+        context.strokeStyle = '#67aaff';
+
+        // context.arc(300, 300, 200, 0, 1.5 * Math.PI, false);
+        // context.arc(300, 300, 200, 0, 1.5 * Math.PI, true);
+        // context.arc(300, 300, 200, 0, 0.5 * Math.PI, true);
+
+        for (let i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i + 1) / 10);
+            context.stroke();
+        }
+
+
+        // circle progress
+        let rate = 100,
+            begin = 1.5,
+            speed = 10,
+            direction = false,
+            color = '#ff9f47',
+            bg = '#dddddd';
+        const progressCircle = {
+            _count: 0,
+            init: function () {
+                this.drawBg();
+                this.timer = setInterval(this.draw(), speed);
+            },
+            drawBg: function () {
+                context.beginPath();
+                context.arc(50, 180, 40, 0, 2 * Math.PI, direction);
+                context.strokeStyle = bg;
+                context.stroke();
+            },
+            draw: function () {
+                const self = this;
+                const fn = function () {
+                    let _end = 2 * (self._count / rate);
+                    let end = direction ? begin - _end : begin + _end;
+                    context.beginPath();
+                    context.arc(50, 180, 40, begin * Math.PI, end * Math.PI, direction);
+                    context.strokeStyle = color;
+                    context.stroke();
+                    self._count++;
+                    if (self._count > rate) clearInterval(self.timer);
+                }
+                return fn;
+            }
+        };
+
+        progressCircle.init();
+
+        // 填充
+        context.fillStyle = '#005588';
+        for (let i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50 + i * 100, 300, 40, 0, 2 * Math.PI * (i + 1) / 10);
+
+            // context.closePath();
+
+            context.fill();
+        }
+    }
+</script>
+</body>
+</html>

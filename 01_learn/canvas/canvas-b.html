@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        #canvas {
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+    当前浏览器不支持 canvas 标签，请升级您的浏览器获得更好的体验。
+</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        // 兼容性判断
+        if (!context) return false;
+
+        arr.forEach(data => {
+           draw(data, context);
+        });
+    }
+
+    const arr = [
+        {p: [{x:600,y:200}, {x:600,y:600}, {x:400,y:400}], color: "#f9f51a"},
+        {p: [{x:400,y:400}, {x:600,y:600}, {x:400,y:800}, {x:200,y:600}],color: "#a594c0"},
+        {p: [{x:200,y:600}, {x:400,y:800}, {x:0,y:800}], color: "#fa8ecc"},
+        {p: [{x:0,y:0}, {x:800,y:0}, {x:400,y:400}], color: "#caff67"},
+        {p: [{x:0,y:0}, {x:400,y:400}, {x:0,y:800}], color: "#67becf"},
+        {p: [{x:800,y:400}, {x:800,y:800}, {x:400,y:800}], color: "#f6ca29"},
+        {p: [{x:800,y:0}, {x:800,y:400}, {x:600,y:600}, {x:600,y:200}], color: "#ef3d61"}
+    ];
+
+    function draw(data, ctx) {
+        ctx.beginPath();
+        ctx.moveTo(data.p[0].x, data.p[0].y);
+        for (let i = 1; i < data.p.length; i++) {
+            ctx.lineTo(data.p[i].x, data.p[i].y);
+        }
+        ctx.fillStyle = data.color;
+        ctx.fill();
+
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+
+        // ctx.closePath();
+    }
+</script>
+</body>
+</html>
