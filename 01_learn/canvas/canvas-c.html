@@ -51,7 +51,7 @@
             direction = false,
             color = '#ff9f47',
             bg = '#dddddd';
-        const progressCircle = {
+        const progressCircle1 = {
             _count: 0,
             init: function () {
                 this.drawBg();
@@ -68,10 +68,19 @@
                 const fn = function () {
                     let _end = 2 * (self._count / rate);
                     let end = direction ? begin - _end : begin + _end;
+                    let left = 38,
+                        top = 186;
                     context.beginPath();
                     context.arc(50, 180, 40, begin * Math.PI, end * Math.PI, direction);
                     context.strokeStyle = color;
                     context.stroke();
+                    context.beginPath();
+                    context.fillStyle = color;
+                    context.clearRect(30, 160, 40, 40);
+                    context.font = '16px "inherit"';
+                    context.textAlign = "left";
+                    if (self._count >= 100) left = 32;
+                    context.fillText(self._count + '%', left, top);
                     self._count++;
                     if (self._count > rate) clearInterval(self.timer);
                 }
@@ -79,7 +88,7 @@
             }
         };
 
-        progressCircle.init();
+        // progressCircle1.init();
 
         // 填充
         context.fillStyle = '#005588';
@@ -91,6 +100,96 @@
 
             context.fill();
         }
+
+        progressCircle(context, {
+            fontSize: 20,
+            r: 100,
+            borderWidth: 10,
+            percent: 100
+        });
+        progressCircle(context, {
+            fontSize: 20,
+            x: 400,
+            y: 100,
+            r: 30,
+            borderWidth: 4,
+            percent: 90,
+            color: '#ff5726',
+            background: '#D5D5D5'
+        });
+    }
+
+    /**
+     * Circle Process
+     * @param  {Object} ctx  Canvas context
+     * @param  {Object} opts Options
+     * @returns {{_count: number, init: init, drawBg: drawBg, draw: draw}}
+     */
+    function progressCircle(ctx, opts) {
+        opts = opts || {};
+        var speed = +opts.speed || 10, // ms
+            begin = +opts.begin || 1.5, // [0PI-2PI]
+            direction = opts.direction || false, // false顺时针
+            color = opts.color || '#ff9f47',
+            bg = opts.background || '#dddddd';
+        var r = +opts.r || 40,
+            x = +opts.x,
+            y = +opts.y,
+            percent = +opts.percent || 0,
+            fontSize = +opts.fontSize || 16,
+            borderWidth = +opts.borderWidth || 2;
+        x = (x || x == 0) ? x : r;
+        y = (y || y == 0) ? y : r;
+
+        var obj = {
+            _count: 0,
+            init: function () {
+                this.drawBg();
+                this.timer = setInterval(this.draw(), speed);
+            },
+            drawBg: function () {
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, 2 * Math.PI, direction);
+                ctx.lineWidth = borderWidth;
+                ctx.strokeStyle = bg;
+                ctx.stroke();
+            },
+            draw: function () {
+                const self = this;
+                const fn = function () {
+                    const radian = Math.PI / 180;
+                    let _end = 2 * (self._count / 100);
+                    let end = direction ? begin - _end : begin + _end;
+                    let top = y + fontSize / 3;
+                    let p = self._count + '%';
+                    let clearRect = {
+                        x: x - Math.cos(45 * radian) * r + borderWidth,
+                        y: y - Math.sin(45 * radian) * r + borderWidth,
+                        w: 2 * r - (r - Math.cos(45 * radian) * r) * 2 - borderWidth * 2,
+                        h: 2 * r - (r - Math.sin(45 * radian) * r) * 2 - borderWidth * 2
+                    };
+
+                    ctx.beginPath();
+                    ctx.lineWidth = borderWidth;
+                    ctx.strokeStyle = color;
+                    ctx.arc(x, y, r, begin * Math.PI, end * Math.PI, direction);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.fillStyle = color;
+                    ctx.clearRect(clearRect.x, clearRect.y, clearRect.w, clearRect.h);
+                    ctx.font = fontSize + 'px "inherit"';
+                    ctx.textAlign = "center";
+                    ctx.fillText(p, x, top);
+                    self._count++;
+                    if (self._count > percent) clearInterval(self.timer);
+                }
+                return fn;
+            }
+        };
+
+        obj.init();
+
+        return obj;
     }
 </script>
 </body>

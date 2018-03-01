@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-a.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-b.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-c.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-d.html" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-line.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/01_learn/meta-http-equiv/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/01_learn/canvas/canvas-c.html" afterPath="$PROJECT_DIR$/01_learn/canvas/canvas-c.html" />
       <change beforePath="$PROJECT_DIR$/03_test/mescroll" afterPath="$PROJECT_DIR$/03_test/mescroll" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,7 +34,7 @@
       <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
+            <state relative-caret-position="52">
               <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
               <folding>
                 <element signature="n#!!block;n#doSomething#0;n#AppComponent#0" expanded="false" />
@@ -50,7 +46,7 @@
       <file leaf-file-name="countdown-timer.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
+            <state relative-caret-position="832">
               <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -62,7 +58,7 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
+            <state relative-caret-position="312">
               <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
@@ -71,12 +67,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="canvas-d.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-d.html">
+      <file leaf-file-name="canvas-line.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-line.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="129">
+              <caret line="196" column="35" lean-forward="true" selection-start-line="196" selection-start-column="7" selection-end-line="196" selection-end-column="35" />
+              <folding>
+                <element signature="e#1894#2095#0" expanded="false" />
+                <element signature="e#3658#3808#0" expanded="false" />
+                <element signature="e#3849#4900#0" expanded="false" />
+                <element signature="e#4906#4939#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="canvas-c.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-c.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2678">
+              <caret line="118" column="11" lean-forward="true" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
+              <folding>
+                <element signature="e#1506#1614#0" expanded="false" />
+                <element signature="e#1648#1845#0" expanded="false" />
+                <element signature="e#3041#3230#0" expanded="false" />
+                <element signature="e#3637#3826#0" expanded="false" />
+                <element signature="e#3866#6427#0" expanded="false" />
+                <element signature="e#4508#4616#0" expanded="false" />
+                <element signature="e#4650#4872#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,6 +130,8 @@
       <find>rel</find>
       <find>count</find>
       <find>this</find>
+      <find>rate</find>
+      <find>x</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/01_learn/HTML5 history API/src/example.html" />
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API/demo/service/example.js" />
         <option value="$PROJECT_DIR$/01_learn/HTML5 history API/demo/index.html" />
         <option value="$PROJECT_DIR$/02_demos/js-pager/index.html" />
@@ -168,8 +188,9 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/01_learn/canvas/canvas-b.html" />
         <option value="$PROJECT_DIR$/01_learn/canvas/canvas-a.html" />
-        <option value="$PROJECT_DIR$/01_learn/canvas/canvas-c.html" />
         <option value="$PROJECT_DIR$/01_learn/canvas/canvas-d.html" />
+        <option value="$PROJECT_DIR$/01_learn/canvas/canvas-line.html" />
+        <option value="$PROJECT_DIR$/01_learn/canvas/canvas-c.html" />
       </list>
     </option>
   </component>
@@ -193,10 +214,10 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="141" />
-    <option name="y" value="76" />
+    <option name="x" value="238" />
+    <option name="y" value="118" />
     <option name="width" value="1459" />
-    <option name="height" value="839" />
+    <option name="height" value="808" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -229,6 +250,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,7 +279,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,17 +290,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Work\Projects\my-test\01_learn" />
-      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
-      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Work\Projects\my-test\01_learn\canvas" />
       <recent name="C:\Work\Projects\my-test\01_learn\frameset" />
       <recent name="C:\Work\Projects\my-test\03_test\a-rel" />
       <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-a\src\app" />
       <recent name="C:\Work\Projects\my-test\01_learn\module-programing-requirejs\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Work\Projects\my-test\01_learn" />
+      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
+      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -325,7 +346,9 @@
       <workItem from="1518844331336" duration="2156000" />
       <workItem from="1519094043290" duration="6805000" />
       <workItem from="1519459561684" duration="5348000" />
-      <workItem from="1519606857978" duration="21065000" />
+      <workItem from="1519606857978" duration="21083000" />
+      <workItem from="1519693573100" duration="14449000" />
+      <workItem from="1519885469315" duration="6310000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -341,17 +364,23 @@
       <option name="project" value="LOCAL" />
       <updated>1519616298872</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="html - canvas">
+      <created>1519637660325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1519637660325</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167177000" />
+    <option name="totallyTimeSpent" value="187954000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="141" y="76" width="1459" height="839" extended-state="0" />
+    <frame x="238" y="118" width="1459" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22730422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -367,6 +396,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -406,13 +436,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/02_demos/js-pager/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_demos/js-pager/test-frame.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-240">
@@ -558,7 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -594,7 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,7 +673,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
+        <state relative-caret-position="52">
           <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
           <folding>
             <element signature="n#!!block;n#doSomething#0;n#AppComponent#0" expanded="false" />
@@ -660,19 +681,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/meta/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/meta/index.html" />
     <entry file="file://$PROJECT_DIR$/01_learn/a-rel/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="15" column="75" lean-forward="false" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -680,22 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#134#138#0" expanded="false" />
-            <element signature="e#142#146#0" expanded="false" />
-            <element signature="e#189#193#0" expanded="false" />
-            <element signature="e#197#201#0" expanded="false" />
-            <element signature="e#1883#1887#0" expanded="false" />
-            <element signature="e#1891#1895#0" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#li#10;n#ul#1;n#article#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#4872#4876#0" expanded="false" />
-            <element signature="e#4926#4930#0" expanded="false" />
-            <element signature="e#5033#5037#0" expanded="false" />
-            <element signature="e#5078#5082#0" expanded="false" />
-            <element signature="e#5083#5087#0" expanded="false" />
-            <element signature="e#5118#5122#0" expanded="false" />
-            <element signature="e#5534#5538#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,7 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -711,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -735,7 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" lean-forward="true" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,13 +735,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/countdown-timer.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
+        <state relative-caret-position="832">
           <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -761,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,13 +759,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
+        <state relative-caret-position="312">
           <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
@@ -783,22 +772,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-d.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-c.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="69" column="70" lean-forward="false" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
+        <state relative-caret-position="2678">
+          <caret line="118" column="11" lean-forward="true" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
           <folding>
-            <element signature="e#1505#1613#0" expanded="false" />
-            <element signature="e#1647#1844#0" expanded="false" />
+            <element signature="e#1506#1614#0" expanded="false" />
+            <element signature="e#1648#1845#0" expanded="false" />
+            <element signature="e#3041#3230#0" expanded="false" />
+            <element signature="e#3637#3826#0" expanded="false" />
+            <element signature="e#3866#6427#0" expanded="false" />
+            <element signature="e#4508#4616#0" expanded="false" />
+            <element signature="e#4650#4872#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-d.html">
+    <entry file="file://$PROJECT_DIR$/01_learn/canvas/canvas-line.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="129">
+          <caret line="196" column="35" lean-forward="true" selection-start-line="196" selection-start-column="7" selection-end-line="196" selection-end-column="35" />
+          <folding>
+            <element signature="e#1894#2095#0" expanded="false" />
+            <element signature="e#3658#3808#0" expanded="false" />
+            <element signature="e#3849#4900#0" expanded="false" />
+            <element signature="e#4906#4939#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

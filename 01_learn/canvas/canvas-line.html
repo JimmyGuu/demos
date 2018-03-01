@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        #canvas {
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+    当前浏览器不支持 canvas 标签，请升级您的浏览器获得更好的体验。
+</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 1024;
+        canvas.height = 1768;
+
+        // 兼容性判断
+        if (!context) return false;
+
+        // 绘制线
+        // canvas基于状态
+        context.moveTo(100, 100);
+        context.lineTo(700, 100);
+
+        context.strokeStyle = '#ff5f00';
+        context.lineWidth = '4';
+        context.stroke();
+
+        context.beginPath();
+
+        context.moveTo(100, 200);
+        context.lineTo(200, 300);
+        context.lineTo(100, 400);
+        context.stroke();
+
+        context.beginPath();
+        context.strokeStyle = '#3b98ff';
+        context.moveTo(150, 200);
+        context.lineTo(250, 300);
+        context.lineTo(150, 400);
+        context.stroke();
+
+        context.beginPath();
+        context.strokeStyle = '#50ff90';
+        context.lineTo(500, 200);
+        context.lineTo(430, 300);
+        context.lineTo(500, 400);
+        context.stroke();
+
+        // arrow
+        context.beginPath();
+        context.lineTo(100, 500);
+        context.lineTo(300, 500);
+        context.lineTo(300, 450);
+        context.lineTo(400, 550);
+        context.lineTo(300, 650);
+        context.lineTo(300, 600);
+        context.lineTo(100, 600);
+        context.closePath();
+
+        // 必须先填充
+        context.lineWidth = 8;
+        context.fillStyle = '#ff254b';
+        context.fill();
+
+        // 后描边
+        context.stroke();
+
+        arrowLeft2Right(context, {
+            x: 500,
+            y: 500,
+            width: 400,
+            height: 100,
+            borderWidth: 10,
+            borderColor: '#000',
+            color: 'rgba(0, 0, 0, .1)'
+        });
+
+        // rect()
+        context.rect(600, 400, 50, 50);
+        context.stroke();
+
+        // fillRect()
+        // strokeRect()
+        context.beginPath();
+        context.fillStyle = 'rgba(255, 37, 75, .8)';
+        context.strokeStyle = 'rgba(255, 37, 75, 1)';
+        context.strokeRect(750, 250, 100, 100);
+        context.fillRect(700, 200, 100, 100);
+
+        // lineCap [butt(default) | round | square]
+        // 设置线条两段形状
+        context.beginPath();
+        context.strokeStyle = '#999';
+        context.lineWidth = 1;
+        context.moveTo(100, 750);
+        context.lineTo(100, 950);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(500, 750);
+        context.lineTo(500, 950);
+        context.stroke();
+
+        context.beginPath();
+        context.lineWidth = 20;
+        context.strokeStyle = '#666';
+        context.lineCap = 'butt'; // default
+        context.moveTo(100, 800);
+        context.lineTo(500, 800);
+        context.stroke();
+
+        context.beginPath();
+        context.lineCap = 'round';
+        context.moveTo(100, 850);
+        context.lineTo(500, 850);
+        context.stroke();
+
+        context.beginPath();
+        context.lineCap = 'square';
+        context.moveTo(100, 900);
+        context.lineTo(500, 900);
+        context.stroke();
+
+
+        // 绘制任意正多边形
+        // context.lineJoin = 'bevel'; // 横切
+        // context.lineJoin = 'round';
+        context.lineJoin = 'miter';
+        drawSimplePolygon(context, { x: 400, y: 1400, R: 400, r:200, count: 5, borderWidth: 10 });
+    }
+
+    /*
+     * Draw a left to right arrow
+     * @param  {Object} ctx  Context of canvas
+     * @param  {Object} opts Options
+     * @return {void}
+     */
+    function arrowLeft2Right(ctx, opts) {
+        var rect_r  = 2 / 3, // rate of rect width
+            arrow_r = 1 / 2; // rate of arrow height
+        var x = +opts.x,
+            y = +opts.y;
+
+        if (!ctx || (!x && x != 0) || (!y && y != 0)) return;
+
+        var w           = +opts.width       || 300,
+            h           = +opts.height      || 100,
+            borderWidth = +opts.borderWidth || 4,
+            borderColor = opts.borderColor  || '#333',
+            color       = opts.color        || '#fff';
+
+        var rect_w  = Math.round(w * rect_r);
+        var arrow_h = Math.round(h * arrow_r);
+
+        ctx.beginPath();
+        ctx.lineTo(x, y);
+        ctx.lineTo(x + rect_w, y);
+        ctx.lineTo(x + rect_w, y - arrow_h);
+        ctx.lineTo(x + w, y + h / 2);
+        ctx.lineTo(x + rect_w, y + h + arrow_h);
+        ctx.lineTo(x + rect_w, y + h);
+        ctx.lineTo(x, y + h);
+        ctx.closePath();
+
+        ctx.strokeStyle = borderColor;
+        ctx.lineWidth   = borderWidth;
+        ctx.fillStyle   = color;
+        ctx.fill();
+
+        ctx.stroke();
+    }
+
+    /**
+     * Simple polygon
+     */
+    function drawSimplePolygon(ctx, opts) {
+        var R           = +opts.R || 200,
+            r           = +opts.r || 100,
+            c           = +opts.count >= 3 ? +opts.count : 5,
+            x           = +opts.x || 0,
+            y           = +opts.y || 0,
+            rotate      = +opts.rotate || 0,
+            borderWidth = +opts.borderWidth || 4,
+            borderStyle = opts.borderStyle  || '#000',
+            styles      = opts.styles       || '#fff';
+
+        var radian = Math.PI / 180;
+        var c_ang = 360 / c,
+            out_ang = 90 - c_ang,
+            in_ang = 90 - (90 - out_ang) / 2;
+
+        ctx.beginPath();
+        ctx.strokeStyle = borderStyle;
+        ctx.lineWidth   = borderWidth;
+        ctx.fillStyle   = styles;
+        for (var i = 0; i < c; i++) {
+            var x1 = Math.cos((out_ang + i * c_ang - rotate) * radian) * R + x;
+            var y1 = -Math.sin((out_ang + i * c_ang - rotate) * radian) * R + y;
+
+            var x2 = Math.cos((in_ang + i * c_ang - rotate) * radian) * r + x;
+            var y2 = -Math.sin((in_ang + i * c_ang - rotate) * radian) * r + y;
+
+            ctx.lineTo(x1, y1);
+            ctx.lineTo(x2, y2);
+        }
+        ctx.closePath();
+
+        ctx.fill();
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>
