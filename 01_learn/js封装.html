@@ -168,6 +168,49 @@ for(var prop in dog1) { co('dog1[' + prop + '] = ' + dog1[prop]) };
             window.Test = Test;
         }
     }));
+	
+	// jquery 多引用方式封装
+	(function (global, factory) {
+        'use strict';
+
+        // For CommonJS
+        if (typeof module === 'object' && typeof module.exports === 'object') {
+            module.exports = global.document
+                ? factory(global, true)
+                : function (win) {
+                    if (!win.document) {
+                        throw new Error('Demo requires a window with a document');
+                    }
+                    return factory(win);
+                };
+        } else {
+            factory(global);
+        }
+    } (typeof window !== 'undefined' ? window : this, function (window, noGlobal) {
+        'use strict';
+
+        function Demo(options) {
+            if (this instanceof Demo) {
+
+            } else {
+                return new Demo(options);
+            }
+        }
+
+        // Register as a named AMD module
+        if (typeof define === 'function' && define.amd) {
+            define('Demo', [], function() {
+                return Demo;
+            });
+        }
+
+        // Browser
+        if (!noGlobal) {
+            window.Demo = Demo;
+        }
+
+        return Demo;
+    }));
 </script>
 
 </body>

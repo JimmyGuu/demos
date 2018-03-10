@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>XMLHttpRequest</title>
+    <style type="text/css">
+        .tip {
+            color: red;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="form">
+        <input type="file" name="filea"><br>
+        <input type="text" name="username" value="lee Xiaou"><br>
+        <button type="button" id="btn">提交</button>
+        <label class="tip"></label>
+    </form>
+
+<script type="text/javascript">
+    var host = 'http://localhost:56258/api/';
+</script>
+<script type="text/javascript">
+    // var url = host + 'Demo/Test?str=';
+    var url = host + 'Demo/GetPicture';
+    var xhr = new XMLHttpRequest();
+    var data = {
+        Id: 2,
+        ClientType: 1
+    };
+    // 设置HTTP请求的时限
+    xhr.timeout = 3000;
+    // 与timeout对应的事件
+    xhr.ontimeout = function (e) {
+        console.warn('请求超时');
+    }
+    // xhr.open('GET', url);
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        // xhr.readyState: XMLHttpRequest对象的状态
+        // 等于4表示数据已经接收完毕
+        // xhr.status: 服务器返回的状态码
+        // xhr.responseText: 服务器返回的文本数据
+        // xhr.responseXML: 服务器返回的XML格式数据
+        // xhr.statusText: 服务器返回的状态文本
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+　　　　 } else {
+            console.warn(xhr.statusText);
+　　　　 }
+    }
+
+    xhr.send(JSON.stringify(data));
+</script>
+<script type="text/javascript">
+    
+
+    var url2 = host + 'Demo/FormData';
+    var formData = new FormData();
+    var xhr2 = new XMLHttpRequest();
+    var boundary = '----FormBoundary' + Math.random().toString(16).substr(2);
+
+    formData.append('username', 'Lee');
+    formData.append('id', '001');
+    console.log(formData)
+    formData.forEach(item => {console.log(item);})
+
+    xhr2.open('POST', url2);
+    // xhr2.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+
+
+    xhr2.onreadystatechange = () => {
+        if (xhr2.readyState == 4 && xhr2.status == 200) {
+            console.log(xhr2.responseText);
+　　　　 } else {
+            console.warn(xhr2.statusText);
+　　　　 }
+    }
+
+    // 不能有缩进
+    xhr2.send(formData);
+</script>
+<script type="text/javascript">
+    (function (global, factory) {
+        'use strict';
+
+        // For CommonJS
+        if (typeof module === 'object' && typeof module.exports === 'object') {
+            module.exports = global.document
+                ? factory(global, true)
+                : function (win) {
+                    if (!win.document) {
+                        throw new Error('XHR requires a window with a document');
+                    }
+                    return factory(win);
+                };
+        } else {
+            factory(global);
+        }
+    } (typeof window !== 'undefined' ? window : this, function (window, noGlobal) {
+        'use strict';
+
+        var TYPES = ['GET', 'POST'];
+        var RES_TYPES = ['default', '', 'text', 'document', 'json', 'blob', 'arrayBuffer'];
+        var CONTENT_TYPES = ['default', 'application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'];
+        var DATA_TYPES = ['json'];
+
+        var utils = {
+            find: function (arr, val) {
+                var _isContain = false;
+                for (var i  = arr.length - 1; i >= 0; i--) {
+                    if (arr[i] === val) {
+                        _isContain = true;
+                    }
+                }
+                return _isContain;
+            },
+            isNative: function (api) {
+                return /native code/.test(api.toString()) && typeof api !== 'undefined';
+            },
+            getFormData: function (form) {
+                if (!form) {
+                    return {};
+                }
+                var params = {},
+                    elems = form.elements;
+                for (var i in elems) {
+                    var elem = elems[i];
+                    if (elem.nodeName != "INPUT") {
+                        continue;
+                    }
+                    var nodeAttrs = elem.attributes;
+                    if (nodeAttrs.name) {
+                        params[nodeAttrs.name.nodeValue] = elem.value;
+                    }
+                }
+                return params;
+            },
+            getFormPayload: function (obj) {
+                var boundary = this.getBoundary();
+                var str = '--' + boundary + '\n';
+                for (var i in obj) {
+                    if (obj.hasOwnProperty(i)) {
+                        str += ('Content-Disposition: form-data;name="' + i + '"\n\n' + '' + obj[i] + '\n--' + boundary + '\n');
+                    }
+                }
+                str = str.replace(/\n$/, '');
+                str += ('--');
+
+                return {
+                    datas: str,
+                    boundary: boundary
+                };
+            },
+            getBoundary: function () {
+                return '----XHRFormBoundary' + Math.random().toString(16).substr(2);
+            },
+            getUrlParam: function (url, datas, and, equal) {
+                var isParamed = /[?]/.test(url);
+                and = and || '&';
+                equal = equal || '=';
+                var str = isParamed ? and : '?';
+                for (var i in datas) {
+                    if (datas.hasOwnProperty(i)) {
+                        str += (i + equal + datas[i] + and)
+                    }
+                }
+
+                var reg = new RegExp('[' + and + ']$');
+                str = str.replace(reg, '');
+
+                return (url + str);
+            }
+        };
+
+        function XHR(options) {
+            if (this instanceof XHR) {
+                this._options = options || {};
+
+                this._init();
+
+                this.request();
+            } else {
+                return new XHR(options);
+            }
+        }
+
+        XHR.prototype = {
+            /**
+             * Options initialize
+             * @private
+             * @return {void}
+             */
+            _init: function () {
+                var self = this;
+
+                this.isDebug = this._options.debug === true ? true : false;
+                this.url = this._options.url || '';
+                this.timeout = this._options.timeout || 0;
+                this.type = utils.find(TYPES, ('' + this._options.type).toUpperCase())
+                    ? ('' + this._options.type).toUpperCase()
+                    : TYPES[0];
+                this.async = this._options.async === false ? false : true;
+                this.responseType = utils.find(RES_TYPES, ('' + this._options.responseType).toLowerCase())
+                    ? ('' + this._options.responseType).toLowerCase()
+                    : RES_TYPES[0];
+                this.contentType = utils.find(CONTENT_TYPES, ('' + this._options.contentType).toLowerCase())
+                    ? this._options.contentType
+                    : CONTENT_TYPES[0];
+                // 目前只支持json
+                this.dataType = utils.find(DATA_TYPES, ('' + this._options.dataType).toLowerCase())
+                    ? ('' + this._options.dataType).toLowerCase()
+                    : DATA_TYPES[0];
+                this.data = this._options.data || {};
+                this.form = this._options.form || null;
+                this.requestHeader = this._options.requestHeader || {};
+                this.updateProgress = typeof this._options.updateProgress === 'function'
+                    ? this._options.updateProgress
+                    : function () {};
+                this.uploadProgress = typeof this._options.uploadProgress === 'function'
+                    ? this._options.uploadProgress
+                    : function () {};
+                this.success = typeof this._options.success === 'function'
+                    ? this._options.success
+                    : function (responseText, status, xhr) { if (self.isDebug) { console.warn('Didn\'t specify the callback method of "success"');console.log(responseText, status, xhr); } };
+                this.error = typeof this._options.error === 'function'
+                    ? this._options.error
+                    : function (responseText, status, xhr) { if (self.isDebug) console.log(responseText, status, xhr); };
+
+                this._setContentType();
+                if (this.contentType === CONTENT_TYPES[3]) {
+                    // 指定了request_header的Content-Type为 multipart/form-data
+                    this.formData = this._getFormData();
+                }
+
+                this._setUrl();
+
+                return this;
+            },
+            _getFormData: function () {
+                var formEle = document.querySelector(this.form);
+                var formData = '';
+                var formObj = '';
+
+                if (this.form && formEle) {
+                    // 指定了form选择器优先从form获取数据
+                    formObj = utils.getFormData(formEle);
+                } else {
+                    // 没有指定form选择器从data中获取数据
+                    formObj = this.data;
+                }
+
+                var payload = utils.getFormPayload(formObj);
+                formData = payload.datas;
+
+                // this.contentType = CONTENT_TYPES[3] + '; boundary=' + payload.boundary;
+                this.requestHeader['Content-Type'] = CONTENT_TYPES[3] + '; boundary=' + payload.boundary;
+
+                return formData;
+            },
+            _setRequestHeader: function (xhr) {
+                for (var i in this.requestHeader) {
+                    if (this.requestHeader.hasOwnProperty(i)) {
+                        xhr.setRequestHeader(i, this.requestHeader[i]);
+                    }
+                }
+            },
+            _setContentType: function () {
+                if (this.contentType !== CONTENT_TYPES[0]) {
+                    this.requestHeader['Content-Type'] = this.contentType;
+                }
+            },
+            _setUrl: function () {
+                if (this.type === TYPES[0]) {
+                    this.url = utils.getUrlParam(this.url, this.data);
+                }
+            },
+            request: function () {
+                var self = this,
+                    isDebug = this.isDebug;
+                var xhr = new XMLHttpRequest();
+
+                xhr.open(this.type, this.url, this.async);
+                xhr.timeout = this.timeout;
+                this._setRequestHeader(xhr);
+                if (this.responseType !== RES_TYPES[0]) {
+                    xhr.responseType = this.responseType;
+                }
+                // 下载progress事件
+                xhr.onprogress = this.updateProgress;
+                // 上传progress事件
+        　　　　 xhr.upload.onprogress = this.uploadProgress;
+
+                // 调用xhr.send()方法后立即触发
+                xhr.onloadstart = function () {
+                    if (isDebug) console.warn('onloadstart...');
+                }
+
+                // 当请求成功完成时触发
+                // 当http状态码为2xx或304时认为请求成功
+                xhr.onload = function () {
+                    if (isDebug) console.warn('onload...');
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        if (isDebug) console.warn('request successed...');
+                        self.success(xhr.responseText, xhr.status, xhr);
+                        return;
+                    }
+
+                    if (isDebug) console.warn('request failed...');
+                    self.error(xhr.responseText, xhr.status, xhr);
+                }
+
+                // 当请求结束（包括请求成功和请求失败）时触发
+                xhr.onloadend = function () {
+                    if (isDebug) console.warn('onloadend...');
+                }
+
+                // xhr.timeout不等于0，由请求开始即onloadstart开始算起，
+                // 当到达xhr.timeout所设置时间请求还未结束即onloadend，则触发此事件。
+                xhr.ontimeout = function () {
+                    if (isDebug) console.warn('request ontimeout...');
+
+                }
+
+                // 当调用xhr.abort()后触发
+                xhr.onabort = function () {
+                    if (isDebug) console.warn('onabort...');
+                }
+
+                // 只有发生了网络层级别的异常(Network error)
+                // 才会触发此事件
+                xhr.onerror = function (e) {
+                    if (isDebug) console.warn('network error...');
+                }
+
+                // 当readyState改变时都会触发这个方法
+                xhr.onreadystatechange = function() {
+                    switch (xhr.readyState) {
+                        case 1:
+                            // Opened
+                            if (isDebug) console.warn('Opened (before xhr.send())...');
+                            break;
+                        case 2:
+                            // Headers Received
+                            if (isDebug) console.warn('Headers Received...');
+                            break;
+                        case 3:
+                            // Loading
+                            if (isDebug) console.warn('Loading (downloading response entity body)...');
+                            break;
+                        case 4:
+                            // Done
+                            if (isDebug) console.warn('Done...');
+                            break;
+                    }
+                }
+
+                var data = '';
+                if (this.dataType === DATA_TYPES[0]) {
+                    // json
+                    if (this.contentType === CONTENT_TYPES[3]) {
+                        // formData
+                        data = this.formData;
+                    } else {
+                        // json
+                        data = JSON.stringify(this.data);
+                    }
+                }
+
+                // console.log('before send: ', this, data);
+
+                try {
+                    xhr.send(data);
+                } catch (e) {
+                    if (isDebug) console.warn('send error...', e);
+                }
+            },
+
+        }
+
+        // Register as a named AMD module
+        if (typeof define === 'function' && define.amd) {
+            define('XHR', [], function() {
+                return XHR;
+            });
+        }
+
+        // Browser
+        if (!noGlobal) {
+            window.XHR = XHR;
+        }
+
+        return XHR;
+    }));
+
+
+    XHR({
+        debug: false,
+        url: host + 'Demo/FormData',
+        type: 'POST',
+        form: '#form',
+        contentType: 'multipart/form-data'
+    });
+
+    XHR({
+        debug: false,
+        url: host + 'Demo/Test',
+        type: 'get',
+        data: {
+            str: 'Bob'
+        }
+    });
+</script>
+<script type="text/javascript">
+    var tip = document.querySelector('.tip');
+
+    function updateProgress(event) {
+        if (event.lengthComputable) {
+　　　　　　 var percentComplete = (event.loaded / event.total * 100).toFixed(2);
+            // console.log('progress: ', percentComplete + '%');
+            tip.innerHTML = '已上传' + percentComplete + '%';
+　　　　}
+    }
+
+    function submit() {
+        var url3 = host + 'Demo/UploadFile';
+        var form = document.querySelector('#form');
+        var formData2 = new FormData(form);
+        var xhr3 = new XMLHttpRequest();
+
+        // 三个参数 type | url | async
+        xhr3.open('POST', url3, true);
+
+        // 设置header
+        xhr3.setRequestHeader('X-Test', 'one');
+        // ['', 'text', 'document', 'json', 'blob', 'arrayBuffer']
+        xhr3.responseType = 'text';
+
+        // 当readyState改变时都会触发这个方法
+        xhr3.onreadystatechange = function() {
+            switch (xhr3.readyState) {
+                case 1:
+                    // Opened
+                    console.warn('Opened (before xhr.send())...');
+                    break;
+                case 2:
+                    // Headers Received
+                    console.warn('Headers Received...');
+                    break;
+                case 3:
+                    // Loading
+                    console.warn('Loading (downloading response entity body)...');
+                    break;
+                case 4:
+                    // Done
+                    console.warn('Done...');
+                    break;
+            }
+        }
+
+        // 下载progress事件
+        xhr3.onprogress = updateProgress;
+        // 上传progress事件
+　　　　 xhr3.upload.onprogress = updateProgress;
+
+        // 调用xhr.send()方法后立即触发
+        xhr3.onloadstart = function () {
+            console.warn('onloadstart...');
+            tip.innerHTML = '开始上传...';
+        }
+        // 当请求成功完成时触发
+        // 当http状态码为2xx或304时认为请求成功
+        xhr3.onload = function () {
+            console.warn('onload...');
+            if ((xhr3.status >= 200 && xhr3.status < 300) || xhr3.status == 304) {
+                console.warn('request success...');
+                console.log('request result: ', xhr3.responseText);
+            }
+        }
+        // 当请求结束（包括请求成功和请求失败）时触发
+        xhr3.onloadend = function () {
+            console.warn('onloadend...');
+            tip.innerHTML = '上传结束...';
+        }
+        // 以下三个方法为错误处理
+        // 当调用xhr.abort()后触发
+        xhr3.onabort = function () {
+            console.warn('onabort...');
+        }
+        // xhr.timeout不等于0，由请求开始即onloadstart开始算起，
+        // 当到达xhr.timeout所设置时间请求还未结束即onloadend，则触发此事件。
+        xhr3.ontimeout = function () {
+            console.warn('ontimeout...');
+        }
+        // 只有发生了网络层级别的异常(Network error)才会触发此事件
+        xhr3.onerror = function () {
+            console.warn('onerror...');
+        }
+
+        try {
+            xhr3.send(formData2);
+        } catch (e) {
+            console.warn('ERR! ', e);
+        }
+    }
+
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click', submit);
+</script>
+</body>
+</html>

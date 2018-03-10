@@ -493,6 +493,24 @@
             <param name="data"></param>
             <returns></returns>
         </member>
+        <member name="M:WebApplication2.Controllers.DemoController.GetTest(System.String)">
+            <summary>
+            Get请求测试接口
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication2.Controllers.DemoController.FormData">
+            <summary>
+            FormData测试接口
+            </summary>
+        </member>
+        <member name="M:WebApplication2.Controllers.DemoController.UploadFile">
+            <summary>
+            上传文件测试接口
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WebApplication2.Controllers.Models.PictureRequest">
             <summary>
             图片接口请求数据

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>xhr.js</title>
+    <style type="text/css">
+        .tip {
+            color: red;
+            padding-left: 15px;
+            font-size: 12px;
+        }
+        button, input {
+            background: #ff5f00;
+            color: #fff;
+            border: 1px solid #ff5f00;
+            border-radius: 4px;
+            padding: 4px 24px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .input-group {
+            padding: 6px 0px;
+        }
+        input {
+            background: #fff;
+            color: #333;
+            border-color: #ddd;
+            cursor: text;
+        }
+        form {
+            margin-top: 15px;
+        }
+    </style>
+    <script type="text/javascript" src="xhr.js"></script>
+</head>
+<body>
+    <div class="input-group">
+        <input type="text" name="username" class="input" id="input0" />
+    </div>
+    <button type="button" id="btn0">发送get请求</button>
+
+    <form id="form">
+        <div class="input-group">
+            <input type="text" name="username" class="input" id="input" />
+        </div>
+        <button type="button" id="btn">提交</button>
+    </form>
+
+    <form id="form2">
+        <div class="input-group">
+            <input type="file" name="filea" />
+        </div>
+        <div class="input-group">
+            <input type="file" name="fileb" />
+        </div>
+        <div class="input-group">
+            <input type="text" name="username" class="input" id="input2" />
+        </div>
+        <button type="button" id="btn2">提交</button>
+        <label id="tip" class="tip"></label>
+    </form>
+
+<script type="text/javascript">
+    const host = 'http://localhost:56258/api/';
+
+    window.onload = function () {
+        // get请求
+        let btn0 =  document.querySelector('#btn0');
+        btn0.addEventListener('click', submit0);
+
+        // post 表单
+        let btn = document.querySelector('#btn');
+        btn.addEventListener('click', submit);
+
+        // post 上传文件
+        let btn2 = document.querySelector('#btn2');
+        btn2.addEventListener('click', submit2);
+    }
+
+    // get请求
+    function submit0() {
+        let str = document.querySelector('#input0').value;
+
+        xhr({
+            url: host + 'Demo/Test',
+            type: 'get',
+            data: {
+                str: str
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function submit() {
+        xhr({
+            url: host + 'Demo/FormData',
+            type: 'POST',
+            form: '#form',
+            contentType: 'multipart/form-data',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function submit2() {
+        var filename = document.querySelector('input[name="filea"]').value;
+        console.log(document.querySelector('input[name="filea"]').type);
+        var index = /\\(?!.*\\+.*)/.exec(filename);
+        if (index) {
+            index = index.index;
+            filename = filename.substr(index + 1, filename.length);
+            console.log(filename);
+        }
+
+        var tip = document.querySelector('#tip');
+        xhr({
+            url: host + 'Demo/UploadFile',
+            type: 'POST',
+            form: '#form2',
+            contentType: 'multipart/form-data',
+            success: function (data) {
+                console.log(data);
+            },
+            before: function () {
+                tip.innerHTML = `开始上传`;
+            },
+            end: function () {
+                tip.innerHTML = `上传完成`;
+            },
+            uploadProgress: function (e) {
+                var percentComplete = (e.loaded / e.total * 100).toFixed(2);
+                tip.innerHTML = `已上传 ${percentComplete}%, 请稍等...`;
+            }
+        });
+    }
+</script>
+</body>
+</html>
