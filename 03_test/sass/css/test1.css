@@ -1,0 +1,77 @@
+@charset "UTF-8";
+body {
+  font-family: "微软雅黑";
+  color: #ff5f00;
+}
+
+p.p-1 {
+  font-size: 16px;
+}
+
+nav {
+  color: blue;
+}
+nav li {
+  color: yellow;
+}
+nav li a {
+  color: red;
+}
+header nav li a {
+  color: green;
+}
+
+.box {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+  overflow: hidden;
+}
+
+.btn, .btn-primary {
+  border: 1px solid #999;
+  padding: 4px 12px;
+  font-size: 14px;
+  background: #ddd;
+  color: #333;
+}
+
+.btn-primary {
+  background: #ff5f00;
+  color: #fff;
+}
+
+.box, .box-2 {
+  padding: 4px 12px;
+}
+
+.box {
+  font-size: 14px;
+}
+
+.box-2 {
+  font-size: 18px;
+}
+
+.box {
+  border-left: 1px solid #ddd;
+}
+
+.box {
+  border-right: 2px solid #ddd;
+}
+
+/*方向*/
+/*位置*/
+.box {
+  width: 50px;
+}
+
+/*# sourceMappingURL=test1.css.map */

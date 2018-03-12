@@ -1,0 +1,113 @@
+$font-stack: '微软雅黑';
+$primary-color: #ff5f00;
+
+body {
+    font-family: $font-stack;
+    color: $primary-color;
+}
+
+$size: 16px;
+$size: 14px !default;
+p.p-1 {
+    font-size: $size;
+}
+
+
+nav {
+    color: blue;
+
+    li {
+        color: yellow;
+
+        a {
+            color: red;
+
+            header & {
+                color: green;
+            }
+        }
+    }
+}
+
+
+.box {
+    font: {
+        size: 12px;
+        weight: bold;
+    }
+}
+
+.clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+
+.btn {
+    border: 1px solid #999;
+    padding: 4px 12px;
+    font-size: 14px;
+    background: #ddd;
+    color: #333;
+}
+
+.btn-primary {
+    background: #ff5f00;
+    color: #fff;
+
+    @extend .btn;
+}
+
+%box-padding {
+    padding: 4px 12px;
+}
+
+.box {
+    font-size: 14px;
+
+    @extend %box-padding;
+}
+
+.box-2 {
+    font-size: 18px;
+
+    @extend %box-padding;
+}
+
+$border-properties: (border);
+@mixin set-border($direction, $val) {
+    @each $prop in $border-properties {
+        #{$prop}-#{$direction}: $val;
+    }
+}
+
+.box {
+    @include set-border(left, 1px solid #ddd);
+}
+
+
+%border-right {
+    border-right: 2px solid #ddd;
+}
+
+// 方向
+/*方向*/
+$d: "right";
+.box {
+    @extend %border-#{$d};
+}
+
+/*位置*/
+
+
+
+.box {
+    width: (100px / 2);
+}
