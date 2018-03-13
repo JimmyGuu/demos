@@ -1,77 +1,76 @@
 @charset "UTF-8";
-body {
-  font-family: "微软雅黑";
-  color: #ff5f00;
-}
+body { font-family: "微软雅黑"; color: #ff5f00; }
 
-p.p-1 {
-  font-size: 16px;
-}
+p.p-1 { font-size: 16px; }
 
-nav {
-  color: blue;
-}
-nav li {
-  color: yellow;
-}
-nav li a {
-  color: red;
-}
-header nav li a {
-  color: green;
-}
+.pull-left { float: left; }
 
-.box {
-  font-size: 12px;
-  font-weight: bold;
-}
+nav { color: blue; }
+nav li { color: yellow; }
+nav li a { color: red; }
+header nav li a { color: green; }
 
-.clearfix:before, .clearfix:after {
-  content: "";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-  overflow: hidden;
-}
+.box { font: 12px/24px; font-size: 12px; font-weight: bold; }
 
-.btn, .btn-primary {
-  border: 1px solid #999;
-  padding: 4px 12px;
-  font-size: 14px;
-  background: #ddd;
-  color: #333;
-}
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; overflow: hidden; }
 
-.btn-primary {
-  background: #ff5f00;
-  color: #fff;
-}
+.btn, .btn-primary { border: 1px solid #999; padding: 4px 12px; font-size: 14px; background: #ddd; color: #333; }
 
-.box, .box-2 {
-  padding: 4px 12px;
-}
+.btn-primary { background: #ff5f00; color: #fff; }
 
-.box {
-  font-size: 14px;
-}
+.box, .box-2 { padding: 4px 12px; }
 
-.box-2 {
-  font-size: 18px;
-}
+.box { font-size: 14px; }
 
-.box {
-  border-left: 1px solid #ddd;
-}
+.box-2 { font-size: 18px; }
 
-.box {
-  border-right: 2px solid #ddd;
-}
+.box { border-left: 1px solid #ddd; }
+
+.box { border-right: 2px solid #ddd; }
 
 /*方向*/
 /*位置*/
-.box {
-  width: 50px;
-}
+.box { width: 50px; }
+
+.btn, .btn-primary { padding: 4px 12px; font-size: 16px; border: 1px solid #ddd; color: #333; }
+.btn-primary { border-color: #ff5f00; background: #ff5f00; color: #fff; }
+
+p { font: 12px/30px; }
+
+.sidebar { width: 300px; }
+@media screen and (orientation: landscape) { .sidebar { width: 500px; } }
+
+.parent { font-size: 14px; }
+.child-a { font-size: 16px; }
+.child-c { font-size: 18px; }
+.parent .child-b { font-size: 12px; }
+
+@media print { .page { width: 8in; } }
+.page { color: red; }
+
+@media print { .page { width: 8in; }
+  .p { color: red; } }
+.box-a { background: url("/img/a.png") no-repeat; }
+
+.box-b { background: url("/img/b.png") no-repeat; }
+
+.box-c { background: url("/img/c.png") no-repeat; }
+
+.box-d { background: url("/img/d.png") no-repeat; }
+
+.box-e { background: url("/img/e.png") no-repeat; }
+
+.box-aa { background: url("/img/pen.png") no-repeat; }
+
+.box-bb { background: url("/img/apple.png") no-repeat; }
+
+.box-cc { background: url("/img/bag.png") no-repeat; }
+
+.box-aaa { background: yellow; }
+
+.box-bbb { background: blue; }
+
+.box-ccc { background: red; }
 
 /*# sourceMappingURL=test1.css.map */

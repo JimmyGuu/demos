@@ -12,6 +12,10 @@ p.p-1 {
     font-size: $size;
 }
 
+.pull-left {
+    float: left;
+}
+
 
 nav {
     color: blue;
@@ -31,7 +35,7 @@ nav {
 
 
 .box {
-    font: {
+    font: 12px/24px {
         size: 12px;
         weight: bold;
     }
@@ -110,4 +114,88 @@ $d: "right";
 
 .box {
     width: (100px / 2);
+}
+
+
+.btn {
+    padding: 4px 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    color: #333;
+
+    &-primary {
+        border-color: #ff5f00;
+        background: #ff5f00;
+        color: #fff;
+    }
+}
+
+p {
+    $font-size: 12px;
+    $line-height: 30px;
+    font: #{$font-size}/#{$line-height};
+}
+
+.sidebar {
+    width: 300px;
+    @media screen and (orientation: landscape) {
+        width: 500px;
+    }
+}
+
+.parent {
+    font-size: 14px;
+
+    @at-root .child-a {
+        font-size: 16px;
+
+        @at-root .child-c {
+            font-size: 18px;
+        }
+    }
+
+    .child-b {
+        font-size: 12px;
+    }
+}
+
+@media print {
+    .page {
+        width: 8in;
+        @at-root (without: media) {
+            color: red;
+        }
+    }
+}
+
+// 没有without
+@media print {
+    .page {
+        width: 8in;
+        @at-root .p {
+            color: red;
+        }
+    }
+}
+
+
+$arr: a, b, c, d, e;
+@each $img in $arr {
+    .box-#{$img} {
+        background: url('/img/#{$img}.png') no-repeat;
+    }
+}
+
+$list: (aa, pen), (bb, apple), (cc, bag);
+@each $var, $img in $list {
+    .box-#{$var} {
+        background: url('/img/#{$img}.png') no-repeat;
+    }
+}
+
+$list-2: (aaa: yellow, bbb: blue, ccc: red);
+@each $key, $color in $list-2 {
+    .box-#{$key} {
+        background: #{$color};
+    }
 }
