@@ -8,7 +8,9 @@ import { CountdownTimerComponent } from './countdown-timer.component';
     <button (click)="timer.start()">Start</button>
     <button (click)="timer.stop()">Stop</button>
     <div class="seconds">{{ timer.seconds }}</div>
-    <app-countdown-timer #timer></app-countdown-timer>
+    <div>
+      <app-countdown-timer #timer></app-countdown-timer>
+    </div>
   `
 })
 

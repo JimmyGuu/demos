@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SpyComponent } from './spy.component';
@@ -24,6 +25,10 @@ import { AstronautComponent } from './astronaut.component';
 import { LoggerService } from './logger.service';
 
 import { SpyDirective } from './spy.directive';
+
+export const ROUTES: Routes = [
+  { path: '', component: AppComponent }
+];
 
 
 @NgModule({
@@ -49,7 +54,8 @@ import { SpyDirective } from './spy.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
     LoggerService

@@ -1,0 +1,16 @@
+$text-size: 16px;
+$text-color: #ff5f00;
+.msg {
+  font-size: $text-size;
+  font-weight: 400;
+  padding: 4px 12px;
+}
+
+:host {
+  background: #dddddd;
+  display: block;
+}
+
+:host-context(.theme-orange) p {
+  color: rgba($text-color, .6);
+}

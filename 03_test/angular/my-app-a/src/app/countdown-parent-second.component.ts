@@ -9,11 +9,15 @@ import {CountdownTimerComponent} from './countdown-timer.component';
 @Component({
   selector: 'app-countdown-parent-second',
   template: `
-    <h3>Countdown to Liftoff (via ViewChild)</h3>
-    <button (click)="start()">Start</button>
-    <button (click)="stop()">Stop</button>
-    <div class="seconds">{{ seconds() }}</div>
-    <app-countdown-timer></app-countdown-timer>
+    <div>
+      <h3>Countdown to Liftoff (via ViewChild)</h3>
+      <button (click)="start()">Start</button>
+      <button (click)="stop()">Stop</button>
+      <div class="seconds">{{ seconds() }}</div>
+      <div class="theme-orange">
+        <app-countdown-timer></app-countdown-timer>
+      </div>
+    </div>
   `
 })
 

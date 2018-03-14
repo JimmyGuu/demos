@@ -2,13 +2,14 @@
  * 父组件与子组件通过本地变量互动
  */
 
-import {Component, NgModule, OnDestroy, OnInit} from '@angular/core';
+import {Component, NgModule, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-countdown-timer',
   template: `
-    <p>{{message}}</p>
-  `
+    <p class="msg"><strong>MSG: </strong>{{message}}</p>
+  `,
+  styleUrls: ['./countdown-timer.component.scss']
 })
 
 export class CountdownTimerComponent implements OnInit, OnDestroy {
@@ -56,4 +57,6 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 }
+
+let encapsulation: ViewEncapsulation.Native
 
