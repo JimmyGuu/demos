@@ -432,11 +432,8 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         "context": "src",
-        "to": "",
-        "from": {
-          "glob": "assets\\**\\*",
-          "dot": true
-        }
+        "to": "assets/",
+        "from": "assets"
       },
       {
         "context": "src",
