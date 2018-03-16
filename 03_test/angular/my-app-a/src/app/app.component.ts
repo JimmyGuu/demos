@@ -1,11 +1,11 @@
 import {AfterViewChecked, AfterViewInit, Component, ContentChild, OnInit, ViewChild} from '@angular/core';
 import {Hero} from "./hero";
 import {OnChangesComponent} from "./on-changes.component";
+import './app.component.scss';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements AfterViewChecked, AfterViewInit, OnInit{
   title = 'app';

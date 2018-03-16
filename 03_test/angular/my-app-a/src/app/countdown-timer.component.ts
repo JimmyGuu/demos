@@ -3,13 +3,13 @@
  */
 
 import {Component, NgModule, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import './countdown-timer.component.scss';
 
 @Component({
   selector: 'app-countdown-timer',
   template: `
     <p class="msg"><strong>MSG: </strong>{{message}}</p>
-  `,
-  styleUrls: ['./countdown-timer.component.scss']
+  `
 })
 
 export class CountdownTimerComponent implements OnInit, OnDestroy {
