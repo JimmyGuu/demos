@@ -20,6 +20,6 @@ export class AfterContentComponent implements OnInit, AfterContentInit, AfterCon
   }
 
   ngAfterContentChecked(): void {
-    console.log('After content checked...');
+    // console.log('After content checked...');
   }
 }

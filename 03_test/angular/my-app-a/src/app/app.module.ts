@@ -26,12 +26,23 @@ import { LoggerService } from './logger.service';
 
 import { SpyDirective } from './spy.directive';
 
+
+import { DynamicModule } from "./dynamic-component-loader/dynamic.module";
+import {DynamicComponent} from "./dynamic-component-loader/dynamic.component";
+
 export const ROUTES: Routes = [
-  { path: '', component: AppComponent }
+  { path: '', component: CountdownParentComponent }
+
 ];
 
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(ROUTES),
+    DynamicModule
+  ],
   declarations: [
     AppComponent,
     SpyComponent,
@@ -52,16 +63,14 @@ export const ROUTES: Routes = [
     MissioncontrolComponent,
     AstronautComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(ROUTES)
-  ],
   providers: [
     LoggerService
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+
   ]
 })
 export class AppModule { }

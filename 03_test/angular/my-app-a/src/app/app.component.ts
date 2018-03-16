@@ -29,12 +29,12 @@ export class AppComponent implements AfterViewChecked, AfterViewInit, OnInit{
   }
 
   ngAfterViewChecked() {
-    console.log('after view checked...');
+    // console.log('after view checked...');
     if (this.prevName === this.viewChild.name) {
-      console.warn('AfterViewChecked (no changes)');
+      // console.warn('AfterViewChecked (no changes)');
     } else {
       this.prevName = this.viewChild.name;
-      console.warn('AfterViewChecked');
+      // console.warn('AfterViewChecked');
       this.doSomething();
     }
   }
