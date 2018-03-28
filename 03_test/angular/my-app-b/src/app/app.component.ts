@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import './app.component.css';
+import './app.component.scss';
 
 @Component({
   selector: 'app-root',

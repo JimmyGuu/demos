@@ -1,0 +1,11 @@
+header {
+  nav {
+    li {
+      margin-right: 1.4rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@ const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
 const postcssImports = require('postcss-import');
+
+// Custom plugins addon
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -158,7 +160,7 @@ module.exports = {
       "./src\\polyfills.ts"
     ],
     "styles": [
-      "./src\\styles.css"
+      "./src\\styles.scss"
     ]
   },
   "output": {
@@ -357,13 +359,13 @@ module.exports = {
       "skipCodeGeneration": true,
       "compilerOptions": {}
     }),
-    new CompressionWebpackPlugin(),
-    new CleanWebpackPlugin(['dist'], {
+    // new CompressionWebpackPlugin(),
+    new CleanWebpackPlugin(['dist/'], {
       root: projectRoot,
       verbose:  true,
       dry:      false
     }),
-    new UglifyJsPlugin({
+    /*new UglifyJsPlugin({
       "test": /\.js$/i,
       "extractComments": false,
       "sourceMap": true,
@@ -385,7 +387,7 @@ module.exports = {
         },
         "compress": {}
       }
-    }),
+    }),*/
     extractCSS,
     extractSCSS
   ],

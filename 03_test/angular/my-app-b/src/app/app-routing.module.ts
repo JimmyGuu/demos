@@ -2,19 +2,22 @@ import {NgModule} from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {TestComponent} from "./feature/test.component";
+import {TestAComponent} from "./attribute-directives/test-a.component";
+import { TestBComponent } from "./structural-directives/test-b.component";
 
 export const ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: 'test', component: TestComponent },
   { path: 'home', component: HomeComponent },
-
+  { path: 'test/a', component: TestAComponent },
+  { path: 'test/b', component: TestBComponent },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
       ROUTES,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   exports: [

@@ -5,7 +5,7 @@ import {Component, OnInit} from "@angular/core";
   template: `
     <h2>Test</h2>
     <p>{{name}}</p>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/" routerLinkActive="active">Home</a>
   `
 })
 
