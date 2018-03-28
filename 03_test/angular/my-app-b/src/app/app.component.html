@@ -6,9 +6,10 @@
     </div>
     <nav class="pull-right">
       <ul class="clearfix">
-        <li class="pull-left"><a routerLink="/">Home</a></li>
-        <li class="pull-left"><a routerLink="/test/a">Test-a</a></li>
-        <li class="pull-left"><a routerLink="/test/b">Test-b</a></li>
+        <li class="pull-left"><a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li class="pull-left"><a routerLink="/test/a" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Test-a</a></li>
+        <li class="pull-left"><a routerLink="/test/b" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Test-b</a></li>
+        <li class="pull-left"><a routerLink="/pipes" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">pipes</a></li>
       </ul>
     </nav>
   </div>
