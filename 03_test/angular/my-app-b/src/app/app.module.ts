@@ -8,6 +8,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AttributeDirectivesModule } from "./attribute-directives/attribute-directives.module";
 import { StructuralDirectivesModule } from "./structural-directives/structural-directives.module";
 import { PipesModule } from "./pipes/pipes.module";
+import { AdminModule } from "./admin/admin.module";
 
 import { AppComponent } from './app.component';
 import {HomeComponent} from "./home/home.component";
@@ -27,6 +28,7 @@ import { NotFoundComponent } from "./not-found.component";
     AttributeDirectivesModule,
     StructuralDirectivesModule,
     PipesModule,
+    AdminModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,16 +1,14 @@
-header {
-  nav {
-    li {
-      margin-right: 1.4rem;
+nav {
+  li {
+    margin-right: 1.4rem;
 
-      a.active {
-        background: #ff5f00;
-        color: #fff;
-      }
+    a.active {
+      background: #ff5f00;
+      color: #fff;
+    }
 
-      &:last-child {
-        margin-right: 0;
-      }
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
