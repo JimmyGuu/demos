@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+    <style type="text/css">
+        .day {
+
+        }
+    </style>
+</head>
+<body>
+
+<button type="button" id="prevMonth">Prev Month</button>
+<button type="button" id="nextMonth">Next Month</button>
+<button type="button" id="prevYear">Prev Year</button>
+<button type="button" id="nextYear">Next Year</button>
+<button type="button" id="today">Today</button>
+<div id="calendarWrap"></div>
+
+<script type="text/javascript">
+    /*!
+     * @file CalendarPicker
+     */
+    (function (global, factory) {
+        'use strict';
+
+        if (typeof module === 'object' && typeof module.exports === 'object') {
+            module.exports = global.document
+                ? factory(global, true)
+                : function (win) {
+                    if (!win.document) {
+                        throw new Error('CalendarPicker requires a window with a document');
+                    }
+                    return factory(win);
+                };
+        } else {
+            factory(global);
+        }
+    } (typeof window !== 'undefined' ? window : this, function (window, noGlobal) {
+        'use strict';
+
+        // Common methods
+        var utils = {
+            // Get day
+            getDay: function (date) {
+                date = new Date(date);
+                return date.getDate();
+            },
+            // Get week
+            getWeek: function (date) {
+                date = new Date(date);
+                var week = date.getDay();
+                week = week < 1 ? 7 : week;
+                return week;
+            },
+            // Get month
+            getMonth: function (date) {
+                date = new Date(date);
+                return date.getMonth() + 1;
+            },
+            // Get year
+            getYear: function (date) {
+                date = new Date(date);
+                return date.getFullYear();
+            }
+        };
+
+        function CalendarPicker(selector, options) {
+            if (this instanceof CalendarPicker) {
+                this._options = options || {};
+                this.container = document.querySelector(selector) || document.body;
+
+                this._init();
+            } else {
+                return new CalendarPicker(selector, options);
+            }
+        }
+
+        CalendarPicker.prototype = {
+            // Options init
+            _init: function () {
+                this.separate = this._options.separate || '-';
+                this.classnameDay = this._options.classnameDay || 'day';
+                this.classnameToday = this._options.classnameToday || 'today';
+                this.classnameMonth = this._options.classnameMonth || 'month';
+                this.classnameWeek = this._options.classnameWeek || 'week';
+                this.classnameWeekBar = this._options.classnameWeekBar || 'week-bar';
+                this.classnamePrevMonth = this._options.classnamePrevMonth || 'prev-month';
+                this.classnameNextMonth = this._options.classnameNextMonth || 'next-month';
+                this.isStyle = this._options.isStyle === false ? false : true;
+                this.styles = this._options.styles || 'position: relative;text-align: center;display: inline-block;width: 40px;cursor: pointer;';
+                this.stylesMonth = this._options.stylesMonth || '';
+                this.stylesWeek = this._options.stylesWeek || 'position: relative;padding: 5px 0;';
+                this.weekText = this._options.weekText || ['MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT', 'SUN'];
+
+                this.today = this._options.today || new Date(); // Today
+                this.todayDay = utils.getDay(this.today);
+                this.todayWeek = utils.getWeek(this.today);
+                this.todayMonth = utils.getMonth(this.today);
+                this.todayYear = utils.getYear(this.today);
+                this.current = this._options.current || this.today; // Current showed
+
+                this.render();
+            },
+            // Calendar render
+            render: function () {
+                this._getCurrentDate(); // Get current date info
+                this._getMonthDays(); // Get current month
+                this._getMonthPrevDays(); // Get prev month
+                this._getMonthNextDays(); // Get next month
+                var currentMonth = this._getMonthWeekDays();
+                var weekBar = this._createWeekBar();
+
+                this.container.innerHTML = '';
+                this.container.appendChild(weekBar);
+                this.container.appendChild(currentMonth);
+            },
+            nextMonth: function () {
+                var next = this.currentMonth + 1;
+                this.current = new Date(this.current).setMonth(next - 1);
+                this.render();
+            },
+            prevMonth: function () {
+                var prev = this.currentMonth - 1;
+                this.current = new Date(this.current).setMonth(prev - 1);
+                this.render();
+            },
+            nextYear: function () {
+                var next = this.currentYear + 1;
+                this.current = new Date(this.current).setFullYear(next);
+                this.render();
+            },
+            prevYear: function () {
+                var prev = this.currentYear - 1;
+                this.current = new Date(this.current).setFullYear(prev);
+                this.render();
+            },
+            toToday: function () {
+                this.current = this.today;
+                this.render();
+            },
+
+            // Get current show days
+            _getMonthDays: function () {
+                this.current_month_days = [];
+                this.current_month_days_arr = [];
+                this.current_month_start = this.currentYear + '-' + this.currentMonth + '-1';
+                var start_date = new Date(this.current_month_start),
+                    counts = 0;
+                while (utils.getMonth(start_date) === this.currentMonth) {
+                    start_date = new Date(start_date).setDate(1 + counts);
+                    var day = this._createDay(start_date);
+                    counts++;
+                    this.current_month_days.push(day);
+                    this.current_month_days_arr.push(new Date(start_date));
+                }
+
+                this.current_month_days.splice(this.current_month_days.length - 1, this.current_month_days.length);
+                this.current_month_days_arr.splice(this.current_month_days_arr.length - 1, this.current_month_days_arr.length);
+            },
+            _getMonthPrevDays: function () {
+                var start_date = new Date(this.current_month_start);
+                var current_month_start_week = utils.getWeek(start_date),
+                    current_month_start_day = utils.getDay(start_date);
+                var prev_days_week = current_month_start_week - 1;
+
+                // Before current month 1st days
+                for (var i = 1; i <= prev_days_week; i++) {
+                    var date = this._setDayDate(current_month_start_day - i);
+                    var day = this._createDay(date);
+                    this.current_month_days.unshift(day);
+                    this.current_month_days_arr.unshift(date);
+                }
+            },
+            _getMonthNextDays: function () {
+                var current_month_last_date = new Date(this.current_month_days_arr[this.current_month_days_arr.length - 1]);
+                var current_month_end_week = utils.getWeek(current_month_last_date),
+                    current_month_end_day = utils.getDay(current_month_last_date);
+                var next_days_week = 7 - current_month_end_week;
+
+                // After current month last days
+                for (var i = 1; i <= next_days_week; i++) {
+                    var date = this._setDayDate(current_month_end_day + i);
+                    var day = this._createDay(date);
+                    this.current_month_days.push(day);
+                    this.current_month_days_arr.push(date);
+                }
+            },
+            _getMonthWeekDays: function () {
+                var isToday = false,
+                    week = 7;
+                if (this.todayYear === this.currentYear && this.todayMonth === this.currentMonth) isToday = true;
+                var current_month = this._createMonth(isToday);
+                for (var i = 0; i < Math.ceil(this.current_month_days.length / week); i++) {
+                    var _start = week * i,
+                        _end = week * (i + 1),
+                        _is_today = false;
+                    if (+this.today >= +this.current_month_days_arr[_start] && +this.today <= +this.current_month_days_arr[_end]) _is_today = true;
+                    var current_month_weeks = this._createWeek(_is_today);
+                    for (var j = _start; j < _end; j++) {
+                        var day = this.current_month_days[j];
+                        current_month_weeks.appendChild(day);
+                    }
+                    current_month.appendChild(current_month_weeks);
+                }
+
+                return current_month;
+            },
+            // Reset current date info
+            _getCurrentDate: function () {
+                this.currentDay = utils.getDay(this.current);
+                this.currentWeek = utils.getWeek(this.current);
+                this.currentMonth = utils.getMonth(this.current);
+                this.currentYear = utils.getYear(this.current);
+            },
+            // Create day DOM
+            // @param  {Date}   date Date
+            // @return {Object} day  DOM
+            _createDay: function (date) {
+                var day = document.createElement('div'),
+                    day_d = this._getFormatDate(date);
+
+                day.classList.add(this.classnameDay);
+                day.classList.add(this.classnameDay + '-' + day_d.str);
+                day.innerHTML = day_d.d;
+                day.dataset.day = day_d.str;
+                // Today
+                if (day_d.d === this.todayDay) day.classList.add(this.classnameDay + '-' + this.classnameToday);
+                // Current day
+                if (day_d.m < this.currentMonth || day_d.y < this.currentYear) day.classList.add(this.classnameDay + '-' + this.classnamePrevMonth);
+                if (day_d.m > this.currentMonth || day_d.y > this.currentYear) day.classList.add(this.classnameDay + '-' + this.classnameNextMonth);
+                if (day_d.m === this.currentMonth && day_d.y === this.currentYear) day.dataset.type = 1;
+                else day.dataset.type = 0;
+                if (this.isStyle) {
+                    // Set inline styles
+                    day.style.cssText = this.styles;
+                }
+                this._dayEvent(day, day_d.str);
+                return day;
+            },
+            _createMonth: function (isCurrent) {
+                isCurrent = isCurrent === true ? true: false;
+                var month = document.createElement('div');
+                month.classList.add(this.classnameMonth);
+                if (isCurrent) month.classList.add(this.classnameMonth + '-' + this.classnameToday);
+                if (this.isStyle) month.style.cssText = this.stylesMonth;
+                return month;
+            },
+            _createWeek: function (isCurrent) {
+                isCurrent = isCurrent === true ? true: false;
+                var week = document.createElement('div');
+                week.classList.add(this.classnameWeek);
+                if (isCurrent) week.classList.add(this.classnameWeek + '-' + this.classnameToday);
+                if (this.isStyle) week.style.cssText = this.stylesWeek;
+                return week;
+            },
+            _createWeekBar: function () {
+                var bar = document.createElement('div');
+                bar.classList.add(this.classnameWeekBar);
+                if (typeof this.weekText === 'object' && this.weekText.length === 7) {
+                    for (var i = 0; i < this.weekText.length; i++) {
+                        var _week = document.createElement('div');
+                        _week.classList.add('week-title');
+                        _week.innerHTML = this.weekText[i];
+                        _week.style.cssText = this.styles;
+                        bar.appendChild(_week);
+                    }
+                }
+
+                return bar;
+            },
+            // Day math
+            // @param  {number} d Day number
+            // @return {Date}     Computed date
+            _setDayDate: function (d) {
+                d = +d || 0;
+                var t_day = new Date(this.current);
+                var day = t_day.setDate(d);
+                return new Date(day);
+            },
+            // Date format
+            // @param  {Date}   date Date
+            // @return {string} str  Date string
+            // @return {string} y    Year
+            // @return {string} m    Month
+            // @return {string} d    Day
+            _getFormatDate: function (date) {
+                date = new Date(date);
+                var y = date.getFullYear(),
+                    m = date.getMonth() + 1,
+                    d = date.getDate();
+                var str = y + this.separate + m + this.separate + d;
+                return {
+                    str: str,
+                    y: y,
+                    m: m,
+                    d: d
+                }
+            },
+            _dayEvent: function (day, date) {
+                day.addEventListener('click', function () {
+                    alert(date);
+                });
+            }
+        }
+
+        if (typeof define === 'function' && define.amd) {
+            define('CalendarPicker', [], function () {
+                return CalendarPicker;
+            });
+        }
+
+        if (!noGlobal) {
+            window.CalendarPicker = CalendarPicker;
+        }
+
+        return CalendarPicker;
+    }));
+</script>
+
+
+<script type="text/javascript">
+    'use strict';
+
+    var calendar = new CalendarPicker('#calendarWrap');
+    document.querySelector('#prevMonth').addEventListener('click', function () {
+        calendar.prevMonth();
+    });
+    document.querySelector('#nextMonth').addEventListener('click', function () {
+        calendar.nextMonth();
+    });
+    document.querySelector('#prevYear').addEventListener('click', function () {
+        calendar.prevYear();
+    });
+    document.querySelector('#nextYear').addEventListener('click', function () {
+        calendar.nextYear();
+    });
+    document.querySelector('#today').addEventListener('click', function () {
+        calendar.toToday();
+    });
+
+
+
+
+	
+	
+	// cao gao
+	
+	
+    var separate = '-';
+    var classname_day = 'day',
+        classname_today = 'today',
+        classname_month = 'month',
+        classname_week = 'week',
+        classname_prev_month = 'prev-month',
+        classname_next_month = 'next-month';
+    var is_style = true;
+
+    var today = new Date('2018-04-03');
+
+    var today_day = today.getDate(),
+        today_week = today.getDay(),
+        today_month = today.getMonth() + 1,
+        today_year = today.getFullYear();
+    var today_second = today.getSeconds(),
+        today_minute = today.getMinutes(),
+        today_hour = today.getHours();
+
+    if (today_week === 0) today_week = 7; // 周日排为第七
+
+    console.log(`Time now: ${today_year}-${today_month}-${today_day} ${today_hour}:${today_minute}:${today_second} week${today_week}`);
+
+    // 获取星期
+    var getWeek = function (date) {
+        date = new Date(date);
+        var week = date.getDay();
+        week = week < 1 ? 7 : week;
+        return week;
+    }
+    // 获取日
+    var getDay = function (date) {
+        date = new Date(date);
+        return date.getDate();
+    }
+
+    // 日期加减
+    // @param  {number} d 加减日期数
+    // @return {Date}     计算后的日期
+    var setDayDate = function (d) {
+        d = +d || 0;
+        var t_day = new Date(today);
+        var day = t_day.setDate(d);
+        return new Date(day);
+    }
+
+    // 日期格式化
+    // @param  {Date}   date 日期
+    // @return {string} str  格式化日期字符串
+    // @return {string} y    日期年
+    // @return {string} m    日期月
+    // @return {string} d    日期日
+    var getFormatDay = function (date) {
+        date = new Date(date);
+        var y = date.getFullYear(),
+            m = date.getMonth() + 1,
+            d = date.getDate();
+        var str = y + separate + m + separate + d;
+        return {
+            str: str,
+            y: y,
+            m: m,
+            d: d
+        }
+    }
+
+    // 创建日期DOM
+    // @param  {Date}   date 日期
+    // @return {Object} day  DOM
+    var createDay = function (date) {
+        var day = document.createElement('div'),
+            day_d = getFormatDay(date);
+        day.classList.add(classname_day);
+        day.classList.add(classname_day + '-' + day_d.str);
+        day.innerHTML = day_d.d;
+        day.dataset.day = day_d.str;
+        if (day_d.d === today_day) day.classList.add(classname_day + '-' + classname_today);
+        if (day_d.m < today_month || day_d.y < today_year) day.classList.add(classname_day + '-' + classname_prev_month);
+        if (day_d.m > today_month || day_d.y > today_year) day.classList.add(classname_day + '-' + classname_next_month);
+        if (day_d.m === today_month && day_d.y === today_year) day.dataset.type = 1;
+        else day.dataset.type = 0;
+        if (is_style) {
+            // 设置行内样式
+            day.style.cssText = 'position: relative;text-align: center;display: inline-block;width: 40px;cursor: pointer;';
+        }
+        return day;
+    }
+
+    var createMonth = function (isCurrent) {
+        isCurrent = isCurrent === true ? true: false;
+        var month = document.createElement('div');
+        month.classList.add(classname_month);
+        if (isCurrent) month.classList.add(classname_month + '-' + classname_today);
+        month.style.cssText = '';
+        return month;
+    }
+    var createWeek = function (isCurrent) {
+        isCurrent = isCurrent === true ? true: false;
+        var week = document.createElement('div');
+        week.classList.add(classname_week);
+        if (isCurrent) week.classList.add(classname_week + '-' + classname_today);
+        if (is_style) {
+            // 设置行内样式
+            week.style.cssText = 'position: relative;padding: 5px 0;';
+        }
+        return week;
+    }
+
+    // 当前月所有天数
+    var current_month_days = [],
+        current_month_days_arr = [];
+    var current_month_start = today.getFullYear() + '-' + (today.getMonth() + 1) + '-1';
+    var start_date = new Date(current_month_start),
+        counts = 0;
+    while (new Date(start_date).getMonth() + 1 === today_month) {
+        start_date = new Date(start_date).setDate(1 + counts);
+        var day = createDay(start_date);
+        counts++;
+        current_month_days.push(day);
+        current_month_days_arr.push(new Date(start_date));
+    }
+
+    current_month_days.splice(current_month_days.length - 1, current_month_days.length);
+    current_month_days_arr.splice(current_month_days_arr.length - 1, current_month_days_arr.length);
+
+    // 向前补齐
+    var current_month_start_week = getWeek(new Date(current_month_start)),
+        current_month_start_day = getDay(current_month_start);
+    var prev_days_week = current_month_start_week - 1;
+
+    // 当前星期 当前天之前
+    for (var i = 1; i <= prev_days_week; i++) {
+        var date = setDayDate(current_month_start_day - i);
+        var day = createDay(date);
+        current_month_days.unshift(day);
+        current_month_days_arr.unshift(date);
+    }
+
+    // 向后补齐
+    var current_month_last_date = new Date(current_month_days_arr[current_month_days_arr.length - 1]);
+    var current_month_end_week = getWeek(current_month_last_date),
+        current_month_end_day = getDay(current_month_last_date);
+    var next_days_week = 7 - current_month_end_week;
+
+    // 当前星期 当前天之后
+    for (var i = 1; i <= next_days_week; i++) {
+        var date = setDayDate(current_month_end_day + i);
+        var day = createDay(date);
+        current_month_days.push(day);
+        current_month_days_arr.push(date);
+    }
+
+    // console.log(current_month_days, current_month_days_arr);
+
+    var current_month = createMonth(true);
+    for (var i = 0; i < Math.ceil(current_month_days.length / 7); i++) {
+        var current_month_weeks = createWeek();
+        for (var j = 7 * i; j < 7 * (i + 1); j++) {
+            var day = current_month_days[j];
+            current_month_weeks.appendChild(day);
+        }
+        current_month.appendChild(current_month_weeks);
+    }
+
+    // console.log(current_month);
+
+    // document.body.appendChild(current_month);
+
+    // var prev_date = new Date(today),
+    //     prev_counts = 0;
+    // while (new Date(prev_date).getMonth() + 1 === today_month) {
+    //     prev_counts++;
+    //     prev_date = new Date(prev_date).setDate(today_day - prev_counts);
+    //     var day = createDay(prev_date);
+    //     console.log(day);
+    // }
+    // var next_date = new Date(today),
+    //     next_counts = 0;
+    // while (new Date(next_date).getMonth() + 1 === today_month) {
+    //     next_counts++;
+    //     next_date = new Date(next_date).setDate(today_day + next_counts);
+    //     var day = createDay(next_date);
+    //     console.log(day);
+    // }
+
+    // 判断当前星期 today_week[1, 7]
+    // 当前行
+    // 前减后加
+    // var current_week = createWeek(true);
+    // var prev_days_week = today_week - 1,
+    //     next_days_week = 7 - today_week;
+    // console.warn(`today_week: ${today_week}, prev_days_week: ${prev_days_week}, next_days_week: ${next_days_week}`);
+    //
+    // // 当前星期 当前天之前
+    // for (var i = prev_days_week; i > 0; i--) {
+    //     var d = setDayDate(today_day - i);
+    //     var day = createDay(d);
+    //     console.log(day);
+    // }
+    // console.warn('prev end...');
+    // 当前星期 当前天
+    // var current_day = createDay(today);
+    // console.log(current_day);
+    // console.warn('next start...');
+    // 当前星期 当前天之后
+    // for (var i = 1; i <= next_days_week; i++) {
+    //     var d = setDayDate(today_day + i);
+    //     var day = createDay(d);
+    //     console.log(day);
+    // }
+
+</script>
+</body>
+</html>

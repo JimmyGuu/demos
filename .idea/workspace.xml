@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-dashboard.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-crises.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-heroes.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/mescroll" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/mescroll" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +20,8 @@
       <file leaf-file-name="admin.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+            <state relative-caret-position="286">
+              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -39,7 +29,7 @@
       <file leaf-file-name="admin-routing.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
+            <state relative-caret-position="858">
               <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -48,14 +38,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth-guard.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="auth-guard.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state relative-caret-position="104">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendar-picker.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="296" column="24" lean-forward="true" selection-start-line="296" selection-start-column="24" selection-end-line="296" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -73,9 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jQuery.fn.init</find>
-      <find>options</find>
-      <find>src</find>
       <find>re</find>
       <find>re_8</find>
       <find>apple</find>
@@ -103,6 +99,9 @@
       <find>4200</find>
       <find>Hero</find>
       <find>heroes</find>
+      <find>getDay</find>
+      <find>month</find>
+      <find>this.today</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,10 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/webpack.config.js" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad.directive.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic-component.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/AdItem.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad-item.ts" />
@@ -162,6 +157,10 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts" />
+        <option value="$USER_HOME$/Desktop/demo/demo3.html" />
+        <option value="$USER_HOME$/Desktop/demo/dom-load-progress.html" />
+        <option value="$USER_HOME$/Desktop/demo/calendar-picker.html" />
+        <option value="$PROJECT_DIR$/03_test/calendar-picker.html" />
       </list>
     </option>
   </component>
@@ -186,10 +185,10 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="731" />
-    <option name="y" value="56" />
-    <option name="width" value="1571" />
-    <option name="height" value="877" />
+    <option name="x" value="146" />
+    <option name="y" value="75" />
+    <option name="width" value="1687" />
+    <option name="height" value="969" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -228,46 +227,6 @@
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
               <item name="03_test" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -288,17 +247,17 @@
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Work\Projects\my-test\01_learn" />
+      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
+      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Work\Projects\my-test\01_learn\canvas" />
       <recent name="C:\Work\Projects\my-test\01_learn\frameset" />
       <recent name="C:\Work\Projects\my-test\03_test\a-rel" />
       <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-a\src\app" />
       <recent name="C:\Work\Projects\my-test\01_learn\module-programing-requirejs\lib" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Work\Projects\my-test\01_learn" />
-      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
-      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -352,6 +311,9 @@
       <workItem from="1521353514580" duration="7731000" />
       <workItem from="1522207864038" duration="10420000" />
       <workItem from="1522285972613" duration="5227000" />
+      <workItem from="1522371311776" duration="600000" />
+      <workItem from="1522377574013" duration="15557000" />
+      <workItem from="1522629862128" duration="26243000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -378,14 +340,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267787000" />
+    <option name="totallyTimeSpent" value="310187000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="731" y="56" width="1571" height="877" extended-state="0" />
+    <frame x="146" y="75" width="1687" height="969" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20321544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16457212" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -401,10 +363,10 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32942554" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32942554" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,12 +397,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="13" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/node.js" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/index.js" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/serializers/json.js" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/serializers/dts.d.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@schematics/angular/service/schema.json" />
@@ -500,9 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -510,15 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/src/app/astronaut.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#58#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -540,9 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="562">
           <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#50#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -592,23 +537,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/angular-learn-Heroes/src/app/service/hero.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-468">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-468" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_learn/angular-learn-Heroes/src/app/service/hero-search.service.ts">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/animations.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -621,9 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,9 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -655,9 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,9 +591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="10" column="168" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="168" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -675,9 +598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="15" column="85" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="85" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -687,9 +607,6 @@
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-crises.component.ts">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-dashboard.component.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -702,22 +619,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="286">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
+        <state relative-caret-position="858">
           <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -725,13 +639,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/demo/demo3.html" />
+    <entry file="file://$USER_HOME$/Desktop/demo/dom-load-progress.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+          <folding>
+            <element signature="e#519#668#0" />
+            <element signature="e#678#859#0" />
+            <element signature="e#877#972#0" />
+            <element signature="e#991#1088#0" />
+            <element signature="e#1107#1296#0" />
+            <element signature="e#1312#1351#0" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#3;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_learn/js封装.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/demo/calendar-picker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="268" column="47" lean-forward="true" selection-start-line="268" selection-start-column="47" selection-end-line="268" selection-end-column="47" />
+          <folding>
+            <element signature="e#440#942#0" />
+            <element signature="e#1186#1279#0" />
+            <element signature="e#1137#1266#0" />
+            <element signature="e#1551#1583#0" />
+            <element signature="e#1733#1765#0" />
+            <element signature="e#4333#4510#0" />
+            <element signature="e#4547#4675#0" />
+            <element signature="e#4603#4635#0" />
+            <element signature="e#4671#4703#0" />
+            <element signature="e#5082#5114#0" />
+            <element signature="e#4753#5692#0" />
+            <element signature="e#5737#6414#0" />
+            <element signature="e#6459#7204#0" />
+            <element signature="e#7238#7270#0" />
+            <element signature="e#8373#8782#0" />
+            <element signature="e#3815#3832#0" />
+            <element signature="e#8937#10068#0" />
+            <element signature="e#5118#5150#0" />
+            <element signature="e#5500#5912#0" />
+            <element signature="e#8816#8827#0" />
+            <element signature="e#9309#9480#0" />
+            <element signature="e#4897#4911#0" />
+            <element signature="e#5172#5564#0" />
+            <element signature="e#1184#1200#0" />
+            <element signature="e#1366#1382#0" />
+            <element signature="e#1142#1149#0" />
+            <element signature="e#954#1066#0" />
+            <element signature="e#1381#1389#0" />
+            <element signature="e#1112#1128#0" />
+            <element signature="e#1909#1919#0" />
+            <element signature="e#907#923#0" />
+            <element signature="e#1220#1236#0" />
+            <element signature="e#3415#3431#0" />
+            <element signature="e#3201#3217#0" />
+            <element signature="e#4187#4291#0" />
+            <element signature="e#4707#4811#0" />
+            <element signature="e#5666#5682#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="104">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="296" column="24" lean-forward="true" selection-start-line="296" selection-start-column="24" selection-end-line="296" selection-end-column="24" />
         </state>
       </provider>
     </entry>

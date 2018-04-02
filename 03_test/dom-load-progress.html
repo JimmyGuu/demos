@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progress</title>
+    <link href="./pace-1.0.2/themes/green/pace-theme-loading-bar.css" rel="stylesheet" />
+    <style type="text/css">
+        .animated {
+            animation-duration: 600ms;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeIn {
+            form {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            form {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-timing-function: ease-in;
+        }
+
+        .fadeOut {
+            animation-name: fadeOut;
+            animation-timing-function: ease-out;
+        }
+
+        .overlay {
+            position: fixed;
+            background: #ff5f00;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .show {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="overlay" class="overlay animated"></div>
+    <div class="wrap animated">
+        <img src="./img/节日版.jpg" alt="img" />
+        <img src="./img/默认版.jpg" alt="img" />
+    </div>
+
+    <script type="text/javascript">
+        window.paceOptions = {
+            // 不自动开始 防止触发两次hide
+            startOnPageLoad: false
+        }
+    </script>
+    <script type="text/javascript" src="./pace-1.0.2/pace.js"></script>
+    <script type="text/javascript">
+        'use strict';
+
+        let overlay = document.querySelector('#overlay');
+
+        Pace.on('start', function () {
+            console.warn('start...');
+            document.body.style.overflow = 'hidden';
+        });
+        Pace.on('hide', function () {
+            console.warn('hide...');
+            document.body.style.overflow = 'auto';
+            overlay.classList.add('fadeOut');
+
+        });
+
+        // 手动触发加载开始
+        Pace.start();
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            console.warn('window onloaded...');
+        }
+
+        let imgs = document.getElementsByTagName('img');
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].addEventListener('load', e => {
+                // console.warn(`Image ${i} onloaded...`);
+            });
+        }
+
+
+    </script>
+</body>
+</html>

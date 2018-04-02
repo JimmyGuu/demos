@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display: table-cell</title>
+    <style type="text/css">
+        .wrap {
+            display: flex;
+        }
+        .mid {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        .mid img {
+            width: 120px;
+            height: 102px;
+        }
+        .badge {
+            margin: 0;
+            line-height: normal;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            padding: 5px 15px;
+            border-radius: 4px;
+            background: #1DA1F2;
+            color: #fff;
+        }
+        /* table-cell */
+        .mid.mid1 {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        /* line-height */
+        .mid.mid2 {
+            text-align: center;
+            line-height: 402px;
+        }
+        .mid.mid2 img {
+            display: inline-block;
+        }
+
+        /* transform */
+        .mid.mid3 {
+            text-align: center;
+        }
+        .mid.mid3 img {
+            display: inline-block;
+            margin-top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="wrap-in">
+            <div class="container mid mid1">
+                <p class="badge">table-cell</p>
+                <img src="./img/222222.png" alt="logo">
+            </div>
+        </div>
+
+        <div class="wrap-in">
+            <div class="container mid mid2">
+                <p class="badge">line-height</p>
+                <img src="./img/222222.png" alt="logo">
+            </div>
+        </div>
+
+
+        <div class="wrap-in">
+            <div class="container mid mid3">
+                <p class="badge">transform</p>
+                <img src="./img/222222.png" alt="logo">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
