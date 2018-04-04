@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/calendar-picker.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/calendar-picker.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/mescroll" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/mescroll" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -50,11 +51,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calendar-picker.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+      <file leaf-file-name="box-lazy-show.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="296" column="24" lean-forward="true" selection-start-line="296" selection-start-column="24" selection-end-line="296" selection-end-column="24" />
+            <state relative-caret-position="286">
+              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+              <folding>
+                <element signature="e#477#1006#0" />
+                <element signature="e#1335#1351#0" />
+                <element signature="e#1409#1457#0" />
+                <element signature="e#405#429#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="js Object.defineProperty().html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1001">
+              <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -72,7 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>re</find>
       <find>re_8</find>
       <find>apple</find>
       <find>friend</find>
@@ -102,6 +117,7 @@
       <find>getDay</find>
       <find>month</find>
       <find>this.today</find>
+      <find>temperature</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic-component.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/AdItem.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad-item.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/hero-job-ad.component.ts" />
@@ -161,6 +176,7 @@
         <option value="$USER_HOME$/Desktop/demo/dom-load-progress.html" />
         <option value="$USER_HOME$/Desktop/demo/calendar-picker.html" />
         <option value="$PROJECT_DIR$/03_test/calendar-picker.html" />
+        <option value="$PROJECT_DIR$/03_test/box-lazy-show.html" />
       </list>
     </option>
   </component>
@@ -185,10 +201,10 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="146" />
-    <option name="y" value="75" />
+    <option name="x" value="75" />
+    <option name="y" value="89" />
     <option name="width" value="1687" />
-    <option name="height" value="969" />
+    <option name="height" value="907" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -221,6 +237,11 @@
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
@@ -314,6 +335,8 @@
       <workItem from="1522371311776" duration="600000" />
       <workItem from="1522377574013" duration="15557000" />
       <workItem from="1522629862128" duration="26243000" />
+      <workItem from="1522717295562" duration="1527000" />
+      <workItem from="1522803680922" duration="6311000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -340,10 +363,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310187000" />
+    <option name="totallyTimeSpent" value="318025000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="146" y="75" width="1687" height="969" extended-state="0" />
+    <frame x="75" y="89" width="1687" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
@@ -401,8 +424,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/serializers/json.js" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/json-schema/src/serializers/dts.d.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@schematics/angular/service/schema.json" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@angular-devkit/schematics/collection-schema.json" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/benchmark.d.ts" />
@@ -644,16 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
-          <folding>
-            <element signature="e#519#668#0" />
-            <element signature="e#678#859#0" />
-            <element signature="e#877#972#0" />
-            <element signature="e#991#1088#0" />
-            <element signature="e#1107#1296#0" />
-            <element signature="e#1312#1351#0" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#3;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -668,45 +679,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="268" column="47" lean-forward="true" selection-start-line="268" selection-start-column="47" selection-end-line="268" selection-end-column="47" />
-          <folding>
-            <element signature="e#440#942#0" />
-            <element signature="e#1186#1279#0" />
-            <element signature="e#1137#1266#0" />
-            <element signature="e#1551#1583#0" />
-            <element signature="e#1733#1765#0" />
-            <element signature="e#4333#4510#0" />
-            <element signature="e#4547#4675#0" />
-            <element signature="e#4603#4635#0" />
-            <element signature="e#4671#4703#0" />
-            <element signature="e#5082#5114#0" />
-            <element signature="e#4753#5692#0" />
-            <element signature="e#5737#6414#0" />
-            <element signature="e#6459#7204#0" />
-            <element signature="e#7238#7270#0" />
-            <element signature="e#8373#8782#0" />
-            <element signature="e#3815#3832#0" />
-            <element signature="e#8937#10068#0" />
-            <element signature="e#5118#5150#0" />
-            <element signature="e#5500#5912#0" />
-            <element signature="e#8816#8827#0" />
-            <element signature="e#9309#9480#0" />
-            <element signature="e#4897#4911#0" />
-            <element signature="e#5172#5564#0" />
-            <element signature="e#1184#1200#0" />
-            <element signature="e#1366#1382#0" />
-            <element signature="e#1142#1149#0" />
-            <element signature="e#954#1066#0" />
-            <element signature="e#1381#1389#0" />
-            <element signature="e#1112#1128#0" />
-            <element signature="e#1909#1919#0" />
-            <element signature="e#907#923#0" />
-            <element signature="e#1220#1236#0" />
-            <element signature="e#3415#3431#0" />
-            <element signature="e#3201#3217#0" />
-            <element signature="e#4187#4291#0" />
-            <element signature="e#4707#4811#0" />
-            <element signature="e#5666#5682#0" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -720,10 +699,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+    <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="296" column="24" lean-forward="true" selection-start-line="296" selection-start-column="24" selection-end-line="296" selection-end-column="24" />
+        <state relative-caret-position="-1001">
+          <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="e#477#1006#0" />
+            <element signature="e#1335#1351#0" />
+            <element signature="e#1409#1457#0" />
+            <element signature="e#405#429#0" />
+          </folding>
         </state>
       </provider>
     </entry>

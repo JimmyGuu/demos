@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box lazy show</title>
+    <style type="text/css">
+        p {
+            padding: 30px 15px;
+            background: #e0e0e0;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
+
+<script type="text/javascript">
+    'use strict';
+
+    const LAZY_SELECTOR = 'lazy-container';
+    const parent = document.querySelector('#main');
+
+    let parentHeight = 0,
+        parentScrollTop = 0;
+
+    function Parent() {
+        this.height = 0;
+        this.scrollTop = 0;
+
+        const obj = {
+            'height': {
+                get: () => {
+                    return this.height;
+                },
+                set: v => {
+                    this.height = v;
+                    console.warn(`Setted ${this.height}:${v}`);
+                }
+            },
+            'scrollTop': {
+                get: () => {
+                    return this.scrollTop;
+                },
+                set: v => {
+                    this.scrollTop = v;
+                    console.warn(`Setted ${this.scrollTop}:${v}`);
+                }
+            }
+        };
+
+        Object.defineProperties(this, obj);
+    }
+
+    let parentObj = new Parent();
+
+    parentObj.height = 1;
+    parentObj.scrollTop = 2;
+    console.log(parentObj);
+
+    window.onload = function () {
+        createDoc();
+
+        watchScroll();
+        lazyWraps(parentScrollTop, parentHeight);
+    }
+
+    function scroll() {
+        if (window.pageYOffset){
+            // 支持IE9 +
+            return {
+                left: window.pageXOffset,
+                top: window.pageYOffset
+            }
+        }else if (document.compatMode === 'CSS1Compat'){
+            // 声明了DTD(即<!DOCTYPE>)
+            return {
+                left: document.documentElement.scrollLeft,
+                top: document.documentElement.scrollTop
+            }
+        }
+
+        return {
+            left:document.body.scrollLeft,
+            top:document.body.scrollTop
+        }
+    }
+    function hide(d) {
+        if (d) d.style.display = 'none';
+    }
+    function show(d, showType) {
+        showType = showType || 'block';
+        if (d) d.style.display = showType;
+    }
+
+    function lazyWraps(scrollTop, parentHeight) {
+        console.warn(`lazyWraps triggered... scrollTop: ${scrollTop}, parentHeight: ${parentHeight}`);
+
+        const over = 50;
+        let boxes = document.querySelectorAll(`.${LAZY_SELECTOR}`);
+        for (let i = 0; i < boxes.length; i++) {
+            let _box_t = boxes[i].offsetTop;
+            if (_box_t > parentHeight + scrollTop + over) {
+                // 大于窗口可视
+                hide(boxes[i]);
+                return;
+            }
+            show(boxes[i]);
+        }
+    }
+
+    function winResize(e) {
+        e = e || window;
+        let win_w = e.innerWidth,
+            win_h = e.innerHeight;
+        parentHeight = win_h;
+        console.log('parent width&height: ', win_w, win_h);
+    }
+
+    function winScroll() {
+        let win_t = scroll().top;
+        parentScrollTop = win_t;
+        console.log('parent scrollTop: ', win_t);
+    }
+
+    function watchScroll() {
+        winResize();
+        winScroll();
+        window.addEventListener('resize', e => {
+            winResize(e.currentTarget);
+        });
+        window.addEventListener('scroll', e => {
+            winScroll();
+        });
+    }
+
+    function createDoc() {
+        let count = 0,
+            doc = document.createDocumentFragment();
+        while (count < 100) {
+            count++;
+            let c = document.createElement('p'),
+                t = document.createTextNode(`Hello, ${count}`);
+            c.id = `p${count}`;
+            c.classList.add('container');
+            if (count % 5 === 0) c.classList.add(LAZY_SELECTOR);
+            c.appendChild(t);
+            doc.appendChild(c);
+        }
+        parent.appendChild(doc);
+    }
+</script>
+</body>
+</html>
