@@ -8,9 +8,46 @@
     <title>Box lazy show</title>
     <style type="text/css">
         p {
-            padding: 30px 15px;
+            padding: 50px 15px;
             background: #e0e0e0;
             margin: 5px 0;
+        }
+
+        .animated {
+            animation-duration: 600ms;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                margin-top: 50px;
+            }
+            100% {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+
+        .fadeInUp {
+            animation-name: fadeInUp;
+            animation-timing-function: ease-in;
+        }
+
+        @keyframes fadeOutDown {
+            from {
+                opacity: 1;
+                margin-top: 0px;
+            }
+            to {
+                opacity: 0;
+                margin-top: 50px;
+            }
+        }
+
+        .fadeOutDown {
+            animation-name: fadeOutDown;
+            animation-timing-function: ease-out;
         }
     </style>
 </head>
@@ -22,50 +59,6 @@
 
     const LAZY_SELECTOR = 'lazy-container';
     const parent = document.querySelector('#main');
-
-    let parentHeight = 0,
-        parentScrollTop = 0;
-
-    function Parent() {
-        this.height = 0;
-        this.scrollTop = 0;
-
-        const obj = {
-            'height': {
-                get: () => {
-                    return this.height;
-                },
-                set: v => {
-                    this.height = v;
-                    console.warn(`Setted ${this.height}:${v}`);
-                }
-            },
-            'scrollTop': {
-                get: () => {
-                    return this.scrollTop;
-                },
-                set: v => {
-                    this.scrollTop = v;
-                    console.warn(`Setted ${this.scrollTop}:${v}`);
-                }
-            }
-        };
-
-        Object.defineProperties(this, obj);
-    }
-
-    let parentObj = new Parent();
-
-    parentObj.height = 1;
-    parentObj.scrollTop = 2;
-    console.log(parentObj);
-
-    window.onload = function () {
-        createDoc();
-
-        watchScroll();
-        lazyWraps(parentScrollTop, parentHeight);
-    }
 
     function scroll() {
         if (window.pageYOffset){
@@ -87,42 +80,234 @@
             top:document.body.scrollTop
         }
     }
+    const isDOM = (typeof HTMLElement === 'object')
+        ? function(obj) {
+            return obj instanceof HTMLElement;
+        }
+        : function(obj) {
+            return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
+        };
+    function isArr(arr) {
+        if (typeof arr === 'object' && arr.length) return true;
+        return false;
+    }
     function hide(d) {
-        if (d) d.style.display = 'none';
+        const set = function (_d) {
+            if (isDOM(_d)) {
+                _d.style.display = 'none';
+            }
+        };
+        if (isArr(d)) {
+            for (let i = d.length - 1; i >= 0; i--) {
+                set(d[i]);
+            }
+            return;
+        }
+        set(d);
     }
     function show(d, showType) {
-        showType = showType || 'block';
-        if (d) d.style.display = showType;
+        const set = function (_d) {
+            if (isDOM(_d)) {
+                showType = showType || 'block';
+                _d.style.display = showType;
+            }
+        };
+
+        if (isArr(d)) {
+            for (let i = d.length - 1; i >= 0; i--) {
+                set(d[i]);
+            }
+            return;
+        }
+
+        set(d);
+    }
+
+    /**
+     * Class name handler
+     * @param  {Object} dom
+     * @return void
+     */
+    class ClassHandle {
+        constructor (dom) {
+            this.dom = dom;
+            this.classname = '';
+            this.type = 'add';
+        }
+
+        add(classname) {
+            this.classname = classname;
+            this.type = 'add';
+            this._init();
+        }
+        remove(classname) {
+            this.classname = classname;
+            this.type = 'remove';
+            this._init();
+        }
+
+        _setName(_dom) {
+            if (isArr(this.classname)) {
+                for (let i = this.classname.length - 1; i >= 0; i--) {
+                    this.classname[i] += '';
+                    _dom.classList[this.type](this.classname[i]);
+                }
+                return;
+            }
+            this.classname += '';
+            _dom.classList[this.type](this.classname);
+        }
+        _set(_dom) {
+            if (isDOM(_dom))
+                this._setName(_dom);
+        }
+        _init() {
+            if (!this.classname) return;
+            if (isArr(this.dom)) {
+                for (let i = this.dom.length - 1; i >= 0; i--) {
+                    this._set(this.dom[i]);
+                }
+                return;
+            }
+            this._set(this.dom);
+        }
+    }
+
+    function addClass(d, classname) {
+        if (!classname) return;
+        const setClassname = function (_d) {
+            if (isArr(classname)) {
+                for (let i = classname.length - 1; i >= 0; i--) {
+                    classname[i] += '';
+                    _d.classList.add(classname[i]);
+                }
+                return;
+            }
+            classname += '';
+            _d.classList.add(classname);
+        };
+        const set = function (_d) {
+            if (isDOM(_d)) {
+                setClassname(_d);
+            }
+        };
+
+        if (isArr(d)) {
+            for (let i = d.length - 1; i >= 0; i--) {
+                set(d[i]);
+            }
+            return;
+        }
+
+        set(d);
+    }
+    function removeClass(d, classname) {
+        if (!classname) return;
+        const setClassname = function (_d) {
+            if (isArr(classname)) {
+                for (let i = classname.length - 1; i >= 0; i--) {
+                    classname[i] += '';
+                    _d.classList.remove(classname[i]);
+                }
+                return;
+            }
+            classname += '';
+            _d.classList.add(classname);
+        };
+        const set = function (_d) {
+            if (isDOM(_d)) {
+                setClassname(_d);
+            }
+        };
+
+        if (isArr(d)) {
+            for (let i = d.length - 1; i >= 0; i--) {
+                set(d[i]);
+            }
+            return;
+        }
+
+        set(d);
     }
 
     function lazyWraps(scrollTop, parentHeight) {
-        console.warn(`lazyWraps triggered... scrollTop: ${scrollTop}, parentHeight: ${parentHeight}`);
-
-        const over = 50;
+        const over = -50;
         let boxes = document.querySelectorAll(`.${LAZY_SELECTOR}`);
+
         for (let i = 0; i < boxes.length; i++) {
             let _box_t = boxes[i].offsetTop;
             if (_box_t > parentHeight + scrollTop + over) {
-                // 大于窗口可视
-                hide(boxes[i]);
+                // Out window visible - hide
+                console.warn('Out window visible...');
+                let classHandle = new ClassHandle(boxes[i]);
+                classHandle.remove(['fadeInUp', 'fadeOutDown']);
+                classHandle.add(['fadeOutDown']);
                 return;
             }
-            show(boxes[i]);
+            // In window visible - show
+            console.warn('In window visible...');
+            let classHandle = new ClassHandle(boxes[i]);
+            classHandle.remove(['fadeInUp', 'fadeOutDown']);
+            classHandle.add(['fadeInUp']);
         }
     }
+
+    function Parent() {
+        var height = 0;
+        var scrollTop = 0;
+
+        this.getHeight =  () => height;
+        this.getScrollTop = () => scrollTop;
+
+        const obj = {
+            'height': {
+                get: () => height,
+                set: v => {
+                    height = v;
+                    lazyWraps(scrollTop, height);
+                }
+            },
+            'scrollTop': {
+                get: () => scrollTop,
+                set: v => {
+                    scrollTop = v;
+                    lazyWraps(scrollTop, height);
+                }
+            }
+        };
+
+        Object.defineProperties(this, obj);
+    }
+
+
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        createDoc();
+
+        let lazy_doms = document.querySelectorAll(`.${LAZY_SELECTOR}`);
+
+        let classHandle = new ClassHandle(lazy_doms);
+        classHandle.add(['animated', 'fadeInUp']);
+        // addClass(lazy_doms, ['animated', 'fadeInUp']);
+
+        watchScroll();
+    }
+
+    let parentObj = new Parent();
 
     function winResize(e) {
         e = e || window;
         let win_w = e.innerWidth,
             win_h = e.innerHeight;
-        parentHeight = win_h;
-        console.log('parent width&height: ', win_w, win_h);
+        // console.log('parent width&height: ', win_w, win_h);
+        parentObj.height = win_h;
     }
 
     function winScroll() {
         let win_t = scroll().top;
-        parentScrollTop = win_t;
-        console.log('parent scrollTop: ', win_t);
+        // console.log('parent scrollTop: ', win_t);
+        parentObj.scrollTop = win_t;
     }
 
     function watchScroll() {

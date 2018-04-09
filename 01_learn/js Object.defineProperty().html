@@ -335,6 +335,41 @@
     pager.current = 2;
     pagerObj.pager = pager;
 
+
+
+
+    // defineProperties
+    function Parent() {
+        var height = 0;
+        var scrollTop = 0;
+
+        this.getHeight =  () => height;
+        this.getScrollTop = () => scrollTop;
+
+        const obj = {
+            'height': {
+                get: () => height,
+                set: v => {
+                    height = v;
+                }
+            },
+            'scrollTop': {
+                get: () => scrollTop,
+                set: v => {
+                    scrollTop = v;
+                }
+            }
+        };
+
+        Object.defineProperties(this, obj);
+    }
+
+    let parentObj = new Parent();
+
+    parentObj.height = 1;
+    parentObj.scrollTop = 2;
+    console.log(parentObj.getHeight(), parentObj.getScrollTop());
+
 </script>
 </body>
 </html>

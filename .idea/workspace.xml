@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/03_test/box-lazy-show.html" line="232" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/calendar-picker.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/calendar-picker.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" beforeDir="false" afterPath="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/box-lazy-show.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/box-lazy-show.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/mescroll" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/mescroll" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -54,23 +57,29 @@
       <file leaf-file-name="box-lazy-show.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+            <state relative-caret-position="344">
+              <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
               <folding>
-                <element signature="e#477#1006#0" />
-                <element signature="e#1335#1351#0" />
-                <element signature="e#1409#1457#0" />
-                <element signature="e#405#429#0" />
+                <element signature="e#669#1212#0" />
+                <element signature="e#1285#1343#0" />
+                <element signature="e#1367#1487#0" />
+                <element signature="e#1234#1327#0" />
+                <element signature="e#1234#1282#0" />
+                <element signature="e#1314#1404#0" />
+                <element signature="e#3138#3175#0" />
+                <element signature="e#3329#3397#0" />
+                <element signature="e#3415#3486#0" />
+                <element signature="e#3344#3739#0" />
+                <element signature="e#3685#3709#0" />
+                <element signature="e#3781#3805#0" />
+                <element signature="e#3053#3069#0" />
+                <element signature="e#3908#4614#0" />
+                <element signature="e#3985#4316#0" />
+                <element signature="e#4352#4440#0" />
+                <element signature="e#6014#6525#0" />
+                <element signature="e#5893#6428#0" />
+                <element signature="e#3637#4128#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="js Object.defineProperty().html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1001">
-              <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -88,9 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>re_8</find>
-      <find>apple</find>
-      <find>friend</find>
       <find>name=&quot;author&quot;</find>
       <find>rel</find>
       <find>count</find>
@@ -118,6 +124,9 @@
       <find>month</find>
       <find>this.today</find>
       <find>temperature</find>
+      <find>parent</find>
+      <find>parentHeight</find>
+      <find>parentScrollTop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/AdItem.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad-item.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/hero-job-ad.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad.service.ts" />
@@ -176,6 +184,7 @@
         <option value="$USER_HOME$/Desktop/demo/dom-load-progress.html" />
         <option value="$USER_HOME$/Desktop/demo/calendar-picker.html" />
         <option value="$PROJECT_DIR$/03_test/calendar-picker.html" />
+        <option value="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" />
         <option value="$PROJECT_DIR$/03_test/box-lazy-show.html" />
       </list>
     </option>
@@ -201,8 +210,8 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="75" />
-    <option name="y" value="89" />
+    <option name="x" value="73" />
+    <option name="y" value="53" />
     <option name="width" value="1687" />
     <option name="height" value="907" />
   </component>
@@ -230,7 +239,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,17 +249,13 @@
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="01_learn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
               <item name="03_test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,6 +341,7 @@
       <workItem from="1522629862128" duration="26243000" />
       <workItem from="1522717295562" duration="1527000" />
       <workItem from="1522803680922" duration="6311000" />
+      <workItem from="1523235566281" duration="8511000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -363,13 +368,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318025000" />
+    <option name="totallyTimeSpent" value="326536000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="75" y="89" width="1687" height="907" extended-state="0" />
+    <frame x="73" y="53" width="1687" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16457212" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="调试" order="7" />
@@ -385,6 +389,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -420,7 +425,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -682,13 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -701,20 +699,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1001">
-          <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
+        <state relative-caret-position="433">
+          <caret line="340" column="23" selection-start-line="340" selection-start-column="23" selection-end-line="340" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#719#758#0" />
+            <element signature="e#791#1293#0" />
+            <element signature="e#1441#2160#0" />
+            <element signature="e#2214#2534#0" />
+            <element signature="e#2571#13854#0" />
+            <element signature="e#13912#14033#0" />
+            <element signature="e#14058#14121#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+        <state relative-caret-position="344">
+          <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
           <folding>
-            <element signature="e#477#1006#0" />
-            <element signature="e#1335#1351#0" />
-            <element signature="e#1409#1457#0" />
-            <element signature="e#405#429#0" />
+            <element signature="e#669#1212#0" />
+            <element signature="e#1285#1343#0" />
+            <element signature="e#1367#1487#0" />
+            <element signature="e#1234#1327#0" />
+            <element signature="e#1234#1282#0" />
+            <element signature="e#1314#1404#0" />
+            <element signature="e#3138#3175#0" />
+            <element signature="e#3329#3397#0" />
+            <element signature="e#3415#3486#0" />
+            <element signature="e#3344#3739#0" />
+            <element signature="e#3685#3709#0" />
+            <element signature="e#3781#3805#0" />
+            <element signature="e#3053#3069#0" />
+            <element signature="e#3908#4614#0" />
+            <element signature="e#3985#4316#0" />
+            <element signature="e#4352#4440#0" />
+            <element signature="e#6014#6525#0" />
+            <element signature="e#5893#6428#0" />
+            <element signature="e#3637#4128#0" />
           </folding>
         </state>
       </provider>
