@@ -48,10 +48,10 @@ import {Component, OnInit} from "@angular/core";
 })
 
 export class TestBComponent implements OnInit{
-  private hero: Hero;
-  private heroes: Hero[];
-  private showSad: boolean;
-  private selected: Hero;
+  public hero: Hero;
+  public heroes: Hero[];
+  public showSad: boolean;
+  public selected: Hero;
 
   constructor() {
     this.showSad = true;

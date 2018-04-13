@@ -12,9 +12,9 @@ import {switchMap} from "rxjs/operators";
 })
 
 export class HeroBirthday2Component implements OnInit{
-  private birthday: Date;
-  private toggle: boolean;
-  private id: any;
+  public birthday: Date;
+  public toggle: boolean;
+  public id: any;
 
   constructor(
     private route: ActivatedRoute,

@@ -15,7 +15,7 @@ import {Component, OnInit} from "@angular/core";
 })
 
 export class TestAComponent implements OnInit {
-  private color: string;
+  public color: string;
 
   constructor() {
     this.color = 'blue';

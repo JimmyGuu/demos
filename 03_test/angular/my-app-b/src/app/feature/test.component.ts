@@ -10,7 +10,7 @@ import {Component, OnInit} from "@angular/core";
 })
 
 export class TestComponent implements OnInit {
-  private name: string;
+  public name: string;
 
   constructor() {
     this.name = 'Hehe';

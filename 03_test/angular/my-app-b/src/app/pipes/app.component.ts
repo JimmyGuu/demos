@@ -22,8 +22,8 @@ export class PipesComponent {
   @HostBinding('style.display')   display = 'block';
   @HostBinding('style.position')  position = 'absolute';
 
-  private birthday: Date;
-  private id: number = 12;
+  public birthday: Date;
+  public id: number = 12;
 
   constructor() {
     this.birthday = new Date('2000-12-12');

@@ -164,6 +164,7 @@ module.exports = {
     ]
   },
   "output": {
+    "publicPath": '/',
     "path": path.join(process.cwd(), "dist"),
     "filename": "[name].bundle.[chunkhash:8].js",
     "chunkFilename": "[id].chunk.[chunkhash:8].js",

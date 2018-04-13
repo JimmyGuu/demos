@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change beforePath="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" beforeDir="false" afterPath="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/box-lazy-show.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/box-lazy-show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/mescroll" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/mescroll" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,65 +30,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".angular-cli.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-a.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-b.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hero-birthday2.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin-routing.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth-guard.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="box-lazy-show.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
-              <folding>
-                <element signature="e#669#1212#0" />
-                <element signature="e#1285#1343#0" />
-                <element signature="e#1367#1487#0" />
-                <element signature="e#1234#1327#0" />
-                <element signature="e#1234#1282#0" />
-                <element signature="e#1314#1404#0" />
-                <element signature="e#3138#3175#0" />
-                <element signature="e#3329#3397#0" />
-                <element signature="e#3415#3486#0" />
-                <element signature="e#3344#3739#0" />
-                <element signature="e#3685#3709#0" />
-                <element signature="e#3781#3805#0" />
-                <element signature="e#3053#3069#0" />
-                <element signature="e#3908#4614#0" />
-                <element signature="e#3985#4316#0" />
-                <element signature="e#4352#4440#0" />
-                <element signature="e#6014#6525#0" />
-                <element signature="e#5893#6428#0" />
-                <element signature="e#3637#4128#0" />
-              </folding>
+              <caret line="176" column="30" selection-start-line="176" selection-start-column="30" selection-end-line="176" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -90,8 +126,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -135,9 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad-item.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/hero-job-ad.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/after-content.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic-component.module.ts" />
@@ -153,30 +186,22 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/feature.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/protractor.conf.js" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@angular/cli/lib/config/schema.json" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/styles.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/attribute-directives.module.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/highlight.directive.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/structural-directives.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/unless.directive.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/not-found.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/animations.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-dashboard.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-crises.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-heroes.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts" />
@@ -186,6 +211,17 @@
         <option value="$PROJECT_DIR$/03_test/calendar-picker.html" />
         <option value="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" />
         <option value="$PROJECT_DIR$/03_test/box-lazy-show.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" />
       </list>
     </option>
   </component>
@@ -210,10 +246,10 @@
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="73" />
-    <option name="y" value="53" />
-    <option name="width" value="1687" />
-    <option name="height" value="907" />
+    <option name="x" value="62" />
+    <option name="y" value="69" />
+    <option name="width" value="1719" />
+    <option name="height" value="928" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -239,6 +275,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,11 +288,100 @@
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
               <item name="03_test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="attribute-directives" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="feature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="structural-directives" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,7 +467,10 @@
       <workItem from="1522629862128" duration="26243000" />
       <workItem from="1522717295562" duration="1527000" />
       <workItem from="1522803680922" duration="6311000" />
-      <workItem from="1523235566281" duration="8511000" />
+      <workItem from="1523235566281" duration="9713000" />
+      <workItem from="1523322205224" duration="1196000" />
+      <workItem from="1523606934763" duration="2799000" />
+      <workItem from="1523610835885" duration="1096000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -368,13 +497,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326536000" />
+    <option name="totallyTimeSpent" value="332829000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="53" width="1687" height="907" extended-state="0" />
+    <frame x="62" y="69" width="1719" height="928" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16457212" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24192601" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -389,7 +519,6 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -429,13 +558,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@schematics/angular/service/schema.json" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@angular-devkit/schematics/collection-schema.json" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/benchmark.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/compiler_host.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/entry_resolver.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/extract_i18n_plugin.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/gather_diagnostics.js" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/lazy_routes.js" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/ngtools_api.d.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/paths-plugin.d.ts" />
@@ -451,20 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="373" column="24" lean-forward="true" selection-start-line="373" selection-start-column="24" selection-end-line="373" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -496,13 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/highlight.directive.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -521,20 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="46" column="3" lean-forward="true" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -578,13 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -592,31 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="10" column="138" lean-forward="true" selection-start-line="10" selection-start-column="138" selection-end-line="10" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="10" column="168" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="168" />
         </state>
       </provider>
     </entry>
@@ -687,16 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
@@ -708,22 +757,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-182">
           <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#719#758#0" />
-            <element signature="e#791#1293#0" />
-            <element signature="e#1441#2160#0" />
-            <element signature="e#2214#2534#0" />
-            <element signature="e#2571#13854#0" />
-            <element signature="e#13912#14033#0" />
-            <element signature="e#14058#14121#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
+        <state relative-caret-position="266">
           <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
           <folding>
             <element signature="e#669#1212#0" />
@@ -746,6 +785,126 @@
             <element signature="e#5893#6428#0" />
             <element signature="e#3637#4128#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="176" column="30" selection-start-line="176" selection-start-column="30" selection-end-line="176" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1366" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/protractor.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
