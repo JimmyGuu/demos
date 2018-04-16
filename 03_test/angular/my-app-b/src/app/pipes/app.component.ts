@@ -10,6 +10,10 @@ import { slideInDownAnimation } from "../animations";
       <ul>
         <li><a [routerLink]="[{ outlets: { pipe: ['hero-birthday2', id] }}]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-birthday2</a></li>
         <!--<li><a [routerLink]="['./hero-birthday2', id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-birthday2</a></li>-->
+        <li><a [routerLink]="[{ outlets: { pipe: ['power-booster'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">power-booster</a></li>
+        <li><a [routerLink]="[{ outlets: { pipe: ['flying-heroes-v1'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">flying-heroes-v1</a></li>
+        <li><a [routerLink]="[{ outlets: { pipe: ['hero-async-message'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-async-message</a></li>
+        <li><a [routerLink]="[{ outlets: { pipe: ['hero-list'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-list</a></li>
       </ul>
     </nav>
     <router-outlet name="pipe"></router-outlet>

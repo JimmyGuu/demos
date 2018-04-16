@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/mescroll" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/mescroll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/exponential-strength.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/fetch-json.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-impure.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-v1.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-async-message.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/power-booster.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/assets/heroes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,47 +31,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html">
+      <file leaf-file-name="app.component.html" pinned="true" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".angular-cli.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="196">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="140">
+              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
+      <file leaf-file-name="heroes.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/assets/heroes.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+            <state relative-caret-position="168">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipes.module.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pipes.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+            <state relative-caret-position="345">
+              <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fetch-json.pipe.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/fetch-json.pipe.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hero-list.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-list.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -72,8 +100,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="HTML File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -117,15 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/after-content.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic-component.module.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/hero-profile.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/main.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/ad-banner.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-a/src/app/dynamic-component-loader/dynamic.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/home/index.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/home/home.component.ts" />
@@ -147,7 +166,6 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts" />
@@ -163,11 +181,21 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/exponential-strength.pipe.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/power-booster.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes.pipe.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-impure.pipe.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-v1.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-async-message.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-list.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/assets/heroes.json" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/fetch-json.pipe.ts" />
       </list>
     </option>
   </component>
@@ -184,44 +212,42 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/01_learn/angular-learn-Heroes/node_modules" />
     <handled-path value="$PROJECT_DIR$/01_learn/node_modules" />
-    <handled-path value="$PROJECT_DIR$/01_learn/react-learn/prev/my-app/node_modules" />
     <handled-path value="$PROJECT_DIR$/02_demos/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/angular/my-app-a/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/angular/my-app-b/node_modules" />
     <handled-path value="$PROJECT_DIR$/03_test/node_modules" />
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/01_learn/angular-learn-Heroes/package.json" />
+      <path value="$PROJECT_DIR$/01_learn/angular-learn-doc-eg/lifecycle-hooks/file/package.json" />
+      <path value="$PROJECT_DIR$/01_learn/angular-learn-doc-eg/lifecycle-hooks/package.json" />
+      <path value="$PROJECT_DIR$/01_learn/angular-learn-doc-eg/template-syntax/package.json" />
+      <path value="$PROJECT_DIR$/01_learn/package.json" />
+      <path value="$PROJECT_DIR$/01_learn/react-learn/prev/my-app/package.json" />
+      <path value="$PROJECT_DIR$/02_demos/package.json" />
+      <path value="$PROJECT_DIR$/03_test/angular/my-app-a/package.json" />
+      <path value="$PROJECT_DIR$/03_test/angular/my-app-b/package.json" />
+      <path value="$PROJECT_DIR$/03_test/pace-1.0.2/package.json" />
+      <path value="$PROJECT_DIR$/03_test/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
-    <option name="y" value="60" />
+    <option name="x" value="2050" />
+    <option name="y" value="57" />
     <option name="width" value="1719" />
     <option name="height" value="928" />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>AngularJS</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
   <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="添加" />
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,10 +300,20 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,8 +325,8 @@
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.HTML" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/01_learn/angular-learn-Heroes/node_modules/typescript/lib" />
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
@@ -368,6 +404,8 @@
       <workItem from="1523606934763" duration="2799000" />
       <workItem from="1523610835885" duration="1096000" />
       <workItem from="1523620771906" duration="4207000" />
+      <workItem from="1523846325405" duration="270000" />
+      <workItem from="1523846787840" duration="8707000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -394,33 +432,30 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="337036000" />
+    <option name="totallyTimeSpent" value="346013000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="60" width="1719" height="928" extended-state="0" />
+    <frame x="2050" y="57" width="1719" height="928" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25778037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21021727" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3290653" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290653" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32885087" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="运行" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="找到" order="8" weight="0.32871014" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32942554" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,31 +490,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/lazy_routes.js" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/ngtools_api.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/paths-plugin.d.ts" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/node_modules/@ngtools/webpack/src/refactor.js" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-a/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="5" column="26" selection-end-line="406" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/feature.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/home/home.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/attribute-directives.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -522,13 +532,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/not-found.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/not-found.component.ts" />
     <entry file="file://$PROJECT_DIR$/01_learn/angular-learn-Heroes/src/app/template/dashboard.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -548,13 +552,7 @@
         <state relative-caret-position="-468" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/animations.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/animations.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -569,49 +567,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-heroes.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-dashboard.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/manage-heroes.component.ts" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-dashboard.component.ts" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.component.ts" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts" />
     <entry file="file://$USER_HOME$/Desktop/demo/demo3.html" />
-    <entry file="file://$USER_HOME$/Desktop/demo/dom-load-progress.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/demo/dom-load-progress.html" />
     <entry file="file://$PROJECT_DIR$/01_learn/js封装.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -619,13 +581,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/demo/calendar-picker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="268" column="47" lean-forward="true" selection-start-line="268" selection-start-column="47" selection-end-line="268" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/demo/calendar-picker.html" />
     <entry file="file://$PROJECT_DIR$/01_learn/js Object.defineProperty().html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
@@ -633,58 +589,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-182">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
-          <folding>
-            <element signature="e#669#1212#0" />
-            <element signature="e#1285#1343#0" />
-            <element signature="e#1367#1487#0" />
-            <element signature="e#1234#1327#0" />
-            <element signature="e#1234#1282#0" />
-            <element signature="e#1314#1404#0" />
-            <element signature="e#3138#3175#0" />
-            <element signature="e#3329#3397#0" />
-            <element signature="e#3415#3486#0" />
-            <element signature="e#3344#3739#0" />
-            <element signature="e#3685#3709#0" />
-            <element signature="e#3781#3805#0" />
-            <element signature="e#3053#3069#0" />
-            <element signature="e#3908#4614#0" />
-            <element signature="e#3985#4316#0" />
-            <element signature="e#4352#4440#0" />
-            <element signature="e#6014#6525#0" />
-            <element signature="e#5893#6428#0" />
-            <element signature="e#3637#4128#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/calendar-picker.html" />
+    <entry file="file://$PROJECT_DIR$/03_test/box-lazy-show.html" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="224">
           <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
         </state>
       </provider>
@@ -699,9 +610,6 @@
         <state relative-caret-position="-78" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -713,20 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1378">
           <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -744,23 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/dist/styles.c9b82cd4a00573f31759.bundle.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -775,17 +652,126 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        <state relative-caret-position="196">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/power-booster.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/exponential-strength.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-impure.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-v1.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-async-message.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/assets/heroes.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/pipes.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+        <state relative-caret-position="345">
+          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/fetch-json.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
