@@ -2,7 +2,7 @@
 <header>
   <div class="main-warpper clearfix">
     <div class="pull-left">
-      <a href="javascript: void(0);">{{ title }}</a>
+      <a routerLink="/">{{ title }}</a>
     </div>
     <nav class="pull-right">
       <ul class="clearfix">
@@ -11,7 +11,7 @@
         <li class="pull-left"><a routerLink="/test/b" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Test-b</a></li>
         <li class="pull-left"><a routerLink="/pipes" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">pipes</a></li>
         <li class="pull-left"><a routerLink="/admin" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: false}">Admin</a></li>
-        <li class="pull-left"><a href="login.html">Login</a></li>
+        <li class="pull-left"><a routerLink="/animations" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">animations</a></li>
       </ul>
     </nav>
   </div>

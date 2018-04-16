@@ -13,6 +13,7 @@ import { AdminModule } from "./admin/admin.module";
 import { AppComponent } from './app.component';
 import {HomeComponent} from "./home/home.component";
 import { NotFoundComponent } from "./not-found.component";
+import {AnimationsModule} from "./animations/animations.module";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotFoundComponent } from "./not-found.component";
     StructuralDirectivesModule,
     PipesModule,
     AdminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

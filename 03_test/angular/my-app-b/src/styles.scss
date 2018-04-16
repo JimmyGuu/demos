@@ -37,3 +37,12 @@ ul {
 .pull-right {
   float: right;
 }
+
+nav {
+  li {
+    a.active {
+      background: #ff5f00;
+      color: #fff;
+    }
+  }
+}
