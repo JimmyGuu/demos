@@ -1,0 +1,42 @@
+
+
+$form-control-height: 34px;
+$form-control-width: 220px;
+.form-group {
+  .form-control {
+    display: block;
+    border: 1px solid #ddd;
+    width: $form-control-width;
+    height: $form-control-height;
+    line-height: $form-control-height;
+    text-indent: 15px;
+
+    &.ng-valid[required], .ng-valid.required  {
+      border-left: 5px solid #42A948; /* green */
+    }
+
+    &.ng-invalid:not(form)  {
+      border-left: 5px solid #a94442; /* red */
+    }
+  }
+}
+
+.btn {
+  display: block;
+  height: $form-control-height;
+  line-height: $form-control-height;
+  text-align: center;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+
+  $success: #5cb85c;
+
+  &.btn-success {
+    background: $success;
+    color: #fff;
+    border-color: $success;
+  }
+}
+
+

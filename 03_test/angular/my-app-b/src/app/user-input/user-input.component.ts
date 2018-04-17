@@ -7,9 +7,10 @@ import {Component} from "@angular/core";
 
     <nav>
       <ul>
-        <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">user-input-index</a></li>
-        <li><a routerLink="./keyup" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">keyup</a></li>
-      </ul>
+      <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">user-input-index</a></li>
+      <li><a routerLink="./keyup" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">keyup</a></li>
+      <li><a routerLink="./keyup-enter" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">keyup-enter</a></li>
+    </ul>
     </nav>
 
     <router-outlet></router-outlet>

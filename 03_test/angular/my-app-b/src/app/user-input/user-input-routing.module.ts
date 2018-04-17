@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
 import {UserInputComponent} from "./user-input.component";
 import {KeyupComponent} from "./keyup.component";
+import {KeyupEnterComponent} from "./keyup-enter.component";
 
 const ROUTES: Routes = [
   {
@@ -12,7 +13,8 @@ const ROUTES: Routes = [
     children: [{
         path: '',
       children: [
-        { path: 'keyup', component: KeyupComponent }
+        { path: 'keyup', component: KeyupComponent },
+        { path: 'keyup-enter', component: KeyupEnterComponent }
       ]
     }]
   }
@@ -21,7 +23,8 @@ const ROUTES: Routes = [
 @NgModule({
   declarations: [
     UserInputComponent,
-    KeyupComponent
+    KeyupComponent,
+    KeyupEnterComponent
   ],
   imports: [
     CommonModule,

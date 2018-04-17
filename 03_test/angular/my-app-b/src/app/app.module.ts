@@ -15,6 +15,7 @@ import {HomeComponent} from "./home/home.component";
 import { NotFoundComponent } from "./not-found.component";
 import {AnimationsModule} from "./animations/animations.module";
 import {UserInputModule} from "./user-input/user-input.module";
+import {HeroFormsModule} from "./forms/forms.module";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {UserInputModule} from "./user-input/user-input.module";
     AdminModule,
     AppRoutingModule,
     AnimationsModule,
-    UserInputModule
+    UserInputModule,
+    HeroFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
