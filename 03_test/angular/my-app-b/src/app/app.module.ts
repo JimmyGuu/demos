@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./home/home.component";
 import { NotFoundComponent } from "./not-found.component";
 import {AnimationsModule} from "./animations/animations.module";
+import {UserInputModule} from "./user-input/user-input.module";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {AnimationsModule} from "./animations/animations.module";
     PipesModule,
     AdminModule,
     AppRoutingModule,
-    AnimationsModule
+    AnimationsModule,
+    UserInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
