@@ -9,12 +9,16 @@ import {Hero} from "./hero-model";
 export class HeroFormComponent {
   public powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
 
-  public model = new Hero(18, 'Dr IQ', this.powers[0], 'Chunk Overstreet');
+  private count: number = 1;
+  public model = new Hero(this.count, 'Dr IQ', this.powers[0], 'Chunk Overstreet');
+  public heroes: Hero[] = [];
 
-  submitted = false;
-
-  onSubmit() {
-    this.submitted = true;
+  onSubmit(form) {
+    this.heroes.push(this.model);
+    this.count++;
+    this.model = new Hero(this.count, '', '');
+    form.reset();
+    console.log(this.heroes);
   }
 
   get diagnostic() {

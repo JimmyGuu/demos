@@ -1,0 +1,60 @@
+<h2>Hero Detail</h2>
+<h3>Just a FormControl</h3>
+<form [formGroup]="heroForm">
+  <div class="form-group">
+    <label class="center-block">
+      Name:
+      <input type="text" class="form-control" formControlName="name">
+    </label>
+  </div>
+
+  <div class="well well-lg" formGroupName="address">
+    <h4>Secret Lair</h4>
+
+    <div class="form-group">
+      <label class="center-block">
+        Street:
+        <input class="form-control" formControlName="street">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">
+        City:
+        <input class="form-control" formControlName="city">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        <select name="state" id="state" class="form-control" formControlName="state">
+          <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        <input type="text" class="form-control" formControlName="zip">
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group radio">
+    <label>
+      <input type="radio" formControlName="power" value="flight">Flight
+    </label>
+    <label>
+      <input type="radio" formControlName="power" value="x-ray vision">X-ray vision
+    </label>
+    <label>
+      <input type="radio" formControlName="power" value="strength">Strength
+    </label>
+  </div>
+  <div class="form-group checkbox">
+    <label>
+      <input type="checkbox" formControlName="sidekick">I have a sidekick.
+    </label>
+  </div>
+</form>
+
+<p><small>heroForm.value: {{ heroForm.value | json }}</small></p>
+<p><small>heroForm.status: {{ heroForm.status | json }}</small></p>
+

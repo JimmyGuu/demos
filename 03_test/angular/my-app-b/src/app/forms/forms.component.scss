@@ -2,22 +2,22 @@
 
 $form-control-height: 34px;
 $form-control-width: 220px;
-.form-group {
-  .form-control {
-    display: block;
-    border: 1px solid #ddd;
-    width: $form-control-width;
-    height: $form-control-height;
-    line-height: $form-control-height;
-    text-indent: 15px;
+$form-control-padding: 15px;
 
-    &.ng-valid[required], .ng-valid.required  {
-      border-left: 5px solid #42A948; /* green */
-    }
+.form-control {
+  display: block;
+  border: 1px solid #ddd;
+  width: $form-control-width;
+  height: $form-control-height;
+  line-height: $form-control-height;
+  text-indent: $form-control-padding;
 
-    &.ng-invalid:not(form)  {
-      border-left: 5px solid #a94442; /* red */
-    }
+  &.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+
+  &.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
   }
 }
 
@@ -30,12 +30,38 @@ $form-control-width: 220px;
   background: #f7f7f7;
   cursor: pointer;
 
+  &[disabled] {
+    color: #999999;
+  }
+
   $success: #5cb85c;
 
   &.btn-success {
     background: $success;
     color: #fff;
     border-color: $success;
+
+    &[disabled] {
+      color: darken(#fff, 5%);
+      background: lighten($success, 20%);
+      border-color: lighten($success, 20%);
+      cursor: not-allowed;
+    }
+  }
+}
+
+.alert {
+  $alert-padding: $form-control-padding;
+
+  width: $form-control-width - $alert-padding * 2;
+  padding: ($alert-padding - 5px) $alert-padding;
+  background: #f7f7f7;
+
+  &.alert-danger {
+    $danger: #BF1B00;
+
+    background: lighten($danger, 50%);
+    color: $danger;
   }
 }
 

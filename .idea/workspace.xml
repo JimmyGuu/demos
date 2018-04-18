@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="html - canvas">
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/user-input/keyup-enter.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/data-model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forbidden-name.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template-v3.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v2.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v3.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/user-input/user-input-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/user-input/user-input-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/user-input/user-input.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/user-input/user-input.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,8 +36,8 @@
       <file leaf-file-name="forms-routing.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+            <state relative-caret-position="196">
+              <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -43,41 +45,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hero-model.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-model.ts">
+      <file leaf-file-name="data-model.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/data-model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="423">
+              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hero-form.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts">
+      <file leaf-file-name="hero-detail.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+            <state relative-caret-position="563">
+              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hero-form.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html">
+      <file leaf-file-name="hero-detail.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="448">
+              <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+              <folding>
+                <element signature="n#div#1;n#div#1;n#form#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#form#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#form#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,8 +83,8 @@
       <file leaf-file-name="forms.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+            <state relative-caret-position="420">
+              <caret line="13" column="130" lean-forward="true" selection-start-line="13" selection-start-column="130" selection-end-line="13" selection-end-column="130" />
             </state>
           </provider>
         </entry>
@@ -104,8 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>name=&quot;author&quot;</find>
-      <find>rel</find>
       <find>count</find>
       <find>this</find>
       <find>rate</find>
@@ -134,6 +130,8 @@
       <find>parent</find>
       <find>parentHeight</find>
       <find>parentScrollTop</find>
+      <find>ngForm</find>
+      <find>name</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,14 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/calendar-picker.html" />
-        <option value="$PROJECT_DIR$/01_learn/js Object.defineProperty().html" />
-        <option value="$PROJECT_DIR$/03_test/box-lazy-show.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/login.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/index.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts" />
@@ -186,13 +176,21 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-model.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v2.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v3.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template-v3.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forbidden-name.directive.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/data-model.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.html" />
       </list>
     </option>
   </component>
@@ -232,8 +230,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2012" />
-    <option name="y" value="54" />
+    <option name="x" value="1986" />
+    <option name="y" value="46" />
     <option name="width" value="1776" />
     <option name="height" value="946" />
   </component>
@@ -296,6 +294,19 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="forms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-test" type="462c0819:PsiDirectoryNode" />
+              <item name="03_test" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+              <item name="sass-src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -395,6 +406,7 @@
       <workItem from="1523846325405" duration="270000" />
       <workItem from="1523846787840" duration="19082000" />
       <workItem from="1523928034964" duration="17679000" />
+      <workItem from="1524020030988" duration="15827000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -421,10 +433,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374067000" />
+    <option name="totallyTimeSpent" value="389894000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2012" y="54" width="1776" height="946" extended-state="0" />
+    <frame x="1986" y="46" width="1776" height="946" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
@@ -435,16 +447,16 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.19617225" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,62 +491,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/feature/test.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/structural-directives/test-b.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1378">
-          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/attribute-directives/test-a.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="166" column="22" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/power-booster.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/hero-birthday2.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/exponential-strength.pipe.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes.pipe.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/pipes/flying-heroes-impure.pipe.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -598,9 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin.module.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -647,10 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="569">
           <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-            <element signature="e#257#641#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,9 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -668,9 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -678,9 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -688,9 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="42" column="39" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -698,9 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,9 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="41" column="74" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -725,9 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -735,9 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -745,9 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,9 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,9 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -802,46 +718,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form/hero-form.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form/hero-form.component.spec.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/.angular-cli.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
           <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,34 +733,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/sass/sass-src/page.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v2.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        <state relative-caret-position="252">
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts">
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-v3.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        <state relative-caret-position="336">
+          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.scss">
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forbidden-name.directive.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template-v3.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="n#div#1;n#form#0;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#form#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form-template.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-form.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        <state relative-caret-position="252">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="13" column="130" lean-forward="true" selection-start-line="13" selection-start-column="130" selection-end-line="13" selection-end-column="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/data-model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/hero-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding>
+            <element signature="n#div#1;n#div#1;n#form#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#form#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#form#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
