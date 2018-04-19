@@ -8,6 +8,8 @@ import {HeroFormV2Component} from "./hero-form-v2.component";
 import {HeroFormV3Component} from "./hero-form-v3.component";
 import {ForbiddenValidatorDirective} from "./forbidden-name.directive";
 import {HeroDetailComponent} from "./hero-detail.component";
+import {HeroListComponent} from "./hero-list.component";
+import {HeroDetailV2Component} from "./hero-detail-v2.component";
 
 const ROUTES: Routes = [
   {
@@ -19,7 +21,8 @@ const ROUTES: Routes = [
         { path: 'hero-form', component: HeroFormComponent },
         { path: 'hero-form-v2', component: HeroFormV2Component },
         { path: 'hero-form-v3', component: HeroFormV3Component },
-        { path: 'hero-detail', component: HeroDetailComponent }
+        { path: 'hero-detail', component: HeroDetailComponent },
+        { path: 'hero-list', component: HeroListComponent }
       ]
     }]
   }
@@ -32,7 +35,9 @@ const ROUTES: Routes = [
     HeroFormV2Component,
     HeroFormV3Component,
     ForbiddenValidatorDirective,
-    HeroDetailComponent
+    HeroDetailComponent,
+    HeroListComponent,
+    HeroDetailV2Component
   ],
   imports: [
     CommonModule,

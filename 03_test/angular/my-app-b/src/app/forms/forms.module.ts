@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroFormsRoutingModule} from "./forms-routing.module";
+import {HeroService} from "./hero.service";
 
 @NgModule({
   declarations: [],
@@ -9,7 +10,9 @@ import {HeroFormsRoutingModule} from "./forms-routing.module";
     HeroFormsRoutingModule
   ],
   exports: [],
-  providers: []
+  providers: [
+    HeroService
+  ]
 })
 
 export class HeroFormsModule { }

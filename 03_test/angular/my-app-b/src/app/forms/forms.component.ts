@@ -12,6 +12,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
         <li><a routerLink="./hero-form-v2" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-form-v2</a></li>
         <li><a routerLink="./hero-form-v3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-form-v3</a></li>
         <li><a routerLink="./hero-detail" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-detail</a></li>
+        <li><a routerLink="./hero-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">hero-list</a></li>
       </ul>
     </nav>
     

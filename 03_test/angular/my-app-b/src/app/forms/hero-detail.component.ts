@@ -1,6 +1,6 @@
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Component} from "@angular/core";
-import {states} from "./data-model";
+import {Component, Input} from "@angular/core";
+import {Address, Hero, states} from "./data-model";
 
 @Component({
   selector: 'app-hero-detail',
@@ -32,14 +32,20 @@ export class HeroDetailComponent {
     // })
     this.heroForm = this.formBuilder.group({
       name: ['', Validators.required],
-      address: this.formBuilder.group({
-        street: '',
-        city: '',
-        state: '',
-        zip: ''
-      }),
+      address: this.formBuilder.group(new Address()),
       power: '',
       sidekick: ''
+    })
+
+    this.heroForm.setValue({
+      name: 'init name',
+      address: { street: 'Yueyang Dao', city: '', state: '', zip: '' },
+      power: 'fly',
+      sidekick: ''
+    })
+
+    this.heroForm.patchValue({
+      name: 'patched name'
     })
   }
 }
