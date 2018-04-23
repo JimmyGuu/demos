@@ -10,10 +10,13 @@ import {ForbiddenValidatorDirective} from "./forbidden-name.directive";
 import {HeroDetailComponent} from "./hero-detail.component";
 import {HeroListComponent} from "./hero-list.component";
 import {HeroDetailV2Component} from "./hero-detail-v2.component";
+import {DynamicFormMainComponent} from "./dynamic-form-main.component";
+import {DynamicFormComponent} from "./dynamic-form.component";
+import {DynamicFormQuestionComponent} from "./dynamic-form-question.component";
 
 const ROUTES: Routes = [
   {
-    path: 'forms',
+    path: '',
     component: FormsComponent,
     children: [{
       path: '',
@@ -22,7 +25,8 @@ const ROUTES: Routes = [
         { path: 'hero-form-v2', component: HeroFormV2Component },
         { path: 'hero-form-v3', component: HeroFormV3Component },
         { path: 'hero-detail', component: HeroDetailComponent },
-        { path: 'hero-list', component: HeroListComponent }
+        { path: 'hero-list', component: HeroListComponent },
+        { path: 'questions', component: DynamicFormMainComponent }
       ]
     }]
   }
@@ -37,7 +41,10 @@ const ROUTES: Routes = [
     ForbiddenValidatorDirective,
     HeroDetailComponent,
     HeroListComponent,
-    HeroDetailV2Component
+    HeroDetailV2Component,
+    DynamicFormMainComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ],
   imports: [
     CommonModule,

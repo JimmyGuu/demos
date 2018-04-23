@@ -9,7 +9,6 @@ import {FormsModule} from "@angular/forms";
   ],
   imports: [
     FormsModule,
-    BrowserAnimationsModule,
     AnimationsRoutingModule
   ],
   exports: [],

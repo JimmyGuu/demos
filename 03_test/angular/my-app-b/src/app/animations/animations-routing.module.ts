@@ -11,7 +11,7 @@ import {HeroListGroupsComponent} from "./hero-list-groups.component";
 
 const ROUTES: Routes = [
   {
-    path: 'animations',
+    path: '',
     component: AnimationsComponent,
     children: [{
       path: '',

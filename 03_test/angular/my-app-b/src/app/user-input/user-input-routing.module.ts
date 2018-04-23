@@ -8,7 +8,7 @@ import {KeyupEnterComponent} from "./keyup-enter.component";
 
 const ROUTES: Routes = [
   {
-    path: 'user-input',
+    path: '',
     component: UserInputComponent,
     children: [{
         path: '',
