@@ -1,0 +1,30 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Public colors
+
+//** usual-gray
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+$gray-light:             lighten($gray-base, 46.7%); // #777
+$gray-lighter:           lighten($gray-base, 93.5%); // #eee
+
+//** theme-colors
+$theme-gold: #cbb99e;
+$theme-blue: #003f84;
+$theme-red:  #e14651;
+$theme-pink: #ef8993;
+
+//** usual-colors
+$usual-primary: $theme-blue;
+$usual-success: $theme-blue;
+$usual-danger:  $theme-red;
+$usual-info:    #5bc0de;
+$usual-warning: #f0ad4e;
+$usual-focus:   lighten($theme-blue, 20%);
