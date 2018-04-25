@@ -1,0 +1,15 @@
+// Single line text shows ellipsis
+@mixin overflow-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Multi-line text overflow shows ellipsis
+// This method is suitable for WebKit browser and mobile terminal
+@mixin overflow-ellipsis-multi($lines: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}

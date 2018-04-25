@@ -1,0 +1,9 @@
+// CSS3 transform
+
+@mixin transform($value) {
+  transform: $value;
+  -ms-transform: $value; /* IE 9 */
+  -moz-transform: $value; /* Firefox */
+  -webkit-transform: $value; /* Safari & Chrome */
+  -o-transform: $value; /* Opera */
+}

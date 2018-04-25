@@ -1,0 +1,20 @@
+@mixin linear-gradient ($value) {
+background: -webkit-linear-gradient($value); /* Safari 5.1 - 6.0 */
+background: -o-linear-gradient($value); /* Opera 11.1 - 12.0 */
+background: -moz-linear-gradient($value); /* Firefox 3.6 - 15 */
+background: linear-gradient($value); /* Standard */
+}
+
+@mixin linear-gradient-img ($value) {
+background-image: -webkit-linear-gradient($value); /* Safari 5.1 - 6.0 */
+background-image: -o-linear-gradient($value); /* Opera 11.1 - 12.0 */
+background-image: -moz-linear-gradient($value); /* Firefox 3.6 - 15 */
+background-image: linear-gradient($value); /* Standard */
+}
+
+@mixin linear-gradient-border ($value) {
+border-image: -webkit-linear-gradient($value); /* Safari 5.1 - 6.0 */
+border-image: -o-linear-gradient($value); /* Opera 11.1 - 12.0 */
+border-image: -moz-linear-gradient($value); /* Firefox 3.6 - 15 */
+border-image: linear-gradient($value); /* Standard */
+}

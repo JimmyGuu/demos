@@ -1,0 +1,5 @@
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=#{$opacity*100}); /* IE8 and lower */
+  zoom: 1; /* Triggers "hasLayout" in IE 7 and lower */
+}

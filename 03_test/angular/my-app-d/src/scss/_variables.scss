@@ -1,0 +1,139 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Public colors
+
+//** usual-gray
+$black:                   #000 !default;
+$gray-darker:            lighten($black, 13.5%) !default; // #222
+$gray-dark:              lighten($black, 20%) !default;   // #333
+$gray:                    lighten($black, 33.5%) !default; // #555
+$gray-light:             lighten($black, 46.7%) !default; // #777
+$gray-lighter:           lighten($black, 93.5%) !default; // #eee
+$white:                   #fff !default;
+$gray-ddd:                #ddd !default;
+$gray-f7:                 #f7f7f7 !default;
+$gray-999:                #999 !default;
+$gray-ccc:                #ccc !default;
+$gray-ed:                 #ededed !default;
+
+//** theme-colors
+$theme-colors: (
+  gold: #cbb99e,
+  blue: #003f84,
+  red:  #e14651,
+  pink: #ef8993
+);
+
+//** usual-colors
+$usual-colors: (
+  primary: map_get($theme-colors, blue),
+  success: #45EBA5,
+  danger:  map_get($theme-colors, red),
+  info:    #5bc0de,
+  warning: #f0ad4e,
+  focus:   darken(map_get($theme-colors, blue), 5%)
+);
+
+//== Scaffolding
+//
+//## base styles
+
+//** body background
+$body-bg:               #fff !default;
+//** default font color
+$text-color:            $gray-dark !default;
+//** default link-font color
+$link-color:            $gray-dark !default;
+//** default font size
+$text-size:             1.2rem !default; // 14px when 62.5%
+//** default padding
+$padding-main:          1.5rem !default; // 15px
+
+//== Typography
+//
+//## usual font-size & line-height etc
+
+//** Sans serif font
+$font-family:             'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+//** Monospaced font `<code>`, `<kbd>`, `<pre>`
+$font-family-monospace:   Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+//** font-size
+$font-size-base:           $text-size !default;
+$font-size-sm:             ceil(($font-size-base * 1.25));
+$font-size-lg:             ceil(($font-size-base * .85));
+
+//** font-weight
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
+
+//** links
+$link-decoration:           none !default;
+$link-hover-color:          darken($link-color, 15%) !default;
+$link-hover-decoration:     underline !default;
+
+//** H label font-size
+$font-size-h: (
+  1: floor(($font-size-base * 2.6)), // ~36px
+  2: floor(($font-size-base * 2.15)), // ~30px
+  3: ceil(($font-size-base * 1.7)), // ~24px
+  4: ceil(($font-size-base * 1.25)), // ~18px
+  5: $font-size-base,
+  6: ceil(($font-size-base * .85)) // ~12px
+);
+
+// ** Borders
+$border-width:                1px !default;
+$border-color:                $gray !default;
+$border-radius:               4px;
+
+//== Components
+//
+//## Component styles
+
+//** Forms
+$form-border-color-base:           $gray-ddd;
+$form-border-width-base:           $border-width;
+$form-border-radius-base:          $border-radius;
+$form-indent-base:                  $padding-main;
+$form-focus-color-base:            lighten(map_get($usual-colors, primary), 50%);
+$form-height-base:                 3.4rem;
+$form-width-base:                   22rem - $form-indent-base * 2;
+$form-line-height-base:            $form-height-base;
+
+$form-background-base:             $white;
+$form-background-gray:             $gray-ddd;
+$form-background-disabled:         $gray-ed;
+$form-border-disabled:              $gray-ccc;
+$form-font-disabled:                $gray-999;
+$form-disabled-color:               0.7;
+
+$form-colors: (
+  primary:        map_get($usual-colors, primary),
+  success:        map_get($usual-colors, success),
+  danger:         map_get($usual-colors, danger),
+  info:           map_get($usual-colors, info),
+  warning:        map_get($usual-colors, warning)
+);
+
+// Buttons
+$btn-background-colors: map_merge($form-colors, (default: $form-background-gray));
+$btn-font-colors: map_merge($form-colors, (
+  primary:        $white,
+  success:        $white,
+  danger:         $white,
+  info:           $white,
+  warning:        $white,
+  default:        $text-color
+));
+
+

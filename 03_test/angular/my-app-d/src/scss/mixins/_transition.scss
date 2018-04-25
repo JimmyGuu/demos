@@ -1,0 +1,36 @@
+// CSS3 transition
+
+@mixin transition($property: all, $duration: 0.3s, $timing: linear, $delay: 0s) {
+  transition: $property $duration $timing $delay;
+  -moz-transition: $property $duration $timing $delay; /* Firefox 4 */
+  -webkit-transition: $property $duration $timing $delay; /* Safari & Chrome */
+  -o-transition: $property $duration $timing $delay; /* Opera */
+}
+
+@mixin transition-property($property: all) {
+  transition-property: $property;
+  -moz-transition-property: $property; /* Firefox 4 */
+  -webkit-transition-property: $property; /* Safari & Chrome */
+  -o-transition-property: $property; /* Opera */
+}
+
+@mixin transition-duration($duration: 0.3s) {
+  transition-duration: $duration;
+  -moz-transition-duration: $duration; /* Firefox 4 */
+  -webkit-transition-duration: $duration; /* Safari & Chrome */
+  -o-transition-duration: $duration; /* Opera */
+}
+
+@mixin transition-timing-function($timing: linear) {
+  transition-timing-function: $timing;
+  -moz-transition-timing-function: $timing; /* Firefox 4 */
+  -webkit-transition-timing-function: $timing; /* Safari & Chrome */
+  -o-transition-timing-function: $timing; /* Opera */
+}
+
+@mixin transition-delay($delay: 0s) {
+  transition-delay: $delay;
+  -moz-transition-delay: $delay; /* Firefox 4 */
+  -webkit-transition-delay: $delay; /* Safari & Chrome */
+  -o-transition-delay: $delay; /* Opera */
+}

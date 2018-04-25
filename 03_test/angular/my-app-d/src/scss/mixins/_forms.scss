@@ -1,0 +1,67 @@
+$defaults: (
+  display: inline-block,
+  border-width: $form-border-width-base,
+  border-color: $form-border-color-base,
+  background: $form-background-base,
+  font-size: $text-size,
+  color: inherit,
+  border-radius: $form-border-radius-base,
+  width: $form-width-base,
+  height: $form-height-base,
+  line-height: $form-height-base,
+  padding-left: $form-indent-base,
+  padding-right: $form-indent-base,
+  padding-top: 0,
+  padding-bottom: 0,
+  disabled: $form-background-disabled,
+  boder-disabled: $form-border-disabled,
+  font-disabled: $form-font-disabled
+);
+
+// Inputs
+// @params () $defaults
+@mixin form-control($options: ()) {
+  $opts: map_merge($defaults, $options);
+
+  display: map_get($opts, display);
+  border: map_get($opts, border-width) solid map_get($opts, border-color);
+  background: map_get($opts, background);
+  color: map_get($opts, color);
+  font-size: map_get($opts, font-size);
+  @include border-radius(map_get($opts, border-radius));
+  width: map_get($opts, width);
+  height: map_get($opts, height);
+  line-height: map_get($opts, line-height);
+  padding: map_get($opts, padding-top) map_get($opts, padding-right) map_get($opts, padding-bottom) map_get($opts, padding-left);
+
+  &:focus {
+    outline: none;
+    border-color: $form-focus-color-base;
+  }
+
+  &[disabled], &[disabled="disabled"],
+  &[readonly], &[readonly="readonly"] {
+    background: map_get($opts, disabled);
+    border-color: map_get($opts, boder-disabled);
+    color: map_get($opts, font-disabled);
+  }
+
+  &[disabled], &[disabled="disabled"] {
+    cursor: not-allowed;
+  }
+
+  &[readonly], &[readonly="readonly"] {
+    cursor: default;
+  }
+}
+
+// Buttons
+@mixin btn($options: ()) {
+  $btn-defaults: map_merge($defaults, (
+    width: auto
+  ));
+
+  $opts: map_merge($btn-defaults, $options);
+  @include form-control($opts);
+  cursor: pointer;
+}

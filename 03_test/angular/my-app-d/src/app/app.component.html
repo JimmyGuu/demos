@@ -7,11 +7,13 @@
   </div>
 </header>
 
+<router-outlet></router-outlet>
+
 <nav class="bot-tabs">
   <ul>
-    <li><a href="javascript: void(0);"><i class="icon icon-home"></i>首页</a></li>
+    <li><a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: false}"><i class="icon icon-home"></i>首页</a></li>
     <li><a href="javascript: void(0);"><i class="icon icon-products"></i>理财</a></li>
     <li><a href="javascript: void(0);"><i class="icon icon-discover"></i>发现</a></li>
-    <li><a href="javascript: void(0);"><i class="icon icon-mine"></i>我的</a></li>
+    <li><a routerLink="/mine" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: false}"><i class="icon icon-mine"></i>我的</a></li>
   </ul>
 </nav>

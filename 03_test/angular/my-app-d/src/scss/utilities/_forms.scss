@@ -1,0 +1,46 @@
+// Inputs
+.form-control {
+  @include form-control();
+
+  @each $type, $color in $form-colors {
+    &.#{$type} {
+      @if(map_has_key($usual-colors, $type)) {
+        border-color: rgba(map_get($usual-colors, $type), .5);
+      } @else {
+        border-color: $color;
+      }
+
+      &:focus {
+        border-color: $color;
+      }
+    }
+  }
+}
+
+// Buttons
+.btn {
+  @include btn();
+
+  @each $type, $color in $btn-background-colors {
+    &.btn-#{$type} {
+      border-color: $color;
+      background: $color;
+      color: map_get($btn-font-colors, $type);
+
+      &:focus {
+        @if(map_has_key($usual-colors, $type)) {
+          border-color: darken(map_get($usual-colors, $type), 20%);
+        } @else {
+          border-color: $form-focus-color-base;
+        }
+      }
+
+      &[disabled], &[disabled="disabled"],
+      &[readonly], &[readonly="readonly"] {
+        background: rgba($color, $form-disabled-color);
+        border-color: rgba($color, $form-disabled-color);
+        color: rgba(map_get($btn-font-colors, $type), $form-disabled-color + 0.1);
+      }
+    }
+  }
+}

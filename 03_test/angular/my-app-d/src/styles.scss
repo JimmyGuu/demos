@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * Global styles
+ */
+
+@import "scss/_variables.scss";
+@import "scss/_mixins.scss";
+@import "scss/_reboot.scss";
+@import "scss/_mobile.scss"; // Only for mobile web
+@import "scss/_utilities.scss";
