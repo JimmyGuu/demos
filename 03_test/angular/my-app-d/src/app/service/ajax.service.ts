@@ -1,4 +1,4 @@
-import {ApiData} from "../app.config";
+import {apiData} from "../app.config";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {catchError, retry} from "rxjs/operators";
@@ -6,6 +6,8 @@ import {ResponseModel} from "../model/response.model";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Datas} from "../model/datas.model";
+import {TokenDatasService} from "./data-store.service";
+import {CookieService} from "ngx-cookie";
 
 /**
  * Init request url & params
@@ -17,21 +19,28 @@ class AjaxOptions {
   constructor(
     private path: string,
     private _datas: Datas,
-    private isGet: boolean = false
+    private isGet: boolean = false,
+    private tokenDatasService: TokenDatasService
   ) {
     this.init();
   }
 
   private init() {
-    this.url = new ApiData().ServiceUrl + this.path;
+    this.url = apiData.ServiceUrl + this.path;
     this.datas = {
-      ClientType: new ApiData().ClientType,
-      Token: 'token'
+      ClientType: apiData.ClientType,
+      Token: this.tokenDatasService.token
     };
     if (!this.isGet) {
-      this.datas.Timespan = 'timespan';
+      this.datas.Timespan = this.tokenDatasService.timespanFormat;
     }
     Object.assign(this.datas, this._datas);
+  }
+
+  private retryToken() {
+    if (!this.tokenDatasService.token || !this.tokenDatasService.timespanFormat) {
+
+    }
   }
 }
 
@@ -40,20 +49,15 @@ class AjaxOptions {
  */
 @Injectable()
 export class Ajax {
-  private httpOptions: object;
-
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    };
-  }
+  constructor(
+    private http: HttpClient,
+    private tokenDatasService: TokenDatasService,
+    private cookieService: CookieService
+  ) { }
 
   public get(path: string, datas: Datas = {}, retries: number = 0): Observable<any> {
-    const options = new AjaxOptions(path, datas, true);
+    const options = new AjaxOptions(path, datas, true, this.tokenDatasService);
     return Observable.create(observer => {
-      Object.assign(options.datas, this.httpOptions);
       this.http.get<ResponseModel>(options.url, options.datas)
         .pipe(
           retry(retries),
@@ -74,9 +78,9 @@ export class Ajax {
   }
 
   public post(path: string = '', datas: Datas = {}, retries: number = 0): Observable<any> {
-    const options = new AjaxOptions(path, datas, false);
+    const options = new AjaxOptions(path, datas, false, this.tokenDatasService);
     return Observable.create(observer => {
-      this.http.post<ResponseModel>(options.url, options.datas, this.httpOptions)
+      this.http.post<ResponseModel>(options.url, options.datas)
         .pipe(
           retry(retries),
           catchError(this.handleError)
@@ -113,8 +117,10 @@ export class Ajax {
         break;
       case '3':
         // 时间戳错误
+        // 清除token等cookie
         // TODO window.location.href = '/Error/Error';
-        alert('时间戳错误');
+        console.warn(`时间戳错误(${result.ResultCode})`);
+        this.tokenDatasService.clear();
         break;
       case '4':
         // 未登录
@@ -190,7 +196,7 @@ export class Ajax {
     if (handleResult) // ResultCode: 0
       observer.next(res.Data);
     else
-      observer.error(res.Message, res.ResultCode); // service error
+      observer.error(`From request: ${res.Message}.`); // service error
   }
 }
 

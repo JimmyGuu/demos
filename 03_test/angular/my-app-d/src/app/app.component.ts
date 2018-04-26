@@ -1,35 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonService} from "./service/common.service";
-import {BannerService} from "./service/site-show/banner.service";
+import {InitDataService} from "./service/data-init.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ CommonService, BannerService ]
+  providers: []
 })
 export class AppComponent implements OnInit{
   constructor(
-    private commonService: CommonService,
-    private bannerService: BannerService
-    ) { }
+    private baseData: InitDataService
+  ) {
+
+  }
 
   ngOnInit() {
-    // TODO Post request demo
-    this.commonService.TokenApplyAndTime().subscribe(
-      data => {
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    )
+    // console.log(this.baseData.getToken, this.baseData.getDiffTime);
 
-    // TODO Get request demo
-    this.bannerService.banner().subscribe(
-      data => {
-        console.log(data);
-      }
-    )
   }
 }

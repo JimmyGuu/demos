@@ -6,52 +6,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8feced-bbe3-4092-bc01-bdecfee5f4f4" name="Default" comment="ng forms">
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/index.componet.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/settings.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/common.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/site-show/banner.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_mobile.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_reboot.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_utilities.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_border-radius.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_box-shadow.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_center-block.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_clearfix.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_flex.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_floats.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_hover.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_linear-gradient.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_opacity.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_overflow-ellipsis.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_progress.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transform.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transition.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_border.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_center-block.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_clearfix.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_floats.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_hide.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/headers-interceptor.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/config.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-init.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-store.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/utilities.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-c" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/datas.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,20 +40,29 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+            <state relative-caret-position="140">
+              <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
               <folding>
-                <element signature="e#0#58#0" expanded="true" />
+                <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app-routing.module.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app-routing.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="196">
+              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -89,44 +70,98 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-center.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.module.ts">
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+            <state relative-caret-position="28">
+              <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html">
+      <file leaf-file-name="index.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data-init.service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-init.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!doc;n#BaseDataService#0" />
+                <element signature="n#!!block;n#clear#0;n#InitDataService#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data-store.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-store.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+                <element signature="n#!!block;n#setTokenData#0;n#TokenDatasService#0" />
+                <element signature="n#!!block;n#diffTime#0;n#TokenDatasService#0" />
+                <element signature="n#!!block;n#token#0;n#TokenDatasService#0" />
+                <element signature="n#!!block;n#timespan#0;n#TokenDatasService#0" />
+                <element signature="n#!!block;n#timespanFormat#0;n#TokenDatasService#0" />
+                <element signature="n#!!block;n#clear#0;n#TokenDatasService#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajax.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user-center-routing.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center-routing.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+              <caret line="123" column="14" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="123" selection-end-column="14" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
+                <element signature="n#!!doc;n#AjaxOptions#0" />
+                <element signature="n#!!doc;n#Ajax#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-center.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.html">
+      <file leaf-file-name="headers-interceptor.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/headers-interceptor.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="224">
+              <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utilities.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/utilities.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+                <element signature="n#!!block;n#datetimeFormat#0;n#UtilitiesService#0" />
+                <element signature="e#1290#1784#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,9 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AdminModule</find>
-      <find>@</find>
-      <find>table</find>
       <find>fieldset</find>
       <find>abbr</find>
       <find>acronym</find>
@@ -174,6 +206,9 @@
       <find>apiData</find>
       <find>dataType</find>
       <find>datas</find>
+      <find>BaseDataService</find>
+      <find>path</find>
+      <find>AjaxOptions</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -188,23 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_border.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_center-block.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_clearfix.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_ clearfix.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_flex.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_flex.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_hide.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_linear-gradient.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_opacity.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_overflow-ellipsis.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_progress.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_progress.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transform.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transition.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_floats.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_floats.scss" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/variables.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_forms.scss" />
@@ -214,31 +232,48 @@
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_reboot.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_variables.scss" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/assets/config.json" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/config.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/config.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.model.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax-get.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/index.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/response.model.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/index.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/req-header.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/model/datas.model.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/datas.model.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/site-show/banner.service.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/index.componet.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/settings.component.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center-routing.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.html" />
-        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/common.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.html" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/auth.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/resolve.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/resolver.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/assets/app-config.json" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/config.service.ts" />
         <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/config.model.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/utilities.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/token-datas.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax-interceptor.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/index.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/ajax-interceptor.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-store.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/token-interceptor.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/headers-interceptor.service.ts" />
+        <option value="$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-init.service.ts" />
       </list>
     </option>
   </component>
@@ -295,6 +330,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -342,16 +378,6 @@
               <item name="my-test" type="462c0819:PsiDirectoryNode" />
               <item name="03_test" type="462c0819:PsiDirectoryNode" />
               <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-b" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
               <item name="my-app-d" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,18 +405,7 @@
               <item name="my-app-d" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-test" type="462c0819:PsiDirectoryNode" />
-              <item name="03_test" type="462c0819:PsiDirectoryNode" />
-              <item name="angular" type="462c0819:PsiDirectoryNode" />
-              <item name="my-app-d" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="user-center" type="462c0819:PsiDirectoryNode" />
+              <item name="http-interceptors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-test" type="b2602c69:ProjectViewProjectNode" />
@@ -412,7 +427,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -429,19 +443,19 @@
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-d\src\app\http-interceptors" />
+      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-d\src\app\model" />
+      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-d\src\app" />
+      <recent name="C:\Work\Projects\my-test\01_learn" />
+      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Work\Projects\my-test\01_learn\canvas" />
       <recent name="C:\Work\Projects\my-test\01_learn\frameset" />
       <recent name="C:\Work\Projects\my-test\03_test\a-rel" />
       <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-a\src\app" />
       <recent name="C:\Work\Projects\my-test\01_learn\module-programing-requirejs\lib" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-d\src\app\model" />
-      <recent name="D:\Work\Projects\my-test\03_test\angular\my-app-d\src\app" />
-      <recent name="C:\Work\Projects\my-test\01_learn" />
-      <recent name="C:\Work\Projects\my-test\01_learn\source-code-learn\src" />
-      <recent name="C:\Work\Projects\my-test\01_learn\HTML5 history API" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -518,7 +532,8 @@
       <workItem from="1524186381162" duration="4652000" />
       <workItem from="1524446455416" duration="25411000" />
       <workItem from="1524531829849" duration="23641000" />
-      <workItem from="1524618645410" duration="26649000" />
+      <workItem from="1524618645410" duration="26721000" />
+      <workItem from="1524704888098" duration="29440000" />
     </task>
     <task id="LOCAL-00001" summary="ng-learn and rel-attribute">
       <created>1519462013259</created>
@@ -552,11 +567,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="488335000" />
+    <option name="totallyTimeSpent" value="517847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20416667" />
@@ -613,225 +627,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_progress.scss" />
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_progress.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transform.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_transition.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_clearfix.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_floats.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_floats.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_border-radius.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="2" selection-start-line="2" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/utilities/_forms.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/mixins/_forms.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_utilities.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_reboot.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_mobile.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="54" column="48" lean-forward="true" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/scss/_mixins.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/config.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/assets/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/http-client.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/config.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="18" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/req-header.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="6" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/req-header.ts" />
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/interceptors/index.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/service/post.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/service/config.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/model/datas.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/model/config.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/datas.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/model/datas.model.ts" />
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/site-show/banner.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -842,35 +647,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <element signature="n#!!doc;n#RequestOptions#0" />
-            <element signature="n#RequestOptions#0" />
-            <element signature="n#!!block;n#constructor#0;n#RequestFormat#0" />
-            <element signature="n#!!doc;n#Request#0" />
-            <element signature="n#!!block;n#constructor#0;n#Request#0" />
-            <element signature="n#!!block;n#get#0;n#Request#0" />
-            <element signature="n#!!block;n#post#0;n#Request#0" />
-            <element signature="e#6143#6404#0" />
-            <element signature="e#6500#6557#0" />
-            <element signature="e#7024#7034#0" />
-            <element signature="n#!!block;n#handleError#0;n#Ajax#0" />
-            <element signature="n#!!block;n#next#0;n#Ajax#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/http-client-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -903,13 +683,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/forms.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -918,80 +692,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/common.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <element signature="n#!!doc;n#TokenApplyAndTime#0;n#CommonService#0" />
-            <element signature="n#!!doc;n#ImageCode#0;n#CommonService#0" />
-            <element signature="n#!!doc;n#PhoneCode#0;n#CommonService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,9 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
           <caret line="52" column="33" lean-forward="true" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1015,12 +716,317 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts">
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="214">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="38" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/admin/admin-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/user-center/user-center-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/resolve.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="59" lean-forward="true" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/datas.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/response.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/forms/question.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/service/config.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="74" lean-forward="true" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/config.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="18" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/auth-guard.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/downloader.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/http-client.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-164" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-b/src/app/http-client/package-search.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/assets/app-config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/config.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/resolver.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/model/config.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/common.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="n#!!doc;n#TokenApplyAndTime#0;n#CommonService#0" />
+            <element signature="n#!!doc;n#ImageCode#0;n#CommonService#0" />
+            <element signature="n#!!doc;n#PhoneCode#0;n#CommonService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/utilities.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#datetimeFormat#0;n#UtilitiesService#0" />
+            <element signature="e#1290#1784#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/node_modules/@angular/common/http/src/backend.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/pages/index/index.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/ajax.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="123" column="14" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="123" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="n#!!doc;n#AjaxOptions#0" />
+            <element signature="n#!!doc;n#Ajax#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/http-interceptors/headers-interceptor.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-store.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+            <element signature="n#!!block;n#setTokenData#0;n#TokenDatasService#0" />
+            <element signature="n#!!block;n#diffTime#0;n#TokenDatasService#0" />
+            <element signature="n#!!block;n#token#0;n#TokenDatasService#0" />
+            <element signature="n#!!block;n#timespan#0;n#TokenDatasService#0" />
+            <element signature="n#!!block;n#timespanFormat#0;n#TokenDatasService#0" />
+            <element signature="n#!!block;n#clear#0;n#TokenDatasService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_test/angular/my-app-d/src/app/service/data-init.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!doc;n#BaseDataService#0" />
+            <element signature="n#!!block;n#clear#0;n#InitDataService#0" />
           </folding>
         </state>
       </provider>
