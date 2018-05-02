@@ -55,6 +55,73 @@ class UtilitiesService {
     });
 
   }
+
+  public showLoading(content: string): void {
+    const CLASS_NAME: string = 'loading-overlay-container';
+    const DEFAULT_CONTENT: string = '加载中...';
+
+
+  }
+}
+
+class LoadingOverlay {
+  private ID: string = 'loadingOverlayContainer';
+  private CLASS_NAME: string = 'loading-overlay-container';
+  private DEFAULT_CONTENT: string = '加载中...';
+  private content: string;
+  private timer: any;
+  private time: number = 600;
+
+  constructor() { }
+
+  private create(): HTMLElement {
+    const overlay = <HTMLElement>document.querySelector(`#${this.ID}`);
+
+    if(overlay) {
+      return overlay;
+    }
+
+    let _overlay = document.createElement('div'),
+      _inner = document.createElement('div');
+    _overlay.id = this.ID;
+    _overlay.classList.add(this.CLASS_NAME);
+    _overlay.classList.add('animated');
+    _inner.classList.add(this.CLASS_NAME.replace(/(.*-)\w*/, '$1inner'));
+    _inner.innerHTML = this.content;
+
+    _overlay.appendChild(_inner);
+    document.body.appendChild(_overlay);
+    return _overlay;
+  }
+
+  public show(content: string = '') {
+    this.content = content || this.DEFAULT_CONTENT;
+
+    let overlay = this.create();
+    overlay.classList.remove('fadeOut');
+    overlay.classList.add('fadeIn');
+    this.setTimer(overlay, 'block');
+  }
+
+  public hide() {
+    let overlay = <HTMLElement>document.querySelector(`#${this.ID}`);
+    overlay.classList.remove('fadeIn');
+    overlay.classList.add('fadeOut');
+    this.setTimer(overlay, 'none');
+  }
+
+  public remove() {
+    let overlay = <HTMLElement>document.querySelector(`#${this.ID}`);
+    overlay.parentNode.removeChild(overlay);
+  }
+
+  private setTimer(overlay: HTMLElement, display: string) {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      overlay.style.display = display;
+    }, this.time);
+  }
 }
 
 export const Utils = new UtilitiesService();
+export const loadingOver = new LoadingOverlay();

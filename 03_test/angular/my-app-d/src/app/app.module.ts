@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {APP_INITIALIZER, NgModule, OnInit} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 
 import { AppComponent } from './app.component';
@@ -13,7 +14,7 @@ import {TokenDatasService} from "./service/data-store.service";
 import {httpInterceptorProviders} from "./http-interceptors";
 
 
-function loadToken(tokenService: InitDataService) {
+export function loadToken(tokenService: InitDataService) {
   return () => tokenService.tokenAndTime();
 }
 
@@ -26,7 +27,8 @@ function loadToken(tokenService: InitDataService) {
     BrowserModule,
     HttpClientModule,
     CookieModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    LoadingBarHttpClientModule
   ],
   providers: [
     Ajax, // Async http request

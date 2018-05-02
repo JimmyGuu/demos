@@ -1,3 +1,3 @@
 export interface Datas {
-  [key: string]: any
+  [key: string]: any;
 }

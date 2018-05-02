@@ -2,9 +2,12 @@
 // Utility classes
 // --------------------------------------------------
 
+@import "utilities/_animation.scss";
+
 @import "utilities/_border.scss";
 @import "utilities/_center-block.scss";
 @import "utilities/_clearfix.scss";
 @import "utilities/_hide.scss";
 @import "utilities/_floats.scss";
 @import "utilities/_forms.scss";
+@import "utilities/_loading-overlay.scss";

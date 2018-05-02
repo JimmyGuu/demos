@@ -39,6 +39,9 @@ $usual-colors: (
   focus:   darken(map_get($theme-colors, blue), 5%)
 );
 
+//** x-index
+$loading-overlay: 1000;
+
 //== Scaffolding
 //
 //## base styles

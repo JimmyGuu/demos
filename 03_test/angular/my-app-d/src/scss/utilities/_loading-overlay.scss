@@ -1,0 +1,19 @@
+$background: rgba($white, .5);
+
+.loading-overlay-container {
+  font-size: $text-size;
+  color: $black;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: $background;
+  @include transition();
+  z-index: $loading-overlay;
+
+  .loading-overlay-inner {
+    margin-top: 45%;
+  }
+}

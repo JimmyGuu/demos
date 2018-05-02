@@ -2,6 +2,7 @@ import {Ajax} from "./ajax.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Datas} from "../model/datas.model";
+import {apiData} from "../app.config";
 
 @Injectable()
 export class CommonService {

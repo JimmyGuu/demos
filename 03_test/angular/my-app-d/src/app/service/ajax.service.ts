@@ -1,5 +1,5 @@
 import {apiData} from "../app.config";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {catchError, retry} from "rxjs/operators";
 import {ResponseModel} from "../model/response.model";
@@ -14,7 +14,7 @@ import {CookieService} from "ngx-cookie";
  */
 class AjaxOptions {
   public url: string;
-  public datas: Datas;
+  public datas: any;
 
   constructor(
     private path: string,
@@ -27,19 +27,27 @@ class AjaxOptions {
 
   private init() {
     this.url = apiData.ServiceUrl + this.path;
-    this.datas = {
+
+    const datas: Datas = {
       ClientType: apiData.ClientType,
       Token: this.tokenDatasService.token
     };
+    Object.assign(datas, this._datas);
+
+    let params = new HttpParams();
     if (!this.isGet) {
-      this.datas.Timespan = this.tokenDatasService.timespanFormat;
+      datas.Timespan = this.tokenDatasService.timespanFormat;
     }
-    Object.assign(this.datas, this._datas);
-  }
+    for (let key in datas) {
+      if (datas.hasOwnProperty(key)) {
+        params = params.set(key, datas[key]);
+      }
+    }
 
-  private retryToken() {
-    if (!this.tokenDatasService.token || !this.tokenDatasService.timespanFormat) {
-
+    if (this.isGet) {
+      this.datas = { params: params };
+    } else {
+      this.datas = params;
     }
   }
 }
@@ -185,7 +193,7 @@ export class Ajax {
     if (error.error instanceof ErrorEvent) {
       console.error(`An error occurred: ${error.error.message}`);
     } else {
-      console.error(`Backend returned code ${error.status}, body was: `, error.error);
+      console.error(`Backend returned code ${error.status}, body was: `, error.error, 'error was: ', error);
     }
 
     return new ErrorObservable(`Something bad happend, please try again later.`);
