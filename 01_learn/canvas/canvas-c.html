@@ -22,7 +22,7 @@
         const context = canvas.getContext('2d');
 
         canvas.width = 1024;
-        canvas.height = 768;
+        canvas.height = 968;
 
         // 兼容性判断
         if (!context) return false;
@@ -117,6 +117,90 @@
             color: '#ff5726',
             background: '#D5D5D5'
         });
+
+        // Test
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = '#000';
+        context.fillStyle = '#ff5f00';
+
+
+        var r_1_x = 400,
+            r_1_y = 400;
+        var r = 30;
+        var radian = 0.2;
+        var R = 100;
+        var width = 4;
+        var h = Math.sqrt((R + r) * (R + r) - (R + 2) * (R + 2));
+        var R_right_1_x = r_1_x + R + width / 2,
+            R_right_1_y = r_1_y + h;
+        var R_right_2_x = R_right_1_x,
+            R_right_2_y = r_1_y + h + h * 2;
+        var R_left_1_x = r_1_x - R - width / 2,
+            R_left_1_y = r_1_y + h;
+        var R_left_2_x = R_left_1_x,
+            R_left_2_y = r_1_y + h + h * 2;
+
+        var q_right_1_x = r_1_x + Math.sin(radian * Math.PI) * r,
+            q_right_1_y = r_1_y + Math.cos(radian * Math.PI) * r;
+        var q_right_2_x = q_right_1_x,
+            q_right_2_y = r_1_y + h * 2 - Math.cos(radian * Math.PI) * r;
+        var q_left_1_x = r_1_x - Math.sin(radian * Math.PI) * r,
+            q_left_1_y = q_right_1_y;
+        var q_left_2_x = q_left_1_x,
+            q_left_2_y = q_right_2_y;
+
+        var r_2_x = r_1_x,
+            r_2_y = r_1_y + h * 2;
+        var r_3_x = r_1_x,
+            r_3_y = r_1_y + h * 4;
+
+
+        circle(context, r_1_x, r_1_y, r, 0, 2, false);
+
+        //** 1st
+        context.fill();
+        context.beginPath();
+
+        circle(context, R_right_1_x, R_right_1_y, R, 1 + radian, 1 - radian, true);
+        circle(context, r_2_x, r_2_y, r, 0 - radian, 1 + radian, false);
+        circle(context, R_left_1_x, R_left_1_y, R, radian, 0 - radian, true);
+
+        //** 2nd
+        context.closePath();
+        context.fill();
+        context.beginPath();
+
+
+        circle(context, R_right_2_x, R_right_2_y, R, 1 - (0.5 - radian) + 0.5, 1 - radian, true);
+        circle(context, r_3_x, r_3_y, r, 0 - radian, 1 + radian, false);
+        circle(context, R_left_2_x, R_left_2_y, R, radian, 0 - radian, true);
+
+        //** 3rd
+        context.closePath();
+        context.fill();
+
+
+        context.beginPath();
+        context.fillStyle = '#fff';
+        context.font = '24px';
+        context.textAlign = 'center';
+
+        context.fillText('1', r_1_x, r_1_y);
+        context.fillText('2', r_2_x, r_2_y);
+        context.fillText('3', r_3_x, r_3_y);
+
+
+
+        // progressBar(context, 0, 100, 500);
+        progressBar(context, 1, 1, 100, 500);
+        setTimeout(() => {
+            progressBar(context, 1, 2, 100, 500);
+        }, 2000);
+        setTimeout(() => {
+            progressBar(context, 2, 3, 100, 500);
+        }, 4000);
+
     }
 
     /**
@@ -190,6 +274,88 @@
         obj.init();
 
         return obj;
+    }
+
+    function circle(ctx, x, y, r = 4, start = 0, end = 2, iscounterclockwise = false) {
+        ctx.arc(x, y, r, start * Math.PI, end * Math.PI, iscounterclockwise);
+    }
+
+    function progressBar(ctx, from = 1, progress = 1, rx = 100, ry = 100) {
+        const active = '#ff5f00';
+        const defaults = '#efefef';
+        const arr = [0.16, 0.59, 1];
+
+        ctx.font = '24px';
+        ctx.textAlign = 'center';
+
+        const r_1_x = rx,
+            r_1_y = ry;
+        const r = 30;
+        const R = 100;
+        const radian = 0.2;
+        const width = 4;
+        const h = Math.sqrt((R + r) * (R + r) - (R + 2) * (R + 2));
+
+        const R_right_1_x = r_1_x + R + width / 2,
+            R_right_1_y = r_1_y + h;
+        const R_right_2_x = R_right_1_x,
+            R_right_2_y = r_1_y + h + h * 2;
+        const R_left_1_x = r_1_x - R - width / 2,
+            R_left_1_y = r_1_y + h;
+        const R_left_2_x = R_left_1_x,
+            R_left_2_y = r_1_y + h + h * 2;
+
+        const q_right_1_x = r_1_x + Math.sin(radian * Math.PI) * r,
+            q_right_1_y = r_1_y + Math.cos(radian * Math.PI) * r;
+        const q_right_2_x = q_right_1_x,
+            q_right_2_y = r_1_y + h * 2 - Math.cos(radian * Math.PI) * r;
+        const q_left_1_x = r_1_x - Math.sin(radian * Math.PI) * r,
+            q_left_1_y = q_right_1_y;
+        const q_left_2_x = q_left_1_x,
+            q_left_2_y = q_right_2_y;
+
+        const r_2_x = r_1_x,
+            r_2_y = r_1_y + h * 2;
+        const r_3_x = r_1_x,
+            r_3_y = r_1_y + h * 4;
+
+        const height = h * 4 + r * 2;
+
+        let draw = function (count) {
+            ctx.beginPath();
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            ctx.fillStyle = active;
+            circle(ctx, r_1_x, r_1_y, r, 0.5 + radian, 0.5 - radian, false);
+            circle(ctx, R_right_1_x, R_right_1_y, R, 1 + radian, 1 - radian, true);
+            circle(ctx, r_2_x, r_2_y, r, 0 - radian, radian, false);
+            circle(ctx, R_right_2_x, R_right_2_y, R, 1 - (0.5 - radian) + 0.5, 1 - radian, true);
+            circle(ctx, r_3_x, r_3_y, r, 0 - radian, 1 + radian, false);
+            circle(ctx, R_left_2_x, R_left_2_y, R, radian, 0 - radian, true);
+            circle(ctx, r_2_x, r_2_y, r, 0.5 + radian, 1 + radian, false);
+            circle(ctx, R_left_1_x, R_left_1_y, R, radian, 0 - radian, true);
+            ctx.clip();
+            ctx.fillRect(r_1_x - r, r_1_y - r, r * 2, height * count);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.fillStyle = '#333';
+            ctx.fillText('1', r_1_x, r_1_y);
+            ctx.fillText('2', r_2_x, r_2_y);
+            ctx.fillText('3', r_3_x, r_3_y);
+
+        };
+
+
+        let count = 0;
+        count = arr[progress - from - 1] ? arr[progress - from - 1] : 0;
+        let timer = setInterval(() => {
+            count += 0.01;
+            draw(count);
+            if (count > arr[progress - 1]) {
+                clearInterval(timer);
+            }
+        }, 30);
     }
 </script>
 </body>
