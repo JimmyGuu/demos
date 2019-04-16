@@ -12,3 +12,4 @@ gen
 .vs/
 node_modules/
 /.vs/
+./*/node_modules/
