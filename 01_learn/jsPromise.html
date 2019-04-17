@@ -13,6 +13,171 @@
 </head>
 <body>
 
+<script type="text/javascript">
+    window.onload = function (ev) {
+
+
+        let t21 = 1000,
+            t22 = 2000;
+        let p21 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(42);
+            }, t21);
+        });
+        let p22 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(43);
+            }, t22);
+        });
+
+        let p23 = Promise.race([p21, p22]);
+        p23.then(function (value) {
+            console.log(value);
+        }).catch(function (reason) {
+            console.log(reason);
+        });
+
+        return;
+
+        let p11 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+        let p12 = new Promise(function (resolve, reject) {
+            resolve(43);
+        });
+        let p13 = new Promise(function (resolve, reject) {
+            resolve(44);
+        });
+
+        let p14 = Promise.all([p11, p12, p13]);
+
+        p14.then(function (value) {
+            console.log(Array.isArray(value));  // true
+            console.log(value);                 // (3) [42, 43, 44]
+        });
+
+        return;
+
+
+        let p7 = Promise.resolve(42);
+
+        p7.then(function (value) {
+            console.log(value);   // 42
+
+            return Promise.resolve(43);
+        }).then(function (value) {
+            console.log(value);   // 43
+        });
+
+
+        return;
+
+        let p5 = Promise.resolve(42);
+        let p6 = Promise.resolve(43);
+
+        p5.then(function (value) {
+            // 第一个完成处理程序
+            console.log(value);    // 42
+            return p6;
+        }).then(function (value) {
+            // 第二个完成处理程序
+            console.log(value);    // 43
+        });
+
+        return;
+
+        let p4 = Promise.reject(42);
+
+        p4.catch(function (reason) {
+            console.log(reason);
+            return reason + 1;
+        }).then(function (value) {
+            console.log(value);
+        });
+
+        return;
+
+        let p3 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        p3.then(function (value) {
+            console.log(value);
+            return value + 1;
+        }).then(function (value) {
+            console.log(value);
+        });
+
+        return;
+
+        let p2 = new Promise(function (resolve, reject) {
+            throw new Error('Explosion');
+        });
+
+        p2.catch(function (reason) {
+            console.log(reason.message);
+            throw new Error('Boom');
+        }).catch(function (reason) {
+            console.log(reason.message);
+        });
+
+        return;
+
+        let p1 = new Promise(function(resolve, reject) {
+            resolve(42);
+        });
+
+        p1.then(function(value) {
+            console.log(value);
+        }).then(function() {
+            console.log('Finished');
+        });
+
+        return;
+
+
+
+        let rjPromise = Promise.reject('shit');
+        let promise = Promise.resolve(rjPromise);
+        promise.catch(err => {
+            console.trace(err);
+    });
+
+        let thenable = {
+            then: function(resolve, reject) {
+                reject(42);
+            }
+        };
+        let promise1 = Promise.resolve(thenable);
+        promise1.catch(function(value) {
+            console.log(value); // 42
+        });
+
+
+        let rejected;
+
+        window.onunhandledrejection = function(event) {
+            console.warn('unhandled rejection hunter:');
+            console.log(event.type);                           // unhandledrejection
+            console.log(event.reason.message);            // Explosion
+            console.log(rejected === event.promise);   // true
+        };
+
+        window.onrejectionhandled = function(event) {
+            console.warn('handled rejection hunter:');
+            console.log(event.type);                           // rejectionhandled
+            console.log(event.reason.message);            // Explosion
+            console.log(rejected === event.promise);   // true
+        };
+
+        rejected = Promise.reject(new Error('Explosion'));
+        new Promise(function (resolve, reject) {
+            reject('Explosion233');
+        });
+    };
+
+</script>
+
     所谓 Promise，就是一个对象，用来传递异步操作的消息。<br />
     <p>Promise 对象有以下两个特点:</p><br />
     对象的状态不受外界影响。<br />
@@ -20,7 +185,7 @@
     这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。<br /><br />
     <div id="show-img"></div>
 
-    <script>
+    <!--<script>
 
         console.dir(Promise);
 
@@ -203,7 +368,7 @@
             console.log(data);
 
         })
-        
+
         //all的用法-并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。
         setTimeout(function () { console.log('%c all的用法', 'color: #ff5f00;') }, 6000);
 
@@ -304,7 +469,7 @@
 
         }, 12000);
 
-    </script>
+    </script>-->
 
 </body>
 </html>
