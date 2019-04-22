@@ -1,0 +1,119 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="counter-event-example" v-cloak>
+        <p>{{ total }}</p>
+        <button-counter v-on:increment="incrementTotal($event)"></button-counter>
+        <button-counter v-on:increment="incrementTotal($event)"></button-counter>
+
+        <hr>
+
+        <button-counter v-if="isShow"></button-counter>
+        <button type="button" @click="isShow = !isShow">toggle</button>
+
+        <hr>
+
+        <button-counter :str="'showError'"></button-counter>
+    </div>
+</div>
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('button-counter', {
+        template: '<button @click="increment">{{ counter }} {{ str }}</button>',
+        props: {
+            str: {
+                type: String,
+                default: ''
+            }
+        },
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        watch: {
+            counter(v) {
+                if (v % 2 !== 0 && this.str === 'showError') throw new Error('OMG!!!!');
+            }
+        },
+        methods: {
+            increment: function () {
+                const step = 1;
+                this.counter += step;
+                this.$emit('increment', { count: step });
+            }
+        },
+        beforeDestroy() {
+            console.warn('beforeDestroy');
+            console.log(this);
+        },
+        destroyed() {
+            console.warn('destroyed');
+            console.log(this);
+        }
+    });
+</script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                total: 0,
+                isShow: true
+            }
+        },
+        methods: {
+            incrementTotal: function (data) {
+                this.total += data.count;
+            }
+        },
+        beforeCreate() {
+            console.warn('beforeCreate');
+            console.log(this);
+        },
+        created() {
+            console.warn('created');
+            console.log(this);
+        },
+        beforeMount() {
+            console.warn('beforeMount');
+            console.log(this);
+        },
+        mounted() {
+            console.warn('mounted');
+            console.log(this);
+        },
+        beforeUpdate() {
+            console.warn('beforeUpdate');
+            console.log(this);
+        },
+        updated() {
+            console.warn('updated');
+            console.log(this);
+        },
+        errorCaptured(err, vm, info) {
+            console.warn('errorCaptured');
+            console.log(err);
+            console.log(vm);
+            console.log(info);
+            console.log(this);
+        }
+    });
+
+
+</script>
+</body>
+</html>
